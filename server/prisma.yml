@@ -1,0 +1,6 @@
+endpoint: https://us1.prisma.sh/ivandaixivwork/voicestory-2020/voicestory-2020-dev
+datamodel: datamodel.prisma
+
+generate:
+  - generator: javascript-client
+    output: ./generated/prisma-client/
