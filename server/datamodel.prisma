@@ -2,6 +2,8 @@ type User {
   id: ID! @id
   name: String!
   password: String!
+  employerProfile: Employer
+  applicantProfile: Applicant 
 }
 type JobPost {
   id: ID! @id
@@ -10,9 +12,13 @@ type JobPost {
   location: String!
   discipline: [String!]! @scalarList(strategy:RELATION)
   totalRoles: Int! 
+  employer: Employer!
+  viewed: [Applicant] 
 }
 type Employer {
   id: ID! @id
+  jobpostings: [JobPost!] @relation(link: TABLE)
+  contact: Contact @relation(link: INLINE)
 }
 type Contact {
   id: ID! @id
@@ -24,4 +30,5 @@ type Applicant {
   email: String! @unique
   linkedin: String!
   github: String!
+  appliedJobs: [JobPost] @relation(link: TABLE)
 }
