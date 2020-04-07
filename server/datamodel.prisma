@@ -3,6 +3,14 @@ type User {
   name: String!
   password: String!
 }
+type JobPost {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  industry: String!
+  location: String!
+  discipline: [String!]! @scalarList(strategy:RELATION)
+  totalRoles: Int! 
+}
 type Contact {
   id: ID! @id
   email: String
