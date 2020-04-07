@@ -1,46 +1,10 @@
 type User {
   id: ID! @id
-  email: String @unique
+  name: String!
   password: String!
-  name: String!
-  isSpeaker: Speaker
-  ownedTickets: [Event!]!
 }
-
-type Speaker {
+type Contact {
   id: ID! @id
-  owner: User @relation(link:INLINE)
-  profile_picture: String!
-  title: String!
-  linkedin: String
-  facebook: String
-  description: String!
-}
-
-type Event {
-  id: ID! @id
-  title: String!
-  description: String!
-  date: Int!
-  time: String
-  thumbnail_url: String!
-  location_name: String!
-  location_address: String!
-  price: Float
-  maxTickets: Int!
-  soldTickets: Int @default(value: 0)
-  speakers: [Speaker]!
-  theme: Theme @relation(link: INLINE)
-}
-
-type Notification {
-  id: ID! @id
-  timestamp: DateTime @createdAt
-  announcement: String
-}
-
-type Theme {
-  id: ID! @id
-  name: String!
-  hexcode: String! @default(value: "#DB4F48")
+  email: String
+  website: String 
 }
