@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     flexDirection: 'row',
-    backgroundColor: '#DB4F48',
+    backgroundColor: '#000000',
     marginTop: 3,
     padding: 30,
     justifyContent: 'flex-start',
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   icon: {
     color: '#FBF7EF',
     textShadowOffset: {width: 2, height: 2},
-    textShadowColor: '#9F3833',
+    textShadowColor: '#FFFFFF',
     textShadowRadius: 1,
   },
   descriptionContainer: {

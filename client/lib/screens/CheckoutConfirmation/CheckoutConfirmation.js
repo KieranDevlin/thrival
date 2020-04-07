@@ -35,7 +35,7 @@ const CheckoutConfirmation = ({event, navigation, updateUser}) => {
             navigation.navigate('Tickets');
           }}
           style={styles.button}
-          bgcolor="#DB4F48"
+          bgcolor="#000000"
           label="View My Tickets"
         />
       </View>

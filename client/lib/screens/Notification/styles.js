@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     transform: [{translateY: -10}],
   },
   headerContainer: {
-    backgroundColor: '#DB4F48',
+    backgroundColor: '#000000',
     height: 100,
   },
   heading: {
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   contentContainer: {
-    backgroundColor: '#9F3833',
+    backgroundColor: '#FFFFFF',
     paddingRight: 30,
     paddingLeft: 30,
   },
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   border: {
-    borderBottomColor: '#DB4F48',
+    borderBottomColor: '#000000',
     borderBottomWidth: 3,
     paddingTop: 20,
     paddingBottom: 20,

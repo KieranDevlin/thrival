@@ -10,9 +10,6 @@ const NotificationButton = ({navigation}) => {
     <Icon
       style={{
         marginLeft: 10,
-        textShadowOffset: {width: 2, height: 2},
-        textShadowColor: '#9F3833',
-        textShadowRadius: 1,
       }}
       name="bell"
       color="white"
@@ -28,9 +25,6 @@ const MeatballButton = () => {
       style={{
         marginLeft: 10,
         marginRight: 10,
-        textShadowOffset: {width: 2, height: 2},
-        textShadowColor: '#9F3833',
-        textShadowRadius: 1,
       }}
       name="dots-vertical"
       color="white"
@@ -45,7 +39,7 @@ const BackButton = ({navigation}) => {
         marginLeft: 10,
         marginRight: 10,
         textShadowOffset: {width: 2, height: 2},
-        textShadowColor: '#9F3833',
+        textShadowColor: '#FFFFFF',
         textShadowRadius: 1,
       }}
       name="arrow-left"
@@ -71,7 +65,7 @@ export const sharedScreenOptions = ({route, navigation}) => {
           navigation={navigation}
           setUser={setUser}
           user={user}
-          ref={ref => {
+          ref={(ref) => {
             drawerRef = ref;
           }}
         />
@@ -84,7 +78,7 @@ export const sharedScreenOptions = ({route, navigation}) => {
             navigation={navigation}
             setUser={setUser}
             user={user}
-            ref={ref => {
+            ref={(ref) => {
               drawerRef = ref;
             }}
           />
@@ -106,7 +100,7 @@ export const sharedScreenOptions = ({route, navigation}) => {
       ) : null;
     },
     headerStyle: {
-      backgroundColor: '#DB4F48',
+      backgroundColor: '#000000',
     },
   };
 };
@@ -119,7 +113,7 @@ export const sharedDrawerOptions = ({navigation}) => {
       </>
     ),
     headerStyle: {
-      backgroundColor: '#DB4F48',
+      backgroundColor: '#000000',
     },
   };
 };
@@ -132,7 +126,7 @@ export const onlyBackStackOptions = ({route, navigation}) => {
       );
     },
     headerStyle: {
-      backgroundColor: '#DB4F48',
+      backgroundColor: '#000000',
     },
   };
 };

@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FBF7EF',
+    backgroundColor: '#FFF',
   },
   main: {
     flex: 1,
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     paddingLeft: 35,
     paddingRight: 35,
     justifyContent: 'flex-start',
-    backgroundColor: '#FBF7EF',
+    backgroundColor: '#FFF',
   },
   name: {
     fontSize: 24,

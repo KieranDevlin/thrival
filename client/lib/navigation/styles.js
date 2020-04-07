@@ -13,14 +13,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   menu: {
-    backgroundColor: '#9F3833',
+    backgroundColor: '#FFFFFF',
     paddingRight: 30,
     paddingLeft: 30,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },
   border: {
-    borderBottomColor: '#DB4F48',
+    borderBottomColor: '#000000',
     borderBottomWidth: 2,
   },
   menuItem: {

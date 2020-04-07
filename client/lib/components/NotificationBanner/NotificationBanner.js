@@ -7,13 +7,7 @@ import PropTypes from 'prop-types';
 const NotificationBanner = ({notification}) => {
   return (
     <View style={styles.banner}>
-      <View style={styles.imageContainer}>
-        <Image
-          style={styles.image}
-          resizeMode={'contain'}
-          source={require('../../assets/icons/announcement.png')}
-        />
-      </View>
+      <View style={styles.imageContainer}></View>
       <View>
         <View style={styles.authorContainer}>
           <Text style={styles.author}>VoiceStory made an announcement:</Text>

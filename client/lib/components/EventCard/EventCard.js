@@ -19,7 +19,7 @@ const EventCard = ({
   route,
   theme,
 }) => {
-  const red = '#DB4F48';
+  const red = '#000000';
   const eventimg =
     event && eventthumbnail
       ? {uri: eventthumbnail}

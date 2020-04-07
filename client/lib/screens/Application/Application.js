@@ -57,7 +57,7 @@ const Application = ({navigation}) => {
               <Text style={styles.email}>info@voicestory.ca</Text>
               <Button
                 style={styles.button}
-                bgcolor="#DB4F48"
+                bgcolor="#000000"
                 label="Submit Application"
               />
             </View>

@@ -19,10 +19,10 @@ const Ticket = ({route, navigation}) => {
       </SafeAreaView>
       <View style={styles.ticket}>
         <View style={styles.qrcodeContainer}>
-          <Image
+          {/* <Image
             style={styles.qrcode}
             source={require('../../assets/images/qr-code.png')}
-          />
+          /> */}
         </View>
         <View style={styles.ticketInfo}>
           <Text style={styles.title}>VoiceStory Live</Text>

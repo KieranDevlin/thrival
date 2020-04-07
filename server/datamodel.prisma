@@ -42,5 +42,5 @@ type Notification {
 type Theme {
   id: ID! @id
   name: String!
-  hexcode: String! @default(value: "#DB4F48")
+  hexcode: String! @default(value: "#000000")
 }
