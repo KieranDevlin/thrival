@@ -11,6 +11,10 @@ type AggregateContact {
   count: Int!
 }
 
+type AggregateEmployer {
+  count: Int!
+}
+
 type AggregateJobPost {
   count: Int!
 }
@@ -283,6 +287,76 @@ input ContactWhereUniqueInput {
 
 scalar DateTime
 
+type Employer {
+  id: ID!
+}
+
+type EmployerConnection {
+  pageInfo: PageInfo!
+  edges: [EmployerEdge]!
+  aggregate: AggregateEmployer!
+}
+
+input EmployerCreateInput {
+  id: ID
+}
+
+type EmployerEdge {
+  node: Employer!
+  cursor: String!
+}
+
+enum EmployerOrderByInput {
+  id_ASC
+  id_DESC
+}
+
+type EmployerPreviousValues {
+  id: ID!
+}
+
+type EmployerSubscriptionPayload {
+  mutation: MutationType!
+  node: Employer
+  updatedFields: [String!]
+  previousValues: EmployerPreviousValues
+}
+
+input EmployerSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: EmployerWhereInput
+  AND: [EmployerSubscriptionWhereInput!]
+  OR: [EmployerSubscriptionWhereInput!]
+  NOT: [EmployerSubscriptionWhereInput!]
+}
+
+input EmployerWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  AND: [EmployerWhereInput!]
+  OR: [EmployerWhereInput!]
+  NOT: [EmployerWhereInput!]
+}
+
+input EmployerWhereUniqueInput {
+  id: ID
+}
+
 type JobPost {
   id: ID!
   createdAt: DateTime!
@@ -456,6 +530,9 @@ type Mutation {
   upsertContact(where: ContactWhereUniqueInput!, create: ContactCreateInput!, update: ContactUpdateInput!): Contact!
   deleteContact(where: ContactWhereUniqueInput!): Contact
   deleteManyContacts(where: ContactWhereInput): BatchPayload!
+  createEmployer(data: EmployerCreateInput!): Employer!
+  deleteEmployer(where: EmployerWhereUniqueInput!): Employer
+  deleteManyEmployers(where: EmployerWhereInput): BatchPayload!
   createJobPost(data: JobPostCreateInput!): JobPost!
   updateJobPost(data: JobPostUpdateInput!, where: JobPostWhereUniqueInput!): JobPost
   updateManyJobPosts(data: JobPostUpdateManyMutationInput!, where: JobPostWhereInput): BatchPayload!
@@ -494,6 +571,9 @@ type Query {
   contact(where: ContactWhereUniqueInput!): Contact
   contacts(where: ContactWhereInput, orderBy: ContactOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Contact]!
   contactsConnection(where: ContactWhereInput, orderBy: ContactOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ContactConnection!
+  employer(where: EmployerWhereUniqueInput!): Employer
+  employers(where: EmployerWhereInput, orderBy: EmployerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Employer]!
+  employersConnection(where: EmployerWhereInput, orderBy: EmployerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): EmployerConnection!
   jobPost(where: JobPostWhereUniqueInput!): JobPost
   jobPosts(where: JobPostWhereInput, orderBy: JobPostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [JobPost]!
   jobPostsConnection(where: JobPostWhereInput, orderBy: JobPostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): JobPostConnection!
@@ -506,6 +586,7 @@ type Query {
 type Subscription {
   applicant(where: ApplicantSubscriptionWhereInput): ApplicantSubscriptionPayload
   contact(where: ContactSubscriptionWhereInput): ContactSubscriptionPayload
+  employer(where: EmployerSubscriptionWhereInput): EmployerSubscriptionPayload
   jobPost(where: JobPostSubscriptionWhereInput): JobPostSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }

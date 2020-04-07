@@ -11,6 +11,9 @@ type JobPost {
   discipline: [String!]! @scalarList(strategy:RELATION)
   totalRoles: Int! 
 }
+type Employer {
+  id: ID! @id
+}
 type Contact {
   id: ID! @id
   email: String
