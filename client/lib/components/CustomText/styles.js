@@ -1,9 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  defaultFont: {
-    fontFamily: 'Lato-Regular',
-  },
+  defaultFont: {},
 });
 
 export default styles;

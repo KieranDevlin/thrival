@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   container: {
     height: Dimensions.get('window').height,
     justifyContent: 'space-around',
-    backgroundColor: '#FBF7EF',
+    backgroundColor: '#FFFFFF',
   },
   images: {
     alignItems: 'center',
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   borderBottom: {
     borderStyle: 'solid',
     borderBottomWidth: 2,
-    borderBottomColor: '#DB4F48',
+    borderBottomColor: '#000000',
   },
 });
 

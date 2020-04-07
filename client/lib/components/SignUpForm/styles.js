@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   error: {
     alignSelf: 'center',
-    color: '#DB4F48',
+    color: '#000000',
   },
   formcontent: {
     backgroundColor: '#D84F48',
@@ -17,13 +17,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   textinput: {
-    backgroundColor: '#9F3833',
+    backgroundColor: '#FFFFFF',
     color: 'white',
     padding: 15,
     marginVertical: 5,
     borderRadius: 10,
     borderBottomWidth: 0,
-    fontFamily: 'Lato-Regular',
   },
   buttonbox: {
     width: '100%',

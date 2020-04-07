@@ -7,16 +7,7 @@ import styles from './styles';
 const Home = ({route, navigation}) => {
   return (
     <View style={styles.container}>
-      <View style={styles.images}>
-        <Image
-          source={require('../../assets/icons/voicestory-logo.png')}
-          style={styles.logo}
-        />
-        <Image
-          source={require('../../assets/icons/announcement2x.png')}
-          style={styles.mic}
-        />
-      </View>
+      <View style={styles.images}></View>
       <LoginForm navigation={navigation} route={route} />
     </View>
   );

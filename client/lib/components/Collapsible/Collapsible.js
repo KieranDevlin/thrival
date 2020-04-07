@@ -1,7 +1,7 @@
 import React from 'react';
 import {Animated, Easing, View, LayoutAnimation} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Text from '../../components/CustomText';
 import styles from './styles';
 import PropTypes from 'prop-types';
@@ -65,11 +65,7 @@ class Collapsible extends React.Component {
               right: 10,
               top: '75%',
             }}>
-            <MaterialCommunityIcons
-              style={styles.icon}
-              name="menu-right"
-              size={50}
-            />
+            <Icon style={styles.icon} name="menu-right" size={50} />
           </Animated.View>
         </TouchableOpacity>
         <>

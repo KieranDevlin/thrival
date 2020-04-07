@@ -5,7 +5,6 @@ import {Text} from 'react-native';
 import Loader from '../../components/Loader';
 import {UserContext} from '../../context/UserContext';
 import Search from './Search';
-import {YoutubeDataContext} from '../../context/YoutubeData';
 
 const SEARCH = gql`
   {
@@ -45,20 +44,12 @@ export default class SearchContainer extends Component {
           if (loading) return <Loader />;
           if (error) return <Text>Error :(</Text>;
           return (
-            <YoutubeDataContext.Consumer>
-              {value => {
-                const videos = value.videos.map(video => video.items);
-                return (
-                  <Search
-                    events={data.events}
-                    videos={videos}
-                    speakers={data.speakers}
-                    navigation={this.props.navigation}
-                    route={this.props.route}
-                  />
-                );
-              }}
-            </YoutubeDataContext.Consumer>
+            <Search
+              events={data.events}
+              speakers={data.speakers}
+              navigation={this.props.navigation}
+              route={this.props.route}
+            />
           );
         }}
       </Query>

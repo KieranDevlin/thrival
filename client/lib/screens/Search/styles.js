@@ -2,7 +2,7 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 const styles = StyleSheet.create({
   headerContainer: {
-    backgroundColor: '#DB4F48',
+    backgroundColor: '#000000',
     paddingBottom: 20,
   },
   heading: {
@@ -11,21 +11,21 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   contentContainer: {
-    backgroundColor: '#9F3833',
+    backgroundColor: '#FFFFFF',
     paddingRight: 30,
     paddingLeft: 30,
     paddingBottom: 125,
     minHeight: Dimensions.get('window').height - 200,
   },
   border: {
-    borderBottomColor: '#DB4F48',
+    borderBottomColor: '#000000',
     borderBottomWidth: 3,
     paddingTop: 20,
     paddingBottom: 20,
     marginBottom: 10,
   },
   resultheader: {
-    color: '#DB4F48',
+    color: '#000000',
     fontSize: 18,
     textAlign: 'center',
     marginTop: 20,

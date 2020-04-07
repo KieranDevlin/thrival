@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 16,
-    fontFamily: 'Lato-Regular',
   },
   title: {
     width: 150,
