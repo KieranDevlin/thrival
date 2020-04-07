@@ -7,22 +7,6 @@ var models = [
   {
     name: "User",
     embedded: false
-  },
-  {
-    name: "JobPost",
-    embedded: false
-  },
-  {
-    name: "Employer",
-    embedded: false
-  },
-  {
-    name: "Contact",
-    embedded: false
-  },
-  {
-    name: "Applicant",
-    embedded: false
   }
 ];
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
