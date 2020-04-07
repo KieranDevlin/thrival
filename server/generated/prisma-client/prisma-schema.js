@@ -3,7 +3,11 @@ module.exports = {
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-/* GraphQL */ `type AggregateContact {
+/* GraphQL */ `type AggregateApplicant {
+  count: Int!
+}
+
+type AggregateContact {
   count: Int!
 }
 
@@ -13,6 +17,146 @@ type AggregateJobPost {
 
 type AggregateUser {
   count: Int!
+}
+
+type Applicant {
+  id: ID!
+  email: String!
+  linkedin: String!
+  github: String!
+}
+
+type ApplicantConnection {
+  pageInfo: PageInfo!
+  edges: [ApplicantEdge]!
+  aggregate: AggregateApplicant!
+}
+
+input ApplicantCreateInput {
+  id: ID
+  email: String!
+  linkedin: String!
+  github: String!
+}
+
+type ApplicantEdge {
+  node: Applicant!
+  cursor: String!
+}
+
+enum ApplicantOrderByInput {
+  id_ASC
+  id_DESC
+  email_ASC
+  email_DESC
+  linkedin_ASC
+  linkedin_DESC
+  github_ASC
+  github_DESC
+}
+
+type ApplicantPreviousValues {
+  id: ID!
+  email: String!
+  linkedin: String!
+  github: String!
+}
+
+type ApplicantSubscriptionPayload {
+  mutation: MutationType!
+  node: Applicant
+  updatedFields: [String!]
+  previousValues: ApplicantPreviousValues
+}
+
+input ApplicantSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ApplicantWhereInput
+  AND: [ApplicantSubscriptionWhereInput!]
+  OR: [ApplicantSubscriptionWhereInput!]
+  NOT: [ApplicantSubscriptionWhereInput!]
+}
+
+input ApplicantUpdateInput {
+  email: String
+  linkedin: String
+  github: String
+}
+
+input ApplicantUpdateManyMutationInput {
+  email: String
+  linkedin: String
+  github: String
+}
+
+input ApplicantWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  linkedin: String
+  linkedin_not: String
+  linkedin_in: [String!]
+  linkedin_not_in: [String!]
+  linkedin_lt: String
+  linkedin_lte: String
+  linkedin_gt: String
+  linkedin_gte: String
+  linkedin_contains: String
+  linkedin_not_contains: String
+  linkedin_starts_with: String
+  linkedin_not_starts_with: String
+  linkedin_ends_with: String
+  linkedin_not_ends_with: String
+  github: String
+  github_not: String
+  github_in: [String!]
+  github_not_in: [String!]
+  github_lt: String
+  github_lte: String
+  github_gt: String
+  github_gte: String
+  github_contains: String
+  github_not_contains: String
+  github_starts_with: String
+  github_not_starts_with: String
+  github_ends_with: String
+  github_not_ends_with: String
+  AND: [ApplicantWhereInput!]
+  OR: [ApplicantWhereInput!]
+  NOT: [ApplicantWhereInput!]
+}
+
+input ApplicantWhereUniqueInput {
+  id: ID
+  email: String
 }
 
 type BatchPayload {
@@ -300,6 +444,12 @@ input JobPostWhereUniqueInput {
 scalar Long
 
 type Mutation {
+  createApplicant(data: ApplicantCreateInput!): Applicant!
+  updateApplicant(data: ApplicantUpdateInput!, where: ApplicantWhereUniqueInput!): Applicant
+  updateManyApplicants(data: ApplicantUpdateManyMutationInput!, where: ApplicantWhereInput): BatchPayload!
+  upsertApplicant(where: ApplicantWhereUniqueInput!, create: ApplicantCreateInput!, update: ApplicantUpdateInput!): Applicant!
+  deleteApplicant(where: ApplicantWhereUniqueInput!): Applicant
+  deleteManyApplicants(where: ApplicantWhereInput): BatchPayload!
   createContact(data: ContactCreateInput!): Contact!
   updateContact(data: ContactUpdateInput!, where: ContactWhereUniqueInput!): Contact
   updateManyContacts(data: ContactUpdateManyMutationInput!, where: ContactWhereInput): BatchPayload!
@@ -338,6 +488,9 @@ type PageInfo {
 }
 
 type Query {
+  applicant(where: ApplicantWhereUniqueInput!): Applicant
+  applicants(where: ApplicantWhereInput, orderBy: ApplicantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Applicant]!
+  applicantsConnection(where: ApplicantWhereInput, orderBy: ApplicantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ApplicantConnection!
   contact(where: ContactWhereUniqueInput!): Contact
   contacts(where: ContactWhereInput, orderBy: ContactOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Contact]!
   contactsConnection(where: ContactWhereInput, orderBy: ContactOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ContactConnection!
@@ -351,6 +504,7 @@ type Query {
 }
 
 type Subscription {
+  applicant(where: ApplicantSubscriptionWhereInput): ApplicantSubscriptionPayload
   contact(where: ContactSubscriptionWhereInput): ContactSubscriptionPayload
   jobPost(where: JobPostSubscriptionWhereInput): JobPostSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload

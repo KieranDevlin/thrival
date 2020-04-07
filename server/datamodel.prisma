@@ -16,3 +16,9 @@ type Contact {
   email: String
   website: String 
 }
+type Applicant {
+  id: ID! @id
+  email: String! @unique
+  linkedin: String!
+  github: String!
+}
