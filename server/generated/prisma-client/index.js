@@ -9,25 +9,25 @@ var models = [
     embedded: false
   },
   {
-    name: "Speaker",
+    name: "JobPost",
     embedded: false
   },
   {
-    name: "Event",
+    name: "Employer",
     embedded: false
   },
   {
-    name: "Notification",
+    name: "Contact",
     embedded: false
   },
   {
-    name: "Theme",
+    name: "Applicant",
     embedded: false
   }
 ];
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,
-  endpoint: `https://us1.prisma.sh/ivandaixivwork/voicestory-2020/voicestory-2020-dev`
+  endpoint: `http://localhost:3000`
 });
 exports.prisma = new exports.Prisma();
