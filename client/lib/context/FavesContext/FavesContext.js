@@ -12,17 +12,17 @@ class FavesProvider extends Component {
     };
   }
 
-  getAllFaveVideos = async () => {
+  getAllFaveJobs = async () => {
     try {
       const faves = await allFaves();
       const ids = faves.map((fave) => fave[0]);
       this.setState({faveIds: ids});
     } catch (e) {
-      throw new Error('There was an error finding your favourite videos');
+      throw new Error('There was an error finding your favourite Jobs');
     }
   };
 
-  addFaveVideo = async (faveId) => {
+  addFaveJob = async (faveId) => {
     try {
       const newFave = await addFave(faveId);
       if (newFave) {
@@ -30,23 +30,23 @@ class FavesProvider extends Component {
           faveIds: {faveIds: [...this.state.faveIds, newFave.id]},
         });
       }
-      this.getAllFaveVideos();
+      this.getAllFaveJobs();
     } catch (e) {
       throw new Error('There was an error adding your new favourite');
     }
   };
 
-  removeFaveVideo = async (faveId) => {
+  removeFaveJob = async (faveId) => {
     try {
       await removeFave(faveId);
-      this.getAllFaveVideos();
+      this.getAllFaveJobs();
     } catch (e) {
       throw new Error('There was an error removing your favourite');
     }
   };
 
   componentDidMount = () => {
-    this.getAllFaveVideos();
+    this.getAllFaveJobs();
   };
 
   render() {
@@ -54,8 +54,8 @@ class FavesProvider extends Component {
       <FavesContext.Provider
         value={{
           ...this.state,
-          addFaveVideo: this.addFaveVideo,
-          removeFaveVideo: this.removeFaveVideo,
+          addFaveJob: this.addFaveJob,
+          removeFaveJob: this.removeFaveJob,
         }}>
         {this.props.children}
       </FavesContext.Provider>
