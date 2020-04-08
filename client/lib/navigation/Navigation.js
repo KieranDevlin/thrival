@@ -2,6 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ExploreScreen from '../screens/Explore';
+import JobScreen from '../screens/Job';
 import EventsScreen from '../screens/Events';
 import TicketsScreen from '../screens/Tickets';
 import UserProfileScreen from '../screens/UserProfile';
@@ -19,6 +20,13 @@ const ExploreStackScreens = () => {
       <ExploreStack.Screen
         name="Explore"
         component={ExploreScreen}
+        options={{
+          headerTintColor: '#FBF7EF',
+        }}
+      />
+      <ExploreStack.Screen
+        name="Job"
+        component={JobScreen}
         options={{
           headerTintColor: '#FBF7EF',
         }}

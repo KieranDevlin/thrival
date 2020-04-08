@@ -11,8 +11,9 @@ import CheckoutConfirmation from '../screens/CheckoutConfirmation';
 const RootStack = createStackNavigator();
 const RootStackScreens = () => (
   <RootStack.Navigator headerMode="none">
-    <RootStack.Screen name="Login" component={Home} />
-    <RootStack.Screen name="Signup" component={Login} />
+    {/* These are commented out until prisma auth is complete */}
+    {/* <RootStack.Screen name="Login" component={Home} />
+    <RootStack.Screen name="Signup" component={Login} /> */}
     <RootStack.Screen name="Main" component={BottomTabNavScreens} />
     <RootStack.Screen name="DrawerNav" component={DrawerNavStackScreens} />
     <RootStack.Screen name="Ticket" component={TicketScreen} />
