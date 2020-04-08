@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Light',
   },
   paymentForm: {
-    backgroundColor: '#DB4F48',
+    backgroundColor: '#000000',
     width: 350,
     borderRadius: 10,
     alignSelf: 'center',
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   inputPadding: {
     padding: 15,
     borderRadius: 10,
-    backgroundColor: '#9F3833',
+    backgroundColor: '#FFFFFF',
     marginTop: 5,
     marginBottom: 5,
     fontFamily: 'Lato-Light',
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   rightInputPadding: {
     padding: 15,
     borderRadius: 10,
-    backgroundColor: '#9F3833',
+    backgroundColor: '#FFFFFF',
     marginTop: 5,
     marginBottom: 5,
     marginLeft: 5,
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   leftInputPadding: {
     padding: 15,
     borderRadius: 10,
-    backgroundColor: '#9F3833',
+    backgroundColor: '#FFFFFF',
     marginTop: 5,
     marginBottom: 5,
     marginRight: 5,

@@ -20,7 +20,7 @@ export default FilterTabNav = () => {
           fontSize: 15,
         },
         indicatorStyle: {
-          backgroundColor: '#DB4F48',
+          backgroundColor: '#000000',
         },
       }}>
       <FilterTab.Screen name="Newest" component={NewestScreen} />

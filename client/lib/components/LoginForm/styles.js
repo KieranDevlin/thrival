@@ -9,21 +9,20 @@ const styles = StyleSheet.create({
   },
   error: {
     alignSelf: 'center',
-    color: '#DB4F48',
+    color: '#000000',
   },
   formcontent: {
-    backgroundColor: '#D84F48',
+    backgroundColor: '#000000',
     padding: 10,
     borderRadius: 10,
   },
   textinput: {
-    backgroundColor: '#9F3833',
-    color: 'white',
+    backgroundColor: '#FFFFFF',
+    color: '#3C3C3C',
     padding: 15,
     marginVertical: 5,
     borderRadius: 10,
     borderBottomWidth: 0,
-    fontFamily: 'Lato-Regular',
   },
   buttonbox: {
     width: '100%',
@@ -33,14 +32,14 @@ const styles = StyleSheet.create({
   },
   button: {
     width: 150,
-    backgroundColor: '#D84F48',
+    backgroundColor: '#000000',
     borderRadius: 10,
     paddingVertical: 15,
   },
   buttonLogin: {
     marginTop: 35,
     width: 340,
-    backgroundColor: '#D84F48',
+    backgroundColor: '#000000',
     borderRadius: 10,
     paddingVertical: 15,
   },

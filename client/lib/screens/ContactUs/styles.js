@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#1D1D1D',
-    fontFamily: 'Lato-Regular',
     fontSize: 15,
     lineHeight: 25,
     marginBottom: 30,

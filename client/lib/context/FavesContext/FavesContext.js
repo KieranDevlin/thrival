@@ -15,14 +15,14 @@ class FavesProvider extends Component {
   getAllFaveVideos = async () => {
     try {
       const faves = await allFaves();
-      const ids = faves.map(fave => fave[0]);
+      const ids = faves.map((fave) => fave[0]);
       this.setState({faveIds: ids});
     } catch (e) {
       throw new Error('There was an error finding your favourite videos');
     }
   };
 
-  addFaveVideo = async faveId => {
+  addFaveVideo = async (faveId) => {
     try {
       const newFave = await addFave(faveId);
       if (newFave) {
@@ -36,7 +36,7 @@ class FavesProvider extends Component {
     }
   };
 
-  removeFaveVideo = async faveId => {
+  removeFaveVideo = async (faveId) => {
     try {
       await removeFave(faveId);
       this.getAllFaveVideos();

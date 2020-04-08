@@ -6,37 +6,30 @@ import Text from '../../components/CustomText/CustomText';
 import {SearchBar} from 'react-native-elements';
 import PropTypes from 'prop-types';
 
-const Search = ({events, videos, speakers, navigation}) => {
+const Search = ({events, speakers, navigation}) => {
   const [search, setSearch] = useState(null);
-  const updateSearch = search => {
+  const updateSearch = (search) => {
     search === '' ? setSearch(null) : setSearch(search.toLowerCase());
   };
 
   //events
-  const eventResults = events.filter(event =>
+  const eventResults = events.filter((event) =>
     event.title.toLowerCase().match(search),
   );
-  const eventTitle = eventResults.map(event => event.title);
-
-  // //videos
-  const videoResults = videos.filter(video =>
-    video[0].snippet.title.toLowerCase().match(search),
-  );
-
-  const videoTitle = videoResults.map(video => video[0].snippet.title);
+  const eventTitle = eventResults.map((event) => event.title);
 
   //speakers
-  const speakerResults = speakers.filter(speaker =>
+  const speakerResults = speakers.filter((speaker) =>
     speaker.owner.name.toLowerCase().match(search),
   );
-  const speakerName = speakerResults.map(speaker => speaker.owner.name);
+  const speakerName = speakerResults.map((speaker) => speaker.owner.name);
 
   return (
     <View style={styles.searchContainer}>
       <View style={styles.headerContainer}>
         <SearchBar
           placeholder="Search..."
-          onChangeText={value => updateSearch(value)}
+          onChangeText={(value) => updateSearch(value)}
           value={search}
           autoCorrect={false}
           autoCompleteType="name"
@@ -45,7 +38,7 @@ const Search = ({events, videos, speakers, navigation}) => {
             color: '#FBF7EF',
           }}
           containerStyle={{
-            backgroundColor: '#DB4F48',
+            backgroundColor: '#000000',
             borderTopWidth: 0,
             borderBottomWidth: 0,
             padding: 0,
@@ -55,13 +48,12 @@ const Search = ({events, videos, speakers, navigation}) => {
             transform: [{translateX: 20}, {translateY: 10}],
           }}
           inputContainerStyle={{
-            backgroundColor: '#9F3833',
+            backgroundColor: '#FFFFFF',
             borderRadius: 10,
             width: '90%',
             margin: 0,
           }}
           inputStyle={{
-            fontFamily: 'Lato-Regular',
             color: '#FBF7EF',
             fontSize: 15,
           }}
@@ -78,7 +70,7 @@ const Search = ({events, videos, speakers, navigation}) => {
           ) : null}
           {search === ''
             ? null
-            : eventResults.map(event => (
+            : eventResults.map((event) => (
                 <TouchableOpacity
                   key={event.id}
                   onPress={() =>
@@ -106,39 +98,6 @@ const Search = ({events, videos, speakers, navigation}) => {
                   </View>
                 </TouchableOpacity>
               ))}
-          {videoTitle.length > 0 ? (
-            <View style={styles.border}>
-              <Text style={styles.heading}>Videos</Text>
-            </View>
-          ) : null}
-          {search === ''
-            ? null
-            : videoResults.map(video => (
-                <TouchableOpacity
-                  key={video[0].id}
-                  onPress={() =>
-                    navigation.navigate('Video', {video: video[0]})
-                  }>
-                  <View style={styles.resultsContainer}>
-                    <View style={styles.imageContainer}>
-                      <Image
-                        style={styles.image}
-                        resizeMode={'cover'}
-                        source={{
-                          uri: video[0].snippet.thumbnails.standard.url
-                            ? video[0].snippet.thumbnails.standard.url
-                            : 'https://i.ytimg.com/vi/IC6m249zvI0/hqdefault.jpg',
-                        }}
-                      />
-                    </View>
-                    <View style={styles.titleContainer}>
-                      <Text key={video.id} style={styles.title}>
-                        {video[0].snippet.title}
-                      </Text>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-              ))}
           {speakerName.length > 0 ? (
             <View style={styles.border}>
               <Text style={styles.heading}>Speakers</Text>
@@ -146,7 +105,7 @@ const Search = ({events, videos, speakers, navigation}) => {
           ) : null}
           {search === ''
             ? null
-            : speakerResults.map(speaker => (
+            : speakerResults.map((speaker) => (
                 <TouchableOpacity
                   key={speaker.id}
                   onPress={() =>
@@ -183,6 +142,5 @@ Search.propTypes = {
   navigation: PropTypes.object.isRequired,
   events: PropTypes.array.isRequired,
   speakers: PropTypes.array.isRequired,
-  videos: PropTypes.array.isRequired,
 };
 export default Search;

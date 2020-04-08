@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingTop: 200,
     paddingBottom: 150,
-    backgroundColor: '#FBF7EF',
+    backgroundColor: '#FFFFFF',
   },
   toggleContainer: {
     width: 150,
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   borderBottom: {
     borderStyle: 'solid',
     borderBottomWidth: 2,
-    borderBottomColor: '#DB4F48',
+    borderBottomColor: '#000000',
   },
 });
 
