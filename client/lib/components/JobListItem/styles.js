@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginVertical: 10,
     borderRadius: 5,
+    borderColor: '#2B2D42',
   },
   company: {
     fontWeight: 'bold',

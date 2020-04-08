@@ -28,7 +28,7 @@ const Job = ({job, faveIds, addFave, removeFave}) => {
                   style={styles.icon}
                   name="heart"
                   size={32}
-                  color="#db4f48"
+                  color="#ED9421"
                 />
               </TouchableOpacity>
             ) : (
@@ -40,7 +40,7 @@ const Job = ({job, faveIds, addFave, removeFave}) => {
                   style={styles.icon}
                   name="heart-outline"
                   size={32}
-                  color="#db4f48"
+                  color="#ED9421"
                 />
               </TouchableOpacity>
             )}
