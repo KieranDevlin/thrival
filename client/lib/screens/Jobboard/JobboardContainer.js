@@ -1,22 +1,20 @@
 import React, {Component} from 'react';
+import Jobboard from './Jobboard';
 import {Query} from '@apollo/react-components';
 import {gql} from 'apollo-boost';
-import {Text} from 'react-native';
-import Application from './Application';
 import Loader from '../../components/Loader';
+import Error from '../../components/Error';
 import PropTypes from 'prop-types';
 
-export default class ApplicationContainer extends Component {
+export default class JobboardContainer extends Component {
   render() {
     return (
-      <Application
-        route={this.props.route}
-        navigation={this.props.navigation}
-      />
+      <Jobboard navigation={this.props.navigation} route={this.props.route} />
     );
   }
 }
-ApplicationContainer.propTypes = {
+
+JobboardContainer.propTypes = {
   navigation: PropTypes.object,
   route: PropTypes.object,
 };

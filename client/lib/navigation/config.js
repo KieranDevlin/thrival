@@ -38,9 +38,6 @@ const BackButton = ({navigation}) => {
       style={{
         marginLeft: 10,
         marginRight: 10,
-        textShadowOffset: {width: 2, height: 2},
-        textShadowColor: '#FFFFFF',
-        textShadowRadius: 1,
       }}
       name="arrow-left"
       color="white"
@@ -100,7 +97,7 @@ export const sharedScreenOptions = ({route, navigation}) => {
       ) : null;
     },
     headerStyle: {
-      backgroundColor: '#000000',
+      backgroundColor: '#11185B',
     },
   };
 };
@@ -113,7 +110,7 @@ export const sharedDrawerOptions = ({navigation}) => {
       </>
     ),
     headerStyle: {
-      backgroundColor: '#000000',
+      backgroundColor: '#11185B',
     },
   };
 };
@@ -126,7 +123,7 @@ export const onlyBackStackOptions = ({route, navigation}) => {
       );
     },
     headerStyle: {
-      backgroundColor: '#000000',
+      backgroundColor: '#11185B',
     },
   };
 };
