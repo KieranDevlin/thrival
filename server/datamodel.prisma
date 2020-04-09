@@ -19,6 +19,7 @@ type JobPost {
 type Employer {
   id: ID! @id
   jobpostings: [JobPost!] @relation(link: TABLE)
+  linkedin: String
   contact: Contact @relation(link: INLINE)
 }
 type Contact {

@@ -460,6 +460,7 @@ scalar DateTime
 type Employer {
   id: ID!
   jobpostings(where: JobPostWhereInput, orderBy: JobPostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [JobPost!]
+  linkedin: String
   contact: Contact
 }
 
@@ -472,6 +473,7 @@ type EmployerConnection {
 input EmployerCreateInput {
   id: ID
   jobpostings: JobPostCreateManyWithoutEmployerInput
+  linkedin: String
   contact: ContactCreateOneInput
 }
 
@@ -487,6 +489,7 @@ input EmployerCreateOneWithoutJobpostingsInput {
 
 input EmployerCreateWithoutJobpostingsInput {
   id: ID
+  linkedin: String
   contact: ContactCreateOneInput
 }
 
@@ -498,10 +501,13 @@ type EmployerEdge {
 enum EmployerOrderByInput {
   id_ASC
   id_DESC
+  linkedin_ASC
+  linkedin_DESC
 }
 
 type EmployerPreviousValues {
   id: ID!
+  linkedin: String
 }
 
 type EmployerSubscriptionPayload {
@@ -524,12 +530,18 @@ input EmployerSubscriptionWhereInput {
 
 input EmployerUpdateDataInput {
   jobpostings: JobPostUpdateManyWithoutEmployerInput
+  linkedin: String
   contact: ContactUpdateOneInput
 }
 
 input EmployerUpdateInput {
   jobpostings: JobPostUpdateManyWithoutEmployerInput
+  linkedin: String
   contact: ContactUpdateOneInput
+}
+
+input EmployerUpdateManyMutationInput {
+  linkedin: String
 }
 
 input EmployerUpdateOneInput {
@@ -549,6 +561,7 @@ input EmployerUpdateOneRequiredWithoutJobpostingsInput {
 }
 
 input EmployerUpdateWithoutJobpostingsDataInput {
+  linkedin: String
   contact: ContactUpdateOneInput
 }
 
@@ -580,6 +593,20 @@ input EmployerWhereInput {
   jobpostings_every: JobPostWhereInput
   jobpostings_some: JobPostWhereInput
   jobpostings_none: JobPostWhereInput
+  linkedin: String
+  linkedin_not: String
+  linkedin_in: [String!]
+  linkedin_not_in: [String!]
+  linkedin_lt: String
+  linkedin_lte: String
+  linkedin_gt: String
+  linkedin_gte: String
+  linkedin_contains: String
+  linkedin_not_contains: String
+  linkedin_starts_with: String
+  linkedin_not_starts_with: String
+  linkedin_ends_with: String
+  linkedin_not_ends_with: String
   contact: ContactWhereInput
   AND: [EmployerWhereInput!]
   OR: [EmployerWhereInput!]
@@ -941,6 +968,7 @@ type Mutation {
   deleteManyContacts(where: ContactWhereInput): BatchPayload!
   createEmployer(data: EmployerCreateInput!): Employer!
   updateEmployer(data: EmployerUpdateInput!, where: EmployerWhereUniqueInput!): Employer
+  updateManyEmployers(data: EmployerUpdateManyMutationInput!, where: EmployerWhereInput): BatchPayload!
   upsertEmployer(where: EmployerWhereUniqueInput!, create: EmployerCreateInput!, update: EmployerUpdateInput!): Employer!
   deleteEmployer(where: EmployerWhereUniqueInput!): Employer
   deleteManyEmployers(where: EmployerWhereInput): BatchPayload!
