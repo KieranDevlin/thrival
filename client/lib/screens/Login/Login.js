@@ -1,48 +1,85 @@
-import React, {useState} from 'react';
-import PropTypes from 'prop-types';
-import LoginForm from '../../components/LoginForm';
-import {View} from 'react-native';
-import SignUpForm from '../../components/SignUpForm';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import Text from '../../components/CustomText/CustomText';
+import React from 'react';
+import {ImageBackground, View, TouchableOpacity, TextInput} from 'react-native';
 import styles from './styles';
+import Text from '../../components/CustomText';
+import {AuthContext} from '../../context/AuthProvider';
+import gql from 'graphql-tag';
+import {Mutation} from '@apollo/react-components';
+import ApolloClient from 'apollo-boost';
 
-const Login = ({route, navigation}) => {
-  const [formToggle, setFormToggle] = useState(true);
+const LOGIN_MUTATION = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      user {
+        id
+      }
+      token
+    }
+  }
+`;
+
+const authClient = new ApolloClient({
+  uri: 'http://localhost:8383/',
+});
+
+const Login = ({navigation}) => {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const {
+    authContext: {signInContext},
+  } = React.useContext(AuthContext);
+
   return (
-    <View style={styles.container}>
-      <View style={styles.toggleContainer}>
-        <TouchableOpacity
-          onPress={() => {
-            setFormToggle(true);
-          }}
-          style={formToggle && styles.borderBottom}>
-          <Text style={formToggle ? styles.underline : styles.formToggle}>
-            Sign Up
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            setFormToggle(false);
-          }}
-          style={!formToggle && styles.borderBottom}>
-          <Text style={!formToggle ? styles.underline : styles.formToggle}>
-            Login
-          </Text>
-        </TouchableOpacity>
-      </View>
-      {formToggle ? (
-        <SignUpForm navigation={navigation} route={route} />
-      ) : (
-        <LoginForm navigation={navigation} route={route} />
+    <Mutation mutation={LOGIN_MUTATION} client={authClient}>
+      {(loginMutation) => (
+        <ImageBackground
+          style={styles.container}
+          blurRadius={10}
+          source={require('../../assets/images/waves.jpg')}>
+          <View style={styles.content}>
+            <Text style={styles.header}>Log in with email</Text>
+            <Text style={styles.inputTitle}>Email</Text>
+            <TextInput
+              style={styles.input}
+              value={email}
+              onChangeText={setEmail}
+              autoCapitalize="none"
+            />
+            <Text style={styles.inputTitle}>Password</Text>
+            <TextInput
+              style={styles.input}
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry
+            />
+            <TouchableOpacity
+              style={styles.button}
+              onPress={async () => {
+                const res = await loginMutation({
+                  variables: {email, password},
+                });
+                const {token, user} = await res.data.login;
+                if (token) {
+                  signInContext({token, user});
+                }
+              }}>
+              <Text style={styles.btnText}>Log in</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={async () => {
+                navigation.navigate('Signup');
+              }}>
+              <Text style={styles.signupText}>
+                Don't have an account?
+                <Text>Sign Up</Text>
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </ImageBackground>
       )}
-    </View>
+    </Mutation>
   );
 };
-
-Login.propTypes = {
-  navigation: PropTypes.object.isRequired,
-  route: PropTypes.object.isRequired,
-};
-
 export default Login;
