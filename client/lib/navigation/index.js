@@ -4,16 +4,16 @@ import {BottomTabNavScreens} from './Navigation';
 import TicketScreen from '../screens/Ticket';
 import NotificationModal from '../screens/Notification';
 import {DrawerNavStackScreens} from './DrawerNavigation';
-import Home from '../screens/Home';
+import Signup from '../screens/Signup';
 import Login from '../screens/Login';
 import CheckoutConfirmation from '../screens/CheckoutConfirmation';
 
 const RootStack = createStackNavigator();
 const RootStackScreens = () => (
   <RootStack.Navigator headerMode="none">
-    {/* These are commented out until prisma auth is complete */}
-    {/* <RootStack.Screen name="Login" component={Home} />
-    <RootStack.Screen name="Signup" component={Login} /> */}
+    <RootStack.Screen name="Signup" component={Signup} />
+    {/* <RootStack.Screen name="Signup" component={Login} /> */}
+
     <RootStack.Screen name="Main" component={BottomTabNavScreens} />
     <RootStack.Screen name="DrawerNav" component={DrawerNavStackScreens} />
     <RootStack.Screen name="Ticket" component={TicketScreen} />
