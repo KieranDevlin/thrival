@@ -5,6 +5,7 @@ import styles from './styles';
 import gql from 'graphql-tag';
 import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
+import {AuthContext} from '../../context/AuthProvider';
 
 const SIGNUP_MUTATION = gql`
   mutation register($name: String!, $email: String!, $password: String!) {
