@@ -4,22 +4,58 @@ import {BottomTabNavScreens} from './Navigation';
 import TicketScreen from '../screens/Ticket';
 import NotificationModal from '../screens/Notification';
 import {DrawerNavStackScreens} from './DrawerNavigation';
-import Home from '../screens/Home';
+import Signup from '../screens/Signup';
 import Login from '../screens/Login';
 import CheckoutConfirmation from '../screens/CheckoutConfirmation';
+import {AuthContext} from '../context/AuthProvider';
+
+const AuthStack = createStackNavigator();
+
+const AuthStackScreens = (props) => {
+  return (
+    <AuthStack.Navigator initialRouteName="Login">
+      <AuthStack.Screen name="Login" component={Login} />
+      <AuthStack.Screen name="Signup" component={Signup} />
+    </AuthStack.Navigator>
+  );
+};
 
 const RootStack = createStackNavigator();
-const RootStackScreens = () => (
-  <RootStack.Navigator headerMode="none">
-    {/* These are commented out until prisma auth is complete */}
-    {/* <RootStack.Screen name="Login" component={Home} />
-    <RootStack.Screen name="Signup" component={Login} /> */}
-    <RootStack.Screen name="Main" component={BottomTabNavScreens} />
-    <RootStack.Screen name="DrawerNav" component={DrawerNavStackScreens} />
-    <RootStack.Screen name="Ticket" component={TicketScreen} />
-    <RootStack.Screen name="Notification" component={NotificationModal} />
-    <RootStack.Screen name="Confirmation" component={CheckoutConfirmation} />
-  </RootStack.Navigator>
-);
+const RootStackScreens = () => {
+  return (
+    <AuthContext.Consumer>
+      {({state}) => (
+        <RootStack.Navigator headerMode="none">
+          {!state.userToken ? (
+            <>
+              <RootStack.Screen
+                headerMode="none"
+                name="Auth"
+                component={AuthStackScreens}
+              />
+            </>
+          ) : (
+            <>
+              <RootStack.Screen name="Main" component={BottomTabNavScreens} />
+              <RootStack.Screen
+                name="DrawerNav"
+                component={DrawerNavStackScreens}
+              />
+              <RootStack.Screen name="Ticket" component={TicketScreen} />
+              <RootStack.Screen
+                name="Notification"
+                component={NotificationModal}
+              />
+              <RootStack.Screen
+                name="Confirmation"
+                component={CheckoutConfirmation}
+              />
+            </>
+          )}
+        </RootStack.Navigator>
+      )}
+    </AuthContext.Consumer>
+  );
+};
 
 export default RootStackScreens;

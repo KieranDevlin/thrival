@@ -2,37 +2,39 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   content: {
+    display: 'flex',
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
   },
   header: {
+    marginLeft: 100,
     marginBottom: 40,
     fontSize: 24,
     fontWeight: '500',
     color: 'white',
   },
   inputTitle: {
+    justifyContent: 'flex-start',
     fontSize: 20,
-    fontWeight: '400',
     borderBottomWidth: 1,
-    borderBottomColor: 'white',
+    borderBottomColor: 'grey',
+    marginLeft: 25,
     color: 'white',
+    fontWeight: '400',
   },
   input: {
     justifyContent: 'flex-start',
     fontSize: 20,
     borderBottomWidth: 1,
     borderBottomColor: 'white',
-    margin: 15,
+    margin: 25,
     color: 'white',
-    width: 300,
   },
   button: {
     borderWidth: 2,
     borderRadius: 5,
     borderColor: 'white',
-    width: 100,
+    width: 120,
     alignSelf: 'center',
     margin: 50,
   },
@@ -42,15 +44,6 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     padding: 10,
     alignSelf: 'center',
-  },
-  signupText: {
-    fontSize: 16,
-    color: 'white',
-    fontWeight: '300',
-  },
-  signupTextBold: {
-    fontWeight: 'bold',
-    color: 'white',
   },
 });
 
