@@ -28,7 +28,11 @@ const RootStackScreens = () => {
         <RootStack.Navigator headerMode="none">
           {!state.userToken ? (
             <>
-              <RootStack.Screen name="Auth" component={AuthStackScreens} />
+              <RootStack.Screen
+                headerMode="none"
+                name="Auth"
+                component={AuthStackScreens}
+              />
             </>
           ) : (
             <>

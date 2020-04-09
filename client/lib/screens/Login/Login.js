@@ -34,7 +34,7 @@ const Login = ({navigation}) => {
     <Mutation mutation={LOGIN_MUTATION} client={authClient}>
       {(loginMutation) => (
         <ImageBackground
-          style={styles.container}
+          style={styles.content}
           blurRadius={10}
           source={require('../../assets/images/waves.jpg')}>
           <View style={styles.content}>
@@ -73,7 +73,7 @@ const Login = ({navigation}) => {
               }}>
               <Text style={styles.signupText}>
                 Don't have an account?
-                <Text>Sign Up</Text>
+                <Text style={styles.signupTextBold}> Sign Up</Text>
               </Text>
             </TouchableOpacity>
           </View>
