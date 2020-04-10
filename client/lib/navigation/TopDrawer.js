@@ -56,7 +56,7 @@ class TopDrawer extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity
                   onPress={() => {
-                    // this.props.setUser('guest');
+                    this.props.setUser('guest');
                     navigation.navigate('Login');
                   }}
                   style={styles.border}>

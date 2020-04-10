@@ -42,7 +42,6 @@ const HamburgerButton = ({navigation}) => {
       name="menu"
       color="white"
       size={25}
-      // onPress={() => drawerRef.open()}
     />
   );
 };
@@ -85,8 +84,6 @@ export const sharedDrawerOptions = ({navigation}) => {
   };
 };
 export const userProfileOptions = ({route, navigation}) => {
-  let drawerRef = React.createRef();
-  // const {user, setUser} = useContext(UserContext);
   return {
     headerBackTitleVisible: false,
     header: (props) => <GradientHeader {...props} />,
@@ -97,14 +94,6 @@ export const userProfileOptions = ({route, navigation}) => {
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
             <HamburgerButton navigation={navigation} />
           </TouchableOpacity>
-          {/* <TopDrawer
-            navigation={navigation}
-            // setUser={setUser}
-            // user={user}
-            ref={(ref) => {
-              drawerRef = ref;
-            }}
-          /> */}
         </>
       );
     },
