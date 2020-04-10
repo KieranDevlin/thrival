@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     color: '#FBF7EF',
     fontSize: 18,
-    fontFamily: 'Lato-Bold',
+    fontFamily: 'Raleway-Bold',
     borderBottomWidth: 5,
     paddingTop: 15,
     paddingBottom: 15,

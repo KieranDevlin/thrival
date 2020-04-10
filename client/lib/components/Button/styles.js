@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   label: {
-    fontFamily: 'Lato-Bold',
+    fontFamily: 'Raleway-Bold',
     fontSize: 20,
     color: '#FBF7EF',
     lineHeight: 0,

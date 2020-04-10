@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   heading: {
-    fontFamily: 'Lato-Bold',
+    fontFamily: 'Raleway-Bold',
     fontSize: 16,
   },
   seeAll: {

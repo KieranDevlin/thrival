@@ -15,7 +15,7 @@ export default FilterTabNav = () => {
           backgroundColor: '#FBF7EF',
         },
         labelStyle: {
-          fontFamily: 'Lato-Bold',
+          fontFamily: 'Raleway-Bold',
           textTransform: 'none',
           fontSize: 15,
         },
