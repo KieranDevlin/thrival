@@ -3,7 +3,8 @@ import {StyleSheet, Dimensions} from 'react-native';
 const styles = StyleSheet.create({
   drawerContainer: {
     width: Dimensions.get('window').width,
-    transform: [{translateY: 168}],
+    height: Dimensions.get('window').height,
+    transform: [{translateY: 100}],
     position: 'absolute',
     zIndex: 999,
   },
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     color: '#FBF7EF',
     fontSize: 18,
-    fontFamily: 'Lato-Bold',
+    fontFamily: 'Raleway-Bold',
     borderBottomWidth: 5,
     paddingTop: 15,
     paddingBottom: 15,

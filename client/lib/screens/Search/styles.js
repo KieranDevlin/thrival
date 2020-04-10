@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: '#FBF7EF',
-    fontFamily: 'Lato-Bold',
+    fontFamily: 'Raleway-Bold',
     fontSize: 18,
   },
   contentContainer: {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginLeft: 10,
-    fontFamily: 'Lato-Bold',
+    fontFamily: 'Raleway-Bold',
   },
   titleContainer: {
     alignSelf: 'center',
