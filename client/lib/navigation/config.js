@@ -1,10 +1,23 @@
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import React, {useContext} from 'react';
-import {View, TouchableOpacity} from 'react-native';
-import TopDrawer from './TopDrawer';
-import {UserContext} from '../context/UserContext';
+import React from 'react';
+import {Text, StyleSheet, View, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
+import {Header} from '@react-navigation/stack';
+import LinearGradient from 'react-native-linear-gradient';
+import {DrawerActions} from '@react-navigation/native';
+import TopDrawer from '../navigation/TopDrawer';
 
+const GradientHeader = (props) => (
+  <View style={{backgroundColor: 'white', overflow: 'hidden'}}>
+    <LinearGradient
+      colors={['#11185B', '#5877DD']}
+      start={{x: 0.0, y: 0.5}}
+      end={{x: 3.0, y: 0.0}}
+      style={[StyleSheet.absoluteFill, {height: '100%', width: '100%'}]}
+    />
+    <Header {...props} />
+  </View>
+);
 const NotificationButton = ({navigation}) => {
   return (
     <Icon
@@ -19,19 +32,21 @@ const NotificationButton = ({navigation}) => {
   );
 };
 
-const MeatballButton = () => {
+const HamburgerButton = ({navigation}) => {
+  console.log(navigation);
   return (
     <Icon
       style={{
-        marginLeft: 10,
-        marginRight: 10,
+        marginRight: 20,
       }}
-      name="dots-vertical"
+      name="menu"
       color="white"
       size={25}
+      // onPress={() => drawerRef.open()}
     />
   );
 };
+
 const BackButton = ({navigation}) => {
   return (
     <Icon
@@ -48,56 +63,11 @@ const BackButton = ({navigation}) => {
 };
 
 export const sharedScreenOptions = ({route, navigation}) => {
-  let drawerRef = React.createRef();
-  const {user, setUser} = useContext(UserContext);
-
   return {
     headerBackTitleVisible: false,
-    headerLeft: () => {
-      return route.name === 'Explore' ||
-        route.name === 'Events' ||
-        route.name === 'My Tickets' ||
-        route.name === 'Profile' ? (
-        <TopDrawer
-          navigation={navigation}
-          setUser={setUser}
-          user={user}
-          ref={(ref) => {
-            drawerRef = ref;
-          }}
-        />
-      ) : (
-        <>
-          <View style={{flexDirection: 'row'}}>
-            <BackButton navigation={navigation} />
-          </View>
-          <TopDrawer
-            navigation={navigation}
-            setUser={setUser}
-            user={user}
-            ref={(ref) => {
-              drawerRef = ref;
-            }}
-          />
-        </>
-      );
-    },
-    headerRight: () => {
-      return route.name === 'Explore' ||
-        route.name === 'Events' ||
-        route.name === 'My Tickets' ? (
-        <>
-          <View style={{flexDirection: 'row'}}>
-            <NotificationButton navigation={navigation} />
-            <TouchableOpacity onPress={() => drawerRef.state.toggleHandle()}>
-              <MeatballButton />
-            </TouchableOpacity>
-          </View>
-        </>
-      ) : null;
-    },
+    header: (props) => <GradientHeader {...props} />,
     headerStyle: {
-      backgroundColor: '#11185B',
+      backgroundColor: 'transparent',
     },
   };
 };
@@ -114,16 +84,32 @@ export const sharedDrawerOptions = ({navigation}) => {
     },
   };
 };
-export const onlyBackStackOptions = ({route, navigation}) => {
+export const userProfileOptions = ({route, navigation}) => {
+  let drawerRef = React.createRef();
+  // const {user, setUser} = useContext(UserContext);
   return {
     headerBackTitleVisible: false,
-    headerLeft: () => {
-      return route.name === 'Profile' || route.name === 'Search' ? null : (
-        <BackButton navigation={navigation} />
+    header: (props) => <GradientHeader {...props} />,
+    headerRight: () => {
+      return (
+        <>
+          <TouchableOpacity
+            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
+            <HamburgerButton navigation={navigation} />
+          </TouchableOpacity>
+          {/* <TopDrawer
+            navigation={navigation}
+            // setUser={setUser}
+            // user={user}
+            ref={(ref) => {
+              drawerRef = ref;
+            }}
+          /> */}
+        </>
       );
     },
     headerStyle: {
-      backgroundColor: '#11185B',
+      backgroundColor: 'transparent',
     },
   };
 };
@@ -139,9 +125,5 @@ sharedScreenOptions.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
 sharedDrawerOptions.propTypes = {
-  navigation: PropTypes.object.isRequired,
-};
-onlyBackStackOptions.propTypes = {
-  route: PropTypes.object.isRequired,
   navigation: PropTypes.object.isRequired,
 };
