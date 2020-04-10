@@ -1,46 +1,36 @@
 type User {
   id: ID! @id
-  email: String @unique
+  name: String!
+  email: String! @unique
   password: String!
-  name: String!
-  isSpeaker: Speaker
-  ownedTickets: [Event!]!
+  employerProfile: Employer
+  applicantProfile: Applicant 
 }
-
-type Speaker {
+type JobPost {
   id: ID! @id
-  owner: User @relation(link:INLINE)
-  profile_picture: String!
-  title: String!
+  createdAt: DateTime! @createdAt
+  industry: String!
+  location: String!
+  discipline: [String!]! @scalarList(strategy:RELATION)
+  totalRoles: Int! 
+  employer: Employer!
+  viewed: [Applicant] 
+}
+type Employer {
+  id: ID! @id
+  jobpostings: [JobPost!] @relation(link: TABLE)
   linkedin: String
-  facebook: String
-  description: String!
+  contact: Contact @relation(link: INLINE)
 }
-
-type Event {
+type Contact {
   id: ID! @id
-  title: String!
-  description: String!
-  date: Int!
-  time: String
-  thumbnail_url: String!
-  location_name: String!
-  location_address: String!
-  price: Float
-  maxTickets: Int!
-  soldTickets: Int @default(value: 0)
-  speakers: [Speaker]!
-  theme: Theme @relation(link: INLINE)
+  email: String
+  website: String 
 }
-
-type Notification {
+type Applicant {
   id: ID! @id
-  timestamp: DateTime @createdAt
-  announcement: String
-}
-
-type Theme {
-  id: ID! @id
-  name: String!
-  hexcode: String! @default(value: "#000000")
+  email: String! @unique
+  linkedin: String!
+  github: String!
+  appliedJobs: [JobPost] @relation(link: TABLE)
 }

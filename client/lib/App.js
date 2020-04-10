@@ -5,6 +5,7 @@ import {ApolloProvider} from '@apollo/react-hooks';
 import client from '../config/api';
 import {UserContextProvider} from './context/UserContext';
 import FavesProvider from './context/FavesContext';
+import AuthProvider from './context/AuthProvider';
 
 export default class App extends Component {
   render() {
@@ -13,7 +14,9 @@ export default class App extends Component {
         <UserContextProvider>
           <FavesProvider>
             <NavigationContainer>
-              <RootNav />
+              <AuthProvider>
+                <RootNav />
+              </AuthProvider>
             </NavigationContainer>
           </FavesProvider>
         </UserContextProvider>

@@ -1,13 +1,14 @@
+require("dotenv").config();
+const jwt = require("jsonwebtoken");
 const { ApolloServer } = require("apollo-server");
 const typeDefs = require("./typeDefs");
 const resolvers = require("./resolvers");
 const { prisma } = require("./generated/prisma-client/index");
-const jwt = require("jsonwebtoken");
 
-const getUser = token => {
+const getUser = (token) => {
   try {
     if (token) {
-      return jwt.verify(token, "my-secret-from-env-file-in-prod");
+      return jwt.verify(token, process.env.APP_SECRET);
     }
     return null;
   } catch (err) {
@@ -25,12 +26,15 @@ const server = new ApolloServer({
 
     return {
       user,
-      prisma // the generated prisma client if you are using it
+      prisma,
     };
-  }
+  },
 });
+
 server
   .listen({
-    port: 8383
+    port: 8383,
   })
-  .then(info => console.log(`Server started on http://localhost:${info.port}`));
+  .then((info) =>
+    console.log(`Server started on http://localhost:${info.port}`)
+  );

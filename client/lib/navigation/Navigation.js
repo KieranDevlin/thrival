@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import JobboardScreen from '../screens/Jobboard';
 import ApplicationScreen from '../screens/Application';
 import CalendarScreen from '../screens/Calendar';
+import JobScreen from '../screens/Job';
 import UserProfileScreen from '../screens/UserProfile';
 import {sharedScreenOptions} from './config';
 import {userProfileOptions} from './config';
