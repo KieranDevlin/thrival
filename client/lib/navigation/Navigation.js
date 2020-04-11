@@ -7,7 +7,7 @@ import CalendarScreen from '../screens/Calendar';
 import JobScreen from '../screens/Job';
 import UserProfileScreen from '../screens/UserProfile';
 import {sharedScreenOptions} from './config';
-import {userProfileOptions} from './config';
+import {backOnlyOptions} from './config';
 import SearchScreen from '../screens/Search';
 import SettingsScreen from '../screens/Settings';
 import AboutUsScreen from '../screens/AboutUs';
@@ -15,7 +15,7 @@ import ContactUsScreen from '../screens/ContactUs';
 import PrivacyPolicyScreen from '../screens/PrivacyPolicy';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {NavigationContainer} from '@react-navigation/native';
+import NotificationScreen from '../screens/Notification';
 
 const JobboardStack = createStackNavigator();
 const JobboardStackScreens = () => {
@@ -24,13 +24,22 @@ const JobboardStackScreens = () => {
       initialRouteName="Jobboard"
       screenOptions={sharedScreenOptions}>
       <JobboardStack.Screen
-        name="Jobboard"
+        name="JobBoard"
         component={JobboardScreen}
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
-            fontWeight: '400',
+            fontFamily: 'Raleway-Regular',
+            fontWeight: '500',
+            opacity: 0,
           },
+        }}
+      />
+      <JobboardStack.Screen
+        name="Job"
+        component={JobScreen}
+        options={{
+          headerTintColor: '#FBF7EF',
         }}
       />
     </JobboardStack.Navigator>
@@ -79,8 +88,8 @@ const UserProfileStack = createStackNavigator();
 const UserProfileStackScreens = () => {
   return (
     <UserProfileStack.Navigator
-      // initialRouteName="Profile"
-      screenOptions={userProfileOptions}>
+      initialRouteName="Profile"
+      screenOptions={backOnlyOptions}>
       <UserProfileStack.Screen
         name="Profile"
         component={UserProfileScreen}
@@ -134,25 +143,25 @@ const UserProfileStackScreens = () => {
     </UserProfileStack.Navigator>
   );
 };
-const SearchStack = createStackNavigator();
-const SearchStackScreens = () => {
-  return (
-    <SearchStack.Navigator
-      initialRouteName="Search"
-      screenOptions={sharedScreenOptions}>
-      <SearchStack.Screen
-        name="Search"
-        component={SearchScreen}
-        options={{
-          headerTintColor: '#FFFFFF',
-          headerTitleStyle: {
-            fontWeight: '400',
-          },
-        }}
-      />
-    </SearchStack.Navigator>
-  );
-};
+// const SearchStack = createStackNavigator();
+// const SearchStackScreens = () => {
+//   return (
+//     <SearchStack.Navigator
+//       initialRouteName="Search"
+//       screenOptions={sharedScreenOptions}>
+//       <SearchStack.Screen
+//         name="Search"
+//         component={SearchScreen}
+//         options={{
+//           headerTintColor: '#FFFFFF',
+//           headerTitleStyle: {
+//             fontWeight: '400',
+//           },
+//         }}
+//       />
+//     </SearchStack.Navigator>
+//   );
+// };
 
 const SettingsStack = createStackNavigator();
 const SettingsStackScreens = () => {
@@ -272,7 +281,7 @@ export const BottomTabNavScreens = () => (
     })}>
     <BottomTabNav.Screen name="Jobboard" component={JobboardStackScreens} />
     <BottomTabNav.Screen name="Calendar" component={CalendarStackScreens} />
-    <BottomTabNav.Screen name="Search" component={SearchStackScreens} />
+    {/* <BottomTabNav.Screen name="Search" component={SearchStackScreens} /> */}
     <BottomTabNav.Screen
       name="Application"
       component={ApplicationStackScreens}

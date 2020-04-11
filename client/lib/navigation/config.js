@@ -1,29 +1,50 @@
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import React from 'react';
+import React, {useState, useRef} from 'react';
 import {Text, StyleSheet, View, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {Header} from '@react-navigation/stack';
 import LinearGradient from 'react-native-linear-gradient';
-import {DrawerActions} from '@react-navigation/native';
-import TopDrawer from '../navigation/TopDrawer';
+import styles from '../navigation/styles';
+import RBSheet from 'react-native-raw-bottom-sheet';
 
-const GradientHeader = (props) => (
-  <View style={{backgroundColor: 'white', overflow: 'hidden'}}>
-    <LinearGradient
-      colors={['#11185B', '#5877DD']}
-      start={{x: 0.0, y: 0.5}}
-      end={{x: 3.0, y: 0.0}}
-      style={[StyleSheet.absoluteFill, {height: '100%', width: '100%'}]}
+const GradientHeader = (props) => {
+  return (
+    <View
+      style={{
+        backgroundColor: 'white',
+        overflow: 'hidden',
+        borderBottomRightRadius: 20,
+        borderBottomLeftRadius: 20,
+      }}>
+      <LinearGradient
+        colors={['#11185B', '#000000']}
+        start={{x: 0.1, y: 0.0}}
+        end={{x: 0.1, y: 2.5}}
+        style={[StyleSheet.absoluteFill, {height: '100%', width: '100%'}]}
+      />
+      <Header {...props} />
+    </View>
+  );
+};
+
+const SearchButton = ({navigation}) => {
+  return (
+    <Icon
+      style={[styles.icon, {marginLeft: 10, transform: [{translateY: 0}]}]}
+      name="magnify"
+      color="white"
+      size={25}
+      onPress={() => navigation.navigate('Search')}
     />
-    <Header {...props} />
-  </View>
-);
+  );
+};
+const MailButton = ({navigation}) => {
+  return <Icon style={styles.icon} name="email" color="white" size={25} />;
+};
 const NotificationButton = ({navigation}) => {
   return (
     <Icon
-      style={{
-        marginLeft: 10,
-      }}
+      style={styles.icon}
       name="bell"
       color="white"
       size={25}
@@ -31,21 +52,9 @@ const NotificationButton = ({navigation}) => {
     />
   );
 };
-
 const HamburgerButton = ({navigation}) => {
-  console.log(navigation);
-  return (
-    <Icon
-      style={{
-        marginRight: 20,
-      }}
-      name="menu"
-      color="white"
-      size={25}
-    />
-  );
+  return <Icon style={styles.icon} name="menu" color="white" size={25} />;
 };
-
 const BackButton = ({navigation}) => {
   return (
     <Icon
@@ -60,42 +69,151 @@ const BackButton = ({navigation}) => {
     />
   );
 };
-
-export const sharedScreenOptions = ({route, navigation}) => {
+export const sharedScreenOptions = (props) => {
+  const refRBSheet = React.createRef();
   return {
     headerBackTitleVisible: false,
-    header: (props) => <GradientHeader {...props} />,
+
+    header: (props) => {
+      return (
+        <>
+          <RBSheet
+            ref={refRBSheet}
+            animationType="fade"
+            closeOnDragDown={true}
+            closeOnPressMask={true}
+            duration={300}
+            height={300}
+            customStyles={{
+              wrapper: {
+                backgroundColor: 'transparent',
+              },
+              draggableIcon: {
+                backgroundColor: '#FFFFFF',
+                width: 100,
+              },
+              container: {
+                borderTopLeftRadius: 20,
+                borderTopRightRadius: 20,
+              },
+            }}>
+            <LinearGradient
+              colors={['#11185B', '#000000']}
+              start={{x: 0.1, y: 0.0}}
+              end={{x: 0.1, y: 2.0}}
+              style={[
+                StyleSheet.absoluteFill,
+                {height: '100%', width: '100%', zIndex: -99},
+              ]}
+            />
+            <View style={styles.menu}>
+              <TouchableOpacity
+                style={styles.menuItemContainer}
+                onPress={() => {
+                  refRBSheet.current.close();
+                  props.navigation.navigate('Settings');
+                }}>
+                <Icon
+                  style={[styles.menuItem, styles.menuIcon]}
+                  name="settings-outline"
+                  color="white"
+                />
+                <Text style={styles.menuItem}>Settings</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.menuItemContainer}
+                onPress={() => {
+                  refRBSheet.current.close();
+                  props.navigation.navigate('About Us');
+                }}>
+                <Icon
+                  style={[styles.menuItem, styles.menuIcon]}
+                  name="information-outline"
+                  color="white"
+                />
+                <Text style={styles.menuItem}>About Us</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.menuItemContainer}
+                onPress={() => {
+                  refRBSheet.current.close();
+                  props.navigation.navigate('Contact Us');
+                }}>
+                <Icon
+                  style={[styles.menuItem, styles.menuIcon]}
+                  name="message-text-outline"
+                  color="white"
+                />
+                <Text style={styles.menuItem}>Contact Us</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.menuItemContainer}
+                onPress={() => {
+                  refRBSheet.current.close();
+                  props.navigation.navigate('Privacy Policy');
+                }}>
+                <Icon
+                  style={[styles.menuItem, styles.menuIcon]}
+                  name="shield-check-outline"
+                  color="white"
+                />
+                <Text style={styles.menuItem}>Privacy Policy</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.menuItemContainer}>
+                <Icon
+                  style={[styles.menuItem, styles.menuIcon]}
+                  name="logout"
+                  color="white"
+                />
+                <Text style={styles.menuItem}>Logout</Text>
+              </TouchableOpacity>
+            </View>
+          </RBSheet>
+          <GradientHeader {...props} />
+        </>
+      );
+    },
+    headerRight: () => {
+      return (
+        <View style={styles.iconContainer}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('Job')}>
+            <MailButton navigation={props.navigation} />
+          </TouchableOpacity>
+          <NotificationButton navigation={props.navigation} />
+          <SearchButton navigation={props.navigation} />
+
+          <TouchableOpacity onPress={() => refRBSheet.current.open()}>
+            <HamburgerButton />
+          </TouchableOpacity>
+        </View>
+      );
+    },
+    headerLeft: () => {
+      return (
+        <Text
+          style={{
+            color: '#FFF',
+            fontWeight: '900',
+            fontSize: 20,
+            marginLeft: 20,
+            transform: [{translateY: -8}],
+          }}>
+          THRIVAL
+        </Text>
+      );
+    },
     headerStyle: {
       backgroundColor: 'transparent',
     },
   };
 };
-export const sharedDrawerOptions = ({navigation}) => {
-  return {
-    headerBackTitleVisible: false,
-    headerLeft: () => (
-      <>
-        <BackButton navigation={navigation} />
-      </>
-    ),
-    headerStyle: {
-      backgroundColor: '#11185B',
-    },
-  };
-};
-export const userProfileOptions = ({route, navigation}) => {
+
+export const backOnlyOptions = ({route, navigation}) => {
   return {
     headerBackTitleVisible: false,
     header: (props) => <GradientHeader {...props} />,
     headerRight: () => {
-      return (
-        <>
-          <TouchableOpacity
-            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
-            <HamburgerButton navigation={navigation} />
-          </TouchableOpacity>
-        </>
-      );
+      return null;
     },
     headerStyle: {
       backgroundColor: 'transparent',
@@ -111,8 +229,5 @@ BackButton.propTypes = {
 };
 sharedScreenOptions.propTypes = {
   route: PropTypes.object.isRequired,
-  navigation: PropTypes.object.isRequired,
-};
-sharedDrawerOptions.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
