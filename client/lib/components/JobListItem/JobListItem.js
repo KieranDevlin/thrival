@@ -55,7 +55,7 @@ const JobList = ({job, navigation, faveIds, addFave, removeFave}) => {
                   style={styles.icon}
                   name="store"
                   size={30}
-                  color="#ED9421"
+                  color="#11185B"
                 />
               </Text>
               <Text style={styles.company}> {job.companyName}</Text>
@@ -70,7 +70,7 @@ const JobList = ({job, navigation, faveIds, addFave, removeFave}) => {
                   style={styles.icon}
                   name="heart"
                   size={30}
-                  color="#ED9421"
+                  color="#11185B"
                 />
               </TouchableOpacity>
             ) : (
@@ -82,7 +82,7 @@ const JobList = ({job, navigation, faveIds, addFave, removeFave}) => {
                   style={styles.icon}
                   name="heart-outline"
                   size={30}
-                  color="#ED9421"
+                  color="#11185B"
                 />
               </TouchableOpacity>
             )}
@@ -99,7 +99,7 @@ const JobList = ({job, navigation, faveIds, addFave, removeFave}) => {
                   style={styles.icon}
                   name="map-marker"
                   size={30}
-                  color="#ED9421"
+                  color="#11185B"
                 />
               </Text>
               <Text style={styles.center}> {job.location}</Text>
