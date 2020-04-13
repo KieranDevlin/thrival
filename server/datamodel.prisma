@@ -33,7 +33,6 @@ type Contact {
 }
 type Applicant {
   id: ID! @id
-  email: String! @unique
   linkedin: String!
   github: String!
   appliedJobs: [JobPost] @relation(link: TABLE)
