@@ -40,6 +40,8 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
     overflow: 'hidden',
+    borderWidth: 3,
+    borderColor: '#2B2D42',
   },
   image: {
     resizeMode: 'cover',

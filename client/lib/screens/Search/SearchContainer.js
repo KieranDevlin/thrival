@@ -39,20 +39,7 @@ export default class SearchContainer extends Component {
 
   render() {
     return (
-      <Query query={SEARCH}>
-        {({loading, error, data}) => {
-          if (loading) return <Loader />;
-          if (error) return <Text>Error :(</Text>;
-          return (
-            <Search
-              events={data.events}
-              speakers={data.speakers}
-              navigation={this.props.navigation}
-              route={this.props.route}
-            />
-          );
-        }}
-      </Query>
+      <Search navigation={this.props.navigation} route={this.props.route} />
     );
   }
 }
