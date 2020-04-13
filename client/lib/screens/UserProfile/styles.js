@@ -1,12 +1,12 @@
 import {StyleSheet, Dimensions} from 'react-native';
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#FFFFFF',
   },
   main: {
     flex: 1,
     width: '100%',
-    backgroundColor: '#FFF',
+    backgroundColor: '#FFFFFF',
     paddingLeft: 30,
     paddingRight: 30,
   },
@@ -15,7 +15,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     paddingTop: 30,
-    marginBottom: 25,
+    paddingBottom: 15,
+    marginBottom: 15,
+    borderBottomWidth: 1,
+    borderColor: '#D2D9E5',
   },
   name: {
     fontSize: 30,
