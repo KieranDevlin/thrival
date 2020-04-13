@@ -301,6 +301,8 @@ export type JobPostOrderByInput =
   | "id_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
+  | "rate_ASC"
+  | "rate_DESC"
   | "industry_ASC"
   | "industry_DESC"
   | "location_ASC"
@@ -374,25 +376,9 @@ export type ApplicantWhereUniqueInput = AtLeastOne<{
   email?: Maybe<String>;
 }>;
 
-export interface ResumeUpdateManyInput {
-  create?: Maybe<ResumeCreateInput[] | ResumeCreateInput>;
-  update?: Maybe<
-    | ResumeUpdateWithWhereUniqueNestedInput[]
-    | ResumeUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | ResumeUpsertWithWhereUniqueNestedInput[]
-    | ResumeUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
-  connect?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
-  set?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
-  disconnect?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
-  deleteMany?: Maybe<ResumeScalarWhereInput[] | ResumeScalarWhereInput>;
-  updateMany?: Maybe<
-    | ResumeUpdateManyWithWhereNestedInput[]
-    | ResumeUpdateManyWithWhereNestedInput
-  >;
+export interface JobPostUpdateManyWithWhereNestedInput {
+  where: JobPostScalarWhereInput;
+  data: JobPostUpdateManyDataInput;
 }
 
 export interface ApplicantWhereInput {
@@ -463,9 +449,15 @@ export interface ApplicantWhereInput {
   NOT?: Maybe<ApplicantWhereInput[] | ApplicantWhereInput>;
 }
 
-export interface ResumeUpdateWithWhereUniqueNestedInput {
-  where: ResumeWhereUniqueInput;
-  data: ResumeUpdateDataInput;
+export interface JobPostUpdateManyDataInput {
+  rate?: Maybe<Int>;
+  industry?: Maybe<String>;
+  location?: Maybe<String>;
+  discipline?: Maybe<JobPostUpdatedisciplineInput>;
+  totalRoles?: Maybe<Int>;
+  description?: Maybe<String>;
+  roles?: Maybe<JobPostUpdaterolesInput>;
+  requirements?: Maybe<JobPostUpdaterequirementsInput>;
 }
 
 export interface ContactWhereInput {
@@ -516,9 +508,8 @@ export interface ContactWhereInput {
   NOT?: Maybe<ContactWhereInput[] | ContactWhereInput>;
 }
 
-export interface ContactCreateOneInput {
-  create?: Maybe<ContactCreateInput>;
-  connect?: Maybe<ContactWhereUniqueInput>;
+export interface JobPostCreaterolesInput {
+  set?: Maybe<String[] | String>;
 }
 
 export interface ApplicantUpdateManyWithoutAppliedJobsInput {
@@ -545,20 +536,29 @@ export interface ApplicantUpdateManyWithoutAppliedJobsInput {
   >;
 }
 
-export interface ContactCreateInput {
-  id?: Maybe<ID_Input>;
-  email?: Maybe<String>;
-  website?: Maybe<String>;
+export interface JobPostCreaterequirementsInput {
+  set?: Maybe<String[] | String>;
 }
 
-export interface ResumeUpdateDataInput {
-  fullname?: Maybe<String>;
-  address?: Maybe<String>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  experience?: Maybe<String>;
-  education?: Maybe<String>;
-  skills?: Maybe<String>;
+export interface ResumeUpdateManyInput {
+  create?: Maybe<ResumeCreateInput[] | ResumeCreateInput>;
+  update?: Maybe<
+    | ResumeUpdateWithWhereUniqueNestedInput[]
+    | ResumeUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | ResumeUpsertWithWhereUniqueNestedInput[]
+    | ResumeUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
+  connect?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
+  set?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
+  disconnect?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
+  deleteMany?: Maybe<ResumeScalarWhereInput[] | ResumeScalarWhereInput>;
+  updateMany?: Maybe<
+    | ResumeUpdateManyWithWhereNestedInput[]
+    | ResumeUpdateManyWithWhereNestedInput
+  >;
 }
 
 export interface ResumeCreateManyInput {
@@ -658,12 +658,15 @@ export interface ApplicantUpsertNestedInput {
 }
 
 export interface JobPostUpdateWithoutViewedDataInput {
+  rate?: Maybe<Int>;
   industry?: Maybe<String>;
   location?: Maybe<String>;
   discipline?: Maybe<JobPostUpdatedisciplineInput>;
   totalRoles?: Maybe<Int>;
   employer?: Maybe<EmployerUpdateOneRequiredWithoutJobpostingsInput>;
   description?: Maybe<String>;
+  roles?: Maybe<JobPostUpdaterolesInput>;
+  requirements?: Maybe<JobPostUpdaterequirementsInput>;
 }
 
 export interface ApplicantUpdateOneInput {
@@ -758,11 +761,49 @@ export interface ApplicantUpdateManyWithWhereNestedInput {
 }
 
 export interface JobPostUpdateManyMutationInput {
+  rate?: Maybe<Int>;
   industry?: Maybe<String>;
   location?: Maybe<String>;
   discipline?: Maybe<JobPostUpdatedisciplineInput>;
   totalRoles?: Maybe<Int>;
   description?: Maybe<String>;
+  roles?: Maybe<JobPostUpdaterolesInput>;
+  requirements?: Maybe<JobPostUpdaterequirementsInput>;
+}
+
+export interface JobPostUpdaterolesInput {
+  set?: Maybe<String[] | String>;
+}
+
+export interface JobPostUpdateInput {
+  rate?: Maybe<Int>;
+  industry?: Maybe<String>;
+  location?: Maybe<String>;
+  discipline?: Maybe<JobPostUpdatedisciplineInput>;
+  totalRoles?: Maybe<Int>;
+  employer?: Maybe<EmployerUpdateOneRequiredWithoutJobpostingsInput>;
+  viewed?: Maybe<ApplicantUpdateManyWithoutAppliedJobsInput>;
+  description?: Maybe<String>;
+  roles?: Maybe<JobPostUpdaterolesInput>;
+  requirements?: Maybe<JobPostUpdaterequirementsInput>;
+}
+
+export interface JobPostUpdaterequirementsInput {
+  set?: Maybe<String[] | String>;
+}
+
+export interface JobPostCreateInput {
+  id?: Maybe<ID_Input>;
+  rate: Int;
+  industry: String;
+  location: String;
+  discipline?: Maybe<JobPostCreatedisciplineInput>;
+  totalRoles: Int;
+  employer: EmployerCreateOneWithoutJobpostingsInput;
+  viewed?: Maybe<ApplicantCreateManyWithoutAppliedJobsInput>;
+  description?: Maybe<String>;
+  roles?: Maybe<JobPostCreaterolesInput>;
+  requirements?: Maybe<JobPostCreaterequirementsInput>;
 }
 
 export interface JobPostUpsertWithWhereUniqueWithoutViewedInput {
@@ -771,14 +812,10 @@ export interface JobPostUpsertWithWhereUniqueWithoutViewedInput {
   create: JobPostCreateWithoutViewedInput;
 }
 
-export interface JobPostUpdateInput {
-  industry?: Maybe<String>;
-  location?: Maybe<String>;
-  discipline?: Maybe<JobPostUpdatedisciplineInput>;
-  totalRoles?: Maybe<Int>;
-  employer?: Maybe<EmployerUpdateOneRequiredWithoutJobpostingsInput>;
-  viewed?: Maybe<ApplicantUpdateManyWithoutAppliedJobsInput>;
-  description?: Maybe<String>;
+export interface JobPostUpsertWithWhereUniqueWithoutEmployerInput {
+  where: JobPostWhereUniqueInput;
+  update: JobPostUpdateWithoutEmployerDataInput;
+  create: JobPostCreateWithoutEmployerInput;
 }
 
 export interface JobPostScalarWhereInput {
@@ -804,6 +841,14 @@ export interface JobPostScalarWhereInput {
   createdAt_lte?: Maybe<DateTimeInput>;
   createdAt_gt?: Maybe<DateTimeInput>;
   createdAt_gte?: Maybe<DateTimeInput>;
+  rate?: Maybe<Int>;
+  rate_not?: Maybe<Int>;
+  rate_in?: Maybe<Int[] | Int>;
+  rate_not_in?: Maybe<Int[] | Int>;
+  rate_lt?: Maybe<Int>;
+  rate_lte?: Maybe<Int>;
+  rate_gt?: Maybe<Int>;
+  rate_gte?: Maybe<Int>;
   industry?: Maybe<String>;
   industry_not?: Maybe<String>;
   industry_in?: Maybe<String[] | String>;
@@ -857,36 +902,6 @@ export interface JobPostScalarWhereInput {
   AND?: Maybe<JobPostScalarWhereInput[] | JobPostScalarWhereInput>;
   OR?: Maybe<JobPostScalarWhereInput[] | JobPostScalarWhereInput>;
   NOT?: Maybe<JobPostScalarWhereInput[] | JobPostScalarWhereInput>;
-}
-
-export interface JobPostCreateInput {
-  id?: Maybe<ID_Input>;
-  industry: String;
-  location: String;
-  discipline?: Maybe<JobPostCreatedisciplineInput>;
-  totalRoles: Int;
-  employer: EmployerCreateOneWithoutJobpostingsInput;
-  viewed?: Maybe<ApplicantCreateManyWithoutAppliedJobsInput>;
-  description?: Maybe<String>;
-}
-
-export interface JobPostUpdateManyWithWhereNestedInput {
-  where: JobPostScalarWhereInput;
-  data: JobPostUpdateManyDataInput;
-}
-
-export interface JobPostUpsertWithWhereUniqueWithoutEmployerInput {
-  where: JobPostWhereUniqueInput;
-  update: JobPostUpdateWithoutEmployerDataInput;
-  create: JobPostCreateWithoutEmployerInput;
-}
-
-export interface JobPostUpdateManyDataInput {
-  industry?: Maybe<String>;
-  location?: Maybe<String>;
-  discipline?: Maybe<JobPostUpdatedisciplineInput>;
-  totalRoles?: Maybe<Int>;
-  description?: Maybe<String>;
 }
 
 export interface JobPostCreateManyWithoutViewedInput {
@@ -1092,6 +1107,17 @@ export interface ApplicantUpsertWithWhereUniqueWithoutAppliedJobsInput {
   create: ApplicantCreateWithoutAppliedJobsInput;
 }
 
+export interface ContactCreateInput {
+  id?: Maybe<ID_Input>;
+  email?: Maybe<String>;
+  website?: Maybe<String>;
+}
+
+export interface ResumeUpdateWithWhereUniqueNestedInput {
+  where: ResumeWhereUniqueInput;
+  data: ResumeUpdateDataInput;
+}
+
 export interface ResumeSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
@@ -1103,10 +1129,14 @@ export interface ResumeSubscriptionWhereInput {
   NOT?: Maybe<ResumeSubscriptionWhereInput[] | ResumeSubscriptionWhereInput>;
 }
 
-export interface ResumeUpsertWithWhereUniqueNestedInput {
-  where: ResumeWhereUniqueInput;
-  update: ResumeUpdateDataInput;
-  create: ResumeCreateInput;
+export interface ResumeUpdateDataInput {
+  fullname?: Maybe<String>;
+  address?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  experience?: Maybe<String>;
+  education?: Maybe<String>;
+  skills?: Maybe<String>;
 }
 
 export interface ApplicantSubscriptionWhereInput {
@@ -1124,6 +1154,20 @@ export interface ApplicantSubscriptionWhereInput {
   NOT?: Maybe<
     ApplicantSubscriptionWhereInput[] | ApplicantSubscriptionWhereInput
   >;
+}
+
+export interface ResumeUpsertWithWhereUniqueNestedInput {
+  where: ResumeWhereUniqueInput;
+  update: ResumeUpdateDataInput;
+  create: ResumeCreateInput;
+}
+
+export interface ApplicantUpdateDataInput {
+  email?: Maybe<String>;
+  linkedin?: Maybe<String>;
+  github?: Maybe<String>;
+  appliedJobs?: Maybe<JobPostUpdateManyWithoutViewedInput>;
+  resume?: Maybe<ResumeUpdateManyInput>;
 }
 
 export interface ResumeScalarWhereInput {
@@ -1244,19 +1288,6 @@ export interface ResumeScalarWhereInput {
   NOT?: Maybe<ResumeScalarWhereInput[] | ResumeScalarWhereInput>;
 }
 
-export interface ApplicantUpdateDataInput {
-  email?: Maybe<String>;
-  linkedin?: Maybe<String>;
-  github?: Maybe<String>;
-  appliedJobs?: Maybe<JobPostUpdateManyWithoutViewedInput>;
-  resume?: Maybe<ResumeUpdateManyInput>;
-}
-
-export interface ResumeUpdateManyWithWhereNestedInput {
-  where: ResumeScalarWhereInput;
-  data: ResumeUpdateManyDataInput;
-}
-
 export interface JobPostWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
@@ -1280,6 +1311,14 @@ export interface JobPostWhereInput {
   createdAt_lte?: Maybe<DateTimeInput>;
   createdAt_gt?: Maybe<DateTimeInput>;
   createdAt_gte?: Maybe<DateTimeInput>;
+  rate?: Maybe<Int>;
+  rate_not?: Maybe<Int>;
+  rate_in?: Maybe<Int[] | Int>;
+  rate_not_in?: Maybe<Int[] | Int>;
+  rate_lt?: Maybe<Int>;
+  rate_lte?: Maybe<Int>;
+  rate_gt?: Maybe<Int>;
+  rate_gte?: Maybe<Int>;
   industry?: Maybe<String>;
   industry_not?: Maybe<String>;
   industry_in?: Maybe<String[] | String>;
@@ -1339,6 +1378,15 @@ export interface JobPostWhereInput {
   NOT?: Maybe<JobPostWhereInput[] | JobPostWhereInput>;
 }
 
+export interface ResumeUpdateManyWithWhereNestedInput {
+  where: ResumeScalarWhereInput;
+  data: ResumeUpdateManyDataInput;
+}
+
+export type JobPostWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
 export interface ResumeUpdateManyDataInput {
   fullname?: Maybe<String>;
   address?: Maybe<String>;
@@ -1349,7 +1397,7 @@ export interface ResumeUpdateManyDataInput {
   skills?: Maybe<String>;
 }
 
-export type JobPostWhereUniqueInput = AtLeastOne<{
+export type ResumeWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
@@ -1359,8 +1407,9 @@ export interface ApplicantUpdateManyMutationInput {
   github?: Maybe<String>;
 }
 
-export type ResumeWhereUniqueInput = AtLeastOne<{
+export type UserWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
+  email?: Maybe<String>;
 }>;
 
 export interface ApplicantUpdateWithoutAppliedJobsDataInput {
@@ -1370,23 +1419,13 @@ export interface ApplicantUpdateWithoutAppliedJobsDataInput {
   resume?: Maybe<ResumeUpdateManyInput>;
 }
 
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  email?: Maybe<String>;
-}>;
-
-export interface ApplicantUpdateWithWhereUniqueWithoutAppliedJobsInput {
-  where: ApplicantWhereUniqueInput;
-  data: ApplicantUpdateWithoutAppliedJobsDataInput;
-}
-
 export interface EmployerUpdateManyMutationInput {
   linkedin?: Maybe<String>;
 }
 
-export interface ContactUpdateInput {
-  email?: Maybe<String>;
-  website?: Maybe<String>;
+export interface ApplicantUpdateWithWhereUniqueWithoutAppliedJobsInput {
+  where: ApplicantWhereUniqueInput;
+  data: ApplicantUpdateWithoutAppliedJobsDataInput;
 }
 
 export interface ApplicantCreateInput {
@@ -1398,7 +1437,7 @@ export interface ApplicantCreateInput {
   resume?: Maybe<ResumeCreateManyInput>;
 }
 
-export interface ContactUpdateManyMutationInput {
+export interface ContactUpdateInput {
   email?: Maybe<String>;
   website?: Maybe<String>;
 }
@@ -1408,11 +1447,170 @@ export interface EmployerCreateOneWithoutJobpostingsInput {
   connect?: Maybe<EmployerWhereUniqueInput>;
 }
 
+export interface ContactUpdateManyMutationInput {
+  email?: Maybe<String>;
+  website?: Maybe<String>;
+}
+
+export interface EmployerWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  jobpostings_every?: Maybe<JobPostWhereInput>;
+  jobpostings_some?: Maybe<JobPostWhereInput>;
+  jobpostings_none?: Maybe<JobPostWhereInput>;
+  linkedin?: Maybe<String>;
+  linkedin_not?: Maybe<String>;
+  linkedin_in?: Maybe<String[] | String>;
+  linkedin_not_in?: Maybe<String[] | String>;
+  linkedin_lt?: Maybe<String>;
+  linkedin_lte?: Maybe<String>;
+  linkedin_gt?: Maybe<String>;
+  linkedin_gte?: Maybe<String>;
+  linkedin_contains?: Maybe<String>;
+  linkedin_not_contains?: Maybe<String>;
+  linkedin_starts_with?: Maybe<String>;
+  linkedin_not_starts_with?: Maybe<String>;
+  linkedin_ends_with?: Maybe<String>;
+  linkedin_not_ends_with?: Maybe<String>;
+  contact?: Maybe<ContactWhereInput>;
+  AND?: Maybe<EmployerWhereInput[] | EmployerWhereInput>;
+  OR?: Maybe<EmployerWhereInput[] | EmployerWhereInput>;
+  NOT?: Maybe<EmployerWhereInput[] | EmployerWhereInput>;
+}
+
 export interface EmployerCreateInput {
   id?: Maybe<ID_Input>;
   jobpostings?: Maybe<JobPostCreateManyWithoutEmployerInput>;
   linkedin?: Maybe<String>;
   contact?: Maybe<ContactCreateOneInput>;
+}
+
+export type ContactWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface JobPostCreateManyWithoutEmployerInput {
+  create?: Maybe<
+    JobPostCreateWithoutEmployerInput[] | JobPostCreateWithoutEmployerInput
+  >;
+  connect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
+}
+
+export interface EmployerUpdateOneInput {
+  create?: Maybe<EmployerCreateInput>;
+  update?: Maybe<EmployerUpdateDataInput>;
+  upsert?: Maybe<EmployerUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<EmployerWhereUniqueInput>;
+}
+
+export interface JobPostCreateWithoutEmployerInput {
+  id?: Maybe<ID_Input>;
+  rate: Int;
+  industry: String;
+  location: String;
+  discipline?: Maybe<JobPostCreatedisciplineInput>;
+  totalRoles: Int;
+  viewed?: Maybe<ApplicantCreateManyWithoutAppliedJobsInput>;
+  description?: Maybe<String>;
+  roles?: Maybe<JobPostCreaterolesInput>;
+  requirements?: Maybe<JobPostCreaterequirementsInput>;
+}
+
+export interface ResumeUpdateInput {
+  fullname?: Maybe<String>;
+  address?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  experience?: Maybe<String>;
+  education?: Maybe<String>;
+  skills?: Maybe<String>;
+}
+
+export interface ApplicantCreateManyWithoutAppliedJobsInput {
+  create?: Maybe<
+    | ApplicantCreateWithoutAppliedJobsInput[]
+    | ApplicantCreateWithoutAppliedJobsInput
+  >;
+  connect?: Maybe<ApplicantWhereUniqueInput[] | ApplicantWhereUniqueInput>;
+}
+
+export interface ApplicantUpdateManyDataInput {
+  email?: Maybe<String>;
+  linkedin?: Maybe<String>;
+  github?: Maybe<String>;
+}
+
+export interface ApplicantCreateWithoutAppliedJobsInput {
+  id?: Maybe<ID_Input>;
+  email: String;
+  linkedin: String;
+  github: String;
+  resume?: Maybe<ResumeCreateManyInput>;
+}
+
+export interface ContactCreateOneInput {
+  create?: Maybe<ContactCreateInput>;
+  connect?: Maybe<ContactWhereUniqueInput>;
+}
+
+export interface JobPostUpdateWithoutEmployerDataInput {
+  rate?: Maybe<Int>;
+  industry?: Maybe<String>;
+  location?: Maybe<String>;
+  discipline?: Maybe<JobPostUpdatedisciplineInput>;
+  totalRoles?: Maybe<Int>;
+  viewed?: Maybe<ApplicantUpdateManyWithoutAppliedJobsInput>;
+  description?: Maybe<String>;
+  roles?: Maybe<JobPostUpdaterolesInput>;
+  requirements?: Maybe<JobPostUpdaterequirementsInput>;
+}
+
+export interface JobPostUpdateWithWhereUniqueWithoutEmployerInput {
+  where: JobPostWhereUniqueInput;
+  data: JobPostUpdateWithoutEmployerDataInput;
+}
+
+export interface JobPostUpdateManyWithoutEmployerInput {
+  create?: Maybe<
+    JobPostCreateWithoutEmployerInput[] | JobPostCreateWithoutEmployerInput
+  >;
+  delete?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
+  connect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
+  set?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
+  disconnect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
+  update?: Maybe<
+    | JobPostUpdateWithWhereUniqueWithoutEmployerInput[]
+    | JobPostUpdateWithWhereUniqueWithoutEmployerInput
+  >;
+  upsert?: Maybe<
+    | JobPostUpsertWithWhereUniqueWithoutEmployerInput[]
+    | JobPostUpsertWithWhereUniqueWithoutEmployerInput
+  >;
+  deleteMany?: Maybe<JobPostScalarWhereInput[] | JobPostScalarWhereInput>;
+  updateMany?: Maybe<
+    | JobPostUpdateManyWithWhereNestedInput[]
+    | JobPostUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface EmployerUpdateInput {
+  jobpostings?: Maybe<JobPostUpdateManyWithoutEmployerInput>;
+  linkedin?: Maybe<String>;
+  contact?: Maybe<ContactUpdateOneInput>;
 }
 
 export interface EmployerSubscriptionWhereInput {
@@ -1430,39 +1628,17 @@ export interface EmployerSubscriptionWhereInput {
   >;
 }
 
-export interface JobPostCreateManyWithoutEmployerInput {
-  create?: Maybe<
-    JobPostCreateWithoutEmployerInput[] | JobPostCreateWithoutEmployerInput
-  >;
-  connect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
-}
-
-export interface EmployerUpsertNestedInput {
-  update: EmployerUpdateDataInput;
-  create: EmployerCreateInput;
-}
-
-export interface JobPostCreateWithoutEmployerInput {
+export interface JobPostCreateWithoutViewedInput {
   id?: Maybe<ID_Input>;
+  rate: Int;
   industry: String;
   location: String;
   discipline?: Maybe<JobPostCreatedisciplineInput>;
   totalRoles: Int;
-  viewed?: Maybe<ApplicantCreateManyWithoutAppliedJobsInput>;
+  employer: EmployerCreateOneWithoutJobpostingsInput;
   description?: Maybe<String>;
-}
-
-export interface EmployerCreateOneInput {
-  create?: Maybe<EmployerCreateInput>;
-  connect?: Maybe<EmployerWhereUniqueInput>;
-}
-
-export interface ApplicantCreateManyWithoutAppliedJobsInput {
-  create?: Maybe<
-    | ApplicantCreateWithoutAppliedJobsInput[]
-    | ApplicantCreateWithoutAppliedJobsInput
-  >;
-  connect?: Maybe<ApplicantWhereUniqueInput[] | ApplicantWhereUniqueInput>;
+  roles?: Maybe<JobPostCreaterolesInput>;
+  requirements?: Maybe<JobPostCreaterequirementsInput>;
 }
 
 export interface UserWhereInput {
@@ -1529,133 +1705,15 @@ export interface UserWhereInput {
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
 }
 
-export interface ApplicantCreateWithoutAppliedJobsInput {
-  id?: Maybe<ID_Input>;
-  email: String;
-  linkedin: String;
-  github: String;
-  resume?: Maybe<ResumeCreateManyInput>;
-}
-
-export interface JobPostCreateWithoutViewedInput {
-  id?: Maybe<ID_Input>;
-  industry: String;
-  location: String;
-  discipline?: Maybe<JobPostCreatedisciplineInput>;
-  totalRoles: Int;
-  employer: EmployerCreateOneWithoutJobpostingsInput;
-  description?: Maybe<String>;
-}
-
-export interface JobPostUpdateWithoutEmployerDataInput {
-  industry?: Maybe<String>;
-  location?: Maybe<String>;
-  discipline?: Maybe<JobPostUpdatedisciplineInput>;
-  totalRoles?: Maybe<Int>;
-  viewed?: Maybe<ApplicantUpdateManyWithoutAppliedJobsInput>;
-  description?: Maybe<String>;
-}
-
-export interface JobPostUpdateWithWhereUniqueWithoutEmployerInput {
-  where: JobPostWhereUniqueInput;
-  data: JobPostUpdateWithoutEmployerDataInput;
-}
-
-export interface JobPostUpdateManyWithoutEmployerInput {
-  create?: Maybe<
-    JobPostCreateWithoutEmployerInput[] | JobPostCreateWithoutEmployerInput
-  >;
-  delete?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
-  connect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
-  set?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
-  disconnect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
-  update?: Maybe<
-    | JobPostUpdateWithWhereUniqueWithoutEmployerInput[]
-    | JobPostUpdateWithWhereUniqueWithoutEmployerInput
-  >;
-  upsert?: Maybe<
-    | JobPostUpsertWithWhereUniqueWithoutEmployerInput[]
-    | JobPostUpsertWithWhereUniqueWithoutEmployerInput
-  >;
-  deleteMany?: Maybe<JobPostScalarWhereInput[] | JobPostScalarWhereInput>;
-  updateMany?: Maybe<
-    | JobPostUpdateManyWithWhereNestedInput[]
-    | JobPostUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface EmployerUpdateInput {
-  jobpostings?: Maybe<JobPostUpdateManyWithoutEmployerInput>;
-  linkedin?: Maybe<String>;
-  contact?: Maybe<ContactUpdateOneInput>;
-}
-
-export interface EmployerWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  jobpostings_every?: Maybe<JobPostWhereInput>;
-  jobpostings_some?: Maybe<JobPostWhereInput>;
-  jobpostings_none?: Maybe<JobPostWhereInput>;
-  linkedin?: Maybe<String>;
-  linkedin_not?: Maybe<String>;
-  linkedin_in?: Maybe<String[] | String>;
-  linkedin_not_in?: Maybe<String[] | String>;
-  linkedin_lt?: Maybe<String>;
-  linkedin_lte?: Maybe<String>;
-  linkedin_gt?: Maybe<String>;
-  linkedin_gte?: Maybe<String>;
-  linkedin_contains?: Maybe<String>;
-  linkedin_not_contains?: Maybe<String>;
-  linkedin_starts_with?: Maybe<String>;
-  linkedin_not_starts_with?: Maybe<String>;
-  linkedin_ends_with?: Maybe<String>;
-  linkedin_not_ends_with?: Maybe<String>;
-  contact?: Maybe<ContactWhereInput>;
-  AND?: Maybe<EmployerWhereInput[] | EmployerWhereInput>;
-  OR?: Maybe<EmployerWhereInput[] | EmployerWhereInput>;
-  NOT?: Maybe<EmployerWhereInput[] | EmployerWhereInput>;
-}
-
-export interface ApplicantUpdateManyDataInput {
-  email?: Maybe<String>;
-  linkedin?: Maybe<String>;
-  github?: Maybe<String>;
-}
-
-export interface ResumeUpdateInput {
-  fullname?: Maybe<String>;
-  address?: Maybe<String>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  experience?: Maybe<String>;
-  education?: Maybe<String>;
-  skills?: Maybe<String>;
-}
-
-export interface EmployerUpdateOneInput {
+export interface EmployerCreateOneInput {
   create?: Maybe<EmployerCreateInput>;
-  update?: Maybe<EmployerUpdateDataInput>;
-  upsert?: Maybe<EmployerUpsertNestedInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
   connect?: Maybe<EmployerWhereUniqueInput>;
 }
 
-export type ContactWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
+export interface EmployerUpsertNestedInput {
+  update: EmployerUpdateDataInput;
+  create: EmployerCreateInput;
+}
 
 export interface NodeNode {
   id: ID_Output;
@@ -1873,16 +1931,20 @@ export interface ContactNullablePromise
 export interface JobPost {
   id: ID_Output;
   createdAt: DateTimeOutput;
+  rate: Int;
   industry: String;
   location: String;
   discipline: String[];
   totalRoles: Int;
   description?: String;
+  roles: String[];
+  requirements: String[];
 }
 
 export interface JobPostPromise extends Promise<JobPost>, Fragmentable {
   id: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
+  rate: () => Promise<Int>;
   industry: () => Promise<String>;
   location: () => Promise<String>;
   discipline: () => Promise<String[]>;
@@ -1898,6 +1960,8 @@ export interface JobPostPromise extends Promise<JobPost>, Fragmentable {
     last?: Int;
   }) => T;
   description: () => Promise<String>;
+  roles: () => Promise<String[]>;
+  requirements: () => Promise<String[]>;
 }
 
 export interface JobPostSubscription
@@ -1905,6 +1969,7 @@ export interface JobPostSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  rate: () => Promise<AsyncIterator<Int>>;
   industry: () => Promise<AsyncIterator<String>>;
   location: () => Promise<AsyncIterator<String>>;
   discipline: () => Promise<AsyncIterator<String[]>>;
@@ -1920,6 +1985,8 @@ export interface JobPostSubscription
     last?: Int;
   }) => T;
   description: () => Promise<AsyncIterator<String>>;
+  roles: () => Promise<AsyncIterator<String[]>>;
+  requirements: () => Promise<AsyncIterator<String[]>>;
 }
 
 export interface JobPostNullablePromise
@@ -1927,6 +1994,7 @@ export interface JobPostNullablePromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
+  rate: () => Promise<Int>;
   industry: () => Promise<String>;
   location: () => Promise<String>;
   discipline: () => Promise<String[]>;
@@ -1942,6 +2010,8 @@ export interface JobPostNullablePromise
     last?: Int;
   }) => T;
   description: () => Promise<String>;
+  roles: () => Promise<String[]>;
+  requirements: () => Promise<String[]>;
 }
 
 export interface AggregateUser {
@@ -2424,11 +2494,14 @@ export interface EmployerConnectionSubscription
 export interface JobPostPreviousValues {
   id: ID_Output;
   createdAt: DateTimeOutput;
+  rate: Int;
   industry: String;
   location: String;
   discipline: String[];
   totalRoles: Int;
   description?: String;
+  roles: String[];
+  requirements: String[];
 }
 
 export interface JobPostPreviousValuesPromise
@@ -2436,11 +2509,14 @@ export interface JobPostPreviousValuesPromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
+  rate: () => Promise<Int>;
   industry: () => Promise<String>;
   location: () => Promise<String>;
   discipline: () => Promise<String[]>;
   totalRoles: () => Promise<Int>;
   description: () => Promise<String>;
+  roles: () => Promise<String[]>;
+  requirements: () => Promise<String[]>;
 }
 
 export interface JobPostPreviousValuesSubscription
@@ -2448,11 +2524,14 @@ export interface JobPostPreviousValuesSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  rate: () => Promise<AsyncIterator<Int>>;
   industry: () => Promise<AsyncIterator<String>>;
   location: () => Promise<AsyncIterator<String>>;
   discipline: () => Promise<AsyncIterator<String[]>>;
   totalRoles: () => Promise<AsyncIterator<Int>>;
   description: () => Promise<AsyncIterator<String>>;
+  roles: () => Promise<AsyncIterator<String[]>>;
+  requirements: () => Promise<AsyncIterator<String[]>>;
 }
 
 export interface JobPostSubscriptionPayload {

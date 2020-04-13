@@ -633,6 +633,7 @@ input EmployerWhereUniqueInput {
 type JobPost {
   id: ID!
   createdAt: DateTime!
+  rate: Int!
   industry: String!
   location: String!
   discipline: [String!]!
@@ -640,6 +641,8 @@ type JobPost {
   employer: Employer!
   viewed(where: ApplicantWhereInput, orderBy: ApplicantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Applicant!]
   description: String
+  roles: [String!]!
+  requirements: [String!]!
 }
 
 type JobPostConnection {
@@ -654,6 +657,7 @@ input JobPostCreatedisciplineInput {
 
 input JobPostCreateInput {
   id: ID
+  rate: Int!
   industry: String!
   location: String!
   discipline: JobPostCreatedisciplineInput
@@ -661,6 +665,8 @@ input JobPostCreateInput {
   employer: EmployerCreateOneWithoutJobpostingsInput!
   viewed: ApplicantCreateManyWithoutAppliedJobsInput
   description: String
+  roles: JobPostCreaterolesInput
+  requirements: JobPostCreaterequirementsInput
 }
 
 input JobPostCreateManyWithoutEmployerInput {
@@ -673,24 +679,38 @@ input JobPostCreateManyWithoutViewedInput {
   connect: [JobPostWhereUniqueInput!]
 }
 
+input JobPostCreaterequirementsInput {
+  set: [String!]
+}
+
+input JobPostCreaterolesInput {
+  set: [String!]
+}
+
 input JobPostCreateWithoutEmployerInput {
   id: ID
+  rate: Int!
   industry: String!
   location: String!
   discipline: JobPostCreatedisciplineInput
   totalRoles: Int!
   viewed: ApplicantCreateManyWithoutAppliedJobsInput
   description: String
+  roles: JobPostCreaterolesInput
+  requirements: JobPostCreaterequirementsInput
 }
 
 input JobPostCreateWithoutViewedInput {
   id: ID
+  rate: Int!
   industry: String!
   location: String!
   discipline: JobPostCreatedisciplineInput
   totalRoles: Int!
   employer: EmployerCreateOneWithoutJobpostingsInput!
   description: String
+  roles: JobPostCreaterolesInput
+  requirements: JobPostCreaterequirementsInput
 }
 
 type JobPostEdge {
@@ -703,6 +723,8 @@ enum JobPostOrderByInput {
   id_DESC
   createdAt_ASC
   createdAt_DESC
+  rate_ASC
+  rate_DESC
   industry_ASC
   industry_DESC
   location_ASC
@@ -716,11 +738,14 @@ enum JobPostOrderByInput {
 type JobPostPreviousValues {
   id: ID!
   createdAt: DateTime!
+  rate: Int!
   industry: String!
   location: String!
   discipline: [String!]!
   totalRoles: Int!
   description: String
+  roles: [String!]!
+  requirements: [String!]!
 }
 
 input JobPostScalarWhereInput {
@@ -746,6 +771,14 @@ input JobPostScalarWhereInput {
   createdAt_lte: DateTime
   createdAt_gt: DateTime
   createdAt_gte: DateTime
+  rate: Int
+  rate_not: Int
+  rate_in: [Int!]
+  rate_not_in: [Int!]
+  rate_lt: Int
+  rate_lte: Int
+  rate_gt: Int
+  rate_gte: Int
   industry: String
   industry_not: String
   industry_in: [String!]
@@ -824,6 +857,7 @@ input JobPostUpdatedisciplineInput {
 }
 
 input JobPostUpdateInput {
+  rate: Int
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
@@ -831,22 +865,30 @@ input JobPostUpdateInput {
   employer: EmployerUpdateOneRequiredWithoutJobpostingsInput
   viewed: ApplicantUpdateManyWithoutAppliedJobsInput
   description: String
+  roles: JobPostUpdaterolesInput
+  requirements: JobPostUpdaterequirementsInput
 }
 
 input JobPostUpdateManyDataInput {
+  rate: Int
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
   totalRoles: Int
   description: String
+  roles: JobPostUpdaterolesInput
+  requirements: JobPostUpdaterequirementsInput
 }
 
 input JobPostUpdateManyMutationInput {
+  rate: Int
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
   totalRoles: Int
   description: String
+  roles: JobPostUpdaterolesInput
+  requirements: JobPostUpdaterequirementsInput
 }
 
 input JobPostUpdateManyWithoutEmployerInput {
@@ -878,22 +920,36 @@ input JobPostUpdateManyWithWhereNestedInput {
   data: JobPostUpdateManyDataInput!
 }
 
+input JobPostUpdaterequirementsInput {
+  set: [String!]
+}
+
+input JobPostUpdaterolesInput {
+  set: [String!]
+}
+
 input JobPostUpdateWithoutEmployerDataInput {
+  rate: Int
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
   totalRoles: Int
   viewed: ApplicantUpdateManyWithoutAppliedJobsInput
   description: String
+  roles: JobPostUpdaterolesInput
+  requirements: JobPostUpdaterequirementsInput
 }
 
 input JobPostUpdateWithoutViewedDataInput {
+  rate: Int
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
   totalRoles: Int
   employer: EmployerUpdateOneRequiredWithoutJobpostingsInput
   description: String
+  roles: JobPostUpdaterolesInput
+  requirements: JobPostUpdaterequirementsInput
 }
 
 input JobPostUpdateWithWhereUniqueWithoutEmployerInput {
@@ -941,6 +997,14 @@ input JobPostWhereInput {
   createdAt_lte: DateTime
   createdAt_gt: DateTime
   createdAt_gte: DateTime
+  rate: Int
+  rate_not: Int
+  rate_in: [Int!]
+  rate_not_in: [Int!]
+  rate_lt: Int
+  rate_lte: Int
+  rate_gt: Int
+  rate_gte: Int
   industry: String
   industry_not: String
   industry_in: [String!]

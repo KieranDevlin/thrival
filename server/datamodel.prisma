@@ -9,6 +9,7 @@ type User {
 type JobPost {
   id: ID! @id
   createdAt: DateTime! @createdAt
+  rate: Int!
   industry: String!
   location: String!
   discipline: [String!]! @scalarList(strategy:RELATION)
@@ -16,6 +17,8 @@ type JobPost {
   employer: Employer!
   viewed: [Applicant] 
   description: String
+  roles: [String!]! @scalarList(strategy:RELATION)
+  requirements: [String!]! @scalarList(strategy:RELATION)
 }
 type Employer {
   id: ID! @id
