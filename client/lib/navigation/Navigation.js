@@ -139,6 +139,17 @@ const UserProfileStackScreens = () => {
           },
         }}
       />
+      <UserProfileStack.Screen
+        name="Application"
+        component={ApplicationScreen}
+        options={{
+          title: 'My Applications',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            opacity: 0,
+          },
+        }}
+      />
     </UserProfileStack.Navigator>
   );
 };
