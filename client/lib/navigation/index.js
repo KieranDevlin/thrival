@@ -1,15 +1,16 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {BottomTabNavScreens} from './Navigation';
-import Signup from '../screens/Signup';
-import Login from '../screens/Login';
-import {AuthContext} from '../context/AuthProvider';
-import SearchModal from '../screens/Search';
+import {ProfileDrawer} from './Navigation';
 import NotificationModal from '../screens/Notification';
 import SettingsModal from '../screens/Settings';
 import AboutUsModal from '../screens/AboutUs';
 import ContactUsModal from '../screens/ContactUs';
 import PrivacyPolicyModal from '../screens/PrivacyPolicy';
+
+import Signup from '../screens/Signup';
+import Login from '../screens/Login';
+import {AuthContext} from '../context/AuthProvider';
 
 const AuthStack = createStackNavigator();
 
@@ -25,10 +26,10 @@ const AuthStackScreens = (props) => {
 const RootStack = createStackNavigator();
 const RootStackScreens = () => {
   return (
-    <AuthContext.Consumer>
-      {({state}) => (
-        <RootStack.Navigator headerMode="none">
-          {!state.userToken ? (
+    // <AuthContext.Consumer>
+    //   {({state}) => (
+    <RootStack.Navigator mode="modal" headerMode="none">
+      {/* {!state.userToken ? (
             <>
               <RootStack.Screen
                 headerMode="none"
@@ -37,25 +38,19 @@ const RootStackScreens = () => {
               />
             </>
           ) : (
-            <>
-              <RootStack.Screen name="Main" component={BottomTabNavScreens} />
-              <RootStack.Screen name="Search" component={SearchModal} />
-              <RootStack.Screen
-                name="Notification"
-                component={NotificationModal}
-              />
-              <RootStack.Screen name="Settings" component={SettingsModal} />
-              <RootStack.Screen name="About Us" component={AboutUsModal} />
-              <RootStack.Screen name="Contact Us" component={ContactUsModal} />
-              <RootStack.Screen
-                name="Privacy Policy"
-                component={PrivacyPolicyModal}
-              />
-            </>
-          )}
-        </RootStack.Navigator>
-      )}
-    </AuthContext.Consumer>
+            <> */}
+      <RootStack.Screen name="Main" component={BottomTabNavScreens} />
+      <RootStack.Screen name="DrawerNav" component={ProfileDrawer} />
+      <RootStack.Screen name="Notification" component={NotificationModal} />
+      <RootStack.Screen name="Settings" component={SettingsModal} />
+      <RootStack.Screen name="About Us" component={AboutUsModal} />
+      <RootStack.Screen name="Contact Us" component={ContactUsModal} />
+      <RootStack.Screen name="Privacy Policy" component={PrivacyPolicyModal} />
+      {/* </>
+          )} */}
+    </RootStack.Navigator>
+    //   )}
+    // </AuthContext.Consumer>
   );
 };
 

@@ -217,7 +217,7 @@ const BottomTabNav = createBottomTabNavigator();
 export const BottomTabNavScreens = () => (
   <BottomTabNav.Navigator
     tabBarOptions={{
-      activeTintColor: '#ED9421',
+      activeTintColor: '#5877DD',
       inactiveTintColor: '#FFFFFF',
       inactiveBackgroundColor: '#11185B',
       tabStyle: {},
@@ -235,7 +235,7 @@ export const BottomTabNavScreens = () => (
           return (
             <Icon
               name="view-dashboard"
-              color={focused ? '#ED9421' : '#FFFFFF'}
+              color={focused ? '#5877DD' : '#FFFFFF'}
               size={30}
               style={{transform: [{translateY: 10}]}}
             />
@@ -244,7 +244,7 @@ export const BottomTabNavScreens = () => (
           return (
             <Icon
               name="file-document-edit"
-              color={focused ? '#ED9421' : '#FFFFFF'}
+              color={focused ? '#5877DD' : '#FFFFFF'}
               size={30}
               style={{transform: [{translateY: 10}]}}
             />
@@ -253,7 +253,7 @@ export const BottomTabNavScreens = () => (
           return (
             <Icon
               name="calendar"
-              color={focused ? '#ED9421' : '#FFFFFF'}
+              color={focused ? '#5877DD' : '#FFFFFF'}
               size={30}
               style={{transform: [{translateY: 10}]}}
             />
@@ -262,7 +262,7 @@ export const BottomTabNavScreens = () => (
           return (
             <Icon
               name="account"
-              color={focused ? '#ED9421' : '#FFFFFF'}
+              color={focused ? '#5877DD' : '#FFFFFF'}
               size={30}
               style={{transform: [{translateY: 10}]}}
             />
@@ -271,7 +271,7 @@ export const BottomTabNavScreens = () => (
           return (
             <Icon
               name="magnify"
-              color={focused ? '#ED9421' : '#FFFFFF'}
+              color={focused ? '#5877DD' : '#FFFFFF'}
               size={30}
               style={{transform: [{translateY: 10}]}}
             />

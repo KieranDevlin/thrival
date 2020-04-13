@@ -71,6 +71,8 @@ const BackButton = ({navigation}) => {
 };
 export const sharedScreenOptions = (props) => {
   const refRBSheet = React.createRef();
+  console.disableYellowBox = true;
+  //remove later (useNativeDriver warning)
   return {
     headerBackTitleVisible: false,
 
@@ -179,7 +181,12 @@ export const sharedScreenOptions = (props) => {
           <TouchableOpacity onPress={() => props.navigation.navigate('Job')}>
             <MailButton navigation={props.navigation} />
           </TouchableOpacity>
-          <NotificationButton navigation={props.navigation} />
+
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('Notification')}>
+            <NotificationButton navigation={props.navigation} />
+          </TouchableOpacity>
+
           <SearchButton navigation={props.navigation} />
 
           <TouchableOpacity onPress={() => refRBSheet.current.open()}>
