@@ -4,7 +4,7 @@ import Error from '../../components/Error';
 import PropTypes from 'prop-types';
 import JobList from '../../components/JobList/JobList';
 
-const Jobboard = ({navigation, route, speakers}) => {
+const Jobboard = ({navigation, route}) => {
   return (
     <>
       <Text>Latest Job Listings</Text>
