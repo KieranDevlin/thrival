@@ -3,17 +3,14 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {BottomTabNavScreens} from './Navigation';
 import {ProfileDrawer} from './Navigation';
 import NotificationModal from '../screens/Notification';
-<<<<<<< HEAD
 import {DrawerNavStackScreens} from './DrawerNavigation';
 import Home from '../screens/AddJobPost';
-=======
 import SettingsModal from '../screens/Settings';
 import AboutUsModal from '../screens/AboutUs';
 import ContactUsModal from '../screens/ContactUs';
 import PrivacyPolicyModal from '../screens/PrivacyPolicy';
 
 import Signup from '../screens/Signup';
->>>>>>> origin
 import Login from '../screens/Login';
 import {AuthContext} from '../context/AuthProvider';
 
