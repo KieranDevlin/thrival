@@ -23,11 +23,15 @@ var models = [
   {
     name: "Applicant",
     embedded: false
+  },
+  {
+    name: "Resume",
+    embedded: false
   }
 ];
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,
-  endpoint: `http://localhost:4467`
+  endpoint: `https://us1.prisma.sh/ivandaixivwork/thrival-covid19/dev`
 });
 exports.prisma = new exports.Prisma();

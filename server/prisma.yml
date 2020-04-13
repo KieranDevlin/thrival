@@ -1,4 +1,4 @@
-endpoint: http://localhost:4467
+endpoint: https://us1.prisma.sh/ivandaixivwork/thrival-covid19/dev
 datamodel: datamodel.prisma
 
 generate:
