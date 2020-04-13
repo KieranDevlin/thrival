@@ -55,10 +55,24 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Lato-Regular.ttf</string>
-		<string>Lato-Black.ttf</string>
-		<string>Lato-Light.ttf</string>
-		<string>Lato-Bold.ttf</string>
+		<string>Raleway-Black.ttf</string>
+		<string>Raleway-BlackItalic.ttf</string>
+		<string>Raleway-Bold.ttf</string>
+		<string>Raleway-BoldItalic.ttf</string>
+		<string>Raleway-ExtraBold.ttf</string>
+		<string>Raleway-ExtraBoldItalic.ttf</string>
+		<string>Raleway-ExtraLight.ttf</string>
+		<string>Raleway-ExtraLightItalic.ttf</string>
+		<string>Raleway-Italic.ttf</string>
+		<string>Raleway-Light.ttf</string>
+		<string>Raleway-LightItalic.ttf</string>
+		<string>Raleway-Medium.ttf</string>
+		<string>Raleway-MediumItalic.ttf</string>
+		<string>Raleway-Regular.ttf</string>
+		<string>Raleway-SemiBold.ttf</string>
+		<string>Raleway-SemiBoldItalic.ttf</string>
+		<string>Raleway-Thin.ttf</string>
+		<string>Raleway-ThinItalic.ttf</string>
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>

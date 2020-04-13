@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   header: {
     color: '#FBF7EF',
     fontSize: 18,
-    fontFamily: 'Lato-Bold',
+    fontFamily: 'Raleway-Bold',
     alignSelf: 'center',
     transform: [{translateY: -10}],
   },
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: '#FBF7EF',
-    fontFamily: 'Lato-Bold',
+    fontFamily: 'Raleway-Bold',
     fontSize: 18,
   },
   contentContainer: {

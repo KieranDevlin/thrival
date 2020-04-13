@@ -4,8 +4,7 @@ import Error from '../../components/Error/';
 import PropTypes from 'prop-types';
 import JobList from '../../components/JobList';
 
-const Explore = ({navigation, route, speakers}) => {
-  speakers = speakers.filter((user) => user.isSpeaker != null);
+const Explore = ({navigation, route}) => {
   return (
     <>
       <JobList navigation={navigation} />

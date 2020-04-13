@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Text from '../CustomText';
 import styles from './styles';
 import moment from 'moment';
-import {mapKey} from '../../apiKeys';
+// import {mapKey} from '../../apiKeys';
 import openMap from 'react-native-open-maps';
 
 const JobList = ({job, navigation, faveIds, addFave, removeFave}) => {
@@ -20,21 +20,21 @@ const JobList = ({job, navigation, faveIds, addFave, removeFave}) => {
     return str;
   };
 
-  const getMap = async (address) => {
-    try {
-      const resp = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${mapKey}`,
-      );
-      const data = await resp.json();
-      openMap({
-        latitude: data.results[0].geometry.location.lat,
-        longitude: data.results[0].geometry.location.lng,
-        query: data.results[0].formatted_address,
-      });
-    } catch (e) {
-      throw new Error(e);
-    }
-  };
+  //   const getMap = async (address) => {
+  //     try {
+  //       const resp = await fetch(
+  //         `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${mapKey}`,
+  //       );
+  //       const data = await resp.json();
+  //       openMap({
+  //         latitude: data.results[0].geometry.location.lat,
+  //         longitude: data.results[0].geometry.location.lng,
+  //         query: data.results[0].formatted_address,
+  //       });
+  //     } catch (e) {
+  //       throw new Error(e);
+  //     }
+  //   };
   return (
     <TouchableOpacity
       onPress={() => {
@@ -91,7 +91,7 @@ const JobList = ({job, navigation, faveIds, addFave, removeFave}) => {
           <View style={styles.center}>
             <TouchableOpacity
               onPress={() => {
-                getMap(`${job.companyName}, ${job.location}`);
+                // getMap(`${job.companyName}, ${job.location}`);
               }}
               style={styles.info}>
               <Text>
