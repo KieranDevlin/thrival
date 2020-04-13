@@ -4,7 +4,7 @@ import {BottomTabNavScreens} from './Navigation';
 import TicketScreen from '../screens/Ticket';
 import NotificationModal from '../screens/Notification';
 import {DrawerNavStackScreens} from './DrawerNavigation';
-import Home from '../screens/Home';
+import Home from '../screens/AddJobPost';
 import Login from '../screens/Login';
 import CheckoutConfirmation from '../screens/CheckoutConfirmation';
 
