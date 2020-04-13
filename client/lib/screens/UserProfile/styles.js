@@ -1,21 +1,23 @@
 import {StyleSheet, Dimensions} from 'react-native';
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#FFFFFF',
   },
   main: {
     flex: 1,
     width: '100%',
-    backgroundColor: '#FFF',
+    backgroundColor: '#FFFFFF',
     paddingLeft: 30,
     paddingRight: 30,
+    justifyContent: 'space-around',
   },
   profileContainer: {
     justifyContent: 'space-between',
     flexDirection: 'row',
     width: '100%',
     paddingTop: 30,
-    marginBottom: 25,
+    paddingBottom: 15,
+    marginBottom: 30,
   },
   name: {
     fontSize: 30,
@@ -47,6 +49,26 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     flex: 1,
     width: '100%',
+  },
+  menuItem: {
+    paddingTop: 20,
+    paddingBottom: 20,
+    borderBottomWidth: 1,
+    borderColor: '#D2D9E5',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  menuName: {
+    flexDirection: 'row',
+    transform: [{translateY: 5}],
+  },
+  icon: {
+    marginRight: 10,
+    transform: [{translateY: -1}],
+  },
+  borderTop: {
+    borderTopWidth: 1,
+    borderColor: '#D2D9E5',
   },
 });
 export default styles;
