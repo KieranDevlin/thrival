@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: '#1D1D1D',
-    fontFamily: 'Lato-Bold',
+    fontFamily: 'Raleway-Bold',
     fontSize: 18,
   },
   border: {

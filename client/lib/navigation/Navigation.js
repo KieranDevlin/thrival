@@ -1,62 +1,87 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import ExploreScreen from '../screens/Explore';
-import EventsScreen from '../screens/Events';
-import TicketsScreen from '../screens/Tickets';
+import JobboardScreen from '../screens/Jobboard';
+import ApplicationScreen from '../screens/Application';
+import CalendarScreen from '../screens/Calendar';
+import JobScreen from '../screens/Job';
 import UserProfileScreen from '../screens/UserProfile';
 import {sharedScreenOptions} from './config';
-import {onlyBackStackOptions} from './config';
+import {backOnlyOptions} from './config';
 import SearchScreen from '../screens/Search';
+import SettingsScreen from '../screens/Settings';
+import AboutUsScreen from '../screens/AboutUs';
+import ContactUsScreen from '../screens/ContactUs';
+import PrivacyPolicyScreen from '../screens/PrivacyPolicy';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import NotificationScreen from '../screens/Notification';
 
-const ExploreStack = createStackNavigator();
-const ExploreStackScreens = () => {
+const JobboardStack = createStackNavigator();
+const JobboardStackScreens = () => {
   return (
-    <ExploreStack.Navigator
-      initialRouteName="Explore"
+    <JobboardStack.Navigator
+      initialRouteName="Jobboard"
       screenOptions={sharedScreenOptions}>
-      <ExploreStack.Screen
-        name="Explore"
-        component={ExploreScreen}
+      <JobboardStack.Screen
+        name="JobBoard"
+        component={JobboardScreen}
+        options={{
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
+            fontWeight: '500',
+            opacity: 0,
+          },
+        }}
+      />
+      <JobboardStack.Screen
+        name="Job"
+        component={JobScreen}
         options={{
           headerTintColor: '#FBF7EF',
         }}
       />
-    </ExploreStack.Navigator>
+    </JobboardStack.Navigator>
   );
 };
-const EventsStack = createStackNavigator();
-const EventsStackScreens = () => {
+const ApplicationStack = createStackNavigator();
+const ApplicationStackScreens = () => {
   return (
-    <EventsStack.Navigator
-      initialRouteName="Events"
+    <ApplicationStack.Navigator
+      initialRouteName="Application"
       screenOptions={sharedScreenOptions}>
-      <EventsStack.Screen
-        name="Events"
-        component={EventsScreen}
+      <ApplicationStack.Screen
+        name="Application"
+        component={ApplicationScreen}
         options={{
-          title: 'Upcoming Events',
-          headerTintColor: '#FBF7EF',
+          title: 'My Applications',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: '400',
+          },
         }}
       />
-    </EventsStack.Navigator>
+    </ApplicationStack.Navigator>
   );
 };
-const TicketsStack = createStackNavigator();
-const TicketsStackScreens = () => {
+const CalendarStack = createStackNavigator();
+const CalendarStackScreens = () => {
   return (
-    <TicketsStack.Navigator
-      initialRouteName="Tickets"
+    <CalendarStack.Navigator
+      initialRouteName="Calendar"
       screenOptions={sharedScreenOptions}>
-      <TicketsStack.Screen
-        name="My Tickets"
-        component={TicketsScreen}
+      <CalendarStack.Screen
+        name="My Calendar"
+        component={CalendarScreen}
         options={{
-          headerTintColor: '#FBF7EF',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: '400',
+          },
         }}
       />
-    </TicketsStack.Navigator>
+    </CalendarStack.Navigator>
   );
 };
 const UserProfileStack = createStackNavigator();
@@ -64,31 +89,127 @@ const UserProfileStackScreens = () => {
   return (
     <UserProfileStack.Navigator
       initialRouteName="Profile"
-      screenOptions={onlyBackStackOptions}>
+      screenOptions={backOnlyOptions}>
       <UserProfileStack.Screen
         name="Profile"
         component={UserProfileScreen}
         options={{
-          headerTintColor: '#FBF7EF',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: '400',
+          },
+        }}
+      />
+      <UserProfileStack.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: '400',
+          },
+        }}
+      />
+      <UserProfileStack.Screen
+        name="About Us"
+        component={AboutUsScreen}
+        options={{
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: '400',
+          },
+        }}
+      />
+      <UserProfileStack.Screen
+        name="Contact Us"
+        component={ContactUsScreen}
+        options={{
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: '400',
+          },
+        }}
+      />
+      <UserProfileStack.Screen
+        name="Privacy Policy"
+        component={PrivacyPolicyScreen}
+        options={{
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: '400',
+          },
         }}
       />
     </UserProfileStack.Navigator>
   );
 };
-const SearchStack = createStackNavigator();
-const SearchStackScreens = () => {
+// const SearchStack = createStackNavigator();
+// const SearchStackScreens = () => {
+//   return (
+//     <SearchStack.Navigator
+//       initialRouteName="Search"
+//       screenOptions={sharedScreenOptions}>
+//       <SearchStack.Screen
+//         name="Search"
+//         component={SearchScreen}
+//         options={{
+//           headerTintColor: '#FFFFFF',
+//           headerTitleStyle: {
+//             fontWeight: '400',
+//           },
+//         }}
+//       />
+//     </SearchStack.Navigator>
+//   );
+// };
+
+const SettingsStack = createStackNavigator();
+const SettingsStackScreens = () => {
   return (
-    <SearchStack.Navigator
-      initialRouteName="Search"
-      screenOptions={onlyBackStackOptions}>
-      <SearchStack.Screen
-        name="Search"
-        component={SearchScreen}
+    <SettingsStack.Navigator
+      initialRouteName="Settings"
+      screenOptions={userProfileOptions}>
+      <SettingsStack.Screen
+        name="Settings"
+        component={SettingsScreen}
         options={{
-          headerTintColor: '#FBF7EF',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: '400',
+          },
         }}
       />
-    </SearchStack.Navigator>
+      <SettingsStack.Screen
+        name="About Us"
+        component={AboutUsScreen}
+        options={{
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: '400',
+          },
+        }}
+      />
+      <SettingsStack.Screen
+        name="Contact Us"
+        component={ContactUsScreen}
+        options={{
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: '400',
+          },
+        }}
+      />
+      <SettingsStack.Screen
+        name="Privacy Policy"
+        component={PrivacyPolicyScreen}
+        options={{
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: '400',
+          },
+        }}
+      />
+    </SettingsStack.Navigator>
   );
 };
 
@@ -96,88 +217,110 @@ const BottomTabNav = createBottomTabNavigator();
 export const BottomTabNavScreens = () => (
   <BottomTabNav.Navigator
     tabBarOptions={{
-      activeTintColor: '#FBF7EF',
-      inactiveTintColor: '#FBF7EF',
-      activeBackgroundColor: '#3C3C3C',
-      inactiveBackgroundColor: '#000000',
-      tabStyle: {
-        height: 120,
-      },
+      activeTintColor: '#5877DD',
+      inactiveTintColor: '#FFFFFF',
+      inactiveBackgroundColor: '#11185B',
+      tabStyle: {},
       style: {
-        backgroundColor: '#000000',
-        borderRadius: 20,
-        height: 80,
-        transform: [{translateY: -20}],
+        backgroundColor: '#11185B',
       },
       labelStyle: {
-        fontSize: 14,
-        transform: [{translateY: -40}],
+        fontSize: 12,
+        transform: [{translateY: 10}],
       },
     }}
     screenOptions={({route}) => ({
-      tabBarIcon: () => {
-        if (route.name === 'Explore') {
+      tabBarIcon: ({focused}) => {
+        if (route.name === 'Jobboard') {
           return (
             <Icon
-              style={{
-                transform: [{translateY: -15}],
-              }}
-              name="magnify"
-              color="white"
-              size={40}
+              name="view-dashboard"
+              color={focused ? '#5877DD' : '#FFFFFF'}
+              size={30}
+              style={{transform: [{translateY: 10}]}}
             />
           );
-        } else if (route.name === 'Events') {
+        } else if (route.name === 'Application') {
           return (
             <Icon
-              style={{
-                transform: [{translateY: -15}],
-              }}
-              name="magnify"
-              color="white"
-              size={40}
+              name="file-document-edit"
+              color={focused ? '#5877DD' : '#FFFFFF'}
+              size={30}
+              style={{transform: [{translateY: 10}]}}
             />
           );
-        } else if (route.name === 'Tickets') {
+        } else if (route.name === 'Calendar') {
           return (
             <Icon
-              style={{
-                transform: [{translateY: -15}],
-              }}
-              name="magnify"
-              color="white"
-              size={40}
+              name="calendar"
+              color={focused ? '#5877DD' : '#FFFFFF'}
+              size={30}
+              style={{transform: [{translateY: 10}]}}
             />
           );
         } else if (route.name === 'Profile') {
           return (
             <Icon
-              style={{
-                transform: [{translateY: -15}],
-              }}
-              name="magnify"
-              color="white"
-              size={40}
+              name="account"
+              color={focused ? '#5877DD' : '#FFFFFF'}
+              size={30}
+              style={{transform: [{translateY: 10}]}}
             />
           );
         } else if (route.name === 'Search') {
           return (
             <Icon
-              style={{
-                transform: [{translateY: -15}],
-              }}
               name="magnify"
-              color="white"
-              size={40}
+              color={focused ? '#5877DD' : '#FFFFFF'}
+              size={30}
+              style={{transform: [{translateY: 10}]}}
             />
           );
         }
       },
     })}>
-    <BottomTabNav.Screen name="Explore" component={ExploreStackScreens} />
-    <BottomTabNav.Screen name="Events" component={EventsStackScreens} />
-    <BottomTabNav.Screen name="Search" component={SearchStackScreens} />
-    <BottomTabNav.Screen name="Tickets" component={TicketsStackScreens} />
+    <BottomTabNav.Screen name="Jobboard" component={JobboardStackScreens} />
+    <BottomTabNav.Screen name="Calendar" component={CalendarStackScreens} />
+    {/* <BottomTabNav.Screen name="Search" component={SearchStackScreens} /> */}
+    <BottomTabNav.Screen
+      name="Application"
+      component={ApplicationStackScreens}
+    />
     <BottomTabNav.Screen name="Profile" component={UserProfileStackScreens} />
   </BottomTabNav.Navigator>
+);
+
+const Drawer = createDrawerNavigator();
+
+export const ProfileDrawer = (props) => (
+  <Drawer.Navigator
+    drawerPosition="right"
+    drawerType="front"
+    drawerContentOptions={{
+      activeTintColor: '#FFFFFF',
+      inactiveTintColor: '#2B2D42',
+      activeBackgroundColor: '#5877DD',
+      labelStyle: {},
+    }}
+    screenOptions={({route}) => ({
+      drawerIcon: ({focused, size, color}) => {
+        let iconName;
+        if (route.name === 'Settings') {
+          iconName = focused ? 'settings-outline' : 'settings';
+        } else if (route.name === 'About Us') {
+          iconName = focused ? 'information-outline' : 'information';
+        } else if (route.name === 'Contact Us') {
+          iconName = focused ? 'forum-outline' : 'forum';
+        } else if (route.name === 'Privacy Policy') {
+          iconName = focused ? 'shield-outline' : 'shield';
+        }
+        return <Icon name={iconName} size={size} color={color} />;
+      },
+    })}>
+    <Drawer.Screen name="Settings" component={SettingsScreen} />
+    {/* <Drawer.Screen name="About Us" component={AboutUsScreen} />
+    <Drawer.Screen name="Profile" component={UserProfileScreen} />
+    <Drawer.Screen name="Contact Us" component={ContactUsScreen} />
+    <Drawer.Screen name="Privacy Policy" component={PrivacyPolicyScreen} /> */}
+  </Drawer.Navigator>
 );
