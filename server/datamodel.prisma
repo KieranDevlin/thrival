@@ -14,6 +14,7 @@ type JobPost {
   totalRoles: Int! 
   employer: Employer!
   viewed: [Applicant] 
+  description: String
 }
 type Employer {
   id: ID! @id
@@ -31,4 +32,15 @@ type Applicant {
   linkedin: String!
   github: String!
   appliedJobs: [JobPost] @relation(link: TABLE)
+  resume: [Resume] @relation(link: TABLE)
+}
+type Resume {
+  id: ID! @id
+  fullname: String!
+  address: String!
+  email: String!
+  phone: String
+  experience: String!
+  education: String!
+  skills: String!
 }
