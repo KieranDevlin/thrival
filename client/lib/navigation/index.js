@@ -26,10 +26,10 @@ const AuthStackScreens = (props) => {
 const RootStack = createStackNavigator();
 const RootStackScreens = () => {
   return (
-    // <AuthContext.Consumer>
-    //   {({state}) => (
-    <RootStack.Navigator mode="modal" headerMode="none">
-      {/* {!state.userToken ? (
+    <AuthContext.Consumer>
+      {({state}) => (
+        <RootStack.Navigator mode="modal" headerMode="none">
+          {!state.userToken ? (
             <>
               <RootStack.Screen
                 headerMode="none"
@@ -38,19 +38,25 @@ const RootStackScreens = () => {
               />
             </>
           ) : (
-            <> */}
-      <RootStack.Screen name="Main" component={BottomTabNavScreens} />
-      <RootStack.Screen name="DrawerNav" component={ProfileDrawer} />
-      <RootStack.Screen name="Notification" component={NotificationModal} />
-      <RootStack.Screen name="Settings" component={SettingsModal} />
-      <RootStack.Screen name="About Us" component={AboutUsModal} />
-      <RootStack.Screen name="Contact Us" component={ContactUsModal} />
-      <RootStack.Screen name="Privacy Policy" component={PrivacyPolicyModal} />
-      {/* </>
-          )} */}
-    </RootStack.Navigator>
-    //   )}
-    // </AuthContext.Consumer>
+            <>
+              <RootStack.Screen name="Main" component={BottomTabNavScreens} />
+              <RootStack.Screen name="DrawerNav" component={ProfileDrawer} />
+              <RootStack.Screen
+                name="Notification"
+                component={NotificationModal}
+              />
+              <RootStack.Screen name="Settings" component={SettingsModal} />
+              <RootStack.Screen name="About Us" component={AboutUsModal} />
+              <RootStack.Screen name="Contact Us" component={ContactUsModal} />
+              <RootStack.Screen
+                name="Privacy Policy"
+                component={PrivacyPolicyModal}
+              />
+            </>
+          )}
+        </RootStack.Navigator>
+      )}
+    </AuthContext.Consumer>
   );
 };
 
