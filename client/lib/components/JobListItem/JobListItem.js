@@ -50,7 +50,7 @@ const JobListItem = ({job, navigation}) => {
       {(value) => (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('Job', {job});
+            navigation.navigate('Opportunity', {job});
           }}
           style={styles.container}>
           <View style={styles.cardHeader}>

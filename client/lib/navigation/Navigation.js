@@ -116,7 +116,7 @@ const UserProfileStackScreens = () => {
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
-            fontWeight: '400',
+            opacity: 0,
           },
         }}
       />
