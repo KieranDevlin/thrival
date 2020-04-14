@@ -17,7 +17,7 @@ type JobPost {
   totalRoles: Int! 
   employer: Employer!
   viewed: [Applicant] 
-  description: String
+  description: String!
   roles: [String!]! @scalarList(strategy:RELATION)
   requirements: [String!]! @scalarList(strategy:RELATION)
 }

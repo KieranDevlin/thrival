@@ -784,7 +784,7 @@ export interface JobPostCreateInput {
   totalRoles: Int;
   employer: EmployerCreateOneWithoutJobpostingsInput;
   viewed?: Maybe<ApplicantCreateManyWithoutAppliedJobsInput>;
-  description?: Maybe<String>;
+  description: String;
   roles?: Maybe<JobPostCreaterolesInput>;
   requirements?: Maybe<JobPostCreaterequirementsInput>;
 }
@@ -1424,7 +1424,7 @@ export interface JobPostCreateWithoutEmployerInput {
   discipline?: Maybe<JobPostCreatedisciplineInput>;
   totalRoles: Int;
   viewed?: Maybe<ApplicantCreateManyWithoutAppliedJobsInput>;
-  description?: Maybe<String>;
+  description: String;
   roles?: Maybe<JobPostCreaterolesInput>;
   requirements?: Maybe<JobPostCreaterequirementsInput>;
 }
@@ -1523,7 +1523,7 @@ export interface JobPostCreateWithoutViewedInput {
   discipline?: Maybe<JobPostCreatedisciplineInput>;
   totalRoles: Int;
   employer: EmployerCreateOneWithoutJobpostingsInput;
-  description?: Maybe<String>;
+  description: String;
   roles?: Maybe<JobPostCreaterolesInput>;
   requirements?: Maybe<JobPostCreaterequirementsInput>;
 }
@@ -1876,7 +1876,7 @@ export interface JobPost {
   location: String;
   discipline: String[];
   totalRoles: Int;
-  description?: String;
+  description: String;
   roles: String[];
   requirements: String[];
 }
@@ -2485,7 +2485,7 @@ export interface JobPostPreviousValues {
   location: String;
   discipline: String[];
   totalRoles: Int;
-  description?: String;
+  description: String;
   roles: String[];
   requirements: String[];
 }

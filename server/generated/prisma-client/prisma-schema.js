@@ -600,7 +600,7 @@ type JobPost {
   totalRoles: Int!
   employer: Employer!
   viewed(where: ApplicantWhereInput, orderBy: ApplicantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Applicant!]
-  description: String
+  description: String!
   roles: [String!]!
   requirements: [String!]!
 }
@@ -624,7 +624,7 @@ input JobPostCreateInput {
   totalRoles: Int!
   employer: EmployerCreateOneWithoutJobpostingsInput!
   viewed: ApplicantCreateManyWithoutAppliedJobsInput
-  description: String
+  description: String!
   roles: JobPostCreaterolesInput
   requirements: JobPostCreaterequirementsInput
 }
@@ -655,7 +655,7 @@ input JobPostCreateWithoutEmployerInput {
   discipline: JobPostCreatedisciplineInput
   totalRoles: Int!
   viewed: ApplicantCreateManyWithoutAppliedJobsInput
-  description: String
+  description: String!
   roles: JobPostCreaterolesInput
   requirements: JobPostCreaterequirementsInput
 }
@@ -668,7 +668,7 @@ input JobPostCreateWithoutViewedInput {
   discipline: JobPostCreatedisciplineInput
   totalRoles: Int!
   employer: EmployerCreateOneWithoutJobpostingsInput!
-  description: String
+  description: String!
   roles: JobPostCreaterolesInput
   requirements: JobPostCreaterequirementsInput
 }
@@ -703,7 +703,7 @@ type JobPostPreviousValues {
   location: String!
   discipline: [String!]!
   totalRoles: Int!
-  description: String
+  description: String!
   roles: [String!]!
   requirements: [String!]!
 }
