@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     height: '5%',
   },
   container: {
-    height: '45%',
+    height: '90%',
   },
 });
 

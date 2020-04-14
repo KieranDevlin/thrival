@@ -50,7 +50,7 @@ const JobListItem = ({job, navigation}) => {
       {(value) => (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('Job', {job});
+            navigation.navigate('Opportunity', {job});
           }}
           style={styles.container}>
           <View style={styles.cardHeader}>
@@ -67,9 +67,9 @@ const JobListItem = ({job, navigation}) => {
                 }}>
                 <Icon
                   style={styles.icon}
-                  name="heart"
+                  name="star"
                   size={30}
-                  color="#11185B"
+                  color="#5877DD"
                 />
               </TouchableOpacity>
             ) : (
@@ -79,9 +79,9 @@ const JobListItem = ({job, navigation}) => {
                 }}>
                 <Icon
                   style={styles.icon}
-                  name="heart-outline"
+                  name="star-outline"
                   size={30}
-                  color="#11185B"
+                  color="#5877DD"
                 />
               </TouchableOpacity>
             )}

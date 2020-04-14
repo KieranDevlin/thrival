@@ -13,12 +13,8 @@ const Jobboard = ({navigation, route}) => {
       {(value) => (
         <>
           <View style={styles.container}>
-            <Text style={styles.h1}>Latest Listings</Text>
+            <Text style={styles.h1}>Latest Opportunities</Text>
             <JobList navigation={navigation} />
-          </View>
-          <View style={styles.container}>
-            <Text style={styles.h1}>Saved Jobs</Text>
-            <JobList navigation={navigation} faveIds={value.faveIds} />
           </View>
           <TouchableOpacity
             style={styles.attribution}
@@ -36,6 +32,5 @@ const Jobboard = ({navigation, route}) => {
 Jobboard.propTypes = {
   navigation: PropTypes.object,
   route: PropTypes.object,
-  speakers: PropTypes.array,
 };
 export default Jobboard;
