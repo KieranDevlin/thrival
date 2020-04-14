@@ -33,34 +33,10 @@ const GradientHeader = (props) => {
   );
 };
 
-const SearchButton = ({navigation}) => {
-  return (
-    <Icon
-      style={[styles.icon, {marginLeft: 10, transform: [{translateY: 0}]}]}
-      name="magnify"
-      color="white"
-      size={25}
-      onPress={() => navigation.navigate('Search')}
-    />
-  );
-};
-const MailButton = ({navigation}) => {
-  return <Icon style={styles.icon} name="email" color="white" size={25} />;
-};
-const NotificationButton = ({navigation}) => {
-  return (
-    <Icon
-      style={styles.icon}
-      name="bell"
-      color="white"
-      size={25}
-      onPress={() => navigation.navigate('Notification')}
-    />
-  );
-};
 const HamburgerButton = ({navigation}) => {
   return <Icon style={styles.icon} name="menu" color="white" size={25} />;
 };
+
 const BackButton = ({navigation}) => {
   return (
     <Icon
@@ -75,7 +51,8 @@ const BackButton = ({navigation}) => {
     />
   );
 };
-export const sharedScreenOptions = (props) => {
+
+export const sharedScreenOptions = ({route}) => {
   const refRBSheet = React.createRef();
   console.disableYellowBox = true;
   //remove later (useNativeDriver warning)
@@ -184,17 +161,6 @@ export const sharedScreenOptions = (props) => {
     headerRight: () => {
       return (
         <View style={styles.iconContainer}>
-          <TouchableOpacity onPress={() => props.navigation.navigate('Job')}>
-            <MailButton navigation={props.navigation} />
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => props.navigation.navigate('Notification')}>
-            <NotificationButton navigation={props.navigation} />
-          </TouchableOpacity>
-
-          <SearchButton navigation={props.navigation} />
-
           <TouchableOpacity onPress={() => refRBSheet.current.open()}>
             <HamburgerButton />
           </TouchableOpacity>
@@ -202,7 +168,7 @@ export const sharedScreenOptions = (props) => {
       );
     },
     headerLeft: () => {
-      return (
+      return route.name === 'Opportunities' ? (
         <Text
           style={{
             color: '#FFF',
@@ -213,7 +179,7 @@ export const sharedScreenOptions = (props) => {
           }}>
           THRIVAL
         </Text>
-      );
+      ) : null;
     },
     headerStyle: {
       backgroundColor: 'transparent',
@@ -230,7 +196,9 @@ export const backOnlyOptions = ({route, navigation}) => {
     },
     headerLeft: () => {
       return route.name === 'Profile' ? null : (
-        <BackButton navigation={navigation} />
+        <>
+          <BackButton navigation={navigation} />
+        </>
       );
     },
     headerStyle: {
@@ -239,9 +207,6 @@ export const backOnlyOptions = ({route, navigation}) => {
   };
 };
 
-NotificationButton.propTypes = {
-  navigation: PropTypes.object.isRequired,
-};
 BackButton.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
