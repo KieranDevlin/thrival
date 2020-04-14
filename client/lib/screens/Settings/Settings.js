@@ -2,11 +2,13 @@ import React from 'react';
 import {View} from 'react-native';
 import Text from '../../components/CustomText/CustomText';
 import styles from './styles';
+// import {ProfileDrawer} from '../../navigation/Navigation';
 
 const Settings = () => {
   return (
     <>
       <View style={styles.container}>
+        {/* <ProfileDrawer /> */}
         <View style={styles.border}>
           <Text style={styles.heading}>Notifications</Text>
         </View>

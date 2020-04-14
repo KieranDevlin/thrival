@@ -19,16 +19,20 @@ type AggregateJobPost {
   count: Int!
 }
 
+type AggregateResume {
+  count: Int!
+}
+
 type AggregateUser {
   count: Int!
 }
 
 type Applicant {
   id: ID!
-  email: String!
   linkedin: String!
   github: String!
   appliedJobs(where: JobPostWhereInput, orderBy: JobPostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [JobPost!]
+  resume(where: ResumeWhereInput, orderBy: ResumeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Resume!]
 }
 
 type ApplicantConnection {
@@ -39,10 +43,10 @@ type ApplicantConnection {
 
 input ApplicantCreateInput {
   id: ID
-  email: String!
   linkedin: String!
   github: String!
   appliedJobs: JobPostCreateManyWithoutViewedInput
+  resume: ResumeCreateManyInput
 }
 
 input ApplicantCreateManyWithoutAppliedJobsInput {
@@ -57,9 +61,9 @@ input ApplicantCreateOneInput {
 
 input ApplicantCreateWithoutAppliedJobsInput {
   id: ID
-  email: String!
   linkedin: String!
   github: String!
+  resume: ResumeCreateManyInput
 }
 
 type ApplicantEdge {
@@ -70,8 +74,6 @@ type ApplicantEdge {
 enum ApplicantOrderByInput {
   id_ASC
   id_DESC
-  email_ASC
-  email_DESC
   linkedin_ASC
   linkedin_DESC
   github_ASC
@@ -80,7 +82,6 @@ enum ApplicantOrderByInput {
 
 type ApplicantPreviousValues {
   id: ID!
-  email: String!
   linkedin: String!
   github: String!
 }
@@ -100,20 +101,6 @@ input ApplicantScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  email: String
-  email_not: String
-  email_in: [String!]
-  email_not_in: [String!]
-  email_lt: String
-  email_lte: String
-  email_gt: String
-  email_gte: String
-  email_contains: String
-  email_not_contains: String
-  email_starts_with: String
-  email_not_starts_with: String
-  email_ends_with: String
-  email_not_ends_with: String
   linkedin: String
   linkedin_not: String
   linkedin_in: [String!]
@@ -166,27 +153,25 @@ input ApplicantSubscriptionWhereInput {
 }
 
 input ApplicantUpdateDataInput {
-  email: String
   linkedin: String
   github: String
   appliedJobs: JobPostUpdateManyWithoutViewedInput
+  resume: ResumeUpdateManyInput
 }
 
 input ApplicantUpdateInput {
-  email: String
   linkedin: String
   github: String
   appliedJobs: JobPostUpdateManyWithoutViewedInput
+  resume: ResumeUpdateManyInput
 }
 
 input ApplicantUpdateManyDataInput {
-  email: String
   linkedin: String
   github: String
 }
 
 input ApplicantUpdateManyMutationInput {
-  email: String
   linkedin: String
   github: String
 }
@@ -218,9 +203,9 @@ input ApplicantUpdateOneInput {
 }
 
 input ApplicantUpdateWithoutAppliedJobsDataInput {
-  email: String
   linkedin: String
   github: String
+  resume: ResumeUpdateManyInput
 }
 
 input ApplicantUpdateWithWhereUniqueWithoutAppliedJobsInput {
@@ -254,20 +239,6 @@ input ApplicantWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  email: String
-  email_not: String
-  email_in: [String!]
-  email_not_in: [String!]
-  email_lt: String
-  email_lte: String
-  email_gt: String
-  email_gte: String
-  email_contains: String
-  email_not_contains: String
-  email_starts_with: String
-  email_not_starts_with: String
-  email_ends_with: String
-  email_not_ends_with: String
   linkedin: String
   linkedin_not: String
   linkedin_in: [String!]
@@ -299,6 +270,9 @@ input ApplicantWhereInput {
   appliedJobs_every: JobPostWhereInput
   appliedJobs_some: JobPostWhereInput
   appliedJobs_none: JobPostWhereInput
+  resume_every: ResumeWhereInput
+  resume_some: ResumeWhereInput
+  resume_none: ResumeWhereInput
   AND: [ApplicantWhereInput!]
   OR: [ApplicantWhereInput!]
   NOT: [ApplicantWhereInput!]
@@ -306,7 +280,6 @@ input ApplicantWhereInput {
 
 input ApplicantWhereUniqueInput {
   id: ID
-  email: String
 }
 
 type BatchPayload {
@@ -620,12 +593,16 @@ input EmployerWhereUniqueInput {
 type JobPost {
   id: ID!
   createdAt: DateTime!
+  rate: Int!
   industry: String!
   location: String!
   discipline: [String!]!
   totalRoles: Int!
   employer: Employer!
   viewed(where: ApplicantWhereInput, orderBy: ApplicantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Applicant!]
+  description: String
+  roles: [String!]!
+  requirements: [String!]!
 }
 
 type JobPostConnection {
@@ -640,12 +617,16 @@ input JobPostCreatedisciplineInput {
 
 input JobPostCreateInput {
   id: ID
+  rate: Int!
   industry: String!
   location: String!
   discipline: JobPostCreatedisciplineInput
   totalRoles: Int!
   employer: EmployerCreateOneWithoutJobpostingsInput!
   viewed: ApplicantCreateManyWithoutAppliedJobsInput
+  description: String
+  roles: JobPostCreaterolesInput
+  requirements: JobPostCreaterequirementsInput
 }
 
 input JobPostCreateManyWithoutEmployerInput {
@@ -658,22 +639,38 @@ input JobPostCreateManyWithoutViewedInput {
   connect: [JobPostWhereUniqueInput!]
 }
 
+input JobPostCreaterequirementsInput {
+  set: [String!]
+}
+
+input JobPostCreaterolesInput {
+  set: [String!]
+}
+
 input JobPostCreateWithoutEmployerInput {
   id: ID
+  rate: Int!
   industry: String!
   location: String!
   discipline: JobPostCreatedisciplineInput
   totalRoles: Int!
   viewed: ApplicantCreateManyWithoutAppliedJobsInput
+  description: String
+  roles: JobPostCreaterolesInput
+  requirements: JobPostCreaterequirementsInput
 }
 
 input JobPostCreateWithoutViewedInput {
   id: ID
+  rate: Int!
   industry: String!
   location: String!
   discipline: JobPostCreatedisciplineInput
   totalRoles: Int!
   employer: EmployerCreateOneWithoutJobpostingsInput!
+  description: String
+  roles: JobPostCreaterolesInput
+  requirements: JobPostCreaterequirementsInput
 }
 
 type JobPostEdge {
@@ -686,21 +683,29 @@ enum JobPostOrderByInput {
   id_DESC
   createdAt_ASC
   createdAt_DESC
+  rate_ASC
+  rate_DESC
   industry_ASC
   industry_DESC
   location_ASC
   location_DESC
   totalRoles_ASC
   totalRoles_DESC
+  description_ASC
+  description_DESC
 }
 
 type JobPostPreviousValues {
   id: ID!
   createdAt: DateTime!
+  rate: Int!
   industry: String!
   location: String!
   discipline: [String!]!
   totalRoles: Int!
+  description: String
+  roles: [String!]!
+  requirements: [String!]!
 }
 
 input JobPostScalarWhereInput {
@@ -726,6 +731,14 @@ input JobPostScalarWhereInput {
   createdAt_lte: DateTime
   createdAt_gt: DateTime
   createdAt_gte: DateTime
+  rate: Int
+  rate_not: Int
+  rate_in: [Int!]
+  rate_not_in: [Int!]
+  rate_lt: Int
+  rate_lte: Int
+  rate_gt: Int
+  rate_gte: Int
   industry: String
   industry_not: String
   industry_in: [String!]
@@ -762,6 +775,20 @@ input JobPostScalarWhereInput {
   totalRoles_lte: Int
   totalRoles_gt: Int
   totalRoles_gte: Int
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
   AND: [JobPostScalarWhereInput!]
   OR: [JobPostScalarWhereInput!]
   NOT: [JobPostScalarWhereInput!]
@@ -790,26 +817,38 @@ input JobPostUpdatedisciplineInput {
 }
 
 input JobPostUpdateInput {
+  rate: Int
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
   totalRoles: Int
   employer: EmployerUpdateOneRequiredWithoutJobpostingsInput
   viewed: ApplicantUpdateManyWithoutAppliedJobsInput
+  description: String
+  roles: JobPostUpdaterolesInput
+  requirements: JobPostUpdaterequirementsInput
 }
 
 input JobPostUpdateManyDataInput {
+  rate: Int
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
   totalRoles: Int
+  description: String
+  roles: JobPostUpdaterolesInput
+  requirements: JobPostUpdaterequirementsInput
 }
 
 input JobPostUpdateManyMutationInput {
+  rate: Int
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
   totalRoles: Int
+  description: String
+  roles: JobPostUpdaterolesInput
+  requirements: JobPostUpdaterequirementsInput
 }
 
 input JobPostUpdateManyWithoutEmployerInput {
@@ -841,20 +880,36 @@ input JobPostUpdateManyWithWhereNestedInput {
   data: JobPostUpdateManyDataInput!
 }
 
+input JobPostUpdaterequirementsInput {
+  set: [String!]
+}
+
+input JobPostUpdaterolesInput {
+  set: [String!]
+}
+
 input JobPostUpdateWithoutEmployerDataInput {
+  rate: Int
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
   totalRoles: Int
   viewed: ApplicantUpdateManyWithoutAppliedJobsInput
+  description: String
+  roles: JobPostUpdaterolesInput
+  requirements: JobPostUpdaterequirementsInput
 }
 
 input JobPostUpdateWithoutViewedDataInput {
+  rate: Int
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
   totalRoles: Int
   employer: EmployerUpdateOneRequiredWithoutJobpostingsInput
+  description: String
+  roles: JobPostUpdaterolesInput
+  requirements: JobPostUpdaterequirementsInput
 }
 
 input JobPostUpdateWithWhereUniqueWithoutEmployerInput {
@@ -902,6 +957,14 @@ input JobPostWhereInput {
   createdAt_lte: DateTime
   createdAt_gt: DateTime
   createdAt_gte: DateTime
+  rate: Int
+  rate_not: Int
+  rate_in: [Int!]
+  rate_not_in: [Int!]
+  rate_lt: Int
+  rate_lte: Int
+  rate_gt: Int
+  rate_gte: Int
   industry: String
   industry_not: String
   industry_in: [String!]
@@ -942,6 +1005,20 @@ input JobPostWhereInput {
   viewed_every: ApplicantWhereInput
   viewed_some: ApplicantWhereInput
   viewed_none: ApplicantWhereInput
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
   AND: [JobPostWhereInput!]
   OR: [JobPostWhereInput!]
   NOT: [JobPostWhereInput!]
@@ -978,6 +1055,12 @@ type Mutation {
   upsertJobPost(where: JobPostWhereUniqueInput!, create: JobPostCreateInput!, update: JobPostUpdateInput!): JobPost!
   deleteJobPost(where: JobPostWhereUniqueInput!): JobPost
   deleteManyJobPosts(where: JobPostWhereInput): BatchPayload!
+  createResume(data: ResumeCreateInput!): Resume!
+  updateResume(data: ResumeUpdateInput!, where: ResumeWhereUniqueInput!): Resume
+  updateManyResumes(data: ResumeUpdateManyMutationInput!, where: ResumeWhereInput): BatchPayload!
+  upsertResume(where: ResumeWhereUniqueInput!, create: ResumeCreateInput!, update: ResumeUpdateInput!): Resume!
+  deleteResume(where: ResumeWhereUniqueInput!): Resume
+  deleteManyResumes(where: ResumeWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
@@ -1016,10 +1099,407 @@ type Query {
   jobPost(where: JobPostWhereUniqueInput!): JobPost
   jobPosts(where: JobPostWhereInput, orderBy: JobPostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [JobPost]!
   jobPostsConnection(where: JobPostWhereInput, orderBy: JobPostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): JobPostConnection!
+  resume(where: ResumeWhereUniqueInput!): Resume
+  resumes(where: ResumeWhereInput, orderBy: ResumeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Resume]!
+  resumesConnection(where: ResumeWhereInput, orderBy: ResumeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ResumeConnection!
   user(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   node(id: ID!): Node
+}
+
+type Resume {
+  id: ID!
+  fullname: String!
+  address: String!
+  email: String!
+  phone: String
+  experience: String!
+  education: String!
+  skills: String!
+}
+
+type ResumeConnection {
+  pageInfo: PageInfo!
+  edges: [ResumeEdge]!
+  aggregate: AggregateResume!
+}
+
+input ResumeCreateInput {
+  id: ID
+  fullname: String!
+  address: String!
+  email: String!
+  phone: String
+  experience: String!
+  education: String!
+  skills: String!
+}
+
+input ResumeCreateManyInput {
+  create: [ResumeCreateInput!]
+  connect: [ResumeWhereUniqueInput!]
+}
+
+type ResumeEdge {
+  node: Resume!
+  cursor: String!
+}
+
+enum ResumeOrderByInput {
+  id_ASC
+  id_DESC
+  fullname_ASC
+  fullname_DESC
+  address_ASC
+  address_DESC
+  email_ASC
+  email_DESC
+  phone_ASC
+  phone_DESC
+  experience_ASC
+  experience_DESC
+  education_ASC
+  education_DESC
+  skills_ASC
+  skills_DESC
+}
+
+type ResumePreviousValues {
+  id: ID!
+  fullname: String!
+  address: String!
+  email: String!
+  phone: String
+  experience: String!
+  education: String!
+  skills: String!
+}
+
+input ResumeScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  fullname: String
+  fullname_not: String
+  fullname_in: [String!]
+  fullname_not_in: [String!]
+  fullname_lt: String
+  fullname_lte: String
+  fullname_gt: String
+  fullname_gte: String
+  fullname_contains: String
+  fullname_not_contains: String
+  fullname_starts_with: String
+  fullname_not_starts_with: String
+  fullname_ends_with: String
+  fullname_not_ends_with: String
+  address: String
+  address_not: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_lt: String
+  address_lte: String
+  address_gt: String
+  address_gte: String
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  phone: String
+  phone_not: String
+  phone_in: [String!]
+  phone_not_in: [String!]
+  phone_lt: String
+  phone_lte: String
+  phone_gt: String
+  phone_gte: String
+  phone_contains: String
+  phone_not_contains: String
+  phone_starts_with: String
+  phone_not_starts_with: String
+  phone_ends_with: String
+  phone_not_ends_with: String
+  experience: String
+  experience_not: String
+  experience_in: [String!]
+  experience_not_in: [String!]
+  experience_lt: String
+  experience_lte: String
+  experience_gt: String
+  experience_gte: String
+  experience_contains: String
+  experience_not_contains: String
+  experience_starts_with: String
+  experience_not_starts_with: String
+  experience_ends_with: String
+  experience_not_ends_with: String
+  education: String
+  education_not: String
+  education_in: [String!]
+  education_not_in: [String!]
+  education_lt: String
+  education_lte: String
+  education_gt: String
+  education_gte: String
+  education_contains: String
+  education_not_contains: String
+  education_starts_with: String
+  education_not_starts_with: String
+  education_ends_with: String
+  education_not_ends_with: String
+  skills: String
+  skills_not: String
+  skills_in: [String!]
+  skills_not_in: [String!]
+  skills_lt: String
+  skills_lte: String
+  skills_gt: String
+  skills_gte: String
+  skills_contains: String
+  skills_not_contains: String
+  skills_starts_with: String
+  skills_not_starts_with: String
+  skills_ends_with: String
+  skills_not_ends_with: String
+  AND: [ResumeScalarWhereInput!]
+  OR: [ResumeScalarWhereInput!]
+  NOT: [ResumeScalarWhereInput!]
+}
+
+type ResumeSubscriptionPayload {
+  mutation: MutationType!
+  node: Resume
+  updatedFields: [String!]
+  previousValues: ResumePreviousValues
+}
+
+input ResumeSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ResumeWhereInput
+  AND: [ResumeSubscriptionWhereInput!]
+  OR: [ResumeSubscriptionWhereInput!]
+  NOT: [ResumeSubscriptionWhereInput!]
+}
+
+input ResumeUpdateDataInput {
+  fullname: String
+  address: String
+  email: String
+  phone: String
+  experience: String
+  education: String
+  skills: String
+}
+
+input ResumeUpdateInput {
+  fullname: String
+  address: String
+  email: String
+  phone: String
+  experience: String
+  education: String
+  skills: String
+}
+
+input ResumeUpdateManyDataInput {
+  fullname: String
+  address: String
+  email: String
+  phone: String
+  experience: String
+  education: String
+  skills: String
+}
+
+input ResumeUpdateManyInput {
+  create: [ResumeCreateInput!]
+  update: [ResumeUpdateWithWhereUniqueNestedInput!]
+  upsert: [ResumeUpsertWithWhereUniqueNestedInput!]
+  delete: [ResumeWhereUniqueInput!]
+  connect: [ResumeWhereUniqueInput!]
+  set: [ResumeWhereUniqueInput!]
+  disconnect: [ResumeWhereUniqueInput!]
+  deleteMany: [ResumeScalarWhereInput!]
+  updateMany: [ResumeUpdateManyWithWhereNestedInput!]
+}
+
+input ResumeUpdateManyMutationInput {
+  fullname: String
+  address: String
+  email: String
+  phone: String
+  experience: String
+  education: String
+  skills: String
+}
+
+input ResumeUpdateManyWithWhereNestedInput {
+  where: ResumeScalarWhereInput!
+  data: ResumeUpdateManyDataInput!
+}
+
+input ResumeUpdateWithWhereUniqueNestedInput {
+  where: ResumeWhereUniqueInput!
+  data: ResumeUpdateDataInput!
+}
+
+input ResumeUpsertWithWhereUniqueNestedInput {
+  where: ResumeWhereUniqueInput!
+  update: ResumeUpdateDataInput!
+  create: ResumeCreateInput!
+}
+
+input ResumeWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  fullname: String
+  fullname_not: String
+  fullname_in: [String!]
+  fullname_not_in: [String!]
+  fullname_lt: String
+  fullname_lte: String
+  fullname_gt: String
+  fullname_gte: String
+  fullname_contains: String
+  fullname_not_contains: String
+  fullname_starts_with: String
+  fullname_not_starts_with: String
+  fullname_ends_with: String
+  fullname_not_ends_with: String
+  address: String
+  address_not: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_lt: String
+  address_lte: String
+  address_gt: String
+  address_gte: String
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  phone: String
+  phone_not: String
+  phone_in: [String!]
+  phone_not_in: [String!]
+  phone_lt: String
+  phone_lte: String
+  phone_gt: String
+  phone_gte: String
+  phone_contains: String
+  phone_not_contains: String
+  phone_starts_with: String
+  phone_not_starts_with: String
+  phone_ends_with: String
+  phone_not_ends_with: String
+  experience: String
+  experience_not: String
+  experience_in: [String!]
+  experience_not_in: [String!]
+  experience_lt: String
+  experience_lte: String
+  experience_gt: String
+  experience_gte: String
+  experience_contains: String
+  experience_not_contains: String
+  experience_starts_with: String
+  experience_not_starts_with: String
+  experience_ends_with: String
+  experience_not_ends_with: String
+  education: String
+  education_not: String
+  education_in: [String!]
+  education_not_in: [String!]
+  education_lt: String
+  education_lte: String
+  education_gt: String
+  education_gte: String
+  education_contains: String
+  education_not_contains: String
+  education_starts_with: String
+  education_not_starts_with: String
+  education_ends_with: String
+  education_not_ends_with: String
+  skills: String
+  skills_not: String
+  skills_in: [String!]
+  skills_not_in: [String!]
+  skills_lt: String
+  skills_lte: String
+  skills_gt: String
+  skills_gte: String
+  skills_contains: String
+  skills_not_contains: String
+  skills_starts_with: String
+  skills_not_starts_with: String
+  skills_ends_with: String
+  skills_not_ends_with: String
+  AND: [ResumeWhereInput!]
+  OR: [ResumeWhereInput!]
+  NOT: [ResumeWhereInput!]
+}
+
+input ResumeWhereUniqueInput {
+  id: ID
 }
 
 type Subscription {
@@ -1027,6 +1507,7 @@ type Subscription {
   contact(where: ContactSubscriptionWhereInput): ContactSubscriptionPayload
   employer(where: EmployerSubscriptionWhereInput): EmployerSubscriptionPayload
   jobPost(where: JobPostSubscriptionWhereInput): JobPostSubscriptionPayload
+  resume(where: ResumeSubscriptionWhereInput): ResumeSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 

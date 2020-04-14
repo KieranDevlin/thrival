@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 export default Button = ({style, label, onPress, bgcolor, icon}) => {
   return (
     <TouchableOpacity
-      style={[style, styles.button, {backgroundColor: `${bgcolor}`}]}
+      style={[styles.button, style, {backgroundColor: `${bgcolor}`}]}
       onPress={onPress}>
       <Text style={styles.icon}>{icon}</Text>
       <Text style={styles.label}>{label}</Text>

@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   author: {
-    fontFamily: 'Lato-Bold',
+    fontFamily: 'Raleway-Bold',
   },
   authorContainer: {
     width: '95%',

@@ -5,16 +5,21 @@ type User {
   password: String!
   employerProfile: Employer
   applicantProfile: Applicant 
+  profileImage: String @default(value)
 }
 type JobPost {
   id: ID! @id
   createdAt: DateTime! @createdAt
+  rate: Int!
   industry: String!
   location: String!
   discipline: [String!]! @scalarList(strategy:RELATION)
   totalRoles: Int! 
   employer: Employer!
   viewed: [Applicant] 
+  description: String
+  roles: [String!]! @scalarList(strategy:RELATION)
+  requirements: [String!]! @scalarList(strategy:RELATION)
 }
 type Employer {
   id: ID! @id
@@ -29,8 +34,18 @@ type Contact {
 }
 type Applicant {
   id: ID! @id
-  email: String! @unique
   linkedin: String!
   github: String!
   appliedJobs: [JobPost] @relation(link: TABLE)
+  resume: [Resume] @relation(link: TABLE)
+}
+type Resume {
+  id: ID! @id
+  fullname: String!
+  address: String!
+  email: String!
+  phone: String
+  experience: [String!]
+  education: [String!
+  skills: String!
 }

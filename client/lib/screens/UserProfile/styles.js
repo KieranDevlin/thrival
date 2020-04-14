@@ -1,44 +1,74 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#FFFFFF',
   },
   main: {
     flex: 1,
     width: '100%',
-    paddingLeft: 35,
-    paddingRight: 35,
-    justifyContent: 'flex-start',
-    backgroundColor: '#FFF',
+    backgroundColor: '#FFFFFF',
+    paddingLeft: 30,
+    paddingRight: 30,
+    justifyContent: 'space-around',
+  },
+  profileContainer: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    width: '100%',
+    paddingTop: 30,
+    paddingBottom: 15,
+    marginBottom: 30,
   },
   name: {
-    fontSize: 24,
-    fontFamily: 'Lato-Black',
+    fontSize: 30,
+    fontWeight: '500',
   },
-  user: {
-    marginTop: 75,
+  nameContainer: {
+    alignSelf: 'flex-end',
   },
-  emailContainer: {
-    flexDirection: 'row',
-    marginTop: 5,
-  },
-  email: {
-    fontFamily: 'Lato-Light',
+  heading: {
     fontSize: 16,
+    fontWeight: '500',
+    marginBottom: 15,
   },
-
-  edit: {
-    color: '#507EA2',
-    textDecorationLine: 'underline',
-    textDecorationStyle: 'solid',
-    marginLeft: 10,
+  content: {
+    marginBottom: 15,
   },
-  buttonContainer: {
-    marginTop: 20,
-    alignItems: 'center',
+  section: {
+    marginBottom: 15,
   },
-  button: {
-    marginTop: 20,
+  imageContainer: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    overflow: 'hidden',
+    borderWidth: 3,
+    borderColor: '#2B2D42',
+  },
+  image: {
+    resizeMode: 'cover',
+    flex: 1,
+    width: '100%',
+  },
+  menuItem: {
+    paddingTop: 20,
+    paddingBottom: 20,
+    borderBottomWidth: 1,
+    borderColor: '#D2D9E5',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  menuName: {
+    flexDirection: 'row',
+    transform: [{translateY: 5}],
+  },
+  icon: {
+    marginRight: 10,
+    transform: [{translateY: -1}],
+  },
+  borderTop: {
+    borderTopWidth: 1,
+    borderColor: '#D2D9E5',
   },
 });
 export default styles;
