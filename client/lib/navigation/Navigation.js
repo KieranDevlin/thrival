@@ -16,6 +16,7 @@ import PrivacyPolicyScreen from '../screens/PrivacyPolicy';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import NotificationScreen from '../screens/Notification';
+import {View} from 'react-native';
 
 const JobboardStack = createStackNavigator();
 const JobboardStackScreens = () => {
@@ -29,8 +30,6 @@ const JobboardStackScreens = () => {
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
-            fontFamily: 'Raleway-Regular',
-            fontWeight: '500',
             opacity: 0,
           },
         }}
@@ -58,7 +57,7 @@ const ApplicationStackScreens = () => {
           title: 'My Applications',
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
-            fontWeight: '400',
+            opacity: 0,
           },
         }}
       />
@@ -77,7 +76,7 @@ const CalendarStackScreens = () => {
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
-            fontWeight: '400',
+            opacity: 0,
           },
         }}
       />
@@ -137,6 +136,17 @@ const UserProfileStackScreens = () => {
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
             fontWeight: '400',
+          },
+        }}
+      />
+      <UserProfileStack.Screen
+        name="Application"
+        component={ApplicationScreen}
+        options={{
+          title: 'My Applications',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            opacity: 0,
           },
         }}
       />
@@ -217,7 +227,7 @@ const BottomTabNav = createBottomTabNavigator();
 export const BottomTabNavScreens = () => (
   <BottomTabNav.Navigator
     tabBarOptions={{
-      activeTintColor: '#5877DD',
+      activeTintColor: '#FFFFFF',
       inactiveTintColor: '#FFFFFF',
       inactiveBackgroundColor: '#11185B',
       tabStyle: {},
@@ -225,7 +235,7 @@ export const BottomTabNavScreens = () => (
         backgroundColor: '#11185B',
       },
       labelStyle: {
-        fontSize: 12,
+        fontSize: 10,
         transform: [{translateY: 10}],
       },
     }}
@@ -233,39 +243,93 @@ export const BottomTabNavScreens = () => (
       tabBarIcon: ({focused}) => {
         if (route.name === 'Jobboard') {
           return (
-            <Icon
-              name="view-dashboard"
-              color={focused ? '#5877DD' : '#FFFFFF'}
-              size={30}
-              style={{transform: [{translateY: 10}]}}
-            />
+            <>
+              {focused ? (
+                <View
+                  style={{
+                    width: 40,
+                    height: 3,
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: 15,
+                    alignSelf: 'center',
+                    transform: [{translateY: 8}],
+                  }}></View>
+              ) : null}
+              <Icon
+                name="view-dashboard"
+                color={'#FFFFFF'}
+                size={30}
+                style={{
+                  transform: [{translateY: 12}],
+                }}
+              />
+            </>
           );
         } else if (route.name === 'Application') {
           return (
-            <Icon
-              name="file-document-edit"
-              color={focused ? '#5877DD' : '#FFFFFF'}
-              size={30}
-              style={{transform: [{translateY: 10}]}}
-            />
+            <>
+              {focused ? (
+                <View
+                  style={{
+                    width: 40,
+                    height: 3,
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: 15,
+                    alignSelf: 'center',
+                    transform: [{translateY: 8}],
+                  }}></View>
+              ) : null}
+              <Icon
+                name="file-document-edit"
+                color={'#FFFFFF'}
+                size={30}
+                style={{transform: [{translateY: 12}]}}
+              />
+            </>
           );
         } else if (route.name === 'Calendar') {
           return (
-            <Icon
-              name="calendar"
-              color={focused ? '#5877DD' : '#FFFFFF'}
-              size={30}
-              style={{transform: [{translateY: 10}]}}
-            />
+            <>
+              {focused ? (
+                <View
+                  style={{
+                    width: 40,
+                    height: 3,
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: 15,
+                    alignSelf: 'center',
+                    transform: [{translateY: 8}],
+                  }}></View>
+              ) : null}
+              <Icon
+                name="calendar"
+                color={'#FFFFFF'}
+                size={30}
+                style={{transform: [{translateY: 12}]}}
+              />
+            </>
           );
         } else if (route.name === 'Profile') {
           return (
-            <Icon
-              name="account"
-              color={focused ? '#5877DD' : '#FFFFFF'}
-              size={30}
-              style={{transform: [{translateY: 10}]}}
-            />
+            <>
+              {focused ? (
+                <View
+                  style={{
+                    width: 40,
+                    height: 3,
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: 15,
+                    alignSelf: 'center',
+                    transform: [{translateY: 8}],
+                  }}></View>
+              ) : null}
+              <Icon
+                name="account"
+                color={'#FFFFFF'}
+                size={30}
+                style={{transform: [{translateY: 12}]}}
+              />
+            </>
           );
         } else if (route.name === 'Search') {
           return (

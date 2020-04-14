@@ -1,7 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {BottomTabNavScreens} from './Navigation';
-import {ProfileDrawer} from './Navigation';
 import NotificationModal from '../screens/Notification';
 import Home from '../screens/AddJobPost';
 import SettingsModal from '../screens/Settings';
@@ -40,7 +39,6 @@ const RootStackScreens = () => {
           ) : (
             <>
               <RootStack.Screen name="Main" component={BottomTabNavScreens} />
-              <RootStack.Screen name="DrawerNav" component={ProfileDrawer} />
               <RootStack.Screen
                 name="Notification"
                 component={NotificationModal}
