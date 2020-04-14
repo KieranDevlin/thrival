@@ -107,7 +107,7 @@ const UserProfile = ({navigation, user}) => {
             </View>
             <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
+          <TouchableOpacity style={styles.menuItem} onPress={signOutContext}>
             <View style={styles.menuName}>
               <Icon
                 style={styles.icon}
