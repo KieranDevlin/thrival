@@ -38,6 +38,22 @@ const styles = StyleSheet.create({
   seeAll: {
     color: '#3C3C3C',
   },
+  h1: {
+    fontSize: 20,
+    fontWeight: '500',
+    marginVertical: 15,
+    marginHorizontal: 15,
+  },
+  attribution: {
+    fontSize: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 15,
+    height: '5%',
+  },
+  container: {
+    height: '45%',
+  },
 });
 
 export default styles;

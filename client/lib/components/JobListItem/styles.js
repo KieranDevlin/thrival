@@ -2,38 +2,38 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    width: Dimensions.get('window').width * 0.9,
-    height: 150,
-    padding: 10,
-    borderWidth: 1,
+    width: Dimensions.get('window').width * 0.45,
+    height: Dimensions.get('window').width * 0.45,
+    padding: 15,
     marginVertical: 10,
-    borderRadius: 5,
-    borderColor: '#2B2D42',
+    borderRadius: 15,
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    shadowColor: '#8D99AE',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 5.46,
+
+    elevation: 9,
   },
-  company: {
-    fontWeight: 'bold',
+  cardHeader: {
+    height: '45%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
-  title: {
-    height: '50%',
-  },
-  disciplines: {
-    fontSize: 16,
+  image: {
+    height: '100%',
+    width: '50%',
   },
   infoContainer: {
-    height: '50%',
+    height: '45%',
     justifyContent: 'space-between',
   },
-  info: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  center: {
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-  },
-  fave: {
-    alignItems: 'flex-end',
+  smallText: {
+    fontSize: 12,
   },
 });
 export default styles;

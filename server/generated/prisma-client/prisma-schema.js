@@ -29,7 +29,6 @@ type AggregateUser {
 
 type Applicant {
   id: ID!
-  email: String!
   linkedin: String!
   github: String!
   appliedJobs(where: JobPostWhereInput, orderBy: JobPostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [JobPost!]
@@ -44,7 +43,6 @@ type ApplicantConnection {
 
 input ApplicantCreateInput {
   id: ID
-  email: String!
   linkedin: String!
   github: String!
   appliedJobs: JobPostCreateManyWithoutViewedInput
@@ -63,7 +61,6 @@ input ApplicantCreateOneInput {
 
 input ApplicantCreateWithoutAppliedJobsInput {
   id: ID
-  email: String!
   linkedin: String!
   github: String!
   resume: ResumeCreateManyInput
@@ -77,8 +74,6 @@ type ApplicantEdge {
 enum ApplicantOrderByInput {
   id_ASC
   id_DESC
-  email_ASC
-  email_DESC
   linkedin_ASC
   linkedin_DESC
   github_ASC
@@ -87,7 +82,6 @@ enum ApplicantOrderByInput {
 
 type ApplicantPreviousValues {
   id: ID!
-  email: String!
   linkedin: String!
   github: String!
 }
@@ -107,20 +101,6 @@ input ApplicantScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  email: String
-  email_not: String
-  email_in: [String!]
-  email_not_in: [String!]
-  email_lt: String
-  email_lte: String
-  email_gt: String
-  email_gte: String
-  email_contains: String
-  email_not_contains: String
-  email_starts_with: String
-  email_not_starts_with: String
-  email_ends_with: String
-  email_not_ends_with: String
   linkedin: String
   linkedin_not: String
   linkedin_in: [String!]
@@ -173,7 +153,6 @@ input ApplicantSubscriptionWhereInput {
 }
 
 input ApplicantUpdateDataInput {
-  email: String
   linkedin: String
   github: String
   appliedJobs: JobPostUpdateManyWithoutViewedInput
@@ -181,7 +160,6 @@ input ApplicantUpdateDataInput {
 }
 
 input ApplicantUpdateInput {
-  email: String
   linkedin: String
   github: String
   appliedJobs: JobPostUpdateManyWithoutViewedInput
@@ -189,13 +167,11 @@ input ApplicantUpdateInput {
 }
 
 input ApplicantUpdateManyDataInput {
-  email: String
   linkedin: String
   github: String
 }
 
 input ApplicantUpdateManyMutationInput {
-  email: String
   linkedin: String
   github: String
 }
@@ -227,7 +203,6 @@ input ApplicantUpdateOneInput {
 }
 
 input ApplicantUpdateWithoutAppliedJobsDataInput {
-  email: String
   linkedin: String
   github: String
   resume: ResumeUpdateManyInput
@@ -264,20 +239,6 @@ input ApplicantWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  email: String
-  email_not: String
-  email_in: [String!]
-  email_not_in: [String!]
-  email_lt: String
-  email_lte: String
-  email_gt: String
-  email_gte: String
-  email_contains: String
-  email_not_contains: String
-  email_starts_with: String
-  email_not_starts_with: String
-  email_ends_with: String
-  email_not_ends_with: String
   linkedin: String
   linkedin_not: String
   linkedin_in: [String!]
@@ -319,7 +280,6 @@ input ApplicantWhereInput {
 
 input ApplicantWhereUniqueInput {
   id: ID
-  email: String
 }
 
 type BatchPayload {

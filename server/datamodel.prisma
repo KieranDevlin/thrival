@@ -5,6 +5,7 @@ type User {
   password: String!
   employerProfile: Employer
   applicantProfile: Applicant 
+  profileImage: String @default(value)
 }
 type JobPost {
   id: ID! @id
@@ -33,7 +34,6 @@ type Contact {
 }
 type Applicant {
   id: ID! @id
-  email: String! @unique
   linkedin: String!
   github: String!
   appliedJobs: [JobPost] @relation(link: TABLE)
@@ -45,7 +45,7 @@ type Resume {
   address: String!
   email: String!
   phone: String
-  experience: String!
-  education: String!
+  experience: [String!]
+  education: [String!
   skills: String!
 }
