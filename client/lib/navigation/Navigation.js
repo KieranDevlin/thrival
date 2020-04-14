@@ -252,7 +252,7 @@ export const BottomTabNavScreens = () => (
     }}
     screenOptions={({route}) => ({
       tabBarIcon: ({focused}) => {
-        if (route.name === 'Jobboard') {
+        if (route.name === 'Opportunities') {
           return (
             <>
               {focused ? (
@@ -354,7 +354,10 @@ export const BottomTabNavScreens = () => (
         }
       },
     })}>
-    <BottomTabNav.Screen name="Jobboard" component={JobboardStackScreens} />
+    <BottomTabNav.Screen
+      name="Opportunities"
+      component={JobboardStackScreens}
+    />
     <BottomTabNav.Screen name="Calendar" component={CalendarStackScreens} />
     {/* <BottomTabNav.Screen name="Search" component={SearchStackScreens} /> */}
     <BottomTabNav.Screen
