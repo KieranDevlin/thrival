@@ -9,5 +9,9 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     paddingHorizontal: 15,
   },
+  noFaves: {
+    alignItems: 'center',
+    marginVertical: 20,
+  },
 });
 export default styles;

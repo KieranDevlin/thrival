@@ -1,13 +1,14 @@
 import React from 'react';
 import {TouchableOpacity, View, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 import Text from '../CustomText';
 import styles from './styles';
-import moment from 'moment';
 // import {mapKey} from '../../apiKeys';
 import openMap from 'react-native-open-maps';
-
-const JobList = ({job, navigation, faveIds, addFave, removeFave}) => {
+import {FavesContext} from '../../context/FavesContext';
+const JobListItem = ({job, navigation}) => {
   // const renderDisciplines = (values) => {
   //   let str = '';
   //   for (let i = 0; i < values.length; i++) {
@@ -45,57 +46,69 @@ const JobList = ({job, navigation, faveIds, addFave, removeFave}) => {
   };
 
   return (
-    <TouchableOpacity
-      onPress={() => {
-        navigation.navigate('Job', {job});
-      }}
-      style={styles.container}>
-      <View style={styles.cardHeader}>
-        <Image
-          source={{
-            uri: `https://logo.clearbit.com/${getDomain(job.contact.link)}`,
-          }}
-          style={styles.image}
-        />
-        {faveIds.includes(job.id.toString()) ? (
-          <TouchableOpacity
-            onPress={() => {
-              removeFave(job.id);
-            }}>
-            <Icon style={styles.icon} name="heart" size={30} color="#11185B" />
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            onPress={() => {
-              addFave(job.id);
-            }}>
-            <Icon
-              style={styles.icon}
-              name="heart-outline"
-              size={30}
-              color="#11185B"
-            />
-          </TouchableOpacity>
-        )}
-      </View>
-      <View style={styles.infoContainer}>
-        <Text style={styles.disciplines}>
-          {/* {renderDisciplines(job.discipline)} */}
-          {job.discipline[0]}
-        </Text>
-        <Text style={styles.company}>{job.companyName}</Text>
-
+    <FavesContext.Consumer>
+      {(value) => (
         <TouchableOpacity
           onPress={() => {
-            // getMap(`${job.companyName}, ${job.location}`);
+            navigation.navigate('Job', {job});
           }}
-          style={styles.info}>
-          <Text style={styles.smallText}>{job.location}</Text>
+          style={styles.container}>
+          <View style={styles.cardHeader}>
+            <Image
+              source={{
+                uri: `https://logo.clearbit.com/${getDomain(job.contact.link)}`,
+              }}
+              style={styles.image}
+            />
+            {value.faveIds.includes(job.id.toString()) ? (
+              <TouchableOpacity
+                onPress={() => {
+                  value.removeFaveJob(job.id);
+                }}>
+                <Icon
+                  style={styles.icon}
+                  name="heart"
+                  size={30}
+                  color="#11185B"
+                />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                onPress={() => {
+                  value.addFaveJob(job.id);
+                }}>
+                <Icon
+                  style={styles.icon}
+                  name="heart-outline"
+                  size={30}
+                  color="#11185B"
+                />
+              </TouchableOpacity>
+            )}
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.disciplines}>
+              {/* {renderDisciplines(job.discipline)} */}
+              {job.discipline[0]}
+            </Text>
+            <Text style={styles.company}>{job.companyName}</Text>
+
+            <TouchableOpacity
+              onPress={() => {
+                // getMap(`${job.companyName}, ${job.location}`);
+              }}
+              style={styles.info}>
+              <Text style={styles.smallText}>{job.location}</Text>
+            </TouchableOpacity>
+            <Text style={styles.smallText}>$30/hr</Text>
+          </View>
         </TouchableOpacity>
-        <Text style={styles.smallText}>$30/hr</Text>
-      </View>
-    </TouchableOpacity>
+      )}
+    </FavesContext.Consumer>
   );
 };
-
-export default JobList;
+JobListItem.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  job: PropTypes.object.isRequired,
+};
+export default JobListItem;
