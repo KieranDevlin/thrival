@@ -8,7 +8,6 @@ import ApplicationList from '../../components/ApplicationList';
 const Application = ({application, route, navigation}) => {
   return (
     <View style={styles.main}>
-      <Text style={styles.header}>My Applications</Text>
       <ApplicationList />
     </View>
   );

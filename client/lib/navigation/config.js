@@ -59,12 +59,11 @@ const BackButton = ({navigation}) => {
   return (
     <Icon
       style={{
-        marginLeft: 10,
-        marginRight: 10,
+        marginLeft: 5,
       }}
-      name="arrow-left"
+      name="chevron-left"
       color="white"
-      size={25}
+      size={30}
       onPress={() => navigation.goBack()}
     />
   );
@@ -221,6 +220,11 @@ export const backOnlyOptions = ({route, navigation}) => {
     header: (props) => <GradientHeader {...props} />,
     headerRight: () => {
       return null;
+    },
+    headerLeft: () => {
+      return route.name === 'Profile' ? null : (
+        <BackButton navigation={navigation} />
+      );
     },
     headerStyle: {
       backgroundColor: 'transparent',

@@ -15,18 +15,18 @@ import {AuthContext} from '../../context/AuthProvider';
 import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
 
-const UserProfile = ({navigation, user}) => {
+const Resume = ({navigation, user}) => {
   const {
     authContext: {signOutContext},
   } = React.useContext(AuthContext);
 
-  const name = 'John Adam-Smith';
-  const firstname = name.substr(0, name.indexOf(' '));
-  const lastname = name.substr(name.indexOf(' ') + 1);
+  name = 'John Adam-Smith';
+  firstname = name.substr(0, name.indexOf(' '));
+  lastname = name.substr(name.indexOf(' ') + 1);
 
   return (
     <>
-      <View style={styles.main}>
+      <ScrollView style={styles.main}>
         <View style={styles.profileContainer}>
           <View style={styles.nameContainer}>
             <Text style={styles.name}>{firstname}</Text>
@@ -40,89 +40,7 @@ const UserProfile = ({navigation, user}) => {
             />
           </View>
         </View>
-        <View style={styles.profileMenu}>
-          <TouchableOpacity
-            style={[styles.menuItem, styles.borderTop]}
-            onPress={() => navigation.navigate('Saved Jobs')}>
-            <View style={styles.menuName}>
-              <Icon
-                style={styles.icon}
-                name={'heart'}
-                size={20}
-                color={'#2B2D42'}
-              />
-              <Text style={styles.menuTitle}>Saved Jobs</Text>
-            </View>
-            <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.menuItem}
-            onPress={() => navigation.navigate('Resume')}>
-            <View style={styles.menuName}>
-              <Icon
-                style={styles.icon}
-                name={'file-document-edit'}
-                size={20}
-                color={'#2B2D42'}
-              />
-              <Text style={styles.menuTitle}>View My Resume</Text>
-            </View>
-            <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.menuItem}
-            onPress={() => navigation.navigate('Application')}>
-            <View style={styles.menuName}>
-              <Icon
-                style={styles.icon}
-                name={'file-multiple'}
-                size={20}
-                color={'#2B2D42'}
-              />
-              <Text style={styles.menuTitle}>View My Applications</Text>
-            </View>
-            <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
-            <View style={styles.menuName}>
-              <Icon
-                style={styles.icon}
-                name={'account'}
-                size={20}
-                color={'#2B2D42'}
-              />
-              <Text style={styles.menuTitle}>View My Profile</Text>
-            </View>
-            <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.menuItem}
-            onPress={() => navigation.navigate('Manage Account')}>
-            <View style={styles.menuName}>
-              <Icon
-                style={styles.icon}
-                name={'settings'}
-                size={20}
-                color={'#2B2D42'}
-              />
-              <Text style={styles.menuTitle}>Manage My Account</Text>
-            </View>
-            <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem} onPress={signOutContext}>
-            <View style={styles.menuName}>
-              <Icon
-                style={styles.icon}
-                name={'logout'}
-                size={20}
-                color={'#2B2D42'}
-              />
-              <Text style={styles.menuTitle}>Logout</Text>
-            </View>
-            <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
-          </TouchableOpacity>
-        </View>
-        {/* <View style={styles.profileMetaContainer}>
+        <View style={styles.profileMetaContainer}>
           <Text style={styles.heading}>UX Designer</Text>
           <Text style={styles.content}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -174,21 +92,13 @@ const UserProfile = ({navigation, user}) => {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </Text>
-        </View> */}
-        <Text
-          style={{
-            textAlign: 'center',
-            marginTop: 30,
-            fontSize: 12,
-          }}>
-          Thrival © 2020
-        </Text>
-      </View>
+        </View>
+      </ScrollView>
     </>
   );
 };
-UserProfile.propTypes = {
+Resume.propTypes = {
   navigation: PropTypes.objectOf(PropTypes.func),
 };
 
-export default UserProfile;
+export default Resume;

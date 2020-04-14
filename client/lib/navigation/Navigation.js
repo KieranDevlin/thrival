@@ -15,7 +15,10 @@ import ContactUsScreen from '../screens/ContactUs';
 import PrivacyPolicyScreen from '../screens/PrivacyPolicy';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import NotificationScreen from '../screens/Notification';
+import ResumeScreen from '../screens/Resume';
+import SavedJobsScreen from '../screens/SavedJobs';
+import ManageAccountScreen from '../screens/ManageAccount';
+
 import {View} from 'react-native';
 
 const JobboardStack = createStackNavigator();
@@ -146,7 +149,44 @@ const UserProfileStackScreens = () => {
           title: 'My Applications',
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
-            opacity: 0,
+            fontFamily: 'Raleway-Regular',
+            transform: [{translateY: -2}],
+          },
+        }}
+      />
+      <UserProfileStack.Screen
+        name="Resume"
+        component={ResumeScreen}
+        options={{
+          title: 'My Resume',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
+            transform: [{translateY: -2}],
+          },
+        }}
+      />
+      <UserProfileStack.Screen
+        name="Saved Jobs"
+        component={SavedJobsScreen}
+        options={{
+          title: 'Saved Jobs',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
+            transform: [{translateY: -2}],
+          },
+        }}
+      />
+      <UserProfileStack.Screen
+        name="Manage Account"
+        component={ManageAccountScreen}
+        options={{
+          title: 'Manage Account',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
+            transform: [{translateY: -2}],
           },
         }}
       />
