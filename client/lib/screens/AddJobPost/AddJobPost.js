@@ -22,6 +22,12 @@ const AddJobPost = () => {
           style={styles.field}
         />
         <TextInput
+          placeholder="Enter the rate of pay"
+          selectionColor="#ED9421"
+          placeholderTextColor="#e3e3e3"
+          style={styles.field}
+        />
+        <TextInput
           placeholder="Enter the disciplines"
           selectionColor="#ED9421"
           placeholderTextColor="#e3e3e3"
