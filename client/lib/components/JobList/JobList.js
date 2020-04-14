@@ -21,7 +21,7 @@ const JobList = ({navigation, faveIds}) =>
       </ScrollView>
     ) : (
       <View style={styles.noFaves}>
-        <Text>You dont have any favourite jobs!</Text>
+        <Text>You dont have any saved opportunities!</Text>
       </View>
     )
   ) : (

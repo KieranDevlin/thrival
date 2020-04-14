@@ -67,7 +67,7 @@ const JobListItem = ({job, navigation}) => {
                 }}>
                 <Icon
                   style={styles.icon}
-                  name="heart"
+                  name="star"
                   size={30}
                   color="#11185B"
                 />
@@ -79,7 +79,7 @@ const JobListItem = ({job, navigation}) => {
                 }}>
                 <Icon
                   style={styles.icon}
-                  name="heart-outline"
+                  name="star-outline"
                   size={30}
                   color="#11185B"
                 />

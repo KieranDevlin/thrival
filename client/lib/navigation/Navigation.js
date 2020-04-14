@@ -10,6 +10,7 @@ import {sharedScreenOptions} from './config';
 import {backOnlyOptions} from './config';
 import SearchScreen from '../screens/Search';
 import SettingsScreen from '../screens/Settings';
+import SavedJobs from '../screens/SavedJobs';
 import AboutUsScreen from '../screens/AboutUs';
 import ContactUsScreen from '../screens/ContactUs';
 import PrivacyPolicyScreen from '../screens/PrivacyPolicy';
@@ -22,10 +23,10 @@ const JobboardStack = createStackNavigator();
 const JobboardStackScreens = () => {
   return (
     <JobboardStack.Navigator
-      initialRouteName="Jobboard"
+      initialRouteName="Opportunities"
       screenOptions={sharedScreenOptions}>
       <JobboardStack.Screen
-        name="JobBoard"
+        name="Opportunities"
         component={JobboardScreen}
         options={{
           headerTintColor: '#FFFFFF',
@@ -35,7 +36,7 @@ const JobboardStackScreens = () => {
         }}
       />
       <JobboardStack.Screen
-        name="Job"
+        name="Opportunity"
         component={JobScreen}
         options={{
           headerTintColor: '#FBF7EF',
@@ -102,6 +103,16 @@ const UserProfileStackScreens = () => {
       <UserProfileStack.Screen
         name="Settings"
         component={SettingsScreen}
+        options={{
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: '400',
+          },
+        }}
+      />
+      <UserProfileStack.Screen
+        name="Saved Opportunities"
+        component={SavedJobs}
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {

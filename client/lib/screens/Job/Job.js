@@ -32,7 +32,7 @@ const Job = ({job, faveIds, addFave, removeFave}) => {
                 }}>
                 <Icon
                   style={styles.icon}
-                  name="heart"
+                  name="star"
                   size={32}
                   color="#ED9421"
                 />
@@ -44,7 +44,7 @@ const Job = ({job, faveIds, addFave, removeFave}) => {
                 }}>
                 <Icon
                   style={styles.icon}
-                  name="heart-outline"
+                  name="star-outline"
                   size={32}
                   color="#ED9421"
                 />
