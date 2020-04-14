@@ -9,21 +9,7 @@ import PropTypes from 'prop-types';
 export default class SavedJobsContainer extends Component {
   render() {
     return (
-      <FavesContext.Consumer>
-        {(value) =>
-          value.faveIds.length > 0 ? (
-            <Faves
-              navigation={this.props.navigation}
-              route={this.props.route}
-              faveIds={value.faveIds}
-            />
-          ) : (
-            <View style={styles.noFaves}>
-              <CustomText>No Jobs Saved Yet</CustomText>
-            </View>
-          )
-        }
-      </FavesContext.Consumer>
+      <SavedJobs navigation={this.props.navigation} route={this.props.route} />
     );
   }
 }

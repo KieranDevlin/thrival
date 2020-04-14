@@ -1,10 +1,13 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
+import {FavesContext} from '../../context/FavesContext';
+import Text from '../../components/CustomText';
+import JobList from '../../components/JobList';
 
-const SavedJobs = ({route, navigation, faveIds}) => {
-  return <View style={styles.container}></View>;
+const SavedJobs = ({route, navigation}) => {
+  return <></>;
 };
 SavedJobs.propTypes = {
   route: PropTypes.object,
