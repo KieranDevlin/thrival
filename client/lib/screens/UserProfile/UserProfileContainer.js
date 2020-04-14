@@ -7,6 +7,7 @@ import styles from './styles';
 import Loader from '../../components/Loader';
 import {UserContext} from '../../context/UserContext';
 import PropTypes from 'prop-types';
+import {AuthContext} from '../../context/AuthProvider';
 
 const ALL_USERS = gql`
   query Users {
@@ -18,9 +19,8 @@ export default class UserProfileContainer extends Component {
   render() {
     return (
       <UserContext.Consumer>
-        {({user}) => {
+        {(user) => {
           console.log(user);
-          const userid = user.id;
           // return (
           //   <Query
           //     query={ALL_USERS}
