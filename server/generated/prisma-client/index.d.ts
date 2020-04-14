@@ -315,8 +315,6 @@ export type JobPostOrderByInput =
 export type ApplicantOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "email_ASC"
-  | "email_DESC"
   | "linkedin_ASC"
   | "linkedin_DESC"
   | "github_ASC"
@@ -373,7 +371,6 @@ export interface EmployerUpsertWithoutJobpostingsInput {
 
 export type ApplicantWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
-  email?: Maybe<String>;
 }>;
 
 export interface JobPostUpdateManyWithWhereNestedInput {
@@ -396,20 +393,6 @@ export interface ApplicantWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
   linkedin?: Maybe<String>;
   linkedin_not?: Maybe<String>;
   linkedin_in?: Maybe<String[] | String>;
@@ -600,7 +583,6 @@ export interface JobPostSubscriptionWhereInput {
 }
 
 export interface ApplicantUpdateInput {
-  email?: Maybe<String>;
   linkedin?: Maybe<String>;
   github?: Maybe<String>;
   appliedJobs?: Maybe<JobPostUpdateManyWithoutViewedInput>;
@@ -1048,20 +1030,6 @@ export interface ApplicantScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
   linkedin?: Maybe<String>;
   linkedin_not?: Maybe<String>;
   linkedin_in?: Maybe<String[] | String>;
@@ -1163,7 +1131,6 @@ export interface ResumeUpsertWithWhereUniqueNestedInput {
 }
 
 export interface ApplicantUpdateDataInput {
-  email?: Maybe<String>;
   linkedin?: Maybe<String>;
   github?: Maybe<String>;
   appliedJobs?: Maybe<JobPostUpdateManyWithoutViewedInput>;
@@ -1402,7 +1369,6 @@ export type ResumeWhereUniqueInput = AtLeastOne<{
 }>;
 
 export interface ApplicantUpdateManyMutationInput {
-  email?: Maybe<String>;
   linkedin?: Maybe<String>;
   github?: Maybe<String>;
 }
@@ -1413,7 +1379,6 @@ export type UserWhereUniqueInput = AtLeastOne<{
 }>;
 
 export interface ApplicantUpdateWithoutAppliedJobsDataInput {
-  email?: Maybe<String>;
   linkedin?: Maybe<String>;
   github?: Maybe<String>;
   resume?: Maybe<ResumeUpdateManyInput>;
@@ -1430,7 +1395,6 @@ export interface ApplicantUpdateWithWhereUniqueWithoutAppliedJobsInput {
 
 export interface ApplicantCreateInput {
   id?: Maybe<ID_Input>;
-  email: String;
   linkedin: String;
   github: String;
   appliedJobs?: Maybe<JobPostCreateManyWithoutViewedInput>;
@@ -1549,14 +1513,12 @@ export interface ApplicantCreateManyWithoutAppliedJobsInput {
 }
 
 export interface ApplicantUpdateManyDataInput {
-  email?: Maybe<String>;
   linkedin?: Maybe<String>;
   github?: Maybe<String>;
 }
 
 export interface ApplicantCreateWithoutAppliedJobsInput {
   id?: Maybe<ID_Input>;
-  email: String;
   linkedin: String;
   github: String;
   resume?: Maybe<ResumeCreateManyInput>;
@@ -2124,41 +2086,86 @@ export interface UserNullablePromise
   applicantProfile: <T = ApplicantPromise>() => T;
 }
 
-export interface ResumePreviousValues {
+export interface Applicant {
   id: ID_Output;
-  fullname: String;
-  address: String;
-  email: String;
-  phone?: String;
-  experience: String;
-  education: String;
-  skills: String;
+  linkedin: String;
+  github: String;
 }
 
-export interface ResumePreviousValuesPromise
-  extends Promise<ResumePreviousValues>,
-    Fragmentable {
+export interface ApplicantPromise extends Promise<Applicant>, Fragmentable {
   id: () => Promise<ID_Output>;
-  fullname: () => Promise<String>;
-  address: () => Promise<String>;
-  email: () => Promise<String>;
-  phone: () => Promise<String>;
-  experience: () => Promise<String>;
-  education: () => Promise<String>;
-  skills: () => Promise<String>;
+  linkedin: () => Promise<String>;
+  github: () => Promise<String>;
+  appliedJobs: <T = FragmentableArray<JobPost>>(args?: {
+    where?: JobPostWhereInput;
+    orderBy?: JobPostOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  resume: <T = FragmentableArray<Resume>>(args?: {
+    where?: ResumeWhereInput;
+    orderBy?: ResumeOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
 }
 
-export interface ResumePreviousValuesSubscription
-  extends Promise<AsyncIterator<ResumePreviousValues>>,
+export interface ApplicantSubscription
+  extends Promise<AsyncIterator<Applicant>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  fullname: () => Promise<AsyncIterator<String>>;
-  address: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-  phone: () => Promise<AsyncIterator<String>>;
-  experience: () => Promise<AsyncIterator<String>>;
-  education: () => Promise<AsyncIterator<String>>;
-  skills: () => Promise<AsyncIterator<String>>;
+  linkedin: () => Promise<AsyncIterator<String>>;
+  github: () => Promise<AsyncIterator<String>>;
+  appliedJobs: <T = Promise<AsyncIterator<JobPostSubscription>>>(args?: {
+    where?: JobPostWhereInput;
+    orderBy?: JobPostOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  resume: <T = Promise<AsyncIterator<ResumeSubscription>>>(args?: {
+    where?: ResumeWhereInput;
+    orderBy?: ResumeOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface ApplicantNullablePromise
+  extends Promise<Applicant | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  linkedin: () => Promise<String>;
+  github: () => Promise<String>;
+  appliedJobs: <T = FragmentableArray<JobPost>>(args?: {
+    where?: JobPostWhereInput;
+    orderBy?: JobPostOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  resume: <T = FragmentableArray<Resume>>(args?: {
+    where?: ResumeWhereInput;
+    orderBy?: ResumeOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
 }
 
 export interface ResumeEdge {
@@ -2221,7 +2228,6 @@ export interface AggregateJobPostSubscription
 
 export interface ApplicantPreviousValues {
   id: ID_Output;
-  email: String;
   linkedin: String;
   github: String;
 }
@@ -2230,7 +2236,6 @@ export interface ApplicantPreviousValuesPromise
   extends Promise<ApplicantPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
   linkedin: () => Promise<String>;
   github: () => Promise<String>;
 }
@@ -2239,7 +2244,6 @@ export interface ApplicantPreviousValuesSubscription
   extends Promise<AsyncIterator<ApplicantPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  email: () => Promise<AsyncIterator<String>>;
   linkedin: () => Promise<AsyncIterator<String>>;
   github: () => Promise<AsyncIterator<String>>;
 }
@@ -2661,90 +2665,41 @@ export interface ResumeConnectionSubscription
   aggregate: <T = AggregateResumeSubscription>() => T;
 }
 
-export interface Applicant {
+export interface ResumePreviousValues {
   id: ID_Output;
+  fullname: String;
+  address: String;
   email: String;
-  linkedin: String;
-  github: String;
+  phone?: String;
+  experience: String;
+  education: String;
+  skills: String;
 }
 
-export interface ApplicantPromise extends Promise<Applicant>, Fragmentable {
+export interface ResumePreviousValuesPromise
+  extends Promise<ResumePreviousValues>,
+    Fragmentable {
   id: () => Promise<ID_Output>;
+  fullname: () => Promise<String>;
+  address: () => Promise<String>;
   email: () => Promise<String>;
-  linkedin: () => Promise<String>;
-  github: () => Promise<String>;
-  appliedJobs: <T = FragmentableArray<JobPost>>(args?: {
-    where?: JobPostWhereInput;
-    orderBy?: JobPostOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  resume: <T = FragmentableArray<Resume>>(args?: {
-    where?: ResumeWhereInput;
-    orderBy?: ResumeOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
+  phone: () => Promise<String>;
+  experience: () => Promise<String>;
+  education: () => Promise<String>;
+  skills: () => Promise<String>;
 }
 
-export interface ApplicantSubscription
-  extends Promise<AsyncIterator<Applicant>>,
+export interface ResumePreviousValuesSubscription
+  extends Promise<AsyncIterator<ResumePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  fullname: () => Promise<AsyncIterator<String>>;
+  address: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
-  linkedin: () => Promise<AsyncIterator<String>>;
-  github: () => Promise<AsyncIterator<String>>;
-  appliedJobs: <T = Promise<AsyncIterator<JobPostSubscription>>>(args?: {
-    where?: JobPostWhereInput;
-    orderBy?: JobPostOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  resume: <T = Promise<AsyncIterator<ResumeSubscription>>>(args?: {
-    where?: ResumeWhereInput;
-    orderBy?: ResumeOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface ApplicantNullablePromise
-  extends Promise<Applicant | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
-  linkedin: () => Promise<String>;
-  github: () => Promise<String>;
-  appliedJobs: <T = FragmentableArray<JobPost>>(args?: {
-    where?: JobPostWhereInput;
-    orderBy?: JobPostOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  resume: <T = FragmentableArray<Resume>>(args?: {
-    where?: ResumeWhereInput;
-    orderBy?: ResumeOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
+  phone: () => Promise<AsyncIterator<String>>;
+  experience: () => Promise<AsyncIterator<String>>;
+  education: () => Promise<AsyncIterator<String>>;
+  skills: () => Promise<AsyncIterator<String>>;
 }
 
 /*
