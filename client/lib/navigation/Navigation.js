@@ -98,6 +98,7 @@ const UserProfileStackScreens = () => {
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
             fontWeight: '400',
           },
         }}
@@ -108,6 +109,7 @@ const UserProfileStackScreens = () => {
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
             fontWeight: '400',
           },
         }}
@@ -118,6 +120,7 @@ const UserProfileStackScreens = () => {
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
             fontWeight: '400',
           },
         }}
@@ -128,6 +131,7 @@ const UserProfileStackScreens = () => {
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
             fontWeight: '400',
           },
         }}
@@ -138,6 +142,7 @@ const UserProfileStackScreens = () => {
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
             fontWeight: '400',
           },
         }}
@@ -151,6 +156,7 @@ const UserProfileStackScreens = () => {
           headerTitleStyle: {
             fontFamily: 'Raleway-Regular',
             transform: [{translateY: -2}],
+            fontWeight: '400',
           },
         }}
       />
@@ -163,6 +169,7 @@ const UserProfileStackScreens = () => {
           headerTitleStyle: {
             fontFamily: 'Raleway-Regular',
             transform: [{translateY: -2}],
+            fontWeight: '400',
           },
         }}
       />
@@ -175,6 +182,7 @@ const UserProfileStackScreens = () => {
           headerTitleStyle: {
             fontFamily: 'Raleway-Regular',
             transform: [{translateY: -2}],
+            fontWeight: '400',
           },
         }}
       />
@@ -187,6 +195,7 @@ const UserProfileStackScreens = () => {
           headerTitleStyle: {
             fontFamily: 'Raleway-Regular',
             transform: [{translateY: -2}],
+            fontWeight: '400',
           },
         }}
       />
@@ -305,28 +314,28 @@ export const BottomTabNavScreens = () => (
               />
             </>
           );
-        } else if (route.name === 'Application') {
-          return (
-            <>
-              {focused ? (
-                <View
-                  style={{
-                    width: 40,
-                    height: 3,
-                    backgroundColor: '#FFFFFF',
-                    borderRadius: 15,
-                    alignSelf: 'center',
-                    transform: [{translateY: 8}],
-                  }}></View>
-              ) : null}
-              <Icon
-                name="file-document-edit"
-                color={'#FFFFFF'}
-                size={30}
-                style={{transform: [{translateY: 12}]}}
-              />
-            </>
-          );
+          // } else if (route.name === 'Application') {
+          //   return (
+          //     <>
+          //       {focused ? (
+          //         <View
+          //           style={{
+          //             width: 40,
+          //             height: 3,
+          //             backgroundColor: '#FFFFFF',
+          //             borderRadius: 15,
+          //             alignSelf: 'center',
+          //             transform: [{translateY: 8}],
+          //           }}></View>
+          //       ) : null}
+          //       <Icon
+          //         name="file-document-edit"
+          //         color={'#FFFFFF'}
+          //         size={30}
+          //         style={{transform: [{translateY: 12}]}}
+          //       />
+          //     </>
+          //   );
         } else if (route.name === 'Calendar') {
           return (
             <>
@@ -386,10 +395,10 @@ export const BottomTabNavScreens = () => (
     <BottomTabNav.Screen name="Jobboard" component={JobboardStackScreens} />
     <BottomTabNav.Screen name="Calendar" component={CalendarStackScreens} />
     {/* <BottomTabNav.Screen name="Search" component={SearchStackScreens} /> */}
-    <BottomTabNav.Screen
+    {/* <BottomTabNav.Screen
       name="Application"
       component={ApplicationStackScreens}
-    />
+    /> */}
     <BottomTabNav.Screen name="Profile" component={UserProfileStackScreens} />
   </BottomTabNav.Navigator>
 );

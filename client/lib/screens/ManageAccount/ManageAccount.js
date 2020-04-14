@@ -3,16 +3,15 @@ import {View, Text} from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
 
-const ManageAccount = ({route, navigation, faveIds}) => {
+const ManageAccount = ({route, navigation}) => {
   return (
     <View style={styles.container}>
-      <Text>Manage Account</Text>
+      <Text>Email</Text>
     </View>
   );
 };
 ManageAccount.propTypes = {
   route: PropTypes.object,
   navigation: PropTypes.object,
-  faveIds: PropTypes.array,
 };
 export default ManageAccount;

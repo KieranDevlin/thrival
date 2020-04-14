@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {ScrollView} from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
 import Text from '../../components/CustomText/CustomText';
@@ -7,9 +7,9 @@ import ApplicationList from '../../components/ApplicationList';
 
 const Application = ({application, route, navigation}) => {
   return (
-    <View style={styles.main}>
+    <ScrollView style={styles.main}>
       <ApplicationList />
-    </View>
+    </ScrollView>
   );
 };
 Application.propTypes = {

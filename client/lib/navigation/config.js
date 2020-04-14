@@ -11,16 +11,22 @@ const GradientHeader = (props) => {
   return (
     <View
       style={{
-        backgroundColor: 'white',
+        backgroundColor: '#FFFFFF',
         overflow: 'hidden',
-        borderBottomRightRadius: 20,
-        borderBottomLeftRadius: 20,
       }}>
       <LinearGradient
         colors={['#11185B', '#000000']}
         start={{x: 0.1, y: 0.0}}
         end={{x: 0.1, y: 2.5}}
-        style={[StyleSheet.absoluteFill, {height: '100%', width: '100%'}]}
+        style={[
+          StyleSheet.absoluteFill,
+          {
+            height: '100%',
+            width: '100%',
+            borderBottomRightRadius: 20,
+            borderBottomLeftRadius: 20,
+          },
+        ]}
       />
       <Header {...props} />
     </View>
@@ -60,10 +66,11 @@ const BackButton = ({navigation}) => {
     <Icon
       style={{
         marginLeft: 5,
+        transform: [{scaleY: 1.2}],
       }}
       name="chevron-left"
       color="white"
-      size={30}
+      size={25}
       onPress={() => navigation.goBack()}
     />
   );

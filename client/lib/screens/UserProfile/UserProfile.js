@@ -47,7 +47,7 @@ const UserProfile = ({navigation, user}) => {
             <View style={styles.menuName}>
               <Icon
                 style={styles.icon}
-                name={'heart'}
+                name={'star'}
                 size={20}
                 color={'#2B2D42'}
               />
