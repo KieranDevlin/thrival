@@ -3,33 +3,43 @@ import {StyleSheet, Dimensions} from 'react-native';
 const styles = StyleSheet.create({
   scroll: {
     width: Dimensions.get('window').width,
-    height: '100%',
     alignItems: 'center',
-  },
-  logo: {
-    height: '25%',
-    width: '100%',
+    paddingBottom: 20,
   },
   jobPosting: {
-    width: '90%',
+    width: '85%',
   },
-  h1: {
-    fontWeight: 'bold',
-    fontSize: 32,
+  header: {
+    paddingVertical: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
-  h2: {
-    fontSize: 22,
+  logo: {
+    height: Dimensions.get('window').width * 0.3,
+    width: Dimensions.get('window').width * 0.3,
   },
   infoContainer: {
-    marginVertical: 18,
+    width: Dimensions.get('window').width * 0.5,
+    justifyContent: 'space-between',
   },
-  info: {
+  h1: {
+    fontSize: 16,
+    fontWeight: '400',
+  },
+  h2: {
+    fontSize: 16,
+    fontWeight: '400',
+    marginVertical: 20,
+  },
+  main: {},
+  cta: {
+    marginVertical: 18,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  desc: {
-    marginVertical: 18,
+  button: {
+    width: Dimensions.get('window').width * 0.4,
   },
 });
 export default styles;

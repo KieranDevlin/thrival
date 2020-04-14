@@ -41,11 +41,15 @@ const UserProfile = ({navigation, user}) => {
           </View>
         </View>
         <View style={styles.profileMenu}>
-          <TouchableOpacity style={[styles.menuItem, styles.borderTop]}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Saved Opportunities');
+            }}
+            style={[styles.menuItem, styles.borderTop]}>
             <View style={styles.menuName}>
               <Icon
                 style={styles.icon}
-                name={'heart'}
+                name={'star'}
                 size={20}
                 color={'#2B2D42'}
               />

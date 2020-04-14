@@ -7,14 +7,14 @@ import JobList from '../../components/JobList/JobList';
 import styles from './styles';
 import {FavesContext} from '../../context/FavesContext';
 
-const Jobboard = ({navigation, route}) => {
+const SavedJobs = ({navigation, route}) => {
   return (
     <FavesContext.Consumer>
       {(value) => (
         <>
           <View style={styles.container}>
-            <Text style={styles.h1}>Latest Opportunities</Text>
-            <JobList navigation={navigation} />
+            <Text style={styles.h1}>Saved Opportunities</Text>
+            <JobList navigation={navigation} faveIds={value.faveIds} />
           </View>
           <TouchableOpacity
             style={styles.attribution}
@@ -29,8 +29,8 @@ const Jobboard = ({navigation, route}) => {
   );
 };
 
-Jobboard.propTypes = {
+SavedJobs.propTypes = {
   navigation: PropTypes.object,
   route: PropTypes.object,
 };
-export default Jobboard;
+export default SavedJobs;
