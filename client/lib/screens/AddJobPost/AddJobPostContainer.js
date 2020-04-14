@@ -18,17 +18,19 @@ const UPDATE_JOBPOSTS = gql`
         discipline
         totalRoles
         rate
+        description
       }
     }
   }
 `;
 
 const AddJobPostContainer = () => {
-  const [industry, setIndustry] = useState();
-  const [location, setLocation] = useState();
-  const [discipline, setDiscipline] = useState();
-  const [totalRoles, setTotalRoles] = useState();
-  const [rate, setRate] = useState();
+  const [industry, setIndustry] = useState('No Industry');
+  const [location, setLocation] = useState('Remote');
+  const [discipline, setDiscipline] = useState('No Discipline');
+  const [totalRoles, setTotalRoles] = useState(1);
+  const [rate, setRate] = useState(0);
+  const [description, setDescription] = useState('No description');
   return (
     <Mutation
       mutation={UPDATE_JOBPOSTS}
@@ -45,6 +47,7 @@ const AddJobPostContainer = () => {
               },
               totalRoles,
               rate,
+              description,
             },
           },
         },
@@ -58,7 +61,14 @@ const AddJobPostContainer = () => {
             setLocation={setLocation}
             setDiscipline={setDiscipline}
             setTotalRoles={setTotalRoles}
+            setDescription={setDescription}
             setRate={setRate}
+            industry={industry}
+            location={location}
+            discipline={discipline}
+            totalRoles={totalRoles}
+            description={description}
+            rate={rate}
           />
         );
       }}
