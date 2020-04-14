@@ -6,13 +6,19 @@ import {TouchableOpacity, Linking, View, Image, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Job = ({job, faveIds, addFave, removeFave}) => {
+  const getDomain = (link) => {
+    let domain;
+    if (link.indexOf('://') > -1) {
+      domain = link.slice(link.indexOf('://') + 3, -1);
+    }
+    return domain.slice(0, domain.indexOf('/'));
+  };
   return (
     <ScrollView contentContainerStyle={styles.scroll}>
       <Image
         style={styles.logo}
         source={{
-          uri:
-            'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80',
+          uri: `https://logo.clearbit.com/${getDomain(job.contact.link)}`,
         }}
       />
       <View style={styles.jobPosting}>
