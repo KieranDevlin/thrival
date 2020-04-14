@@ -63,6 +63,7 @@ const AuthProvider = (props) => {
         const {user, token} = data;
         try {
           await AsyncStorage.setItem('userToken', token);
+          await AsyncStorage.setItem('user', JSON.stringify(user));
         } catch (e) {
           throw new Error(e);
         }
@@ -70,12 +71,14 @@ const AuthProvider = (props) => {
           type: 'SIGN_IN',
           token,
         });
+        console.log('user:', user);
       },
       signOutContext: () => dispatch({type: 'SIGN_OUT'}),
       signUpContext: async (data) => {
         const {user, token} = data;
         try {
           await AsyncStorage.setItem('userToken', token);
+          await AsyncStorage.setItem('user', JSON.stringify(user));
         } catch (e) {
           throw new Error(e);
         }
