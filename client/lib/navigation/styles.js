@@ -13,25 +13,32 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
-  menu: {
-    backgroundColor: '#FFFFFF',
-    paddingRight: 30,
-    paddingLeft: 30,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
+  iconContainer: {
+    flexDirection: 'row',
+    marginRight: 20,
+    marginBottom: 20,
   },
-  border: {
-    borderBottomColor: '#000000',
-    borderBottomWidth: 2,
+  icon: {
+    marginLeft: 10,
+  },
+  menu: {
+    paddingBottom: 10,
+    paddingLeft: 30,
   },
   menuItem: {
-    textAlign: 'right',
-    color: '#FBF7EF',
-    fontSize: 18,
-    fontFamily: 'Raleway-Bold',
-    borderBottomWidth: 5,
+    textAlign: 'left',
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontFamily: 'Raleway-Regular',
     paddingTop: 15,
     paddingBottom: 15,
+  },
+  menuItemContainer: {
+    flexDirection: 'row',
+  },
+  menuIcon: {
+    marginRight: 20,
+    transform: [{translateY: 1}],
   },
 });
 

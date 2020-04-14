@@ -26,11 +26,12 @@ const UserProfile = ({navigation, user}) => {
 
   return (
     <>
-      <ScrollView style={styles.main}>
+      <View style={styles.main}>
         <View style={styles.profileContainer}>
           <View style={styles.nameContainer}>
             <Text style={styles.name}>{firstname}</Text>
             <Text style={styles.name}>{lastname}</Text>
+            <Text>UX Designer</Text>
           </View>
           <View style={styles.imageContainer}>
             <Image
@@ -39,7 +40,83 @@ const UserProfile = ({navigation, user}) => {
             />
           </View>
         </View>
-        <View style={styles.profileMetaContainer}>
+        <View style={styles.profileMenu}>
+          <TouchableOpacity style={[styles.menuItem, styles.borderTop]}>
+            <View style={styles.menuName}>
+              <Icon
+                style={styles.icon}
+                name={'heart'}
+                size={20}
+                color={'#2B2D42'}
+              />
+              <Text>Saved Jobs</Text>
+            </View>
+            <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItem}>
+            <View style={styles.menuName}>
+              <Icon
+                style={styles.icon}
+                name={'file-document-edit'}
+                size={20}
+                color={'#2B2D42'}
+              />
+              <Text>View My Resume</Text>
+            </View>
+            <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => navigation.navigate('Application')}>
+            <View style={styles.menuName}>
+              <Icon
+                style={styles.icon}
+                name={'file-multiple'}
+                size={20}
+                color={'#2B2D42'}
+              />
+              <Text>View My Applications</Text>
+            </View>
+            <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItem}>
+            <View style={styles.menuName}>
+              <Icon
+                style={styles.icon}
+                name={'account'}
+                size={20}
+                color={'#2B2D42'}
+              />
+              <Text>View My Profile</Text>
+            </View>
+            <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItem}>
+            <View style={styles.menuName}>
+              <Icon
+                style={styles.icon}
+                name={'settings'}
+                size={20}
+                color={'#2B2D42'}
+              />
+              <Text>Manage My Account</Text>
+            </View>
+            <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItem}>
+            <View style={styles.menuName}>
+              <Icon
+                style={styles.icon}
+                name={'logout'}
+                size={20}
+                color={'#2B2D42'}
+              />
+              <Text>Logout</Text>
+            </View>
+            <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
+          </TouchableOpacity>
+        </View>
+        {/* <View style={styles.profileMetaContainer}>
           <Text style={styles.heading}>UX Designer</Text>
           <Text style={styles.content}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -91,19 +168,16 @@ const UserProfile = ({navigation, user}) => {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </Text>
-        </View>
-        <Text style={{color: '#FFFFFF'}}>email@email.com</Text>
-        <Text>My Resumes</Text>
-        <TouchableOpacity
+        </View> */}
+        <Text
           style={{
-            borderWidth: 2,
-            borderRadius: 5,
-            width: 100,
-          }}
-          onPress={signOutContext}>
-          <Text>Logout</Text>
-        </TouchableOpacity>
-      </ScrollView>
+            textAlign: 'center',
+            marginTop: 30,
+            fontSize: 12,
+          }}>
+          Thrival © 2020
+        </Text>
+      </View>
     </>
   );
 };

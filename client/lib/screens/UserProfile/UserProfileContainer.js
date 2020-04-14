@@ -8,46 +8,40 @@ import Loader from '../../components/Loader';
 import {UserContext} from '../../context/UserContext';
 import PropTypes from 'prop-types';
 
-// const ALL_USERS = gql`
-//   query user($UserWhereUniqueInput: UserWhereUniqueInput!) {
-//     user(where: $UserWhereUniqueInput) {
-//       id
-//       email
-//       name
-//       ownedTickets {
-//         id
-//         title
-//         description
-//       }
-//     }
-//   }
-// `;
+const ALL_USERS = gql`
+  query Users {
+    id
+    name
+  }
+`;
 export default class UserProfileContainer extends Component {
   render() {
-    // return (
-    // <UserContext.Consumer>
-    // {({user}) => {
-    // const userid = user.id;
-    // return (
-    // <Query
-    // query={ALL_USERS}
-    // variables={{UserWhereUniqueInput: {id: userid}}}>
-    // {({data, loading, error}) => {
-    // if (loading) return <Loader />;
-    // if (error) return <Text>Error :(</Text>;
     return (
-      <UserProfile
-        navigation={this.props.navigation}
-        // user={data.user}
-        style={styles.container}
-      />
+      <UserContext.Consumer>
+        {({user}) => {
+          // console.log(user);
+          const userid = user.id;
+          return (
+            <Query
+              query={ALL_USERS}
+              variables={{UserWhereUniqueInput: {id: userid}}}>
+              {({data, loading, error}) => {
+                if (loading) return <Loader />;
+                if (error) return <Text>Error :(</Text>;
+                console.log(data);
+                return (
+                  <UserProfile
+                    navigation={this.props.navigation}
+                    // user={data.user}
+                    style={styles.container}
+                  />
+                );
+              }}
+            </Query>
+          );
+        }}
+      </UserContext.Consumer>
     );
-    // }}
-    // </Query>
-    // );
-    // }}
-    // </UserContext.Consumer>
-    // );
   }
 }
 UserProfileContainer.propTypes = {
