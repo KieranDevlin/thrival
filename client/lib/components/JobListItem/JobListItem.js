@@ -69,7 +69,7 @@ const JobListItem = ({job, navigation}) => {
                   style={styles.icon}
                   name="star"
                   size={30}
-                  color="#11185B"
+                  color="#5877DD"
                 />
               </TouchableOpacity>
             ) : (
@@ -81,7 +81,7 @@ const JobListItem = ({job, navigation}) => {
                   style={styles.icon}
                   name="star-outline"
                   size={30}
-                  color="#11185B"
+                  color="#5877DD"
                 />
               </TouchableOpacity>
             )}
