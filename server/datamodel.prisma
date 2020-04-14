@@ -5,7 +5,7 @@ type User {
   password: String!
   employerProfile: Employer
   applicantProfile: Applicant 
-  profileImage: String @default(value)
+  profileImage: String @default(value:"https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png")
 }
 type JobPost {
   id: ID! @id
@@ -45,7 +45,7 @@ type Resume {
   address: String!
   email: String!
   phone: String
-  experience: [String!]
-  education: [String!
+  experience: [String!] @scalarList(strategy:RELATION)
+  education: [String!] @scalarList(strategy:RELATION)
   skills: String!
 }
