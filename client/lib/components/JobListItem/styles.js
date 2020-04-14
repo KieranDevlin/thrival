@@ -9,15 +9,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     justifyContent: 'space-between',
     backgroundColor: '#fff',
-    shadowColor: '#8D99AE',
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.32,
-    shadowRadius: 5.46,
-
-    elevation: 9,
+    borderColor: '#D2D9E5',
   },
   cardHeader: {
     height: '45%',
