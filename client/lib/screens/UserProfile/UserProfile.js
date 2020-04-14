@@ -53,7 +53,7 @@ const UserProfile = ({navigation, user}) => {
                 size={20}
                 color={'#2B2D42'}
               />
-              <Text style={styles.menuTitle}>Saved Jobs</Text>
+              <Text style={styles.menuTitle}>Saved Opportunities</Text>
             </View>
             <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
           </TouchableOpacity>
