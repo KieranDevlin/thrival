@@ -25,7 +25,6 @@ const Job = ({job, faveIds, addFave, removeFave}) => {
     }
     return domain.slice(0, domain.indexOf('/'));
   };
-  console.log(job);
   return (
     <ScrollView contentContainerStyle={styles.scroll}>
       <View style={styles.jobPosting}>
