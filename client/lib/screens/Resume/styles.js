@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     paddingLeft: 30,
     paddingRight: 30,
-    justifyContent: 'space-around',
   },
   profileContainer: {
     justifyContent: 'space-between',

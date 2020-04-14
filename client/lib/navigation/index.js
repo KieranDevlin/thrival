@@ -39,10 +39,6 @@ const RootStackScreens = () => {
           ) : (
             <>
               <RootStack.Screen name="Main" component={BottomTabNavScreens} />
-              <RootStack.Screen
-                name="Notification"
-                component={NotificationModal}
-              />
               <RootStack.Screen name="Settings" component={SettingsModal} />
               <RootStack.Screen name="About Us" component={AboutUsModal} />
               <RootStack.Screen name="Contact Us" component={ContactUsModal} />

@@ -7,10 +7,10 @@ import {SearchBar} from 'react-native-elements';
 import PropTypes from 'prop-types';
 
 const Search = ({events, speakers, navigation}) => {
-  // const [search, setSearch] = useState(null);
-  // const updateSearch = (search) => {
-  //   search === '' ? setSearch(null) : setSearch(search.toLowerCase());
-  // };
+  const [search, setSearch] = useState(null);
+  const updateSearch = (search) => {
+    search === '' ? setSearch(null) : setSearch(search.toLowerCase());
+  };
 
   // //events
   // const eventResults = events.filter((event) =>
@@ -35,10 +35,10 @@ const Search = ({events, speakers, navigation}) => {
           autoCompleteType="name"
           searchIcon={null}
           clearIcon={{
-            color: '#FBF7EF',
+            color: '#2B2D42',
           }}
           containerStyle={{
-            backgroundColor: '#000000',
+            backgroundColor: '#FFFFFF',
             borderTopWidth: 0,
             borderBottomWidth: 0,
             padding: 0,
@@ -49,15 +49,17 @@ const Search = ({events, speakers, navigation}) => {
           }}
           inputContainerStyle={{
             backgroundColor: '#FFFFFF',
-            borderRadius: 10,
+            borderRadius: 5,
             width: '90%',
             margin: 0,
+            borderWidth: 2,
+            borderColor: '#D2D9E5',
           }}
           inputStyle={{
-            color: '#FBF7EF',
+            color: '#2B2D42',
             fontSize: 15,
           }}
-          placeholderTextColor="#FBF7EF"
+          placeholderTextColor="#2B2D42"
         />
       </View>
     </View>

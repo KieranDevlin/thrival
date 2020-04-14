@@ -14,9 +14,12 @@ import SavedJobs from '../screens/SavedJobs';
 import AboutUsScreen from '../screens/AboutUs';
 import ContactUsScreen from '../screens/ContactUs';
 import PrivacyPolicyScreen from '../screens/PrivacyPolicy';
+import NotificationScreen from '../screens/Notification';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import NotificationScreen from '../screens/Notification';
+import ResumeScreen from '../screens/Resume';
+import SavedJobsScreen from '../screens/SavedJobs';
+import ManageAccountScreen from '../screens/ManageAccount';
 import {View} from 'react-native';
 
 const JobboardStack = createStackNavigator();
@@ -40,29 +43,34 @@ const JobboardStackScreens = () => {
         component={JobScreen}
         options={{
           headerTintColor: '#FBF7EF',
+          headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
+            fontWeight: '400',
+          },
         }}
       />
     </JobboardStack.Navigator>
   );
 };
-const ApplicationStack = createStackNavigator();
-const ApplicationStackScreens = () => {
+const SearchStack = createStackNavigator();
+const SearchStackScreens = () => {
   return (
-    <ApplicationStack.Navigator
-      initialRouteName="Application"
+    <SearchStack.Navigator
+      initialRouteName="Search"
       screenOptions={sharedScreenOptions}>
-      <ApplicationStack.Screen
-        name="Application"
-        component={ApplicationScreen}
+      <SearchStack.Screen
+        name="Search"
+        component={SearchScreen}
         options={{
-          title: 'My Applications',
+          title: 'Search',
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
-            opacity: 0,
+            fontFamily: 'Raleway-Regular',
+            fontWeight: '400',
           },
         }}
       />
-    </ApplicationStack.Navigator>
+    </SearchStack.Navigator>
   );
 };
 const CalendarStack = createStackNavigator();
@@ -77,7 +85,8 @@ const CalendarStackScreens = () => {
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
-            opacity: 0,
+            fontFamily: 'Raleway-Regular',
+            fontWeight: '400',
           },
         }}
       />
@@ -96,6 +105,7 @@ const UserProfileStackScreens = () => {
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
             fontWeight: '400',
           },
         }}
@@ -106,6 +116,7 @@ const UserProfileStackScreens = () => {
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
             fontWeight: '400',
           },
         }}
@@ -116,7 +127,8 @@ const UserProfileStackScreens = () => {
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
-            opacity: 0,
+            fontFamily: 'Raleway-Regular',
+            fontWeight: '400',
           },
         }}
       />
@@ -126,6 +138,7 @@ const UserProfileStackScreens = () => {
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
             fontWeight: '400',
           },
         }}
@@ -136,6 +149,7 @@ const UserProfileStackScreens = () => {
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
             fontWeight: '400',
           },
         }}
@@ -146,6 +160,7 @@ const UserProfileStackScreens = () => {
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
             fontWeight: '400',
           },
         }}
@@ -157,32 +172,74 @@ const UserProfileStackScreens = () => {
           title: 'My Applications',
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
-            opacity: 0,
+            fontFamily: 'Raleway-Regular',
+            transform: [{translateY: -2}],
+            fontWeight: '400',
+          },
+        }}
+      />
+      <UserProfileStack.Screen
+        name="Resume"
+        component={ResumeScreen}
+        options={{
+          title: 'My Resume',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
+            transform: [{translateY: -2}],
+            fontWeight: '400',
+          },
+        }}
+      />
+      <UserProfileStack.Screen
+        name="Saved Jobs"
+        component={SavedJobsScreen}
+        options={{
+          title: 'Saved Jobs',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
+            transform: [{translateY: -2}],
+            fontWeight: '400',
+          },
+        }}
+      />
+      <UserProfileStack.Screen
+        name="Manage Account"
+        component={ManageAccountScreen}
+        options={{
+          title: 'Manage Account',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
+            transform: [{translateY: -2}],
+            fontWeight: '400',
           },
         }}
       />
     </UserProfileStack.Navigator>
   );
 };
-// const SearchStack = createStackNavigator();
-// const SearchStackScreens = () => {
-//   return (
-//     <SearchStack.Navigator
-//       initialRouteName="Search"
-//       screenOptions={sharedScreenOptions}>
-//       <SearchStack.Screen
-//         name="Search"
-//         component={SearchScreen}
-//         options={{
-//           headerTintColor: '#FFFFFF',
-//           headerTitleStyle: {
-//             fontWeight: '400',
-//           },
-//         }}
-//       />
-//     </SearchStack.Navigator>
-//   );
-// };
+const NotificationStack = createStackNavigator();
+const NotificationStackScreens = () => {
+  return (
+    <NotificationStack.Navigator
+      initialRouteName="Notification"
+      screenOptions={sharedScreenOptions}>
+      <NotificationStack.Screen
+        name="Notification"
+        component={NotificationScreen}
+        options={{
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
+            fontWeight: '400',
+          },
+        }}
+      />
+    </NotificationStack.Navigator>
+  );
+};
 
 const SettingsStack = createStackNavigator();
 const SettingsStackScreens = () => {
@@ -276,7 +333,7 @@ export const BottomTabNavScreens = () => (
               />
             </>
           );
-        } else if (route.name === 'Application') {
+        } else if (route.name === 'Search') {
           return (
             <>
               {focused ? (
@@ -291,7 +348,7 @@ export const BottomTabNavScreens = () => (
                   }}></View>
               ) : null}
               <Icon
-                name="file-document-edit"
+                name="magnify"
                 color={'#FFFFFF'}
                 size={30}
                 style={{transform: [{translateY: 12}]}}
@@ -320,6 +377,28 @@ export const BottomTabNavScreens = () => (
               />
             </>
           );
+        } else if (route.name === 'Notification') {
+          return (
+            <>
+              {focused ? (
+                <View
+                  style={{
+                    width: 40,
+                    height: 3,
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: 15,
+                    alignSelf: 'center',
+                    transform: [{translateY: 8}],
+                  }}></View>
+              ) : null}
+              <Icon
+                name="bell"
+                color={'#FFFFFF'}
+                size={30}
+                style={{transform: [{translateY: 12}]}}
+              />
+            </>
+          );
         } else if (route.name === 'Profile') {
           return (
             <>
@@ -342,15 +421,6 @@ export const BottomTabNavScreens = () => (
               />
             </>
           );
-        } else if (route.name === 'Search') {
-          return (
-            <Icon
-              name="magnify"
-              color={focused ? '#5877DD' : '#FFFFFF'}
-              size={30}
-              style={{transform: [{translateY: 10}]}}
-            />
-          );
         }
       },
     })}>
@@ -358,11 +428,12 @@ export const BottomTabNavScreens = () => (
       name="Opportunities"
       component={JobboardStackScreens}
     />
+    <BottomTabNav.Screen name="Search" component={SearchStackScreens} />
+
     <BottomTabNav.Screen name="Calendar" component={CalendarStackScreens} />
-    {/* <BottomTabNav.Screen name="Search" component={SearchStackScreens} /> */}
     <BottomTabNav.Screen
-      name="Application"
-      component={ApplicationStackScreens}
+      name="Notification"
+      component={NotificationStackScreens}
     />
     <BottomTabNav.Screen name="Profile" component={UserProfileStackScreens} />
   </BottomTabNav.Navigator>

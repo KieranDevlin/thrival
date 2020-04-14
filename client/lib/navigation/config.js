@@ -11,65 +11,48 @@ const GradientHeader = (props) => {
   return (
     <View
       style={{
-        backgroundColor: 'white',
+        backgroundColor: '#FFFFFF',
         overflow: 'hidden',
-        borderBottomRightRadius: 20,
-        borderBottomLeftRadius: 20,
       }}>
       <LinearGradient
         colors={['#11185B', '#000000']}
         start={{x: 0.1, y: 0.0}}
         end={{x: 0.1, y: 2.5}}
-        style={[StyleSheet.absoluteFill, {height: '100%', width: '100%'}]}
+        style={[
+          StyleSheet.absoluteFill,
+          {
+            height: '100%',
+            width: '100%',
+            borderBottomRightRadius: 20,
+            borderBottomLeftRadius: 20,
+          },
+        ]}
       />
       <Header {...props} />
     </View>
   );
 };
 
-const SearchButton = ({navigation}) => {
-  return (
-    <Icon
-      style={[styles.icon, {marginLeft: 10, transform: [{translateY: 0}]}]}
-      name="magnify"
-      color="white"
-      size={25}
-      onPress={() => navigation.navigate('Search')}
-    />
-  );
-};
-const MailButton = ({navigation}) => {
-  return <Icon style={styles.icon} name="email" color="white" size={25} />;
-};
-const NotificationButton = ({navigation}) => {
-  return (
-    <Icon
-      style={styles.icon}
-      name="bell"
-      color="white"
-      size={25}
-      onPress={() => navigation.navigate('Notification')}
-    />
-  );
-};
 const HamburgerButton = ({navigation}) => {
   return <Icon style={styles.icon} name="menu" color="white" size={25} />;
 };
+
 const BackButton = ({navigation}) => {
   return (
     <Icon
       style={{
-        marginLeft: 10,
-        marginRight: 10,
+        marginLeft: 5,
+        transform: [{scaleY: 1.2}],
       }}
-      name="arrow-left"
+      name="chevron-left"
       color="white"
       size={25}
       onPress={() => navigation.goBack()}
     />
   );
 };
-export const sharedScreenOptions = (props) => {
+
+export const sharedScreenOptions = ({route}) => {
   const refRBSheet = React.createRef();
   console.disableYellowBox = true;
   //remove later (useNativeDriver warning)
@@ -178,17 +161,6 @@ export const sharedScreenOptions = (props) => {
     headerRight: () => {
       return (
         <View style={styles.iconContainer}>
-          <TouchableOpacity onPress={() => props.navigation.navigate('Job')}>
-            <MailButton navigation={props.navigation} />
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => props.navigation.navigate('Notification')}>
-            <NotificationButton navigation={props.navigation} />
-          </TouchableOpacity>
-
-          <SearchButton navigation={props.navigation} />
-
           <TouchableOpacity onPress={() => refRBSheet.current.open()}>
             <HamburgerButton />
           </TouchableOpacity>
@@ -196,7 +168,7 @@ export const sharedScreenOptions = (props) => {
       );
     },
     headerLeft: () => {
-      return (
+      return route.name === 'Opportunities' ? (
         <Text
           style={{
             color: '#FFF',
@@ -207,7 +179,7 @@ export const sharedScreenOptions = (props) => {
           }}>
           THRIVAL
         </Text>
-      );
+      ) : null;
     },
     headerStyle: {
       backgroundColor: 'transparent',
@@ -222,15 +194,19 @@ export const backOnlyOptions = ({route, navigation}) => {
     headerRight: () => {
       return null;
     },
+    headerLeft: () => {
+      return route.name === 'Profile' ? null : (
+        <>
+          <BackButton navigation={navigation} />
+        </>
+      );
+    },
     headerStyle: {
       backgroundColor: 'transparent',
     },
   };
 };
 
-NotificationButton.propTypes = {
-  navigation: PropTypes.object.isRequired,
-};
 BackButton.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
