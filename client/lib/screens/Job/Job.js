@@ -1,9 +1,16 @@
 import React from 'react';
+import moment from 'moment';
+import {
+  TouchableOpacity,
+  Linking,
+  View,
+  Image,
+  ScrollView,
+  FlatList,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Text from '../../components/CustomText';
 import styles from './styles';
-import moment from 'moment';
-import {TouchableOpacity, Linking, View, Image, ScrollView} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Button from '../../components/Button';
 const Job = ({job, faveIds, addFave, removeFave}) => {
   const renderDisciplines = (values) => {
@@ -19,11 +26,10 @@ const Job = ({job, faveIds, addFave, removeFave}) => {
   };
 
   const getDomain = (link) => {
-    let domain;
     if (link.indexOf('://') > -1) {
-      domain = link.slice(link.indexOf('://') + 3, -1);
+      link.slice(link.indexOf('://') + 3, -1);
     }
-    return domain.slice(0, domain.indexOf('/'));
+    return link.slice(0, link.indexOf('/'));
   };
   return (
     <ScrollView
@@ -34,7 +40,9 @@ const Job = ({job, faveIds, addFave, removeFave}) => {
           <Image
             style={styles.logo}
             source={{
-              uri: `https://logo.clearbit.com/${getDomain(job.contact.link)}`,
+              uri: `https://logo.clearbit.com/${getDomain(
+                job.employer.contact.website,
+              )}`,
             }}
           />
 
@@ -48,38 +56,32 @@ const Job = ({job, faveIds, addFave, removeFave}) => {
 
         <View style={styles.main}>
           <Text style={styles.h2}>Description</Text>
-          <Text style={styles.desc}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </Text>
+          <Text style={styles.desc}>{job.description}</Text>
 
           <Text style={styles.h2}>Roles and Responsibilities</Text>
 
-          <Text style={styles.desc}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </Text>
+          <FlatList
+            data={job.roles}
+            renderItem={({item}) => (
+              <View style={styles.listItem}>
+                <Text>- {item}</Text>
+              </View>
+            )}
+            keyExtractor={(item) => item}
+          />
 
           <Text style={styles.h2}>Recuirements</Text>
-          <Text style={styles.desc}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </Text>
+
+          <FlatList
+            data={job.requirements}
+            renderItem={({item}) => (
+              <View style={styles.listItem}>
+                <Text>- {item}</Text>
+              </View>
+            )}
+            keyExtractor={(item) => item}
+          />
+
           <View style={styles.cta}>
             {faveIds.includes(job.id.toString()) ? (
               <TouchableOpacity
@@ -117,7 +119,7 @@ const Job = ({job, faveIds, addFave, removeFave}) => {
             />
           </View>
         </View>
-        <Text>Posted {moment(job.posted).fromNow()}</Text>
+        <Text>Posted {moment(job.createdAt).fromNow()}</Text>
         <TouchableOpacity
           style={styles.attribution}
           onPress={() => {
