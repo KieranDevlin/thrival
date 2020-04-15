@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, Dimensions} from 'react-native';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import styles from './styles';
 import Text from '../../components/CustomText/CustomText';
@@ -7,10 +7,10 @@ import {SearchBar} from 'react-native-elements';
 import PropTypes from 'prop-types';
 
 const Search = ({events, speakers, navigation}) => {
-  // const [search, setSearch] = useState(null);
-  // const updateSearch = (search) => {
-  //   search === '' ? setSearch(null) : setSearch(search.toLowerCase());
-  // };
+  const [search, setSearch] = useState(null);
+  const updateSearch = (search) => {
+    search === '' ? setSearch(null) : setSearch(search.toLowerCase());
+  };
 
   // //events
   // const eventResults = events.filter((event) =>
@@ -25,8 +25,8 @@ const Search = ({events, speakers, navigation}) => {
   // const speakerName = speakerResults.map((speaker) => speaker.owner.name);
 
   return (
-    <View style={styles.searchContainer}>
-      <View style={styles.headerContainer}>
+    <View style={styles.container}>
+      <View style={styles.searchContainer}>
         <SearchBar
           placeholder="Search..."
           onChangeText={(value) => updateSearch(value)}
@@ -35,29 +35,32 @@ const Search = ({events, speakers, navigation}) => {
           autoCompleteType="name"
           searchIcon={null}
           clearIcon={{
-            color: '#FBF7EF',
+            color: '#2B2D42',
           }}
           containerStyle={{
-            backgroundColor: '#000000',
+            backgroundColor: '#FFF',
             borderTopWidth: 0,
             borderBottomWidth: 0,
             padding: 0,
             margin: 0,
-            borderRadius: 10,
-            width: '100%',
-            transform: [{translateX: 20}, {translateY: 10}],
+            borderRadius: 50,
+            width: Dimensions.get('window').width - 54,
+            height: 30,
           }}
           inputContainerStyle={{
-            backgroundColor: '#FFFFFF',
-            borderRadius: 10,
-            width: '90%',
+            backgroundColor: '#FFF',
+            borderRadius: 50,
+            width: Dimensions.get('window').width - 54,
             margin: 0,
+            height: 30,
           }}
           inputStyle={{
-            color: '#FBF7EF',
-            fontSize: 15,
+            color: '#2B2D42',
+            fontSize: 12,
+            fontFamily: 'Raleway-Regular',
+            fontWeight: '500',
           }}
-          placeholderTextColor="#FBF7EF"
+          placeholderTextColor="#2B2D42"
         />
       </View>
     </View>

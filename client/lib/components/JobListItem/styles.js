@@ -2,38 +2,43 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    width: Dimensions.get('window').width * 0.9,
-    height: 150,
-    padding: 10,
-    borderWidth: 1,
+    width: Dimensions.get('window').width * 0.45,
+    height: Dimensions.get('window').width * 0.45,
+    padding: 15,
     marginVertical: 10,
     borderRadius: 5,
-    borderColor: '#2B2D42',
+    justifyContent: 'space-between',
+    backgroundColor: '#FFF',
+    borderColor: '#D2D9E5',
+    borderWidth: 2,
   },
-  company: {
-    fontWeight: 'bold',
+  cardHeader: {
+    height: '45%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
-  title: {
-    height: '50%',
-  },
-  disciplines: {
-    fontSize: 16,
+  image: {
+    height: '110%',
+    width: '50%',
+    borderColor: '#D2D9E5',
+    borderWidth: 1,
   },
   infoContainer: {
-    height: '50%',
+    height: '45%',
     justifyContent: 'space-between',
   },
-  info: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  smallText: {
+    fontSize: 12,
+    fontWeight: '400',
   },
-  center: {
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
+  disciplines: {
+    fontWeight: '400',
   },
-  fave: {
-    alignItems: 'flex-end',
+  company: {
+    fontWeight: '600',
+  },
+  icon: {
+    transform: [{translateY: -5}],
   },
 });
 export default styles;

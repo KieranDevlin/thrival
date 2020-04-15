@@ -56,13 +56,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   applied: {
-    backgroundColor: '#11185B',
+    backgroundColor: '#2B2D42',
   },
   pending: {
     backgroundColor: '#ED9421',
   },
   interview: {
-    backgroundColor: '#149728',
+    backgroundColor: '#5877DD',
   },
   borderRadius: {
     borderRadius: 3,

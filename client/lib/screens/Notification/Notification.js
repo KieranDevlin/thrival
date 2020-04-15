@@ -27,50 +27,11 @@ const Notification = ({navigation, notifications}) => {
   //     moment(notification.timestamp).format('YYYY, d') ===
   //     moment().format('YYYY, d'),
   // );
-  return null;
-  // <>
-  //   <SafeAreaView style={styles.headerContainer}>
-  //     <TouchableOpacity onPress={() => navigation.goBack()}>
-  //       <Icon
-  //         style={styles.close}
-  //         name="arrow-left"
-  //         size={25}
-  //         color="#FBF7EF"
-  //       />
-  //     </TouchableOpacity>
-  //     <View style={styles.notification}>
-  //       <Text style={styles.header}>Notifications</Text>
-  //     </View>
-  //   </SafeAreaView>
-
-  //   <ScrollView style={styles.contentContainer}>
-  //     {today.length > 0 && (
-  //       <>
-  //         <View style={styles.border}>
-  //           <Text style={styles.heading}>New</Text>
-  //         </View>
-  //         <NotificationsList notifications={today} />
-  //       </>
-  //     )}
-
-  //     {week.length > 0 && (
-  //       <>
-  //         <View style={styles.border}>
-  //           <Text style={styles.heading}>This Week</Text>
-  //         </View>
-  //         <NotificationsList notifications={week} />
-  //       </>
-  //     )}
-  //     {month.length > 0 && (
-  //       <>
-  //         <View style={styles.border}>
-  //           <Text style={styles.heading}>This Month</Text>
-  //         </View>
-  //         <NotificationsList notifications={month} />
-  //       </>
-  //     )}
-  //   </ScrollView>
-  // </>
+  return (
+    <>
+      <ScrollView style={styles.container}></ScrollView>
+    </>
+  );
 };
 Notification.propTypes = {
   navigation: PropTypes.object.isRequired,

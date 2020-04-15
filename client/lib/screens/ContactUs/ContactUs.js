@@ -1,44 +1,36 @@
 import React from 'react';
-import {TouchableOpacity, View, Linking} from 'react-native';
+import {TouchableOpacity, View, StyleSheet} from 'react-native';
 import Text from '../../components/CustomText/CustomText';
 import styles from './styles';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import LinearGradient from 'react-native-linear-gradient';
 
 const ContactUs = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.emailContainer}>
-        <Text style={styles.email}>
-          You can email Winston with any questions, comments or feedback at:
+    <>
+      <View style={styles.header}>
+        <LinearGradient
+          colors={['#11185B', '#000000']}
+          start={{x: 0.1, y: 0.0}}
+          end={{x: 0.1, y: 2.5}}
+          style={[
+            StyleSheet.absoluteFill,
+            {
+              height: '100%',
+              width: '100%',
+              borderBottomRightRadius: 20,
+              borderBottomLeftRadius: 20,
+            },
+          ]}
+        />
+        <Text style={styles.title}>CONTACT US</Text>
+      </View>
+      <View style={styles.container}>
+        <Text style={styles.text}>
+          If you have any questions or suggestions about our Privacy Policy, do
+          not hesitate to contact us at thrival@thrivalapp.com.
         </Text>
-        <TouchableOpacity
-          style={styles.link}
-          onPress={() => Linking.openURL('mailto:winston@voicestory.ca')}>
-          <Text style={styles.label}>winston@voicestory.ca </Text>
-        </TouchableOpacity>
-        <Text>or by booking a meeting by: </Text>
-        <TouchableOpacity
-          style={styles.link}
-          onPress={() => Linking.openURL('https://www.voicestory.ca/')}>
-          <Text style={styles.label}>clicking here.</Text>
-        </TouchableOpacity>
       </View>
-      <View style={styles.section}>
-        <Text style={styles.additional}>Additional Contact Info</Text>
-        <TouchableOpacity
-          style={styles.websiteContainer}
-          onPress={() => Linking.openURL('https://www.voicestory.ca/')}>
-          <Icon name="web" size={25} color="#507EA2" />
-
-          <Text style={styles.website}>http://www.voicestory.ca</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.section}>
-        <Text style={styles.heading}>PAL Studio Theatre</Text>
-        <Text style={styles.address}>581 Cardero Street</Text>
-        <Text style={styles.city}>Vancouver, British Columbia</Text>
-      </View>
-    </View>
+    </>
   );
 };
 
