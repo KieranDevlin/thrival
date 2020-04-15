@@ -48,9 +48,7 @@ const AboutUs = () => {
         </View>
 
         <View>
-          <Text style={[styles.text, {marginTop: 30, marginBottom: 0}]}>
-            Sincerely,
-          </Text>
+          <Text style={[styles.text, styles.sign]}>Sincerely,</Text>
           <Text style={styles.text}>Thrival team.</Text>
         </View>
       </View>

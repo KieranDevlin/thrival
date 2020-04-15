@@ -6,8 +6,6 @@ export const AuthContext = React.createContext();
 
 const AuthProvider = (props) => {
   const {children} = props;
-  const {setUser, user} = useContext(UserContext);
-  console.log(setUser, user);
 
   const [state, dispatch] = React.useReducer(
     (prevState, action) => {
@@ -76,7 +74,6 @@ const AuthProvider = (props) => {
           token,
         });
         console.log('user:', user);
-        setUser(user);
       },
       signOutContext: () => dispatch({type: 'SIGN_OUT'}),
       signUpContext: async (data) => {
