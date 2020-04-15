@@ -13,6 +13,17 @@ const LOGIN_MUTATION = gql`
       user {
         id
         name
+        email
+        employerProfile {
+          id
+          linkedin
+        }
+        applicantProfile {
+          id
+          linkedin
+          github
+        }
+        profileImage
       }
       token
     }
@@ -34,13 +45,8 @@ const Login = ({navigation}) => {
   return (
     <Mutation mutation={LOGIN_MUTATION} client={authClient}>
       {(loginMutation) => (
-        // <ImageBackground
-        //   style={styles.content}
-        //   blurRadius={10}
-        //   source={require('../../assets/images/waves.jpg')}>
         <View style={styles.content}>
           <Text style={styles.header}>THRIVAL</Text>
-          {/* <Text style={styles.inputTitle}>Email</Text> */}
           <TextInput
             style={styles.input}
             value={email}
@@ -48,7 +54,6 @@ const Login = ({navigation}) => {
             autoCapitalize="none"
             placeholder="Email"
           />
-          {/* <Text style={styles.inputTitle}>Password</Text> */}
           <TextInput
             style={styles.input}
             value={password}
@@ -80,7 +85,6 @@ const Login = ({navigation}) => {
             </Text>
           </TouchableOpacity>
         </View>
-        // </ImageBackground>
       )}
     </Mutation>
   );
