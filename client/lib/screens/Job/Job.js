@@ -111,7 +111,7 @@ const Job = ({job, faveIds, addFave, removeFave}) => {
 
             <Button
               onPress={() => {
-                Linking.openURL(job.contact.link);
+                Linking.openURL(job.employer.contact.website);
               }}
               style={styles.button}
               bgcolor={'#11185B'}
