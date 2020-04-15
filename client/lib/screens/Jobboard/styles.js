@@ -3,7 +3,6 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   exploreContainer: {
     height: '100%',
-    backgroundColor: '#FBF7EF',
     justifyContent: 'space-evenly',
   },
   headingContainer: {
@@ -48,11 +47,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 15,
-    height: '5%',
+    backgroundColor: '#FFFFFF',
+    height: 35,
   },
   container: {
-    height: '90%',
+    height: '95%',
+    backgroundColor: '#FFFFFF',
   },
 });
 

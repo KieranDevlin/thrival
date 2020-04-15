@@ -73,7 +73,7 @@ const AuthProvider = (props) => {
           type: 'SIGN_IN',
           token,
         });
-        setUser(JSON.stringify(user));
+        setUser(user);
         console.log('user:', JSON.stringify(user));
       },
       signOutContext: () => dispatch({type: 'SIGN_OUT'}),
@@ -86,13 +86,12 @@ const AuthProvider = (props) => {
           throw new Error(e);
         }
         dispatch({type: 'SIGN_UP', token});
-        setUser(JSON.stringify(user));
+        setUser(user);
         console.log('user:', JSON.stringify(user));
       },
     }),
     [],
   );
-
   return (
     <AuthContext.Provider value={{authContext, state}}>
       {children}

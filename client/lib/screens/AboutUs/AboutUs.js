@@ -1,71 +1,58 @@
 import React from 'react';
-import {View, ScrollView} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import Text from '../../components/CustomText/CustomText';
 import styles from './styles';
+import LinearGradient from 'react-native-linear-gradient';
 
 const AboutUs = () => {
   return (
-    <ScrollView>
+    <>
+      <View style={styles.header}>
+        <LinearGradient
+          colors={['#11185B', '#000000']}
+          start={{x: 0.1, y: 0.0}}
+          end={{x: 0.1, y: 2.5}}
+          style={[
+            StyleSheet.absoluteFill,
+            {
+              height: '100%',
+              width: '100%',
+              borderBottomRightRadius: 20,
+              borderBottomLeftRadius: 20,
+            },
+          ]}
+        />
+        <Text style={styles.title}>ABOUT THRIVAL</Text>
+      </View>
       <View style={styles.container}>
         <View style={styles.section}>
-          <Text style={styles.heading}>Our Organization</Text>
           <Text style={styles.text}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.
+            Thrival is an application that a group of developers and designers
+            produced to help benefit those in need during the COVID-19 pandemic.
+            Our goal is to help connect those that have recently lost their jobs
+            with employers who are looking for additional help.
+          </Text>
+          <Text style={styles.text}>
+            Thrival works for both employers and employees who seek to connect
+            with each other. We simplify the application process by displaying
+            all relevant applicant information in a clear and attractive way.
+          </Text>
+          <Text style={styles.text}>
+            Thrival utilises a built in calendar that allows for easy
+            organisation when it comes to interview dates or application
+            deadlines.
+          </Text>
+          <Text style={styles.text}>
+            We hope Thrival forms the basis for your next exciting opportunity.
           </Text>
         </View>
-        <View style={styles.section}>
-          <Text style={styles.heading}>The Power of Your Voice</Text>
-          <Text style={styles.text}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.
-          </Text>
-        </View>
-        <View style={styles.section}>
-          <Text style={styles.heading}>The Power of Your Story</Text>
-          <Text style={styles.text}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.
-          </Text>
+
+        <View>
+          <Text style={[styles.text, styles.sign]}>Sincerely,</Text>
+          <Text style={styles.text}>Thrival team.</Text>
         </View>
       </View>
-    </ScrollView>
+    </>
   );
 };
 
