@@ -6,18 +6,11 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').width * 0.45,
     padding: 15,
     marginVertical: 10,
-    borderRadius: 15,
+    borderRadius: 5,
     justifyContent: 'space-between',
-    backgroundColor: '#fff',
-    shadowColor: '#8D99AE',
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.32,
-    shadowRadius: 5.46,
-
-    elevation: 9,
+    backgroundColor: '#FFF',
+    borderColor: '#D2D9E5',
+    borderWidth: 2,
   },
   cardHeader: {
     height: '45%',
@@ -25,8 +18,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   image: {
-    height: '100%',
+    height: '110%',
     width: '50%',
+    borderColor: '#D2D9E5',
+    borderWidth: 1,
   },
   infoContainer: {
     height: '45%',
@@ -34,6 +29,16 @@ const styles = StyleSheet.create({
   },
   smallText: {
     fontSize: 12,
+    fontWeight: '400',
+  },
+  disciplines: {
+    fontWeight: '400',
+  },
+  company: {
+    fontWeight: '600',
+  },
+  icon: {
+    transform: [{translateY: -5}],
   },
 });
 export default styles;

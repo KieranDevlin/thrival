@@ -5,20 +5,8 @@ import Home from '../screens/AddJobPost';
 import AboutUsModal from '../screens/AboutUs';
 import ContactUsModal from '../screens/ContactUs';
 import PrivacyPolicyModal from '../screens/PrivacyPolicy';
-import Signup from '../screens/Signup';
-import Login from '../screens/Login';
 import {AuthContext} from '../context/AuthProvider';
-
-const AuthStack = createStackNavigator();
-
-const AuthStackScreens = (props) => {
-  return (
-    <AuthStack.Navigator initialRouteName="Login">
-      <AuthStack.Screen name="Login" component={Login} />
-      <AuthStack.Screen name="Signup" component={Signup} />
-    </AuthStack.Navigator>
-  );
-};
+import {AuthStackScreens} from '../navigation/AuthNav';
 
 const RootStack = createStackNavigator();
 const RootStackScreens = () => {

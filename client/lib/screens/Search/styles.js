@@ -1,17 +1,20 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
 const styles = StyleSheet.create({
-  headerContainer: {
+  container: {
+    minHeight: Dimensions.get('window').height,
     backgroundColor: '#FFFFFF',
-    paddingBottom: 20,
   },
-  heading: {
-    color: '#FBF7EF',
-    fontFamily: 'Raleway-Bold',
-    fontSize: 18,
+  searchContainer: {
+    borderColor: '#D2D9E5',
+    borderWidth: 2,
+    borderRadius: 50,
+    alignItems: 'center',
+    width: Dimensions.get('window').width - 50,
+    alignSelf: 'center',
   },
   contentContainer: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#000',
     paddingRight: 30,
     paddingLeft: 30,
     paddingBottom: 125,
