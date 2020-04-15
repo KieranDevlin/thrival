@@ -13,7 +13,6 @@ import Button from '../../components/Button';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AuthContext} from '../../context/AuthProvider';
 import PropTypes from 'prop-types';
-import LinearGradient from 'react-native-linear-gradient';
 import {UserContext} from '../../context/UserContext';
 
 const UserProfile = ({navigation}) => {
@@ -21,13 +20,10 @@ const UserProfile = ({navigation}) => {
     authContext: {signOutContext},
   } = React.useContext(AuthContext);
 
-  const name = 'John Adam-Smith';
+  const {user} = React.useContext(UserContext);
+  const name = user.name;
   const firstname = name.substr(0, name.indexOf(' '));
   const lastname = name.substr(name.indexOf(' ') + 1);
-
-  const {user} = React.useContext(UserContext);
-  console.log(user);
-
   return (
     <>
       <View style={styles.main}>

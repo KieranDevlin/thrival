@@ -6,6 +6,7 @@ import {Header} from '@react-navigation/stack';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from '../navigation/styles';
 import RBSheet from 'react-native-raw-bottom-sheet';
+import {AuthContext} from '../context/AuthProvider';
 
 const GradientHeader = (props) => {
   return (
@@ -54,6 +55,9 @@ const BackButton = ({navigation}) => {
 
 export const sharedScreenOptions = ({route}) => {
   const refRBSheet = React.createRef();
+  const {
+    authContext: {signOutContext},
+  } = React.useContext(AuthContext);
   console.disableYellowBox = true;
   //remove later (useNativeDriver warning)
   return {
@@ -68,7 +72,7 @@ export const sharedScreenOptions = ({route}) => {
             closeOnDragDown={true}
             closeOnPressMask={true}
             duration={300}
-            height={300}
+            height={250}
             customStyles={{
               wrapper: {
                 backgroundColor: 'transparent',
@@ -92,19 +96,6 @@ export const sharedScreenOptions = ({route}) => {
               ]}
             />
             <View style={styles.menu}>
-              <TouchableOpacity
-                style={styles.menuItemContainer}
-                onPress={() => {
-                  refRBSheet.current.close();
-                  props.navigation.navigate('Settings');
-                }}>
-                <Icon
-                  style={[styles.menuItem, styles.menuIcon]}
-                  name="settings-outline"
-                  color="white"
-                />
-                <Text style={styles.menuItem}>Settings</Text>
-              </TouchableOpacity>
               <TouchableOpacity
                 style={styles.menuItemContainer}
                 onPress={() => {
@@ -144,7 +135,12 @@ export const sharedScreenOptions = ({route}) => {
                 />
                 <Text style={styles.menuItem}>Privacy Policy</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.menuItemContainer}>
+              <TouchableOpacity
+                style={styles.menuItemContainer}
+                onPress={() => {
+                  refRBSheet.current.close();
+                  signOutContext();
+                }}>
                 <Icon
                   style={[styles.menuItem, styles.menuIcon]}
                   name="logout"
@@ -159,13 +155,13 @@ export const sharedScreenOptions = ({route}) => {
       );
     },
     headerRight: () => {
-      return (
+      return route.name === 'Opportunities' ? (
         <View style={styles.iconContainer}>
           <TouchableOpacity onPress={() => refRBSheet.current.open()}>
             <HamburgerButton />
           </TouchableOpacity>
         </View>
-      );
+      ) : null;
     },
     headerLeft: () => {
       return route.name === 'Opportunities' ? (
@@ -195,7 +191,7 @@ export const backOnlyOptions = ({route, navigation}) => {
       return null;
     },
     headerLeft: () => {
-      return route.name === 'Profile' ? null : (
+      return route.name === 'Profile' || route.name === 'Login' ? null : (
         <>
           <BackButton navigation={navigation} />
         </>

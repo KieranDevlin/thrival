@@ -6,7 +6,11 @@ import styles from './styles';
 import PropTypes from 'prop-types';
 
 const Calendar = ({navigation, route}) => {
-  return <Text>Calendar</Text>;
+  return (
+    <View style={styles.container}>
+      <Text>Calendar</Text>
+    </View>
+  );
 };
 
 Calendar.propTypes = {
