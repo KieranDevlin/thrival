@@ -1,13 +1,12 @@
 import React from 'react';
 import {TouchableOpacity, Linking, View, ScrollView} from 'react-native';
 import Text from '../../components/CustomText/CustomText';
-import Error from '../../components/Error';
 import PropTypes from 'prop-types';
 import JobList from '../../components/JobList/JobList';
 import styles from './styles';
 import {FavesContext} from '../../context/FavesContext';
 
-const SavedJobs = ({navigation, route}) => {
+const SavedJobs = ({navigation, jobs}) => {
   return (
     <FavesContext.Consumer>
       {(value) => (
@@ -30,6 +29,6 @@ const SavedJobs = ({navigation, route}) => {
 
 SavedJobs.propTypes = {
   navigation: PropTypes.object,
-  route: PropTypes.object,
+  jobs: PropTypes.array,
 };
 export default SavedJobs;

@@ -34,7 +34,9 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     marginVertical: 20,
   },
-  main: {},
+  listItem: {
+    marginVertical: 8,
+  },
   cta: {
     marginVertical: 18,
     flexDirection: 'row',

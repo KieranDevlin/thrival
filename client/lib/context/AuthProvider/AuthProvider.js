@@ -43,21 +43,21 @@ const AuthProvider = (props) => {
     },
   );
 
-  React.useEffect(() => {
-    const bootstrapAsync = async () => {
-      let userToken;
+  // React.useEffect(() => {
+  //   const bootstrapAsync = async () => {
+  //     let userToken;
 
-      try {
-        userToken = await AsyncStorage.getItem('userToken');
-      } catch (e) {
-        console.log(e);
-      }
+  //     try {
+  //       userToken = await AsyncStorage.getItem('userToken');
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
 
-      dispatch({type: 'RESTORE_TOKEN', token: userToken});
-    };
+  //     dispatch({type: 'RESTORE_TOKEN', token: userToken});
+  //   };
 
-    bootstrapAsync();
-  }, []);
+  //   bootstrapAsync();
+  // }, []);
 
   const authContext = React.useMemo(
     () => ({
@@ -74,7 +74,7 @@ const AuthProvider = (props) => {
           token,
         });
         setUser(user);
-        console.log('user:', JSON.stringify(user));
+        console.log('user:', user);
       },
       signOutContext: () => dispatch({type: 'SIGN_OUT'}),
       signUpContext: async (data) => {
@@ -87,7 +87,7 @@ const AuthProvider = (props) => {
         }
         dispatch({type: 'SIGN_UP', token});
         setUser(user);
-        console.log('user:', JSON.stringify(user));
+        console.log('user:', user);
       },
     }),
     [],
