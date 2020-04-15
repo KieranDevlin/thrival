@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    width: Dimensions.get('window').width * 0.4,
+    width: Dimensions.get('window').width * 0.3,
   },
   desc: {
     fontWeight: '400',

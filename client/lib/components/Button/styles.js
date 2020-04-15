@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontFamily: 'Raleway-Regular',
+    fontWeight: '900',
     fontSize: 20,
     color: '#FBF7EF',
     lineHeight: 0,

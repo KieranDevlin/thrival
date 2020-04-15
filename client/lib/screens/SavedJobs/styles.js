@@ -49,10 +49,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 15,
-    height: '5%',
   },
   container: {
     height: '90%',
+    backgroundColor: '#FFFFFF',
   },
 });
 

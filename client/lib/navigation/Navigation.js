@@ -332,9 +332,8 @@ export const BottomTabNavScreens = () => (
       name="Opportunities"
       component={JobboardStackScreens}
     />
-    <BottomTabNav.Screen name="Search" component={SearchStackScreens} />
-
     <BottomTabNav.Screen name="Calendar" component={CalendarStackScreens} />
+    <BottomTabNav.Screen name="Search" component={SearchStackScreens} />
     <BottomTabNav.Screen
       name="Notification"
       component={NotificationStackScreens}
