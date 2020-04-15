@@ -593,7 +593,7 @@ input EmployerWhereUniqueInput {
 type JobPost {
   id: ID!
   createdAt: DateTime!
-  rate: Int!
+  rate: String!
   industry: String!
   location: String!
   discipline: [String!]!
@@ -617,7 +617,7 @@ input JobPostCreatedisciplineInput {
 
 input JobPostCreateInput {
   id: ID
-  rate: Int!
+  rate: String!
   industry: String!
   location: String!
   discipline: JobPostCreatedisciplineInput
@@ -649,7 +649,7 @@ input JobPostCreaterolesInput {
 
 input JobPostCreateWithoutEmployerInput {
   id: ID
-  rate: Int!
+  rate: String!
   industry: String!
   location: String!
   discipline: JobPostCreatedisciplineInput
@@ -662,7 +662,7 @@ input JobPostCreateWithoutEmployerInput {
 
 input JobPostCreateWithoutViewedInput {
   id: ID
-  rate: Int!
+  rate: String!
   industry: String!
   location: String!
   discipline: JobPostCreatedisciplineInput
@@ -698,7 +698,7 @@ enum JobPostOrderByInput {
 type JobPostPreviousValues {
   id: ID!
   createdAt: DateTime!
-  rate: Int!
+  rate: String!
   industry: String!
   location: String!
   discipline: [String!]!
@@ -731,14 +731,20 @@ input JobPostScalarWhereInput {
   createdAt_lte: DateTime
   createdAt_gt: DateTime
   createdAt_gte: DateTime
-  rate: Int
-  rate_not: Int
-  rate_in: [Int!]
-  rate_not_in: [Int!]
-  rate_lt: Int
-  rate_lte: Int
-  rate_gt: Int
-  rate_gte: Int
+  rate: String
+  rate_not: String
+  rate_in: [String!]
+  rate_not_in: [String!]
+  rate_lt: String
+  rate_lte: String
+  rate_gt: String
+  rate_gte: String
+  rate_contains: String
+  rate_not_contains: String
+  rate_starts_with: String
+  rate_not_starts_with: String
+  rate_ends_with: String
+  rate_not_ends_with: String
   industry: String
   industry_not: String
   industry_in: [String!]
@@ -823,7 +829,7 @@ input JobPostUpdatedisciplineInput {
 }
 
 input JobPostUpdateInput {
-  rate: Int
+  rate: String
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
@@ -836,7 +842,7 @@ input JobPostUpdateInput {
 }
 
 input JobPostUpdateManyDataInput {
-  rate: Int
+  rate: String
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
@@ -847,7 +853,7 @@ input JobPostUpdateManyDataInput {
 }
 
 input JobPostUpdateManyMutationInput {
-  rate: Int
+  rate: String
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
@@ -895,7 +901,7 @@ input JobPostUpdaterolesInput {
 }
 
 input JobPostUpdateWithoutEmployerDataInput {
-  rate: Int
+  rate: String
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
@@ -907,7 +913,7 @@ input JobPostUpdateWithoutEmployerDataInput {
 }
 
 input JobPostUpdateWithoutViewedDataInput {
-  rate: Int
+  rate: String
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
@@ -963,14 +969,20 @@ input JobPostWhereInput {
   createdAt_lte: DateTime
   createdAt_gt: DateTime
   createdAt_gte: DateTime
-  rate: Int
-  rate_not: Int
-  rate_in: [Int!]
-  rate_not_in: [Int!]
-  rate_lt: Int
-  rate_lte: Int
-  rate_gt: Int
-  rate_gte: Int
+  rate: String
+  rate_not: String
+  rate_in: [String!]
+  rate_not_in: [String!]
+  rate_lt: String
+  rate_lte: String
+  rate_gt: String
+  rate_gte: String
+  rate_contains: String
+  rate_not_contains: String
+  rate_starts_with: String
+  rate_not_starts_with: String
+  rate_ends_with: String
+  rate_not_ends_with: String
   industry: String
   industry_not: String
   industry_in: [String!]
