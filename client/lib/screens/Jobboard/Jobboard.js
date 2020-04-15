@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {TouchableOpacity, Linking, View} from 'react-native';
+import {TouchableOpacity, Linking, View, ScrollView} from 'react-native';
 import Text from '../../components/CustomText/CustomText';
 import Error from '../../components/Error';
 import PropTypes from 'prop-types';
@@ -12,17 +12,19 @@ const Jobboard = ({navigation, jobs}) => {
     <FavesContext.Consumer>
       {(value) => (
         <>
-          <View style={styles.container}>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            style={styles.container}>
             <Text style={styles.h1}>Latest Opportunities</Text>
             <JobList navigation={navigation} jobs={jobs} />
-          </View>
-          <TouchableOpacity
-            style={styles.attribution}
-            onPress={() => {
-              Linking.openURL('https://clearbit.com');
-            }}>
-            <Text>Logos provided by Clearbit</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.attribution}
+              onPress={() => {
+                Linking.openURL('https://clearbit.com');
+              }}>
+              <Text>Logos provided by Clearbit</Text>
+            </TouchableOpacity>
+          </ScrollView>
         </>
       )}
     </FavesContext.Consumer>

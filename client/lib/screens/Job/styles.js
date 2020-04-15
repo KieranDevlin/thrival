@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     alignItems: 'center',
     paddingBottom: 20,
+    backgroundColor: '#FFFFFF',
   },
   jobPosting: {
     width: '85%',
@@ -17,6 +18,8 @@ const styles = StyleSheet.create({
   logo: {
     height: Dimensions.get('window').width * 0.3,
     width: Dimensions.get('window').width * 0.3,
+    borderWidth: 1,
+    borderColor: '#D2D9E5',
   },
   infoContainer: {
     width: Dimensions.get('window').width * 0.5,
@@ -24,11 +27,11 @@ const styles = StyleSheet.create({
   },
   h1: {
     fontSize: 16,
-    fontWeight: '400',
+    fontWeight: '500',
   },
   h2: {
     fontSize: 16,
-    fontWeight: '400',
+    fontWeight: '500',
     marginVertical: 20,
   },
   listItem: {
@@ -42,6 +45,10 @@ const styles = StyleSheet.create({
   },
   button: {
     width: Dimensions.get('window').width * 0.4,
+  },
+  desc: {
+    fontWeight: '400',
+    fontSize: 12,
   },
 });
 export default styles;

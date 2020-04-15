@@ -32,7 +32,9 @@ const Job = ({job, faveIds, addFave, removeFave}) => {
     return link.slice(0, link.indexOf('/'));
   };
   return (
-    <ScrollView contentContainerStyle={styles.scroll}>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={styles.scroll}>
       <View style={styles.jobPosting}>
         <View style={styles.header}>
           <Image
@@ -46,9 +48,9 @@ const Job = ({job, faveIds, addFave, removeFave}) => {
 
           <View style={styles.infoContainer}>
             <Text style={styles.h1}>{renderDisciplines(job.discipline)}</Text>
-            <Text>{job.location}</Text>
-            <Text>{job.companyName}</Text>
-            <Text>$20/hr</Text>
+            <Text style={styles.desc}>{job.location}</Text>
+            <Text style={styles.desc}>{job.companyName}</Text>
+            <Text style={styles.desc}>$20/hr</Text>
           </View>
         </View>
 
@@ -90,7 +92,7 @@ const Job = ({job, faveIds, addFave, removeFave}) => {
                   style={styles.icon}
                   name="star"
                   size={50}
-                  color="#5877DD"
+                  color="#ED9421"
                 />
               </TouchableOpacity>
             ) : (
@@ -102,7 +104,7 @@ const Job = ({job, faveIds, addFave, removeFave}) => {
                   style={styles.icon}
                   name="star-outline"
                   size={50}
-                  color="#5877DD"
+                  color="#D2D9E5"
                 />
               </TouchableOpacity>
             )}
@@ -112,7 +114,7 @@ const Job = ({job, faveIds, addFave, removeFave}) => {
                 Linking.openURL(job.contact.link);
               }}
               style={styles.button}
-              bgcolor={'#5877DD'}
+              bgcolor={'#11185B'}
               label={'Apply'}
             />
           </View>

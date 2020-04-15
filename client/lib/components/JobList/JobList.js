@@ -17,7 +17,12 @@ const JobList = ({navigation, faveIds, jobs}) =>
         {jobs.map(
           (job) =>
             faveIds.includes(job.id.toString()) && (
-              <JobListItem key={job.id} job={job} navigation={navigation} />
+              <JobListItem
+                style={styles.jobItem}
+                key={job.id}
+                job={job}
+                navigation={navigation}
+              />
             ),
         )}
       </ScrollView>
@@ -29,7 +34,12 @@ const JobList = ({navigation, faveIds, jobs}) =>
   ) : (
     <ScrollView contentContainerStyle={styles.scroll}>
       {jobs.map((job) => (
-        <JobListItem key={job.id} job={job} navigation={navigation} />
+        <JobListItem
+          style={styles.jobItem}
+          key={job.id}
+          job={job}
+          navigation={navigation}
+        />
       ))}
     </ScrollView>
   );

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ImageBackground, TextInput, TouchableOpacity} from 'react-native';
+import {View, ImageBackground, TextInput, TouchableOpacity} from 'react-native';
 import Text from '../../components/CustomText';
 import styles from './styles';
 import gql from 'graphql-tag';
@@ -48,41 +48,44 @@ const Signup = (props) => {
   return (
     <Mutation mutation={SIGNUP_MUTATION} client={authClient}>
       {(singupMutation) => (
-        <ImageBackground
-          style={styles.content}
-          blurRadius={10}
-          source={require('../../assets/images/waves.jpg')}>
-          <Text style={styles.header}>Create an account</Text>
+        // <ImageBackground
+        //   style={styles.content}
+        //   blurRadius={10}
+        //   source={require('../../assets/images/waves.jpg')}>
+        <View style={styles.content}>
+          <Text style={styles.header}>CREATE AN ACCOUNT</Text>
 
-          <Text style={styles.inputTitle}>Name</Text>
+          {/* <Text style={styles.inputTitle}>Name</Text> */}
+
           <TextInput
             onChangeText={(text) => setName(text)}
             style={styles.input}
             value={name}
+            placeholder="Name"
           />
-
-          <Text style={styles.inputTitle}>Email</Text>
+          {/* <Text style={styles.inputTitle}>Email</Text> */}
           <TextInput
             onChangeText={(text) => setEmail(text)}
             value={email}
             autoCapitalize="none"
             style={styles.input}
+            placeholder="Email"
           />
-
-          <Text style={styles.inputTitle}>Password</Text>
+          {/* <Text style={styles.inputTitle}>Password</Text> */}
           <TextInput
             onChangeText={(text) => setPassword(text)}
             style={styles.input}
             value={password}
             secureTextEntry
+            placeholder="Password"
           />
-
           <TouchableOpacity
             style={styles.button}
             onPress={() => onSubmit(singupMutation)}>
             <Text style={styles.btnText}>Continue</Text>
           </TouchableOpacity>
-        </ImageBackground>
+        </View>
+        //</ImageBackground>
       )}
     </Mutation>
   );
