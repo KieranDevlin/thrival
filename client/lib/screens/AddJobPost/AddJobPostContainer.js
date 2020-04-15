@@ -1,16 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, Component} from 'react';
 import AddJobPost from './AddJobPost';
 import PropTypes from 'prop-types';
 import {Text} from 'react-native';
 import {Mutation} from '@apollo/react-components';
-import {gql} from 'apollo-boost';
+import ApolloClient, {gql} from 'apollo-boost';
 
 const UPDATE_JOBPOSTS = gql`
   mutation updateEmployer(
-    $data: EmployerUpdateInput!
-    $where: EmployerWhereUniqueInput!
+    $EmployerUpdateInput: EmployerUpdateInput!
+    $EmployerWhereUniqueInput: EmployerWhereUniqueInput!
   ) {
-    updateEmployer(data: $data, where: $where) {
+    updateEmployer(
+      data: $EmployerUpdateInput
+      where: $EmployerWhereUniqueInput
+    ) {
       jobpostings {
         createdAt
         industry
@@ -23,40 +26,44 @@ const UPDATE_JOBPOSTS = gql`
     }
   }
 `;
+const client = new ApolloClient({
+  uri: 'https://us1.prisma.sh/ivandaixivwork/thrival-covid19/dev',
+});
 
 const AddJobPostContainer = () => {
   const [industry, setIndustry] = useState('No Industry');
   const [location, setLocation] = useState('Remote');
   const [discipline, setDiscipline] = useState('No Discipline');
-  const [totalRoles, setTotalRoles] = useState(1);
+  const [totalRoles, setTotalRoles] = useState('1');
   const [rate, setRate] = useState(0);
   const [description, setDescription] = useState('No description');
   return (
     <Mutation
       mutation={UPDATE_JOBPOSTS}
+      client={client}
       variables={{
         // This id will be changed to user id when getting user data is setup
-        EmployerWhereUniqueInput: {id: 'ck8z1x9e8705s09816ly7r2ac'},
+        EmployerWhereUniqueInput: {id: 'ck90hgwlu99jm0981fmuqx0af'},
         EmployerUpdateInput: {
-          data: {
-            jobpostings: {
+          jobpostings: {
+            create: {
+              rate,
               industry,
               location,
               discipline: {
                 set: discipline,
               },
               totalRoles,
-              rate,
               description,
             },
           },
         },
       }}>
-      {(addJobPost, {data, error}) => {
+      {(updateEmployer, {data, error}) => {
         if (error) return <Text>Error :(</Text>;
         return (
           <AddJobPost
-            addJobPost={addJobPost}
+            updateEmployer={updateEmployer}
             setIndustry={setIndustry}
             setLocation={setLocation}
             setDiscipline={setDiscipline}
