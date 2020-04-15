@@ -41,6 +41,7 @@ type Applicant {
 }
 type Resume {
   id: ID! @id
+  title: String
   fullname: String!
   address: String!
   email: String!

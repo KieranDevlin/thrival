@@ -323,6 +323,8 @@ export type ApplicantOrderByInput =
 export type ResumeOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
   | "fullname_ASC"
   | "fullname_DESC"
   | "address_ASC"
@@ -489,6 +491,7 @@ export interface ContactWhereInput {
 
 export interface ResumeCreateInput {
   id?: Maybe<ID_Input>;
+  title?: Maybe<String>;
   fullname: String;
   address: String;
   email: String;
@@ -726,6 +729,7 @@ export interface ContactUpsertNestedInput {
 }
 
 export interface ResumeUpdateManyMutationInput {
+  title?: Maybe<String>;
   fullname?: Maybe<String>;
   address?: Maybe<String>;
   email?: Maybe<String>;
@@ -912,6 +916,20 @@ export interface ResumeWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
   fullname?: Maybe<String>;
   fullname_not?: Maybe<String>;
   fullname_in?: Maybe<String[] | String>;
@@ -1053,6 +1071,7 @@ export interface JobPostCreaterequirementsInput {
 }
 
 export interface ResumeUpdateDataInput {
+  title?: Maybe<String>;
   fullname?: Maybe<String>;
   address?: Maybe<String>;
   email?: Maybe<String>;
@@ -1166,6 +1185,20 @@ export interface ResumeScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
   fullname?: Maybe<String>;
   fullname_not?: Maybe<String>;
   fullname_in?: Maybe<String[] | String>;
@@ -1238,6 +1271,7 @@ export interface ResumeUpdateManyWithWhereNestedInput {
 }
 
 export interface ResumeUpdateInput {
+  title?: Maybe<String>;
   fullname?: Maybe<String>;
   address?: Maybe<String>;
   email?: Maybe<String>;
@@ -1248,6 +1282,7 @@ export interface ResumeUpdateInput {
 }
 
 export interface ResumeUpdateManyDataInput {
+  title?: Maybe<String>;
   fullname?: Maybe<String>;
   address?: Maybe<String>;
   email?: Maybe<String>;
@@ -1768,6 +1803,7 @@ export interface ContactEdgeSubscription
 
 export interface Resume {
   id: ID_Output;
+  title?: String;
   fullname: String;
   address: String;
   email: String;
@@ -1779,6 +1815,7 @@ export interface Resume {
 
 export interface ResumePromise extends Promise<Resume>, Fragmentable {
   id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
   fullname: () => Promise<String>;
   address: () => Promise<String>;
   email: () => Promise<String>;
@@ -1792,6 +1829,7 @@ export interface ResumeSubscription
   extends Promise<AsyncIterator<Resume>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
   fullname: () => Promise<AsyncIterator<String>>;
   address: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
@@ -1805,6 +1843,7 @@ export interface ResumeNullablePromise
   extends Promise<Resume | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
   fullname: () => Promise<String>;
   address: () => Promise<String>;
   email: () => Promise<String>;
@@ -2639,6 +2678,7 @@ export interface ResumeConnectionSubscription
 
 export interface ResumePreviousValues {
   id: ID_Output;
+  title?: String;
   fullname: String;
   address: String;
   email: String;
@@ -2652,6 +2692,7 @@ export interface ResumePreviousValuesPromise
   extends Promise<ResumePreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
   fullname: () => Promise<String>;
   address: () => Promise<String>;
   email: () => Promise<String>;
@@ -2665,6 +2706,7 @@ export interface ResumePreviousValuesSubscription
   extends Promise<AsyncIterator<ResumePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
   fullname: () => Promise<AsyncIterator<String>>;
   address: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;

@@ -1122,6 +1122,7 @@ type Query {
 
 type Resume {
   id: ID!
+  title: String
   fullname: String!
   address: String!
   email: String!
@@ -1147,6 +1148,7 @@ input ResumeCreateexperienceInput {
 
 input ResumeCreateInput {
   id: ID
+  title: String
   fullname: String!
   address: String!
   email: String!
@@ -1173,6 +1175,8 @@ type ResumeEdge {
 enum ResumeOrderByInput {
   id_ASC
   id_DESC
+  title_ASC
+  title_DESC
   fullname_ASC
   fullname_DESC
   address_ASC
@@ -1185,6 +1189,7 @@ enum ResumeOrderByInput {
 
 type ResumePreviousValues {
   id: ID!
+  title: String
   fullname: String!
   address: String!
   email: String!
@@ -1209,6 +1214,20 @@ input ResumeScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
   fullname: String
   fullname_not: String
   fullname_in: [String!]
@@ -1289,6 +1308,7 @@ input ResumeSubscriptionWhereInput {
 }
 
 input ResumeUpdateDataInput {
+  title: String
   fullname: String
   address: String
   email: String
@@ -1307,6 +1327,7 @@ input ResumeUpdateexperienceInput {
 }
 
 input ResumeUpdateInput {
+  title: String
   fullname: String
   address: String
   email: String
@@ -1317,6 +1338,7 @@ input ResumeUpdateInput {
 }
 
 input ResumeUpdateManyDataInput {
+  title: String
   fullname: String
   address: String
   email: String
@@ -1339,6 +1361,7 @@ input ResumeUpdateManyInput {
 }
 
 input ResumeUpdateManyMutationInput {
+  title: String
   fullname: String
   address: String
   email: String
@@ -1383,6 +1406,20 @@ input ResumeWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
   fullname: String
   fullname_not: String
   fullname_in: [String!]
