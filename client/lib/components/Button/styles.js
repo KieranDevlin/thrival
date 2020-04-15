@@ -3,15 +3,17 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   button: {
     width: 340,
-    borderRadius: 10,
-    paddingVertical: 15,
+    borderRadius: 5,
+    paddingVertical: 5,
+    overflow: 'hidden',
   },
   label: {
-    fontFamily: 'Raleway-Bold',
+    fontFamily: 'Raleway-Regular',
     fontSize: 20,
     color: '#FBF7EF',
     lineHeight: 0,
     textAlign: 'center',
+    textTransform: 'uppercase',
   },
   icon: {
     position: 'absolute',

@@ -11,25 +11,35 @@ const JobList = ({navigation, faveIds}) =>
   faveIds ? (
     //check if any existing faves
     faveIds.length > 0 ? (
-      <ScrollView contentContainerStyle={styles.scroll}>
+      <View style={styles.scroll}>
         {data.employers.map(
           (job) =>
             faveIds.includes(job.id.toString()) && (
-              <JobListItem key={job.id} job={job} navigation={navigation} />
+              <JobListItem
+                style={styles.jobItem}
+                key={job.id}
+                job={job}
+                navigation={navigation}
+              />
             ),
         )}
-      </ScrollView>
+      </View>
     ) : (
       <View style={styles.noFaves}>
         <Text>You dont have any saved opportunities!</Text>
       </View>
     )
   ) : (
-    <ScrollView contentContainerStyle={styles.scroll}>
+    <View style={styles.scroll}>
       {data.employers.map((job) => (
-        <JobListItem key={job.id} job={job} navigation={navigation} />
+        <JobListItem
+          style={styles.jobItem}
+          key={job.id}
+          job={job}
+          navigation={navigation}
+        />
       ))}
-    </ScrollView>
+    </View>
   );
 
 JobList.propTypes = {
