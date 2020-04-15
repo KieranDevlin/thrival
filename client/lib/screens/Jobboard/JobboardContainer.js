@@ -6,10 +6,49 @@ import Loader from '../../components/Loader';
 import Error from '../../components/Error';
 import PropTypes from 'prop-types';
 
+const ALL_JOBS = gql`
+  {
+    jobPosts {
+      id
+      createdAt
+      rate
+      industry
+      location
+      discipline
+      totalRoles
+      employer {
+        id
+        linkedin
+        contact {
+          id
+          email
+          website
+        }
+      }
+
+      description
+      roles
+      requirements
+    }
+  }
+`;
+
 export default class JobboardContainer extends Component {
   render() {
     return (
-      <Jobboard navigation={this.props.navigation} route={this.props.route} />
+      <Query query={ALL_JOBS}>
+        {({data, error, loading}) => {
+          if (loading) return <Loader />;
+          if (error) return <Error name={'Opporunities'} />;
+          if (data)
+            return (
+              <Jobboard
+                navigation={this.props.navigation}
+                jobs={data.jobPosts}
+              />
+            );
+        }}
+      </Query>
     );
   }
 }
