@@ -13,7 +13,6 @@ const SavedJobs = ({navigation, route}) => {
       {(value) => (
         <>
           <View style={styles.container}>
-            <Text style={styles.h1}>Saved Opportunities</Text>
             <JobList navigation={navigation} faveIds={value.faveIds} />
           </View>
           <TouchableOpacity
