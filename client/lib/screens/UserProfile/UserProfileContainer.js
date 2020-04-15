@@ -20,7 +20,6 @@ export default class UserProfileContainer extends Component {
     return (
       <UserContext.Consumer>
         {(user) => {
-          console.log(user);
           // return (
           //   <Query
           //     query={ALL_USERS}

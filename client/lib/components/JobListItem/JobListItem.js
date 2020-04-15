@@ -1,14 +1,15 @@
 import React from 'react';
 import {TouchableOpacity, View, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import moment from 'moment';
 import PropTypes from 'prop-types';
+// import openMap from 'react-native-open-maps';
+// import {mapKey} from '../../apiKeys';
 import Text from '../CustomText';
 import styles from './styles';
-// import {mapKey} from '../../apiKeys';
-import openMap from 'react-native-open-maps';
 import {FavesContext} from '../../context/FavesContext';
+
 const JobListItem = ({job, navigation}) => {
+  // TODO - function may not be necessary if DB changes
   // const renderDisciplines = (values) => {
   //   let str = '';
   //   for (let i = 0; i < values.length; i++) {
@@ -21,6 +22,7 @@ const JobListItem = ({job, navigation}) => {
   //   return str;
   // };
 
+  // TODO - everyone needs key for Google Geocoder API
   //   const getMap = async (address) => {
   //     try {
   //       const resp = await fetch(
@@ -38,11 +40,10 @@ const JobListItem = ({job, navigation}) => {
   //   };
 
   const getDomain = (link) => {
-    let domain;
     if (link.indexOf('://') > -1) {
-      domain = link.slice(link.indexOf('://') + 3, -1);
+      link.slice(link.indexOf('://') + 3, -1);
     }
-    return domain.slice(0, domain.indexOf('/'));
+    return link.slice(0, link.indexOf('/'));
   };
 
   return (
@@ -56,7 +57,9 @@ const JobListItem = ({job, navigation}) => {
           <View style={styles.cardHeader}>
             <Image
               source={{
-                uri: `https://logo.clearbit.com/${getDomain(job.contact.link)}`,
+                uri: `https://logo.clearbit.com/${getDomain(
+                  job.employer.contact.website,
+                )}`,
               }}
               style={styles.image}
             />
@@ -87,20 +90,19 @@ const JobListItem = ({job, navigation}) => {
             )}
           </View>
           <View style={styles.infoContainer}>
-            <Text style={styles.disciplines}>
-              {/* {renderDisciplines(job.discipline)} */}
-              {job.discipline[0]}
-            </Text>
+            <Text style={styles.disciplines}>{job.roles[0]}</Text>
             <Text style={styles.company}>{job.companyName}</Text>
 
             <TouchableOpacity
               onPress={() => {
+                // opens IOS maps with company location using Google Geocoder
+                // needs API key
                 // getMap(`${job.companyName}, ${job.location}`);
               }}
               style={styles.info}>
               <Text style={styles.smallText}>{job.location}</Text>
             </TouchableOpacity>
-            <Text style={styles.smallText}>$30/hr</Text>
+            <Text style={styles.smallText}>${job.rate}/hr</Text>
           </View>
         </TouchableOpacity>
       )}
