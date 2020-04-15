@@ -21,6 +21,7 @@ const UserProfile = ({navigation}) => {
   } = React.useContext(AuthContext);
 
   const {user} = React.useContext(UserContext);
+  console.log(user);
   const name = user.name;
   const firstname = name.substr(0, name.indexOf(' '));
   const lastname = name.substr(name.indexOf(' ') + 1);
