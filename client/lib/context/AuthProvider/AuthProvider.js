@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-
+import {UserContext} from '../UserContext';
 export const AuthContext = React.createContext();
 
 const AuthProvider = (props) => {
   const {children} = props;
+  const {setUser} = useContext(UserContext);
+
   const [state, dispatch] = React.useReducer(
     (prevState, action) => {
       switch (action.type) {
@@ -71,7 +73,8 @@ const AuthProvider = (props) => {
           type: 'SIGN_IN',
           token,
         });
-        console.log('user:', user);
+        setUser(JSON.stringify(user));
+        console.log('user:', JSON.stringify(user));
       },
       signOutContext: () => dispatch({type: 'SIGN_OUT'}),
       signUpContext: async (data) => {
@@ -83,6 +86,8 @@ const AuthProvider = (props) => {
           throw new Error(e);
         }
         dispatch({type: 'SIGN_UP', token});
+        setUser(JSON.stringify(user));
+        console.log('user:', JSON.stringify(user));
       },
     }),
     [],
