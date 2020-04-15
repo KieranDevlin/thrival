@@ -597,7 +597,7 @@ type JobPost {
   industry: String!
   location: String!
   discipline: [String!]!
-  totalRoles: Int!
+  totalRoles: String!
   employer: Employer!
   viewed(where: ApplicantWhereInput, orderBy: ApplicantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Applicant!]
   description: String!
@@ -621,7 +621,7 @@ input JobPostCreateInput {
   industry: String!
   location: String!
   discipline: JobPostCreatedisciplineInput
-  totalRoles: Int!
+  totalRoles: String!
   employer: EmployerCreateOneWithoutJobpostingsInput!
   viewed: ApplicantCreateManyWithoutAppliedJobsInput
   description: String!
@@ -653,7 +653,7 @@ input JobPostCreateWithoutEmployerInput {
   industry: String!
   location: String!
   discipline: JobPostCreatedisciplineInput
-  totalRoles: Int!
+  totalRoles: String!
   viewed: ApplicantCreateManyWithoutAppliedJobsInput
   description: String!
   roles: JobPostCreaterolesInput
@@ -666,7 +666,7 @@ input JobPostCreateWithoutViewedInput {
   industry: String!
   location: String!
   discipline: JobPostCreatedisciplineInput
-  totalRoles: Int!
+  totalRoles: String!
   employer: EmployerCreateOneWithoutJobpostingsInput!
   description: String!
   roles: JobPostCreaterolesInput
@@ -702,7 +702,7 @@ type JobPostPreviousValues {
   industry: String!
   location: String!
   discipline: [String!]!
-  totalRoles: Int!
+  totalRoles: String!
   description: String!
   roles: [String!]!
   requirements: [String!]!
@@ -767,14 +767,20 @@ input JobPostScalarWhereInput {
   location_not_starts_with: String
   location_ends_with: String
   location_not_ends_with: String
-  totalRoles: Int
-  totalRoles_not: Int
-  totalRoles_in: [Int!]
-  totalRoles_not_in: [Int!]
-  totalRoles_lt: Int
-  totalRoles_lte: Int
-  totalRoles_gt: Int
-  totalRoles_gte: Int
+  totalRoles: String
+  totalRoles_not: String
+  totalRoles_in: [String!]
+  totalRoles_not_in: [String!]
+  totalRoles_lt: String
+  totalRoles_lte: String
+  totalRoles_gt: String
+  totalRoles_gte: String
+  totalRoles_contains: String
+  totalRoles_not_contains: String
+  totalRoles_starts_with: String
+  totalRoles_not_starts_with: String
+  totalRoles_ends_with: String
+  totalRoles_not_ends_with: String
   description: String
   description_not: String
   description_in: [String!]
@@ -821,7 +827,7 @@ input JobPostUpdateInput {
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
-  totalRoles: Int
+  totalRoles: String
   employer: EmployerUpdateOneRequiredWithoutJobpostingsInput
   viewed: ApplicantUpdateManyWithoutAppliedJobsInput
   description: String
@@ -834,7 +840,7 @@ input JobPostUpdateManyDataInput {
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
-  totalRoles: Int
+  totalRoles: String
   description: String
   roles: JobPostUpdaterolesInput
   requirements: JobPostUpdaterequirementsInput
@@ -845,7 +851,7 @@ input JobPostUpdateManyMutationInput {
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
-  totalRoles: Int
+  totalRoles: String
   description: String
   roles: JobPostUpdaterolesInput
   requirements: JobPostUpdaterequirementsInput
@@ -893,7 +899,7 @@ input JobPostUpdateWithoutEmployerDataInput {
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
-  totalRoles: Int
+  totalRoles: String
   viewed: ApplicantUpdateManyWithoutAppliedJobsInput
   description: String
   roles: JobPostUpdaterolesInput
@@ -905,7 +911,7 @@ input JobPostUpdateWithoutViewedDataInput {
   industry: String
   location: String
   discipline: JobPostUpdatedisciplineInput
-  totalRoles: Int
+  totalRoles: String
   employer: EmployerUpdateOneRequiredWithoutJobpostingsInput
   description: String
   roles: JobPostUpdaterolesInput
@@ -993,14 +999,20 @@ input JobPostWhereInput {
   location_not_starts_with: String
   location_ends_with: String
   location_not_ends_with: String
-  totalRoles: Int
-  totalRoles_not: Int
-  totalRoles_in: [Int!]
-  totalRoles_not_in: [Int!]
-  totalRoles_lt: Int
-  totalRoles_lte: Int
-  totalRoles_gt: Int
-  totalRoles_gte: Int
+  totalRoles: String
+  totalRoles_not: String
+  totalRoles_in: [String!]
+  totalRoles_not_in: [String!]
+  totalRoles_lt: String
+  totalRoles_lte: String
+  totalRoles_gt: String
+  totalRoles_gte: String
+  totalRoles_contains: String
+  totalRoles_not_contains: String
+  totalRoles_starts_with: String
+  totalRoles_not_starts_with: String
+  totalRoles_ends_with: String
+  totalRoles_not_ends_with: String
   employer: EmployerWhereInput
   viewed_every: ApplicantWhereInput
   viewed_some: ApplicantWhereInput
@@ -1116,7 +1128,7 @@ type Resume {
   phone: String
   experience: [String!]!
   education: [String!]!
-  skills: String!
+  skills: [String!]!
 }
 
 type ResumeConnection {
@@ -1141,12 +1153,16 @@ input ResumeCreateInput {
   phone: String
   experience: ResumeCreateexperienceInput
   education: ResumeCreateeducationInput
-  skills: String!
+  skills: ResumeCreateskillsInput
 }
 
 input ResumeCreateManyInput {
   create: [ResumeCreateInput!]
   connect: [ResumeWhereUniqueInput!]
+}
+
+input ResumeCreateskillsInput {
+  set: [String!]
 }
 
 type ResumeEdge {
@@ -1165,8 +1181,6 @@ enum ResumeOrderByInput {
   email_DESC
   phone_ASC
   phone_DESC
-  skills_ASC
-  skills_DESC
 }
 
 type ResumePreviousValues {
@@ -1177,7 +1191,7 @@ type ResumePreviousValues {
   phone: String
   experience: [String!]!
   education: [String!]!
-  skills: String!
+  skills: [String!]!
 }
 
 input ResumeScalarWhereInput {
@@ -1251,20 +1265,6 @@ input ResumeScalarWhereInput {
   phone_not_starts_with: String
   phone_ends_with: String
   phone_not_ends_with: String
-  skills: String
-  skills_not: String
-  skills_in: [String!]
-  skills_not_in: [String!]
-  skills_lt: String
-  skills_lte: String
-  skills_gt: String
-  skills_gte: String
-  skills_contains: String
-  skills_not_contains: String
-  skills_starts_with: String
-  skills_not_starts_with: String
-  skills_ends_with: String
-  skills_not_ends_with: String
   AND: [ResumeScalarWhereInput!]
   OR: [ResumeScalarWhereInput!]
   NOT: [ResumeScalarWhereInput!]
@@ -1295,7 +1295,7 @@ input ResumeUpdateDataInput {
   phone: String
   experience: ResumeUpdateexperienceInput
   education: ResumeUpdateeducationInput
-  skills: String
+  skills: ResumeUpdateskillsInput
 }
 
 input ResumeUpdateeducationInput {
@@ -1313,7 +1313,7 @@ input ResumeUpdateInput {
   phone: String
   experience: ResumeUpdateexperienceInput
   education: ResumeUpdateeducationInput
-  skills: String
+  skills: ResumeUpdateskillsInput
 }
 
 input ResumeUpdateManyDataInput {
@@ -1323,7 +1323,7 @@ input ResumeUpdateManyDataInput {
   phone: String
   experience: ResumeUpdateexperienceInput
   education: ResumeUpdateeducationInput
-  skills: String
+  skills: ResumeUpdateskillsInput
 }
 
 input ResumeUpdateManyInput {
@@ -1345,12 +1345,16 @@ input ResumeUpdateManyMutationInput {
   phone: String
   experience: ResumeUpdateexperienceInput
   education: ResumeUpdateeducationInput
-  skills: String
+  skills: ResumeUpdateskillsInput
 }
 
 input ResumeUpdateManyWithWhereNestedInput {
   where: ResumeScalarWhereInput!
   data: ResumeUpdateManyDataInput!
+}
+
+input ResumeUpdateskillsInput {
+  set: [String!]
 }
 
 input ResumeUpdateWithWhereUniqueNestedInput {
@@ -1435,20 +1439,6 @@ input ResumeWhereInput {
   phone_not_starts_with: String
   phone_ends_with: String
   phone_not_ends_with: String
-  skills: String
-  skills_not: String
-  skills_in: [String!]
-  skills_not_in: [String!]
-  skills_lt: String
-  skills_lte: String
-  skills_gt: String
-  skills_gte: String
-  skills_contains: String
-  skills_not_contains: String
-  skills_starts_with: String
-  skills_not_starts_with: String
-  skills_ends_with: String
-  skills_not_ends_with: String
   AND: [ResumeWhereInput!]
   OR: [ResumeWhereInput!]
   NOT: [ResumeWhereInput!]

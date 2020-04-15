@@ -14,7 +14,7 @@ type JobPost {
   industry: String!
   location: String!
   discipline: [String!]! @scalarList(strategy:RELATION)
-  totalRoles: Int! 
+  totalRoles: String! 
   employer: Employer!
   viewed: [Applicant] 
   description: String!
@@ -47,5 +47,5 @@ type Resume {
   phone: String
   experience: [String!] @scalarList(strategy:RELATION)
   education: [String!] @scalarList(strategy:RELATION)
-  skills: String!
+  skills: [String!] @scalarList(strategy:RELATION)
 }
