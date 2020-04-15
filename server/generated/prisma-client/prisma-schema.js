@@ -1114,8 +1114,8 @@ type Resume {
   address: String!
   email: String!
   phone: String
-  experience: String!
-  education: String!
+  experience: [String!]!
+  education: [String!]!
   skills: String!
 }
 
@@ -1125,14 +1125,22 @@ type ResumeConnection {
   aggregate: AggregateResume!
 }
 
+input ResumeCreateeducationInput {
+  set: [String!]
+}
+
+input ResumeCreateexperienceInput {
+  set: [String!]
+}
+
 input ResumeCreateInput {
   id: ID
   fullname: String!
   address: String!
   email: String!
   phone: String
-  experience: String!
-  education: String!
+  experience: ResumeCreateexperienceInput
+  education: ResumeCreateeducationInput
   skills: String!
 }
 
@@ -1157,10 +1165,6 @@ enum ResumeOrderByInput {
   email_DESC
   phone_ASC
   phone_DESC
-  experience_ASC
-  experience_DESC
-  education_ASC
-  education_DESC
   skills_ASC
   skills_DESC
 }
@@ -1171,8 +1175,8 @@ type ResumePreviousValues {
   address: String!
   email: String!
   phone: String
-  experience: String!
-  education: String!
+  experience: [String!]!
+  education: [String!]!
   skills: String!
 }
 
@@ -1247,34 +1251,6 @@ input ResumeScalarWhereInput {
   phone_not_starts_with: String
   phone_ends_with: String
   phone_not_ends_with: String
-  experience: String
-  experience_not: String
-  experience_in: [String!]
-  experience_not_in: [String!]
-  experience_lt: String
-  experience_lte: String
-  experience_gt: String
-  experience_gte: String
-  experience_contains: String
-  experience_not_contains: String
-  experience_starts_with: String
-  experience_not_starts_with: String
-  experience_ends_with: String
-  experience_not_ends_with: String
-  education: String
-  education_not: String
-  education_in: [String!]
-  education_not_in: [String!]
-  education_lt: String
-  education_lte: String
-  education_gt: String
-  education_gte: String
-  education_contains: String
-  education_not_contains: String
-  education_starts_with: String
-  education_not_starts_with: String
-  education_ends_with: String
-  education_not_ends_with: String
   skills: String
   skills_not: String
   skills_in: [String!]
@@ -1317,9 +1293,17 @@ input ResumeUpdateDataInput {
   address: String
   email: String
   phone: String
-  experience: String
-  education: String
+  experience: ResumeUpdateexperienceInput
+  education: ResumeUpdateeducationInput
   skills: String
+}
+
+input ResumeUpdateeducationInput {
+  set: [String!]
+}
+
+input ResumeUpdateexperienceInput {
+  set: [String!]
 }
 
 input ResumeUpdateInput {
@@ -1327,8 +1311,8 @@ input ResumeUpdateInput {
   address: String
   email: String
   phone: String
-  experience: String
-  education: String
+  experience: ResumeUpdateexperienceInput
+  education: ResumeUpdateeducationInput
   skills: String
 }
 
@@ -1337,8 +1321,8 @@ input ResumeUpdateManyDataInput {
   address: String
   email: String
   phone: String
-  experience: String
-  education: String
+  experience: ResumeUpdateexperienceInput
+  education: ResumeUpdateeducationInput
   skills: String
 }
 
@@ -1359,8 +1343,8 @@ input ResumeUpdateManyMutationInput {
   address: String
   email: String
   phone: String
-  experience: String
-  education: String
+  experience: ResumeUpdateexperienceInput
+  education: ResumeUpdateeducationInput
   skills: String
 }
 
@@ -1451,34 +1435,6 @@ input ResumeWhereInput {
   phone_not_starts_with: String
   phone_ends_with: String
   phone_not_ends_with: String
-  experience: String
-  experience_not: String
-  experience_in: [String!]
-  experience_not_in: [String!]
-  experience_lt: String
-  experience_lte: String
-  experience_gt: String
-  experience_gte: String
-  experience_contains: String
-  experience_not_contains: String
-  experience_starts_with: String
-  experience_not_starts_with: String
-  experience_ends_with: String
-  experience_not_ends_with: String
-  education: String
-  education_not: String
-  education_in: [String!]
-  education_not_in: [String!]
-  education_lt: String
-  education_lte: String
-  education_gt: String
-  education_gte: String
-  education_contains: String
-  education_not_contains: String
-  education_starts_with: String
-  education_not_starts_with: String
-  education_ends_with: String
-  education_not_ends_with: String
   skills: String
   skills_not: String
   skills_in: [String!]
@@ -1518,6 +1474,7 @@ type User {
   password: String!
   employerProfile: Employer
   applicantProfile: Applicant
+  profileImage: String
 }
 
 type UserConnection {
@@ -1533,6 +1490,7 @@ input UserCreateInput {
   password: String!
   employerProfile: EmployerCreateOneInput
   applicantProfile: ApplicantCreateOneInput
+  profileImage: String
 }
 
 type UserEdge {
@@ -1549,6 +1507,8 @@ enum UserOrderByInput {
   email_DESC
   password_ASC
   password_DESC
+  profileImage_ASC
+  profileImage_DESC
 }
 
 type UserPreviousValues {
@@ -1556,6 +1516,7 @@ type UserPreviousValues {
   name: String!
   email: String!
   password: String!
+  profileImage: String
 }
 
 type UserSubscriptionPayload {
@@ -1582,12 +1543,14 @@ input UserUpdateInput {
   password: String
   employerProfile: EmployerUpdateOneInput
   applicantProfile: ApplicantUpdateOneInput
+  profileImage: String
 }
 
 input UserUpdateManyMutationInput {
   name: String
   email: String
   password: String
+  profileImage: String
 }
 
 input UserWhereInput {
@@ -1649,6 +1612,20 @@ input UserWhereInput {
   password_not_ends_with: String
   employerProfile: EmployerWhereInput
   applicantProfile: ApplicantWhereInput
+  profileImage: String
+  profileImage_not: String
+  profileImage_in: [String!]
+  profileImage_not_in: [String!]
+  profileImage_lt: String
+  profileImage_lte: String
+  profileImage_gt: String
+  profileImage_gte: String
+  profileImage_contains: String
+  profileImage_not_contains: String
+  profileImage_starts_with: String
+  profileImage_not_starts_with: String
+  profileImage_ends_with: String
+  profileImage_not_ends_with: String
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]

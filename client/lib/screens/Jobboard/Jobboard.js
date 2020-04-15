@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {TouchableOpacity, Linking, View} from 'react-native';
 import Text from '../../components/CustomText/CustomText';
 import Error from '../../components/Error';
