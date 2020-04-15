@@ -5,7 +5,7 @@ type User {
   password: String!
   employerProfile: Employer
   applicantProfile: Applicant 
-  profileImage: String
+  profileImage: String @default(value:"https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png")
 }
 type JobPost {
   id: ID! @id
@@ -14,10 +14,10 @@ type JobPost {
   industry: String!
   location: String!
   discipline: [String!]! @scalarList(strategy:RELATION)
-  totalRoles: Int! 
+  totalRoles: String! 
   employer: Employer!
   viewed: [Applicant] 
-  description: String
+  description: String!
   roles: [String!]! @scalarList(strategy:RELATION)
   requirements: [String!]! @scalarList(strategy:RELATION)
 }
@@ -45,7 +45,7 @@ type Resume {
   address: String!
   email: String!
   phone: String
-  experience: [String!]
-  education: [String!]
-  skills: String!
+  experience: [String!] @scalarList(strategy:RELATION)
+  education: [String!] @scalarList(strategy:RELATION)
+  skills: [String!] @scalarList(strategy:RELATION)
 }

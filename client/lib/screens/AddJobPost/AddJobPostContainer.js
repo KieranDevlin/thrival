@@ -1,49 +1,88 @@
-import React, {Component} from 'react';
+import React, {useState, Component} from 'react';
 import AddJobPost from './AddJobPost';
 import PropTypes from 'prop-types';
 import {Text} from 'react-native';
-import {Query} from '@apollo/react-components';
-import {gql} from 'apollo-boost';
+import {Mutation} from '@apollo/react-components';
+import ApolloClient, {gql} from 'apollo-boost';
 
-const ALL_USERS = gql`
-  query user($UserWhereUniqueInput: UserWhereUniqueInput!) {
-    user(where: $UserWhereUniqueInput) {
-      id
-      name
-      password
-      applicantProfile {
-        id
-        email
-        linkedin
-        github
-        appliedJobs {
-          id
-          createdAt
-          industry
-          location
-          discipline
-          totalRoles
-        }
+const UPDATE_JOBPOSTS = gql`
+  mutation updateEmployer(
+    $EmployerUpdateInput: EmployerUpdateInput!
+    $EmployerWhereUniqueInput: EmployerWhereUniqueInput!
+  ) {
+    updateEmployer(
+      data: $EmployerUpdateInput
+      where: $EmployerWhereUniqueInput
+    ) {
+      jobpostings {
+        createdAt
+        industry
+        location
+        discipline
+        totalRoles
+        rate
+        description
       }
     }
   }
 `;
+const client = new ApolloClient({
+  uri: 'https://us1.prisma.sh/ivandaixivwork/thrival-covid19/dev',
+});
 
-export default class AddJobPostContainer extends Component {
-  render() {
-    return (
-      <Query
-        query={ALL_USERS}
-        variables={{UserWhereUniqueInput: {id: 'ck8rr4sbd009h0810wcw4r12u'}}}>
-        {({data, loading, error}) => {
-          if (loading) return <Text>Loading...</Text>;
-          if (error) return <Text>Error :(</Text>;
-          return <AddJobPost />;
-        }}
-      </Query>
-    );
-  }
-}
+const AddJobPostContainer = () => {
+  const [industry, setIndustry] = useState('No Industry');
+  const [location, setLocation] = useState('Remote');
+  const [discipline, setDiscipline] = useState('No Discipline');
+  const [totalRoles, setTotalRoles] = useState('1');
+  const [rate, setRate] = useState(0);
+  const [description, setDescription] = useState('No description');
+  return (
+    <Mutation
+      mutation={UPDATE_JOBPOSTS}
+      client={client}
+      variables={{
+        // This id will be changed to user id when getting user data is setup
+        EmployerWhereUniqueInput: {id: 'ck90hgwlu99jm0981fmuqx0af'},
+        EmployerUpdateInput: {
+          jobpostings: {
+            create: {
+              rate,
+              industry,
+              location,
+              discipline: {
+                set: discipline,
+              },
+              totalRoles,
+              description,
+            },
+          },
+        },
+      }}>
+      {(updateEmployer, {data, error}) => {
+        if (error) return <Text>Error :(</Text>;
+        return (
+          <AddJobPost
+            updateEmployer={updateEmployer}
+            setIndustry={setIndustry}
+            setLocation={setLocation}
+            setDiscipline={setDiscipline}
+            setTotalRoles={setTotalRoles}
+            setDescription={setDescription}
+            setRate={setRate}
+            industry={industry}
+            location={location}
+            discipline={discipline}
+            totalRoles={totalRoles}
+            description={description}
+            rate={rate}
+          />
+        );
+      }}
+    </Mutation>
+  );
+};
+export default AddJobPostContainer;
 
 AddJobPostContainer.propTypes = {
   navigation: PropTypes.object,
