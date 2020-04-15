@@ -68,7 +68,7 @@ export const sharedScreenOptions = ({route}) => {
             closeOnDragDown={true}
             closeOnPressMask={true}
             duration={300}
-            height={300}
+            height={250}
             customStyles={{
               wrapper: {
                 backgroundColor: 'transparent',
@@ -92,19 +92,6 @@ export const sharedScreenOptions = ({route}) => {
               ]}
             />
             <View style={styles.menu}>
-              <TouchableOpacity
-                style={styles.menuItemContainer}
-                onPress={() => {
-                  refRBSheet.current.close();
-                  props.navigation.navigate('Settings');
-                }}>
-                <Icon
-                  style={[styles.menuItem, styles.menuIcon]}
-                  name="settings-outline"
-                  color="white"
-                />
-                <Text style={styles.menuItem}>Settings</Text>
-              </TouchableOpacity>
               <TouchableOpacity
                 style={styles.menuItemContainer}
                 onPress={() => {

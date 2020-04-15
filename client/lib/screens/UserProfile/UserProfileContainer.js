@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useContext} from 'react';
 import UserProfile from './UserProfile';
 import {Query} from '@apollo/react-components';
 import {gql} from 'apollo-boost';

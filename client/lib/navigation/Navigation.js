@@ -9,14 +9,12 @@ import UserProfileScreen from '../screens/UserProfile';
 import {sharedScreenOptions} from './config';
 import {backOnlyOptions} from './config';
 import SearchScreen from '../screens/Search';
-import SettingsScreen from '../screens/Settings';
 import SavedJobs from '../screens/SavedJobs';
 import AboutUsScreen from '../screens/AboutUs';
 import ContactUsScreen from '../screens/ContactUs';
 import PrivacyPolicyScreen from '../screens/PrivacyPolicy';
 import NotificationScreen from '../screens/Notification';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {createDrawerNavigator} from '@react-navigation/drawer';
 import ResumeScreen from '../screens/Resume';
 import SavedJobsScreen from '../screens/SavedJobs';
 import ManageAccountScreen from '../screens/ManageAccount';
@@ -111,52 +109,8 @@ const UserProfileStackScreens = () => {
         }}
       />
       <UserProfileStack.Screen
-        name="Settings"
-        component={SettingsScreen}
-        options={{
-          headerTintColor: '#FFFFFF',
-          headerTitleStyle: {
-            fontFamily: 'Raleway-Regular',
-            fontWeight: '400',
-          },
-        }}
-      />
-      <UserProfileStack.Screen
         name="Saved Opportunities"
         component={SavedJobs}
-        options={{
-          headerTintColor: '#FFFFFF',
-          headerTitleStyle: {
-            fontFamily: 'Raleway-Regular',
-            fontWeight: '400',
-          },
-        }}
-      />
-      <UserProfileStack.Screen
-        name="About Us"
-        component={AboutUsScreen}
-        options={{
-          headerTintColor: '#FFFFFF',
-          headerTitleStyle: {
-            fontFamily: 'Raleway-Regular',
-            fontWeight: '400',
-          },
-        }}
-      />
-      <UserProfileStack.Screen
-        name="Contact Us"
-        component={ContactUsScreen}
-        options={{
-          headerTintColor: '#FFFFFF',
-          headerTitleStyle: {
-            fontFamily: 'Raleway-Regular',
-            fontWeight: '400',
-          },
-        }}
-      />
-      <UserProfileStack.Screen
-        name="Privacy Policy"
-        component={PrivacyPolicyScreen}
         options={{
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
@@ -238,56 +192,6 @@ const NotificationStackScreens = () => {
         }}
       />
     </NotificationStack.Navigator>
-  );
-};
-
-const SettingsStack = createStackNavigator();
-const SettingsStackScreens = () => {
-  return (
-    <SettingsStack.Navigator
-      initialRouteName="Settings"
-      screenOptions={userProfileOptions}>
-      <SettingsStack.Screen
-        name="Settings"
-        component={SettingsScreen}
-        options={{
-          headerTintColor: '#FFFFFF',
-          headerTitleStyle: {
-            fontWeight: '400',
-          },
-        }}
-      />
-      <SettingsStack.Screen
-        name="About Us"
-        component={AboutUsScreen}
-        options={{
-          headerTintColor: '#FFFFFF',
-          headerTitleStyle: {
-            fontWeight: '400',
-          },
-        }}
-      />
-      <SettingsStack.Screen
-        name="Contact Us"
-        component={ContactUsScreen}
-        options={{
-          headerTintColor: '#FFFFFF',
-          headerTitleStyle: {
-            fontWeight: '400',
-          },
-        }}
-      />
-      <SettingsStack.Screen
-        name="Privacy Policy"
-        component={PrivacyPolicyScreen}
-        options={{
-          headerTintColor: '#FFFFFF',
-          headerTitleStyle: {
-            fontWeight: '400',
-          },
-        }}
-      />
-    </SettingsStack.Navigator>
   );
 };
 
@@ -437,39 +341,4 @@ export const BottomTabNavScreens = () => (
     />
     <BottomTabNav.Screen name="Profile" component={UserProfileStackScreens} />
   </BottomTabNav.Navigator>
-);
-
-const Drawer = createDrawerNavigator();
-
-export const ProfileDrawer = (props) => (
-  <Drawer.Navigator
-    drawerPosition="right"
-    drawerType="front"
-    drawerContentOptions={{
-      activeTintColor: '#FFFFFF',
-      inactiveTintColor: '#2B2D42',
-      activeBackgroundColor: '#5877DD',
-      labelStyle: {},
-    }}
-    screenOptions={({route}) => ({
-      drawerIcon: ({focused, size, color}) => {
-        let iconName;
-        if (route.name === 'Settings') {
-          iconName = focused ? 'settings-outline' : 'settings';
-        } else if (route.name === 'About Us') {
-          iconName = focused ? 'information-outline' : 'information';
-        } else if (route.name === 'Contact Us') {
-          iconName = focused ? 'forum-outline' : 'forum';
-        } else if (route.name === 'Privacy Policy') {
-          iconName = focused ? 'shield-outline' : 'shield';
-        }
-        return <Icon name={iconName} size={size} color={color} />;
-      },
-    })}>
-    <Drawer.Screen name="Settings" component={SettingsScreen} />
-    {/* <Drawer.Screen name="About Us" component={AboutUsScreen} />
-    <Drawer.Screen name="Profile" component={UserProfileScreen} />
-    <Drawer.Screen name="Contact Us" component={ContactUsScreen} />
-    <Drawer.Screen name="Privacy Policy" component={PrivacyPolicyScreen} /> */}
-  </Drawer.Navigator>
 );

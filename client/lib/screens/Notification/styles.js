@@ -32,6 +32,9 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     marginBottom: 10,
   },
+  container: {
+    backgroundColor: '#FFFFFF',
+  },
 });
 
 export default styles;
