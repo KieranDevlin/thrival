@@ -4,15 +4,17 @@ import PropTypes from 'prop-types';
 import JobListItem from '../JobListItem';
 import styles from './styles';
 import Text from '../CustomText';
-const data = require('./db.json');
 
-const JobList = ({navigation, faveIds}) =>
+// TODO - remove dummy testing data once DB is finalized
+// const data = require('./db.json');
+
+const JobList = ({navigation, faveIds, jobs}) =>
   //check if faveIds are passed in props
   faveIds ? (
     //check if any existing faves
     faveIds.length > 0 ? (
       <ScrollView contentContainerStyle={styles.scroll}>
-        {data.employers.map(
+        {jobs.map(
           (job) =>
             faveIds.includes(job.id.toString()) && (
               <JobListItem key={job.id} job={job} navigation={navigation} />
@@ -26,7 +28,7 @@ const JobList = ({navigation, faveIds}) =>
     )
   ) : (
     <ScrollView contentContainerStyle={styles.scroll}>
-      {data.employers.map((job) => (
+      {jobs.map((job) => (
         <JobListItem key={job.id} job={job} navigation={navigation} />
       ))}
     </ScrollView>
@@ -35,6 +37,7 @@ const JobList = ({navigation, faveIds}) =>
 JobList.propTypes = {
   navigation: PropTypes.object.isRequired,
   faveIds: PropTypes.array,
+  jobs: PropTypes.array,
 };
 
 export default JobList;
