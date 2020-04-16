@@ -19,6 +19,7 @@ import ResumeScreen from '../screens/Resume';
 import SavedJobsScreen from '../screens/SavedJobs';
 import ManageAccountScreen from '../screens/ManageAccount';
 import {View} from 'react-native';
+import MyResumesScreen from '../screens/MyResumes';
 
 const JobboardStack = createStackNavigator();
 const JobboardStackScreens = () => {
@@ -124,6 +125,19 @@ const UserProfileStackScreens = () => {
         component={ApplicationScreen}
         options={{
           title: 'My Applications',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
+            transform: [{translateY: -2}],
+            fontWeight: '400',
+          },
+        }}
+      />
+      <UserProfileStack.Screen
+        name="Resumes"
+        component={MyResumesScreen}
+        options={{
+          title: 'Resumes',
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
             fontFamily: 'Raleway-Regular',

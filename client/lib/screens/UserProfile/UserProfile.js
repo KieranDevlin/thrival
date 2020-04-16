@@ -15,14 +15,13 @@ import {AuthContext} from '../../context/AuthProvider';
 import PropTypes from 'prop-types';
 import {UserContext} from '../../context/UserContext';
 
-const UserProfile = ({navigation}) => {
+const UserProfile = ({navigation, user}) => {
   const {
     authContext: {signOutContext},
   } = React.useContext(AuthContext);
 
-  const {user} = React.useContext(UserContext);
-  console.log(user);
-  const name = user.name;
+  const currentUser = user[0];
+  const name = currentUser.name;
   const firstname = name.substr(0, name.indexOf(' '));
   const lastname = name.substr(name.indexOf(' ') + 1);
   return (
@@ -60,7 +59,9 @@ const UserProfile = ({navigation}) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.menuItem}
-            onPress={() => navigation.navigate('Resume')}>
+            onPress={() =>
+              navigation.navigate('Resumes', {currentUser: currentUser})
+            }>
             <View style={styles.menuName}>
               <Icon
                 style={styles.icon}

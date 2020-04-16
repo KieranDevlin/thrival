@@ -10,34 +10,49 @@ import PropTypes from 'prop-types';
 import {AuthContext} from '../../context/AuthProvider';
 
 const ALL_USERS = gql`
-  query Users {
-    id
-    name
+  {
+    users {
+      id
+      name
+      applicantProfile {
+        id
+        linkedin
+        github
+        appliedJobs {
+          id
+        }
+        resume {
+          fullname
+        }
+      }
+      profileImage
+    }
   }
 `;
 export default class UserProfileContainer extends Component {
   render() {
     return (
       <UserContext.Consumer>
-        {(user) => {
-          // return (
-          //   <Query
-          //     query={ALL_USERS}
-          //     variables={{UserWhereUniqueInput: {id: userid}}}>
-          //     {({data, loading, error}) => {
-          //       if (loading) return <Loader />;
-          //       if (error) return <Text>Error :(</Text>;
-          //       console.log(data);
+        {({user}) => {
+          const loggedInUserId = user.id;
           return (
-            <UserProfile
-              navigation={this.props.navigation}
-              // user={data.user}
-              style={styles.container}
-            />
+            <Query query={ALL_USERS}>
+              {({data, loading, error}) => {
+                if (loading) return <Loader />;
+                if (error) return <Text>Error :(</Text>;
+                const currentUser = data.users.filter((user) =>
+                  loggedInUserId.includes(user.id),
+                );
+                return (
+                  <UserProfile
+                    navigation={this.props.navigation}
+                    user={currentUser}
+                    style={styles.container}
+                  />
+                );
+              }}
+            </Query>
           );
-          // }}
-          //       </Query>
-          //     );
         }}
       </UserContext.Consumer>
     );
