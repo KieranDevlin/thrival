@@ -133,6 +133,18 @@ const UserProfileStackScreens = () => {
         }}
       />
       <UserProfileStack.Screen
+        name="Opportunity"
+        component={JobScreen}
+        options={{
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontFamily: 'Raleway-Regular',
+            transform: [{translateY: -2}],
+            fontWeight: '400',
+          },
+        }}
+      />
+      <UserProfileStack.Screen
         name="Resume"
         component={ResumeScreen}
         options={{
