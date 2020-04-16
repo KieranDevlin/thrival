@@ -1,22 +1,19 @@
-import React, {Component} from 'react';
-import {Query} from '@apollo/react-components';
-import {gql} from 'apollo-boost';
-import {Text} from 'react-native';
+import React from 'react';
 import Application from './Application';
-import Loader from '../../components/Loader';
 import PropTypes from 'prop-types';
 
-export default class ApplicationContainer extends Component {
-  render() {
-    return (
-      <Application
-        route={this.props.route}
-        navigation={this.props.navigation}
-      />
-    );
-  }
-}
+const ApplicationContainer = ({route, navigation}) => {
+  return (
+    <Application
+      route={route}
+      navigation={navigation}
+      myApplications={route.params.myApplications}
+    />
+  );
+};
 ApplicationContainer.propTypes = {
   navigation: PropTypes.object,
   route: PropTypes.object,
 };
+
+export default ApplicationContainer;

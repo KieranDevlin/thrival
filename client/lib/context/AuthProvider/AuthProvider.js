@@ -74,7 +74,6 @@ const AuthProvider = (props) => {
           token,
         });
         setUser(user);
-        console.log('user:', user);
       },
       signOutContext: () => dispatch({type: 'SIGN_OUT'}),
       signUpContext: async (data) => {
@@ -87,7 +86,6 @@ const AuthProvider = (props) => {
         }
         dispatch({type: 'SIGN_UP', token});
         setUser(user);
-        console.log('user:', user);
       },
     }),
     [],

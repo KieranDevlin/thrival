@@ -1,27 +1,16 @@
 import React from 'react';
 import Text from '../../components/CustomText/CustomText';
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Dimensions,
-  Image,
-  ScrollView,
-} from 'react-native';
+import {TouchableOpacity, View, Image} from 'react-native';
 import styles from './styles';
-import Button from '../../components/Button';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AuthContext} from '../../context/AuthProvider';
 import PropTypes from 'prop-types';
-import {UserContext} from '../../context/UserContext';
 
-const UserProfile = ({navigation}) => {
+const UserProfile = ({navigation, user}) => {
   const {
     authContext: {signOutContext},
   } = React.useContext(AuthContext);
 
-  const {user} = React.useContext(UserContext);
-  console.log(user);
   const name = user.name;
   const firstname = name.substr(0, name.indexOf(' '));
   const lastname = name.substr(name.indexOf(' ') + 1);
@@ -74,7 +63,15 @@ const UserProfile = ({navigation}) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.menuItem}
-            onPress={() => navigation.navigate('Application')}>
+            onPress={() =>
+              user.applicantProfile.appliedJobs?.length > 0
+                ? navigation.navigate('Application', {
+                    myApplications: user.applicantProfile.appliedJobs,
+                  })
+                : navigation.navigate('Application', {
+                    myApplications: [],
+                  })
+            }>
             <View style={styles.menuName}>
               <Icon
                 style={styles.icon}
@@ -192,6 +189,7 @@ const UserProfile = ({navigation}) => {
 };
 UserProfile.propTypes = {
   navigation: PropTypes.objectOf(PropTypes.func),
+  user: PropTypes.object,
 };
 
 export default UserProfile;
