@@ -1,5 +1,5 @@
 import React from 'react';
-import {ImageBackground, View, TouchableOpacity, TextInput} from 'react-native';
+import {Image, View, TouchableOpacity, TextInput} from 'react-native';
 import styles from './styles';
 import Text from '../../components/CustomText';
 import {AuthContext} from '../../context/AuthProvider';
@@ -46,6 +46,10 @@ const Login = ({navigation}) => {
     <Mutation mutation={LOGIN_MUTATION} client={authClient}>
       {(loginMutation) => (
         <View style={styles.content}>
+          <Image
+            style={styles.logo}
+            source={require('../../assets/logos/logo-dark.png')}
+          />
           <Text style={styles.header}>THRIVAL</Text>
           <TextInput
             style={styles.input}

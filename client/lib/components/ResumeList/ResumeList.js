@@ -4,7 +4,9 @@ import {TouchableOpacity, View} from 'react-native';
 import ResumeCard from '../ResumeCard';
 
 const ResumeList = ({currentUser, navigation}) => {
-  return <ResumeCard navigation={navigation} currentUser={currentUser} />;
+  const resumes = currentUser.applicantProfile.resume;
+  console.log(resumes);
+  return <ResumeCard navigation={navigation} resumes={resumes} />;
 };
 
 export default ResumeList;

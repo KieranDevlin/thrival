@@ -22,7 +22,36 @@ const ALL_USERS = gql`
           id
         }
         resume {
+          id
+          createdAt
+          title
           fullname
+          achievements {
+            id
+            title
+            description
+          }
+          address
+          email
+          experience {
+            id
+            jobTitle
+            startDate
+            endDate
+            location
+            employer
+            description
+          }
+          education {
+            id
+            credential
+            startDate
+            endDate
+            location
+            school
+          }
+          phone
+          skills
         }
       }
       profileImage

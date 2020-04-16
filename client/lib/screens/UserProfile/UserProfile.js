@@ -21,6 +21,7 @@ const UserProfile = ({navigation, user}) => {
   } = React.useContext(AuthContext);
 
   const currentUser = user[0];
+  console.log(currentUser);
   const name = currentUser.name;
   const firstname = name.substr(0, name.indexOf(' '));
   const lastname = name.substr(name.indexOf(' ') + 1);
@@ -41,52 +42,84 @@ const UserProfile = ({navigation, user}) => {
           </View>
         </View>
         <View style={styles.profileMenu}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('Saved Opportunities');
-            }}
-            style={[styles.menuItem, styles.borderTop]}>
-            <View style={styles.menuName}>
-              <Icon
-                style={styles.icon}
-                name={'star'}
-                size={20}
-                color={'#2B2D42'}
-              />
-              <Text style={styles.menuTitle}>Saved Opportunities</Text>
-            </View>
-            <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.menuItem}
-            onPress={() =>
-              navigation.navigate('Resumes', {currentUser: currentUser})
-            }>
-            <View style={styles.menuName}>
-              <Icon
-                style={styles.icon}
-                name={'file-document-edit'}
-                size={20}
-                color={'#2B2D42'}
-              />
-              <Text style={styles.menuTitle}>View My Resume</Text>
-            </View>
-            <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.menuItem}
-            onPress={() => navigation.navigate('Application')}>
-            <View style={styles.menuName}>
-              <Icon
-                style={styles.icon}
-                name={'file-multiple'}
-                size={20}
-                color={'#2B2D42'}
-              />
-              <Text style={styles.menuTitle}>View My Applications</Text>
-            </View>
-            <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
-          </TouchableOpacity>
+          {currentUser.employerProfile ? null : (
+            <>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('Saved Opportunities');
+                }}
+                style={[styles.menuItem, styles.borderTop]}>
+                <View style={styles.menuName}>
+                  <Icon
+                    style={styles.icon}
+                    name={'star'}
+                    size={20}
+                    color={'#2B2D42'}
+                  />
+                  <Text style={styles.menuTitle}>Saved Opportunities</Text>
+                </View>
+                <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.menuItem}
+                onPress={() =>
+                  navigation.navigate('Resumes', {currentUser: currentUser})
+                }>
+                <View style={styles.menuName}>
+                  <Icon
+                    style={styles.icon}
+                    name={'file-document-edit'}
+                    size={20}
+                    color={'#2B2D42'}
+                  />
+                  <Text style={styles.menuTitle}>View My Resume</Text>
+                </View>
+                <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.menuItem}
+                onPress={() => navigation.navigate('Application')}>
+                <View style={styles.menuName}>
+                  <Icon
+                    style={styles.icon}
+                    name={'file-multiple'}
+                    size={20}
+                    color={'#2B2D42'}
+                  />
+                  <Text style={styles.menuTitle}>View My Applications</Text>
+                </View>
+                <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
+              </TouchableOpacity>
+            </>
+          )}
+          {currentUser.applicantProfile ? null : (
+            <>
+              <TouchableOpacity style={[styles.menuItem, styles.borderTop]}>
+                <View style={styles.menuName}>
+                  <Icon
+                    style={styles.icon}
+                    name={'account'}
+                    size={20}
+                    color={'#2B2D42'}
+                  />
+                  <Text style={styles.menuTitle}>View My Job Posts</Text>
+                </View>
+                <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.menuItem}>
+                <View style={styles.menuName}>
+                  <Icon
+                    style={styles.icon}
+                    name={'account'}
+                    size={20}
+                    color={'#2B2D42'}
+                  />
+                  <Text style={styles.menuTitle}>View My Applicants</Text>
+                </View>
+                <Icon name={'chevron-right'} size={25} color={'#2B2D42'} />
+              </TouchableOpacity>
+            </>
+          )}
           <TouchableOpacity style={styles.menuItem}>
             <View style={styles.menuName}>
               <Icon

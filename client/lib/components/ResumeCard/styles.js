@@ -25,9 +25,12 @@ const styles = StyleSheet.create({
     width: '100%',
     flex: 1,
   },
-  employerInfo: {
+  margin: {
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  resumeInfo: {
     justifyContent: 'space-around',
-    marginLeft: 15,
   },
   statusContainer: {
     flexDirection: 'row',
@@ -35,7 +38,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   resumeTitle: {
-    fontWeight: '400',
+    fontWeight: '500',
   },
   company: {
     fontSize: 12,

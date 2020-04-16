@@ -13,16 +13,16 @@ import Button from '../../components/Button';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AuthContext} from '../../context/AuthProvider';
 import PropTypes from 'prop-types';
-import LinearGradient from 'react-native-linear-gradient';
+import moment from 'moment';
 
-const Resume = ({navigation, user}) => {
-  const {
-    authContext: {signOutContext},
-  } = React.useContext(AuthContext);
-
-  name = 'John Adam-Smith';
-  firstname = name.substr(0, name.indexOf(' '));
-  lastname = name.substr(name.indexOf(' ') + 1);
+const Resume = ({navigation, resume}) => {
+  console.log(resume.fullname);
+  const name = resume.fullname;
+  const experiences = resume.experience;
+  const educations = resume.education;
+  const achievements = resume.achievements;
+  const firstname = name.substr(0, name.indexOf(' '));
+  const lastname = name.substr(name.indexOf(' ') + 1);
 
   return (
     <>
@@ -31,7 +31,7 @@ const Resume = ({navigation, user}) => {
           <View style={styles.nameContainer}>
             <Text style={styles.name}>{firstname}</Text>
             <Text style={styles.name}>{lastname}</Text>
-            <Text style={styles.occupation}>UX Designer</Text>
+            <Text style={styles.occupation}>{resume.title}</Text>
           </View>
           <View style={styles.imageContainer}>
             <Image
@@ -41,57 +41,46 @@ const Resume = ({navigation, user}) => {
           </View>
         </View>
         <View style={styles.profileMetaContainer}>
-          <Text style={styles.heading}>UX Designer</Text>
-          <Text style={styles.content}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </Text>
-          <Text style={styles.heading}>Experience</Text>
-          <Text style={styles.content}>UX Designer | 2015-2020</Text>
-          <Text style={styles.content}>EA Studios | Vancouver, Canada</Text>
-          <Text style={styles.content}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </Text>
-          <Text style={styles.content}>Graphic Designer | 2013-2015</Text>
-          <Text style={styles.content}>
-            Open Road Auto Group | Vancouver, Canada
-          </Text>
-          <Text style={styles.content}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </Text>
-          <Text style={styles.heading}>Education</Text>
-          <Text style={styles.content}>Graphic Design | 2009-2013</Text>
-          <Text style={styles.content}>
-            University of British Columbia | Vancouver, Canada
-          </Text>
-          <Text style={styles.heading}>Skills</Text>
-          <Text style={styles.heading}>Achievements</Text>
-          <Text style={styles.content}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </Text>
+          <View style={[styles.section, styles.borderTop]}>
+            <Text style={styles.heading}>Experience</Text>
+            {experiences.map((experience) => (
+              <View style={styles.entry}>
+                <Text style={styles.content}>
+                  {experience.jobTitle} |{' '}
+                  {moment(experience.startDate).format('MMMM D, YYYY')} -
+                  {moment(experience.endDate).format('MMMM D, YYYY')}
+                </Text>
+                <Text style={styles.content}>{experience.location}</Text>
+                <Text style={styles.description}>{experience.description}</Text>
+              </View>
+            ))}
+          </View>
+          <View style={styles.section}>
+            <Text style={styles.heading}>Education</Text>
+            {educations.map((education) => (
+              <View style={styles.entry}>
+                <Text style={styles.content}>
+                  {education.credential} |{' '}
+                  {moment(education.startDate).format('MMMM D, YYYY')} -
+                  {moment(education.endDate).format('MMMM D, YYYY')}
+                </Text>
+                <Text style={styles.description}>
+                  {education.school} | {education.location}
+                </Text>
+              </View>
+            ))}
+          </View>
+          <View style={styles.section}>
+            <Text style={styles.heading}>Achievements</Text>
+            {achievements.map((achievement) => (
+              <View style={styles.entry}>
+                <Text style={styles.content}>{achievement.title}</Text>
+                <Text style={styles.description}>
+                  {achievement.description}
+                </Text>
+              </View>
+            ))}
+          </View>
         </View>
       </ScrollView>
     </>

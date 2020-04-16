@@ -24,7 +24,9 @@ const MyResumes = ({currentUser, navigation, user}) => {
 
   return (
     <>
-      <ResumeList navigation={navigation} currentUser={currentUser} />
+      <ScrollView style={styles.container}>
+        <ResumeList navigation={navigation} currentUser={currentUser} />
+      </ScrollView>
     </>
   );
 };
