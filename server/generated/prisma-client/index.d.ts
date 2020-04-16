@@ -16,9 +16,12 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
 export type Maybe<T> = T | undefined | null;
 
 export interface Exists {
+  achievements: (where?: AchievementsWhereInput) => Promise<boolean>;
   applicant: (where?: ApplicantWhereInput) => Promise<boolean>;
   contact: (where?: ContactWhereInput) => Promise<boolean>;
+  education: (where?: EducationWhereInput) => Promise<boolean>;
   employer: (where?: EmployerWhereInput) => Promise<boolean>;
+  experience: (where?: ExperienceWhereInput) => Promise<boolean>;
   jobPost: (where?: JobPostWhereInput) => Promise<boolean>;
   resume: (where?: ResumeWhereInput) => Promise<boolean>;
   user: (where?: UserWhereInput) => Promise<boolean>;
@@ -43,6 +46,27 @@ export interface Prisma {
    * Queries
    */
 
+  achievements: (
+    where: AchievementsWhereUniqueInput
+  ) => AchievementsNullablePromise;
+  achievementses: (args?: {
+    where?: AchievementsWhereInput;
+    orderBy?: AchievementsOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Achievements>;
+  achievementsesConnection: (args?: {
+    where?: AchievementsWhereInput;
+    orderBy?: AchievementsOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => AchievementsConnectionPromise;
   applicant: (where: ApplicantWhereUniqueInput) => ApplicantNullablePromise;
   applicants: (args?: {
     where?: ApplicantWhereInput;
@@ -81,6 +105,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => ContactConnectionPromise;
+  education: (where: EducationWhereUniqueInput) => EducationNullablePromise;
+  educations: (args?: {
+    where?: EducationWhereInput;
+    orderBy?: EducationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Education>;
+  educationsConnection: (args?: {
+    where?: EducationWhereInput;
+    orderBy?: EducationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => EducationConnectionPromise;
   employer: (where: EmployerWhereUniqueInput) => EmployerNullablePromise;
   employers: (args?: {
     where?: EmployerWhereInput;
@@ -100,6 +143,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => EmployerConnectionPromise;
+  experience: (where: ExperienceWhereUniqueInput) => ExperienceNullablePromise;
+  experiences: (args?: {
+    where?: ExperienceWhereInput;
+    orderBy?: ExperienceOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Experience>;
+  experiencesConnection: (args?: {
+    where?: ExperienceWhereInput;
+    orderBy?: ExperienceOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => ExperienceConnectionPromise;
   jobPost: (where: JobPostWhereUniqueInput) => JobPostNullablePromise;
   jobPosts: (args?: {
     where?: JobPostWhereInput;
@@ -163,6 +225,26 @@ export interface Prisma {
    * Mutations
    */
 
+  createAchievements: (data: AchievementsCreateInput) => AchievementsPromise;
+  updateAchievements: (args: {
+    data: AchievementsUpdateInput;
+    where: AchievementsWhereUniqueInput;
+  }) => AchievementsPromise;
+  updateManyAchievementses: (args: {
+    data: AchievementsUpdateManyMutationInput;
+    where?: AchievementsWhereInput;
+  }) => BatchPayloadPromise;
+  upsertAchievements: (args: {
+    where: AchievementsWhereUniqueInput;
+    create: AchievementsCreateInput;
+    update: AchievementsUpdateInput;
+  }) => AchievementsPromise;
+  deleteAchievements: (
+    where: AchievementsWhereUniqueInput
+  ) => AchievementsPromise;
+  deleteManyAchievementses: (
+    where?: AchievementsWhereInput
+  ) => BatchPayloadPromise;
   createApplicant: (data: ApplicantCreateInput) => ApplicantPromise;
   updateApplicant: (args: {
     data: ApplicantUpdateInput;
@@ -195,6 +277,22 @@ export interface Prisma {
   }) => ContactPromise;
   deleteContact: (where: ContactWhereUniqueInput) => ContactPromise;
   deleteManyContacts: (where?: ContactWhereInput) => BatchPayloadPromise;
+  createEducation: (data: EducationCreateInput) => EducationPromise;
+  updateEducation: (args: {
+    data: EducationUpdateInput;
+    where: EducationWhereUniqueInput;
+  }) => EducationPromise;
+  updateManyEducations: (args: {
+    data: EducationUpdateManyMutationInput;
+    where?: EducationWhereInput;
+  }) => BatchPayloadPromise;
+  upsertEducation: (args: {
+    where: EducationWhereUniqueInput;
+    create: EducationCreateInput;
+    update: EducationUpdateInput;
+  }) => EducationPromise;
+  deleteEducation: (where: EducationWhereUniqueInput) => EducationPromise;
+  deleteManyEducations: (where?: EducationWhereInput) => BatchPayloadPromise;
   createEmployer: (data: EmployerCreateInput) => EmployerPromise;
   updateEmployer: (args: {
     data: EmployerUpdateInput;
@@ -211,6 +309,22 @@ export interface Prisma {
   }) => EmployerPromise;
   deleteEmployer: (where: EmployerWhereUniqueInput) => EmployerPromise;
   deleteManyEmployers: (where?: EmployerWhereInput) => BatchPayloadPromise;
+  createExperience: (data: ExperienceCreateInput) => ExperiencePromise;
+  updateExperience: (args: {
+    data: ExperienceUpdateInput;
+    where: ExperienceWhereUniqueInput;
+  }) => ExperiencePromise;
+  updateManyExperiences: (args: {
+    data: ExperienceUpdateManyMutationInput;
+    where?: ExperienceWhereInput;
+  }) => BatchPayloadPromise;
+  upsertExperience: (args: {
+    where: ExperienceWhereUniqueInput;
+    create: ExperienceCreateInput;
+    update: ExperienceUpdateInput;
+  }) => ExperiencePromise;
+  deleteExperience: (where: ExperienceWhereUniqueInput) => ExperiencePromise;
+  deleteManyExperiences: (where?: ExperienceWhereInput) => BatchPayloadPromise;
   createJobPost: (data: JobPostCreateInput) => JobPostPromise;
   updateJobPost: (args: {
     data: JobPostUpdateInput;
@@ -268,15 +382,24 @@ export interface Prisma {
 }
 
 export interface Subscription {
+  achievements: (
+    where?: AchievementsSubscriptionWhereInput
+  ) => AchievementsSubscriptionPayloadSubscription;
   applicant: (
     where?: ApplicantSubscriptionWhereInput
   ) => ApplicantSubscriptionPayloadSubscription;
   contact: (
     where?: ContactSubscriptionWhereInput
   ) => ContactSubscriptionPayloadSubscription;
+  education: (
+    where?: EducationSubscriptionWhereInput
+  ) => EducationSubscriptionPayloadSubscription;
   employer: (
     where?: EmployerSubscriptionWhereInput
   ) => EmployerSubscriptionPayloadSubscription;
+  experience: (
+    where?: ExperienceSubscriptionWhereInput
+  ) => ExperienceSubscriptionPayloadSubscription;
   jobPost: (
     where?: JobPostSubscriptionWhereInput
   ) => JobPostSubscriptionPayloadSubscription;
@@ -295,6 +418,14 @@ export interface ClientConstructor<T> {
 /**
  * Types
  */
+
+export type ContactOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "email_ASC"
+  | "email_DESC"
+  | "website_ASC"
+  | "website_DESC";
 
 export type JobPostOrderByInput =
   | "id_ASC"
@@ -315,6 +446,10 @@ export type JobPostOrderByInput =
 export type ApplicantOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "jobTitle_ASC"
+  | "jobTitle_DESC"
+  | "description_ASC"
+  | "description_DESC"
   | "linkedin_ASC"
   | "linkedin_DESC"
   | "github_ASC"
@@ -323,6 +458,10 @@ export type ApplicantOrderByInput =
 export type ResumeOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "title_ASC"
+  | "title_DESC"
   | "fullname_ASC"
   | "fullname_DESC"
   | "address_ASC"
@@ -332,13 +471,45 @@ export type ResumeOrderByInput =
   | "phone_ASC"
   | "phone_DESC";
 
-export type ContactOrderByInput =
+export type ExperienceOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "email_ASC"
-  | "email_DESC"
-  | "website_ASC"
-  | "website_DESC";
+  | "jobTitle_ASC"
+  | "jobTitle_DESC"
+  | "startDate_ASC"
+  | "startDate_DESC"
+  | "endDate_ASC"
+  | "endDate_DESC"
+  | "location_ASC"
+  | "location_DESC"
+  | "employer_ASC"
+  | "employer_DESC"
+  | "description_ASC"
+  | "description_DESC";
+
+export type EducationOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "credential_ASC"
+  | "credential_DESC"
+  | "startDate_ASC"
+  | "startDate_DESC"
+  | "endDate_ASC"
+  | "endDate_DESC"
+  | "location_ASC"
+  | "location_DESC"
+  | "school_ASC"
+  | "school_DESC";
+
+export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+
+export type AchievementsOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "description_ASC"
+  | "description_DESC";
 
 export type EmployerOrderByInput =
   | "id_ASC"
@@ -358,20 +529,215 @@ export type UserOrderByInput =
   | "profileImage_ASC"
   | "profileImage_DESC";
 
-export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+export interface JobPostUpdaterolesInput {
+  set?: Maybe<String[] | String>;
+}
 
-export interface EmployerUpsertWithoutJobpostingsInput {
-  update: EmployerUpdateWithoutJobpostingsDataInput;
-  create: EmployerCreateWithoutJobpostingsInput;
+export type AchievementsWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface ResumeUpdateManyInput {
+  create?: Maybe<ResumeCreateInput[] | ResumeCreateInput>;
+  update?: Maybe<
+    | ResumeUpdateWithWhereUniqueNestedInput[]
+    | ResumeUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | ResumeUpsertWithWhereUniqueNestedInput[]
+    | ResumeUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
+  connect?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
+  set?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
+  disconnect?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
+  deleteMany?: Maybe<ResumeScalarWhereInput[] | ResumeScalarWhereInput>;
+  updateMany?: Maybe<
+    | ResumeUpdateManyWithWhereNestedInput[]
+    | ResumeUpdateManyWithWhereNestedInput
+  >;
 }
 
 export type ApplicantWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface JobPostUpdateManyWithWhereNestedInput {
-  where: JobPostScalarWhereInput;
-  data: JobPostUpdateManyDataInput;
+export interface ResumeUpdateWithWhereUniqueNestedInput {
+  where: ResumeWhereUniqueInput;
+  data: ResumeUpdateDataInput;
+}
+
+export interface JobPostWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  rate?: Maybe<Int>;
+  rate_not?: Maybe<Int>;
+  rate_in?: Maybe<Int[] | Int>;
+  rate_not_in?: Maybe<Int[] | Int>;
+  rate_lt?: Maybe<Int>;
+  rate_lte?: Maybe<Int>;
+  rate_gt?: Maybe<Int>;
+  rate_gte?: Maybe<Int>;
+  industry?: Maybe<String>;
+  industry_not?: Maybe<String>;
+  industry_in?: Maybe<String[] | String>;
+  industry_not_in?: Maybe<String[] | String>;
+  industry_lt?: Maybe<String>;
+  industry_lte?: Maybe<String>;
+  industry_gt?: Maybe<String>;
+  industry_gte?: Maybe<String>;
+  industry_contains?: Maybe<String>;
+  industry_not_contains?: Maybe<String>;
+  industry_starts_with?: Maybe<String>;
+  industry_not_starts_with?: Maybe<String>;
+  industry_ends_with?: Maybe<String>;
+  industry_not_ends_with?: Maybe<String>;
+  location?: Maybe<String>;
+  location_not?: Maybe<String>;
+  location_in?: Maybe<String[] | String>;
+  location_not_in?: Maybe<String[] | String>;
+  location_lt?: Maybe<String>;
+  location_lte?: Maybe<String>;
+  location_gt?: Maybe<String>;
+  location_gte?: Maybe<String>;
+  location_contains?: Maybe<String>;
+  location_not_contains?: Maybe<String>;
+  location_starts_with?: Maybe<String>;
+  location_not_starts_with?: Maybe<String>;
+  location_ends_with?: Maybe<String>;
+  location_not_ends_with?: Maybe<String>;
+  totalRoles?: Maybe<String>;
+  totalRoles_not?: Maybe<String>;
+  totalRoles_in?: Maybe<String[] | String>;
+  totalRoles_not_in?: Maybe<String[] | String>;
+  totalRoles_lt?: Maybe<String>;
+  totalRoles_lte?: Maybe<String>;
+  totalRoles_gt?: Maybe<String>;
+  totalRoles_gte?: Maybe<String>;
+  totalRoles_contains?: Maybe<String>;
+  totalRoles_not_contains?: Maybe<String>;
+  totalRoles_starts_with?: Maybe<String>;
+  totalRoles_not_starts_with?: Maybe<String>;
+  totalRoles_ends_with?: Maybe<String>;
+  totalRoles_not_ends_with?: Maybe<String>;
+  employer?: Maybe<EmployerWhereInput>;
+  applicants_every?: Maybe<ApplicantWhereInput>;
+  applicants_some?: Maybe<ApplicantWhereInput>;
+  applicants_none?: Maybe<ApplicantWhereInput>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  AND?: Maybe<JobPostWhereInput[] | JobPostWhereInput>;
+  OR?: Maybe<JobPostWhereInput[] | JobPostWhereInput>;
+  NOT?: Maybe<JobPostWhereInput[] | JobPostWhereInput>;
+}
+
+export interface ResumeUpdateDataInput {
+  title?: Maybe<String>;
+  achievements?: Maybe<AchievementsUpdateManyInput>;
+  fullname?: Maybe<String>;
+  address?: Maybe<String>;
+  email?: Maybe<String>;
+  experience?: Maybe<ExperienceUpdateManyInput>;
+  education?: Maybe<EducationUpdateManyInput>;
+  phone?: Maybe<String>;
+  skills?: Maybe<ResumeUpdateskillsInput>;
+}
+
+export interface EmployerWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  jobpostings_every?: Maybe<JobPostWhereInput>;
+  jobpostings_some?: Maybe<JobPostWhereInput>;
+  jobpostings_none?: Maybe<JobPostWhereInput>;
+  linkedin?: Maybe<String>;
+  linkedin_not?: Maybe<String>;
+  linkedin_in?: Maybe<String[] | String>;
+  linkedin_not_in?: Maybe<String[] | String>;
+  linkedin_lt?: Maybe<String>;
+  linkedin_lte?: Maybe<String>;
+  linkedin_gt?: Maybe<String>;
+  linkedin_gte?: Maybe<String>;
+  linkedin_contains?: Maybe<String>;
+  linkedin_not_contains?: Maybe<String>;
+  linkedin_starts_with?: Maybe<String>;
+  linkedin_not_starts_with?: Maybe<String>;
+  linkedin_ends_with?: Maybe<String>;
+  linkedin_not_ends_with?: Maybe<String>;
+  contact?: Maybe<ContactWhereInput>;
+  AND?: Maybe<EmployerWhereInput[] | EmployerWhereInput>;
+  OR?: Maybe<EmployerWhereInput[] | EmployerWhereInput>;
+  NOT?: Maybe<EmployerWhereInput[] | EmployerWhereInput>;
+}
+
+export interface AchievementsUpdateManyInput {
+  create?: Maybe<AchievementsCreateInput[] | AchievementsCreateInput>;
+  update?: Maybe<
+    | AchievementsUpdateWithWhereUniqueNestedInput[]
+    | AchievementsUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | AchievementsUpsertWithWhereUniqueNestedInput[]
+    | AchievementsUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<AchievementsWhereUniqueInput[] | AchievementsWhereUniqueInput>;
+  connect?: Maybe<
+    AchievementsWhereUniqueInput[] | AchievementsWhereUniqueInput
+  >;
+  set?: Maybe<AchievementsWhereUniqueInput[] | AchievementsWhereUniqueInput>;
+  disconnect?: Maybe<
+    AchievementsWhereUniqueInput[] | AchievementsWhereUniqueInput
+  >;
+  deleteMany?: Maybe<
+    AchievementsScalarWhereInput[] | AchievementsScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | AchievementsUpdateManyWithWhereNestedInput[]
+    | AchievementsUpdateManyWithWhereNestedInput
+  >;
 }
 
 export interface ApplicantWhereInput {
@@ -389,6 +755,34 @@ export interface ApplicantWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  jobTitle?: Maybe<String>;
+  jobTitle_not?: Maybe<String>;
+  jobTitle_in?: Maybe<String[] | String>;
+  jobTitle_not_in?: Maybe<String[] | String>;
+  jobTitle_lt?: Maybe<String>;
+  jobTitle_lte?: Maybe<String>;
+  jobTitle_gt?: Maybe<String>;
+  jobTitle_gte?: Maybe<String>;
+  jobTitle_contains?: Maybe<String>;
+  jobTitle_not_contains?: Maybe<String>;
+  jobTitle_starts_with?: Maybe<String>;
+  jobTitle_not_starts_with?: Maybe<String>;
+  jobTitle_ends_with?: Maybe<String>;
+  jobTitle_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
   linkedin?: Maybe<String>;
   linkedin_not?: Maybe<String>;
   linkedin_in?: Maybe<String[] | String>;
@@ -428,18 +822,12 @@ export interface ApplicantWhereInput {
   NOT?: Maybe<ApplicantWhereInput[] | ApplicantWhereInput>;
 }
 
-export interface JobPostUpdateManyDataInput {
-  rate?: Maybe<Int>;
-  industry?: Maybe<String>;
-  location?: Maybe<String>;
-  discipline?: Maybe<JobPostUpdatedisciplineInput>;
-  totalRoles?: Maybe<String>;
-  description?: Maybe<String>;
-  roles?: Maybe<JobPostUpdaterolesInput>;
-  requirements?: Maybe<JobPostUpdaterequirementsInput>;
+export interface AchievementsUpdateWithWhereUniqueNestedInput {
+  where: AchievementsWhereUniqueInput;
+  data: AchievementsUpdateDataInput;
 }
 
-export interface ContactWhereInput {
+export interface ExperienceWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -454,168 +842,215 @@ export interface ContactWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  website?: Maybe<String>;
-  website_not?: Maybe<String>;
-  website_in?: Maybe<String[] | String>;
-  website_not_in?: Maybe<String[] | String>;
-  website_lt?: Maybe<String>;
-  website_lte?: Maybe<String>;
-  website_gt?: Maybe<String>;
-  website_gte?: Maybe<String>;
-  website_contains?: Maybe<String>;
-  website_not_contains?: Maybe<String>;
-  website_starts_with?: Maybe<String>;
-  website_not_starts_with?: Maybe<String>;
-  website_ends_with?: Maybe<String>;
-  website_not_ends_with?: Maybe<String>;
-  AND?: Maybe<ContactWhereInput[] | ContactWhereInput>;
-  OR?: Maybe<ContactWhereInput[] | ContactWhereInput>;
-  NOT?: Maybe<ContactWhereInput[] | ContactWhereInput>;
+  jobTitle?: Maybe<String>;
+  jobTitle_not?: Maybe<String>;
+  jobTitle_in?: Maybe<String[] | String>;
+  jobTitle_not_in?: Maybe<String[] | String>;
+  jobTitle_lt?: Maybe<String>;
+  jobTitle_lte?: Maybe<String>;
+  jobTitle_gt?: Maybe<String>;
+  jobTitle_gte?: Maybe<String>;
+  jobTitle_contains?: Maybe<String>;
+  jobTitle_not_contains?: Maybe<String>;
+  jobTitle_starts_with?: Maybe<String>;
+  jobTitle_not_starts_with?: Maybe<String>;
+  jobTitle_ends_with?: Maybe<String>;
+  jobTitle_not_ends_with?: Maybe<String>;
+  startDate?: Maybe<DateTimeInput>;
+  startDate_not?: Maybe<DateTimeInput>;
+  startDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_lt?: Maybe<DateTimeInput>;
+  startDate_lte?: Maybe<DateTimeInput>;
+  startDate_gt?: Maybe<DateTimeInput>;
+  startDate_gte?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  endDate_not?: Maybe<DateTimeInput>;
+  endDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  endDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  endDate_lt?: Maybe<DateTimeInput>;
+  endDate_lte?: Maybe<DateTimeInput>;
+  endDate_gt?: Maybe<DateTimeInput>;
+  endDate_gte?: Maybe<DateTimeInput>;
+  location?: Maybe<String>;
+  location_not?: Maybe<String>;
+  location_in?: Maybe<String[] | String>;
+  location_not_in?: Maybe<String[] | String>;
+  location_lt?: Maybe<String>;
+  location_lte?: Maybe<String>;
+  location_gt?: Maybe<String>;
+  location_gte?: Maybe<String>;
+  location_contains?: Maybe<String>;
+  location_not_contains?: Maybe<String>;
+  location_starts_with?: Maybe<String>;
+  location_not_starts_with?: Maybe<String>;
+  location_ends_with?: Maybe<String>;
+  location_not_ends_with?: Maybe<String>;
+  employer?: Maybe<String>;
+  employer_not?: Maybe<String>;
+  employer_in?: Maybe<String[] | String>;
+  employer_not_in?: Maybe<String[] | String>;
+  employer_lt?: Maybe<String>;
+  employer_lte?: Maybe<String>;
+  employer_gt?: Maybe<String>;
+  employer_gte?: Maybe<String>;
+  employer_contains?: Maybe<String>;
+  employer_not_contains?: Maybe<String>;
+  employer_starts_with?: Maybe<String>;
+  employer_not_starts_with?: Maybe<String>;
+  employer_ends_with?: Maybe<String>;
+  employer_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  AND?: Maybe<ExperienceWhereInput[] | ExperienceWhereInput>;
+  OR?: Maybe<ExperienceWhereInput[] | ExperienceWhereInput>;
+  NOT?: Maybe<ExperienceWhereInput[] | ExperienceWhereInput>;
+}
+
+export interface ResumeCreateManyInput {
+  create?: Maybe<ResumeCreateInput[] | ResumeCreateInput>;
+  connect?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
+}
+
+export interface JobPostCreateWithoutEmployerInput {
+  id?: Maybe<ID_Input>;
+  rate: Int;
+  industry: String;
+  location: String;
+  discipline?: Maybe<JobPostCreatedisciplineInput>;
+  totalRoles: String;
+  applicants?: Maybe<ApplicantCreateManyWithoutAppliedJobsInput>;
+  description: String;
+  roles?: Maybe<JobPostCreaterolesInput>;
+  requirements?: Maybe<JobPostCreaterequirementsInput>;
 }
 
 export interface ResumeCreateInput {
   id?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  achievements?: Maybe<AchievementsCreateManyInput>;
   fullname: String;
   address: String;
   email: String;
+  experience?: Maybe<ExperienceCreateManyInput>;
+  education?: Maybe<EducationCreateManyInput>;
   phone?: Maybe<String>;
-  experience?: Maybe<ResumeCreateexperienceInput>;
-  education?: Maybe<ResumeCreateeducationInput>;
   skills?: Maybe<ResumeCreateskillsInput>;
 }
 
-export interface ApplicantUpdateManyWithoutAppliedJobsInput {
-  create?: Maybe<
-    | ApplicantCreateWithoutAppliedJobsInput[]
-    | ApplicantCreateWithoutAppliedJobsInput
-  >;
-  delete?: Maybe<ApplicantWhereUniqueInput[] | ApplicantWhereUniqueInput>;
-  connect?: Maybe<ApplicantWhereUniqueInput[] | ApplicantWhereUniqueInput>;
-  set?: Maybe<ApplicantWhereUniqueInput[] | ApplicantWhereUniqueInput>;
-  disconnect?: Maybe<ApplicantWhereUniqueInput[] | ApplicantWhereUniqueInput>;
-  update?: Maybe<
-    | ApplicantUpdateWithWhereUniqueWithoutAppliedJobsInput[]
-    | ApplicantUpdateWithWhereUniqueWithoutAppliedJobsInput
-  >;
-  upsert?: Maybe<
-    | ApplicantUpsertWithWhereUniqueWithoutAppliedJobsInput[]
-    | ApplicantUpsertWithWhereUniqueWithoutAppliedJobsInput
-  >;
-  deleteMany?: Maybe<ApplicantScalarWhereInput[] | ApplicantScalarWhereInput>;
-  updateMany?: Maybe<
-    | ApplicantUpdateManyWithWhereNestedInput[]
-    | ApplicantUpdateManyWithWhereNestedInput
+export interface AchievementsUpdateDataInput {
+  title?: Maybe<String>;
+  description?: Maybe<String>;
+}
+
+export interface AchievementsCreateManyInput {
+  create?: Maybe<AchievementsCreateInput[] | AchievementsCreateInput>;
+  connect?: Maybe<
+    AchievementsWhereUniqueInput[] | AchievementsWhereUniqueInput
   >;
 }
 
-export interface ResumeCreateexperienceInput {
-  set?: Maybe<String[] | String>;
-}
-
-export interface ResumeUpdateManyInput {
-  create?: Maybe<ResumeCreateInput[] | ResumeCreateInput>;
-  update?: Maybe<
-    | ResumeUpdateWithWhereUniqueNestedInput[]
-    | ResumeUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | ResumeUpsertWithWhereUniqueNestedInput[]
-    | ResumeUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
-  connect?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
-  set?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
-  disconnect?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
-  deleteMany?: Maybe<ResumeScalarWhereInput[] | ResumeScalarWhereInput>;
-  updateMany?: Maybe<
-    | ResumeUpdateManyWithWhereNestedInput[]
-    | ResumeUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface ResumeCreateeducationInput {
-  set?: Maybe<String[] | String>;
-}
-
-export interface UserSubscriptionWhereInput {
+export interface ResumeSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserWhereInput>;
-  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  node?: Maybe<ResumeWhereInput>;
+  AND?: Maybe<ResumeSubscriptionWhereInput[] | ResumeSubscriptionWhereInput>;
+  OR?: Maybe<ResumeSubscriptionWhereInput[] | ResumeSubscriptionWhereInput>;
+  NOT?: Maybe<ResumeSubscriptionWhereInput[] | ResumeSubscriptionWhereInput>;
 }
 
-export interface ResumeCreateskillsInput {
-  set?: Maybe<String[] | String>;
+export interface ExperienceCreateManyInput {
+  create?: Maybe<ExperienceCreateInput[] | ExperienceCreateInput>;
+  connect?: Maybe<ExperienceWhereUniqueInput[] | ExperienceWhereUniqueInput>;
 }
 
-export interface JobPostSubscriptionWhereInput {
+export interface ExperienceSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<JobPostWhereInput>;
-  AND?: Maybe<JobPostSubscriptionWhereInput[] | JobPostSubscriptionWhereInput>;
-  OR?: Maybe<JobPostSubscriptionWhereInput[] | JobPostSubscriptionWhereInput>;
-  NOT?: Maybe<JobPostSubscriptionWhereInput[] | JobPostSubscriptionWhereInput>;
+  node?: Maybe<ExperienceWhereInput>;
+  AND?: Maybe<
+    ExperienceSubscriptionWhereInput[] | ExperienceSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    ExperienceSubscriptionWhereInput[] | ExperienceSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    ExperienceSubscriptionWhereInput[] | ExperienceSubscriptionWhereInput
+  >;
 }
 
-export interface ApplicantUpdateInput {
-  linkedin?: Maybe<String>;
-  github?: Maybe<String>;
-  appliedJobs?: Maybe<JobPostUpdateManyWithoutViewedInput>;
-  resume?: Maybe<ResumeUpdateManyInput>;
+export interface ExperienceCreateInput {
+  id?: Maybe<ID_Input>;
+  jobTitle: String;
+  startDate: DateTimeInput;
+  endDate?: Maybe<DateTimeInput>;
+  location: String;
+  employer: String;
+  description: String;
 }
 
-export interface ContactSubscriptionWhereInput {
+export interface EducationSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<ContactWhereInput>;
-  AND?: Maybe<ContactSubscriptionWhereInput[] | ContactSubscriptionWhereInput>;
-  OR?: Maybe<ContactSubscriptionWhereInput[] | ContactSubscriptionWhereInput>;
-  NOT?: Maybe<ContactSubscriptionWhereInput[] | ContactSubscriptionWhereInput>;
+  node?: Maybe<EducationWhereInput>;
+  AND?: Maybe<
+    EducationSubscriptionWhereInput[] | EducationSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    EducationSubscriptionWhereInput[] | EducationSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    EducationSubscriptionWhereInput[] | EducationSubscriptionWhereInput
+  >;
 }
 
-export interface JobPostUpdateManyWithoutViewedInput {
-  create?: Maybe<
-    JobPostCreateWithoutViewedInput[] | JobPostCreateWithoutViewedInput
+export interface EducationCreateManyInput {
+  create?: Maybe<EducationCreateInput[] | EducationCreateInput>;
+  connect?: Maybe<EducationWhereUniqueInput[] | EducationWhereUniqueInput>;
+}
+
+export interface ApplicantSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<ApplicantWhereInput>;
+  AND?: Maybe<
+    ApplicantSubscriptionWhereInput[] | ApplicantSubscriptionWhereInput
   >;
-  delete?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
-  connect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
-  set?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
-  disconnect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
-  update?: Maybe<
-    | JobPostUpdateWithWhereUniqueWithoutViewedInput[]
-    | JobPostUpdateWithWhereUniqueWithoutViewedInput
+  OR?: Maybe<
+    ApplicantSubscriptionWhereInput[] | ApplicantSubscriptionWhereInput
   >;
-  upsert?: Maybe<
-    | JobPostUpsertWithWhereUniqueWithoutViewedInput[]
-    | JobPostUpsertWithWhereUniqueWithoutViewedInput
+  NOT?: Maybe<
+    ApplicantSubscriptionWhereInput[] | ApplicantSubscriptionWhereInput
   >;
-  deleteMany?: Maybe<JobPostScalarWhereInput[] | JobPostScalarWhereInput>;
-  updateMany?: Maybe<
-    | JobPostUpdateManyWithWhereNestedInput[]
-    | JobPostUpdateManyWithWhereNestedInput
-  >;
+}
+
+export interface EducationCreateInput {
+  id?: Maybe<ID_Input>;
+  credential?: Maybe<String>;
+  startDate: DateTimeInput;
+  endDate?: Maybe<DateTimeInput>;
+  location: String;
+  school: String;
 }
 
 export interface UserUpdateManyMutationInput {
@@ -625,17 +1060,76 @@ export interface UserUpdateManyMutationInput {
   profileImage?: Maybe<String>;
 }
 
-export interface JobPostUpdateWithWhereUniqueWithoutViewedInput {
+export interface ResumeCreateskillsInput {
+  set?: Maybe<String[] | String>;
+}
+
+export interface ApplicantUpdateDataInput {
+  jobTitle?: Maybe<String>;
+  description?: Maybe<String>;
+  linkedin?: Maybe<String>;
+  github?: Maybe<String>;
+  appliedJobs?: Maybe<JobPostUpdateManyWithoutApplicantsInput>;
+  resume?: Maybe<ResumeUpdateManyInput>;
+}
+
+export interface ApplicantUpdateInput {
+  jobTitle?: Maybe<String>;
+  description?: Maybe<String>;
+  linkedin?: Maybe<String>;
+  github?: Maybe<String>;
+  appliedJobs?: Maybe<JobPostUpdateManyWithoutApplicantsInput>;
+  resume?: Maybe<ResumeUpdateManyInput>;
+}
+
+export interface ApplicantUpdateOneInput {
+  create?: Maybe<ApplicantCreateInput>;
+  update?: Maybe<ApplicantUpdateDataInput>;
+  upsert?: Maybe<ApplicantUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<ApplicantWhereUniqueInput>;
+}
+
+export interface JobPostUpdateManyWithoutApplicantsInput {
+  create?: Maybe<
+    JobPostCreateWithoutApplicantsInput[] | JobPostCreateWithoutApplicantsInput
+  >;
+  delete?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
+  connect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
+  set?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
+  disconnect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
+  update?: Maybe<
+    | JobPostUpdateWithWhereUniqueWithoutApplicantsInput[]
+    | JobPostUpdateWithWhereUniqueWithoutApplicantsInput
+  >;
+  upsert?: Maybe<
+    | JobPostUpsertWithWhereUniqueWithoutApplicantsInput[]
+    | JobPostUpsertWithWhereUniqueWithoutApplicantsInput
+  >;
+  deleteMany?: Maybe<JobPostScalarWhereInput[] | JobPostScalarWhereInput>;
+  updateMany?: Maybe<
+    | JobPostUpdateManyWithWhereNestedInput[]
+    | JobPostUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface EmployerUpdateDataInput {
+  jobpostings?: Maybe<JobPostUpdateManyWithoutEmployerInput>;
+  linkedin?: Maybe<String>;
+  contact?: Maybe<ContactUpdateOneInput>;
+}
+
+export interface JobPostUpdateWithWhereUniqueWithoutApplicantsInput {
   where: JobPostWhereUniqueInput;
-  data: JobPostUpdateWithoutViewedDataInput;
+  data: JobPostUpdateWithoutApplicantsDataInput;
 }
 
-export interface ApplicantUpsertNestedInput {
-  update: ApplicantUpdateDataInput;
-  create: ApplicantCreateInput;
-}
+export type EducationWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
-export interface JobPostUpdateWithoutViewedDataInput {
+export interface JobPostUpdateWithoutApplicantsDataInput {
   rate?: Maybe<Int>;
   industry?: Maybe<String>;
   location?: Maybe<String>;
@@ -647,12 +1141,8 @@ export interface JobPostUpdateWithoutViewedDataInput {
   requirements?: Maybe<JobPostUpdaterequirementsInput>;
 }
 
-export interface ApplicantUpdateOneInput {
+export interface ApplicantCreateOneInput {
   create?: Maybe<ApplicantCreateInput>;
-  update?: Maybe<ApplicantUpdateDataInput>;
-  upsert?: Maybe<ApplicantUpsertNestedInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
   connect?: Maybe<ApplicantWhereUniqueInput>;
 }
 
@@ -671,45 +1161,6 @@ export interface EmployerUpdateOneRequiredWithoutJobpostingsInput {
   connect?: Maybe<EmployerWhereUniqueInput>;
 }
 
-export interface EmployerUpdateDataInput {
-  jobpostings?: Maybe<JobPostUpdateManyWithoutEmployerInput>;
-  linkedin?: Maybe<String>;
-  contact?: Maybe<ContactUpdateOneInput>;
-}
-
-export interface EmployerUpdateWithoutJobpostingsDataInput {
-  linkedin?: Maybe<String>;
-  contact?: Maybe<ContactUpdateOneInput>;
-}
-
-export interface UserUpdateInput {
-  name?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  employerProfile?: Maybe<EmployerUpdateOneInput>;
-  applicantProfile?: Maybe<ApplicantUpdateOneInput>;
-  profileImage?: Maybe<String>;
-}
-
-export interface ContactUpdateOneInput {
-  create?: Maybe<ContactCreateInput>;
-  update?: Maybe<ContactUpdateDataInput>;
-  upsert?: Maybe<ContactUpsertNestedInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<ContactWhereUniqueInput>;
-}
-
-export interface ApplicantCreateOneInput {
-  create?: Maybe<ApplicantCreateInput>;
-  connect?: Maybe<ApplicantWhereUniqueInput>;
-}
-
-export interface ContactUpdateDataInput {
-  email?: Maybe<String>;
-  website?: Maybe<String>;
-}
-
 export interface UserCreateInput {
   id?: Maybe<ID_Input>;
   name: String;
@@ -720,24 +1171,30 @@ export interface UserCreateInput {
   profileImage?: Maybe<String>;
 }
 
-export interface ContactUpsertNestedInput {
-  update: ContactUpdateDataInput;
-  create: ContactCreateInput;
+export interface EmployerUpdateWithoutJobpostingsDataInput {
+  linkedin?: Maybe<String>;
+  contact?: Maybe<ContactUpdateOneInput>;
 }
 
-export interface ResumeUpdateManyMutationInput {
+export interface ResumeUpdateInput {
+  title?: Maybe<String>;
+  achievements?: Maybe<AchievementsUpdateManyInput>;
   fullname?: Maybe<String>;
   address?: Maybe<String>;
   email?: Maybe<String>;
+  experience?: Maybe<ExperienceUpdateManyInput>;
+  education?: Maybe<EducationUpdateManyInput>;
   phone?: Maybe<String>;
-  experience?: Maybe<ResumeUpdateexperienceInput>;
-  education?: Maybe<ResumeUpdateeducationInput>;
   skills?: Maybe<ResumeUpdateskillsInput>;
 }
 
-export interface ApplicantUpdateManyWithWhereNestedInput {
-  where: ApplicantScalarWhereInput;
-  data: ApplicantUpdateManyDataInput;
+export interface ContactUpdateOneInput {
+  create?: Maybe<ContactCreateInput>;
+  update?: Maybe<ContactUpdateDataInput>;
+  upsert?: Maybe<ContactUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<ContactWhereUniqueInput>;
 }
 
 export interface JobPostUpdateManyMutationInput {
@@ -751,25 +1208,9 @@ export interface JobPostUpdateManyMutationInput {
   requirements?: Maybe<JobPostUpdaterequirementsInput>;
 }
 
-export interface JobPostUpdaterolesInput {
-  set?: Maybe<String[] | String>;
-}
-
-export interface JobPostUpdateInput {
-  rate?: Maybe<Int>;
-  industry?: Maybe<String>;
-  location?: Maybe<String>;
-  discipline?: Maybe<JobPostUpdatedisciplineInput>;
-  totalRoles?: Maybe<String>;
-  employer?: Maybe<EmployerUpdateOneRequiredWithoutJobpostingsInput>;
-  viewed?: Maybe<ApplicantUpdateManyWithoutAppliedJobsInput>;
-  description?: Maybe<String>;
-  roles?: Maybe<JobPostUpdaterolesInput>;
-  requirements?: Maybe<JobPostUpdaterequirementsInput>;
-}
-
-export interface JobPostUpdaterequirementsInput {
-  set?: Maybe<String[] | String>;
+export interface ContactUpdateDataInput {
+  email?: Maybe<String>;
+  website?: Maybe<String>;
 }
 
 export interface JobPostCreateInput {
@@ -780,22 +1221,153 @@ export interface JobPostCreateInput {
   discipline?: Maybe<JobPostCreatedisciplineInput>;
   totalRoles: String;
   employer: EmployerCreateOneWithoutJobpostingsInput;
-  viewed?: Maybe<ApplicantCreateManyWithoutAppliedJobsInput>;
+  applicants?: Maybe<ApplicantCreateManyWithoutAppliedJobsInput>;
   description: String;
   roles?: Maybe<JobPostCreaterolesInput>;
   requirements?: Maybe<JobPostCreaterequirementsInput>;
 }
 
-export interface JobPostUpsertWithWhereUniqueWithoutViewedInput {
-  where: JobPostWhereUniqueInput;
-  update: JobPostUpdateWithoutViewedDataInput;
-  create: JobPostCreateWithoutViewedInput;
+export interface ContactUpsertNestedInput {
+  update: ContactUpdateDataInput;
+  create: ContactCreateInput;
+}
+
+export interface ExperienceUpdateManyMutationInput {
+  jobTitle?: Maybe<String>;
+  startDate?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  location?: Maybe<String>;
+  employer?: Maybe<String>;
+  description?: Maybe<String>;
+}
+
+export interface EmployerUpsertWithoutJobpostingsInput {
+  update: EmployerUpdateWithoutJobpostingsDataInput;
+  create: EmployerCreateWithoutJobpostingsInput;
+}
+
+export interface EmployerUpdateManyMutationInput {
+  linkedin?: Maybe<String>;
+}
+
+export interface JobPostUpdateManyWithoutEmployerInput {
+  create?: Maybe<
+    JobPostCreateWithoutEmployerInput[] | JobPostCreateWithoutEmployerInput
+  >;
+  delete?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
+  connect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
+  set?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
+  disconnect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
+  update?: Maybe<
+    | JobPostUpdateWithWhereUniqueWithoutEmployerInput[]
+    | JobPostUpdateWithWhereUniqueWithoutEmployerInput
+  >;
+  upsert?: Maybe<
+    | JobPostUpsertWithWhereUniqueWithoutEmployerInput[]
+    | JobPostUpsertWithWhereUniqueWithoutEmployerInput
+  >;
+  deleteMany?: Maybe<JobPostScalarWhereInput[] | JobPostScalarWhereInput>;
+  updateMany?: Maybe<
+    | JobPostUpdateManyWithWhereNestedInput[]
+    | JobPostUpdateManyWithWhereNestedInput
+  >;
 }
 
 export interface JobPostUpsertWithWhereUniqueWithoutEmployerInput {
   where: JobPostWhereUniqueInput;
   update: JobPostUpdateWithoutEmployerDataInput;
   create: JobPostCreateWithoutEmployerInput;
+}
+
+export interface JobPostUpdaterequirementsInput {
+  set?: Maybe<String[] | String>;
+}
+
+export interface ApplicantUpdateManyWithWhereNestedInput {
+  where: ApplicantScalarWhereInput;
+  data: ApplicantUpdateManyDataInput;
+}
+
+export interface JobPostUpsertWithWhereUniqueWithoutApplicantsInput {
+  where: JobPostWhereUniqueInput;
+  update: JobPostUpdateWithoutApplicantsDataInput;
+  create: JobPostCreateWithoutApplicantsInput;
+}
+
+export interface ApplicantScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  jobTitle?: Maybe<String>;
+  jobTitle_not?: Maybe<String>;
+  jobTitle_in?: Maybe<String[] | String>;
+  jobTitle_not_in?: Maybe<String[] | String>;
+  jobTitle_lt?: Maybe<String>;
+  jobTitle_lte?: Maybe<String>;
+  jobTitle_gt?: Maybe<String>;
+  jobTitle_gte?: Maybe<String>;
+  jobTitle_contains?: Maybe<String>;
+  jobTitle_not_contains?: Maybe<String>;
+  jobTitle_starts_with?: Maybe<String>;
+  jobTitle_not_starts_with?: Maybe<String>;
+  jobTitle_ends_with?: Maybe<String>;
+  jobTitle_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  linkedin?: Maybe<String>;
+  linkedin_not?: Maybe<String>;
+  linkedin_in?: Maybe<String[] | String>;
+  linkedin_not_in?: Maybe<String[] | String>;
+  linkedin_lt?: Maybe<String>;
+  linkedin_lte?: Maybe<String>;
+  linkedin_gt?: Maybe<String>;
+  linkedin_gte?: Maybe<String>;
+  linkedin_contains?: Maybe<String>;
+  linkedin_not_contains?: Maybe<String>;
+  linkedin_starts_with?: Maybe<String>;
+  linkedin_not_starts_with?: Maybe<String>;
+  linkedin_ends_with?: Maybe<String>;
+  linkedin_not_ends_with?: Maybe<String>;
+  github?: Maybe<String>;
+  github_not?: Maybe<String>;
+  github_in?: Maybe<String[] | String>;
+  github_not_in?: Maybe<String[] | String>;
+  github_lt?: Maybe<String>;
+  github_lte?: Maybe<String>;
+  github_gt?: Maybe<String>;
+  github_gte?: Maybe<String>;
+  github_contains?: Maybe<String>;
+  github_not_contains?: Maybe<String>;
+  github_starts_with?: Maybe<String>;
+  github_not_starts_with?: Maybe<String>;
+  github_ends_with?: Maybe<String>;
+  github_not_ends_with?: Maybe<String>;
+  AND?: Maybe<ApplicantScalarWhereInput[] | ApplicantScalarWhereInput>;
+  OR?: Maybe<ApplicantScalarWhereInput[] | ApplicantScalarWhereInput>;
+  NOT?: Maybe<ApplicantScalarWhereInput[] | ApplicantScalarWhereInput>;
 }
 
 export interface JobPostScalarWhereInput {
@@ -890,11 +1462,134 @@ export interface JobPostScalarWhereInput {
   NOT?: Maybe<JobPostScalarWhereInput[] | JobPostScalarWhereInput>;
 }
 
-export interface JobPostCreateManyWithoutViewedInput {
-  create?: Maybe<
-    JobPostCreateWithoutViewedInput[] | JobPostCreateWithoutViewedInput
-  >;
-  connect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
+export interface ApplicantUpsertWithWhereUniqueWithoutAppliedJobsInput {
+  where: ApplicantWhereUniqueInput;
+  update: ApplicantUpdateWithoutAppliedJobsDataInput;
+  create: ApplicantCreateWithoutAppliedJobsInput;
+}
+
+export interface JobPostUpdateManyWithWhereNestedInput {
+  where: JobPostScalarWhereInput;
+  data: JobPostUpdateManyDataInput;
+}
+
+export interface ApplicantUpdateWithWhereUniqueWithoutAppliedJobsInput {
+  where: ApplicantWhereUniqueInput;
+  data: ApplicantUpdateWithoutAppliedJobsDataInput;
+}
+
+export interface JobPostUpdateManyDataInput {
+  rate?: Maybe<Int>;
+  industry?: Maybe<String>;
+  location?: Maybe<String>;
+  discipline?: Maybe<JobPostUpdatedisciplineInput>;
+  totalRoles?: Maybe<String>;
+  description?: Maybe<String>;
+  roles?: Maybe<JobPostUpdaterolesInput>;
+  requirements?: Maybe<JobPostUpdaterequirementsInput>;
+}
+
+export interface AchievementsUpdateInput {
+  title?: Maybe<String>;
+  description?: Maybe<String>;
+}
+
+export interface EmployerUpdateInput {
+  jobpostings?: Maybe<JobPostUpdateManyWithoutEmployerInput>;
+  linkedin?: Maybe<String>;
+  contact?: Maybe<ContactUpdateOneInput>;
+}
+
+export interface JobPostUpdateWithoutEmployerDataInput {
+  rate?: Maybe<Int>;
+  industry?: Maybe<String>;
+  location?: Maybe<String>;
+  discipline?: Maybe<JobPostUpdatedisciplineInput>;
+  totalRoles?: Maybe<String>;
+  applicants?: Maybe<ApplicantUpdateManyWithoutAppliedJobsInput>;
+  description?: Maybe<String>;
+  roles?: Maybe<JobPostUpdaterolesInput>;
+  requirements?: Maybe<JobPostUpdaterequirementsInput>;
+}
+
+export interface ApplicantCreateWithoutAppliedJobsInput {
+  id?: Maybe<ID_Input>;
+  jobTitle: String;
+  description: String;
+  linkedin: String;
+  github: String;
+  resume?: Maybe<ResumeCreateManyInput>;
+}
+
+export interface ApplicantCreateInput {
+  id?: Maybe<ID_Input>;
+  jobTitle: String;
+  description: String;
+  linkedin: String;
+  github: String;
+  appliedJobs?: Maybe<JobPostCreateManyWithoutApplicantsInput>;
+  resume?: Maybe<ResumeCreateManyInput>;
+}
+
+export interface ContactWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  website?: Maybe<String>;
+  website_not?: Maybe<String>;
+  website_in?: Maybe<String[] | String>;
+  website_not_in?: Maybe<String[] | String>;
+  website_lt?: Maybe<String>;
+  website_lte?: Maybe<String>;
+  website_gt?: Maybe<String>;
+  website_gte?: Maybe<String>;
+  website_contains?: Maybe<String>;
+  website_not_contains?: Maybe<String>;
+  website_starts_with?: Maybe<String>;
+  website_not_starts_with?: Maybe<String>;
+  website_ends_with?: Maybe<String>;
+  website_not_ends_with?: Maybe<String>;
+  AND?: Maybe<ContactWhereInput[] | ContactWhereInput>;
+  OR?: Maybe<ContactWhereInput[] | ContactWhereInput>;
+  NOT?: Maybe<ContactWhereInput[] | ContactWhereInput>;
+}
+
+export interface JobPostCreateWithoutApplicantsInput {
+  id?: Maybe<ID_Input>;
+  rate: Int;
+  industry: String;
+  location: String;
+  discipline?: Maybe<JobPostCreatedisciplineInput>;
+  totalRoles: String;
+  employer: EmployerCreateOneWithoutJobpostingsInput;
+  description: String;
+  roles?: Maybe<JobPostCreaterolesInput>;
+  requirements?: Maybe<JobPostCreaterequirementsInput>;
 }
 
 export interface ResumeWhereInput {
@@ -912,6 +1607,31 @@ export interface ResumeWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  achievements_every?: Maybe<AchievementsWhereInput>;
+  achievements_some?: Maybe<AchievementsWhereInput>;
+  achievements_none?: Maybe<AchievementsWhereInput>;
   fullname?: Maybe<String>;
   fullname_not?: Maybe<String>;
   fullname_in?: Maybe<String[] | String>;
@@ -954,6 +1674,12 @@ export interface ResumeWhereInput {
   email_not_starts_with?: Maybe<String>;
   email_ends_with?: Maybe<String>;
   email_not_ends_with?: Maybe<String>;
+  experience_every?: Maybe<ExperienceWhereInput>;
+  experience_some?: Maybe<ExperienceWhereInput>;
+  experience_none?: Maybe<ExperienceWhereInput>;
+  education_every?: Maybe<EducationWhereInput>;
+  education_some?: Maybe<EducationWhereInput>;
+  education_none?: Maybe<EducationWhereInput>;
   phone?: Maybe<String>;
   phone_not?: Maybe<String>;
   phone_in?: Maybe<String[] | String>;
@@ -973,11 +1699,12 @@ export interface ResumeWhereInput {
   NOT?: Maybe<ResumeWhereInput[] | ResumeWhereInput>;
 }
 
-export interface JobPostCreatedisciplineInput {
-  set?: Maybe<String[] | String>;
+export interface EmployerCreateOneWithoutJobpostingsInput {
+  create?: Maybe<EmployerCreateWithoutJobpostingsInput>;
+  connect?: Maybe<EmployerWhereUniqueInput>;
 }
 
-export interface ApplicantScalarWhereInput {
+export interface EducationWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -992,77 +1719,104 @@ export interface ApplicantScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  linkedin?: Maybe<String>;
-  linkedin_not?: Maybe<String>;
-  linkedin_in?: Maybe<String[] | String>;
-  linkedin_not_in?: Maybe<String[] | String>;
-  linkedin_lt?: Maybe<String>;
-  linkedin_lte?: Maybe<String>;
-  linkedin_gt?: Maybe<String>;
-  linkedin_gte?: Maybe<String>;
-  linkedin_contains?: Maybe<String>;
-  linkedin_not_contains?: Maybe<String>;
-  linkedin_starts_with?: Maybe<String>;
-  linkedin_not_starts_with?: Maybe<String>;
-  linkedin_ends_with?: Maybe<String>;
-  linkedin_not_ends_with?: Maybe<String>;
-  github?: Maybe<String>;
-  github_not?: Maybe<String>;
-  github_in?: Maybe<String[] | String>;
-  github_not_in?: Maybe<String[] | String>;
-  github_lt?: Maybe<String>;
-  github_lte?: Maybe<String>;
-  github_gt?: Maybe<String>;
-  github_gte?: Maybe<String>;
-  github_contains?: Maybe<String>;
-  github_not_contains?: Maybe<String>;
-  github_starts_with?: Maybe<String>;
-  github_not_starts_with?: Maybe<String>;
-  github_ends_with?: Maybe<String>;
-  github_not_ends_with?: Maybe<String>;
-  AND?: Maybe<ApplicantScalarWhereInput[] | ApplicantScalarWhereInput>;
-  OR?: Maybe<ApplicantScalarWhereInput[] | ApplicantScalarWhereInput>;
-  NOT?: Maybe<ApplicantScalarWhereInput[] | ApplicantScalarWhereInput>;
+  credential?: Maybe<String>;
+  credential_not?: Maybe<String>;
+  credential_in?: Maybe<String[] | String>;
+  credential_not_in?: Maybe<String[] | String>;
+  credential_lt?: Maybe<String>;
+  credential_lte?: Maybe<String>;
+  credential_gt?: Maybe<String>;
+  credential_gte?: Maybe<String>;
+  credential_contains?: Maybe<String>;
+  credential_not_contains?: Maybe<String>;
+  credential_starts_with?: Maybe<String>;
+  credential_not_starts_with?: Maybe<String>;
+  credential_ends_with?: Maybe<String>;
+  credential_not_ends_with?: Maybe<String>;
+  startDate?: Maybe<DateTimeInput>;
+  startDate_not?: Maybe<DateTimeInput>;
+  startDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_lt?: Maybe<DateTimeInput>;
+  startDate_lte?: Maybe<DateTimeInput>;
+  startDate_gt?: Maybe<DateTimeInput>;
+  startDate_gte?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  endDate_not?: Maybe<DateTimeInput>;
+  endDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  endDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  endDate_lt?: Maybe<DateTimeInput>;
+  endDate_lte?: Maybe<DateTimeInput>;
+  endDate_gt?: Maybe<DateTimeInput>;
+  endDate_gte?: Maybe<DateTimeInput>;
+  location?: Maybe<String>;
+  location_not?: Maybe<String>;
+  location_in?: Maybe<String[] | String>;
+  location_not_in?: Maybe<String[] | String>;
+  location_lt?: Maybe<String>;
+  location_lte?: Maybe<String>;
+  location_gt?: Maybe<String>;
+  location_gte?: Maybe<String>;
+  location_contains?: Maybe<String>;
+  location_not_contains?: Maybe<String>;
+  location_starts_with?: Maybe<String>;
+  location_not_starts_with?: Maybe<String>;
+  location_ends_with?: Maybe<String>;
+  location_not_ends_with?: Maybe<String>;
+  school?: Maybe<String>;
+  school_not?: Maybe<String>;
+  school_in?: Maybe<String[] | String>;
+  school_not_in?: Maybe<String[] | String>;
+  school_lt?: Maybe<String>;
+  school_lte?: Maybe<String>;
+  school_gt?: Maybe<String>;
+  school_gte?: Maybe<String>;
+  school_contains?: Maybe<String>;
+  school_not_contains?: Maybe<String>;
+  school_starts_with?: Maybe<String>;
+  school_not_starts_with?: Maybe<String>;
+  school_ends_with?: Maybe<String>;
+  school_not_ends_with?: Maybe<String>;
+  AND?: Maybe<EducationWhereInput[] | EducationWhereInput>;
+  OR?: Maybe<EducationWhereInput[] | EducationWhereInput>;
+  NOT?: Maybe<EducationWhereInput[] | EducationWhereInput>;
 }
 
-export interface EmployerCreateWithoutJobpostingsInput {
-  id?: Maybe<ID_Input>;
-  linkedin?: Maybe<String>;
-  contact?: Maybe<ContactCreateOneInput>;
+export interface ContactCreateOneInput {
+  create?: Maybe<ContactCreateInput>;
+  connect?: Maybe<ContactWhereUniqueInput>;
 }
 
-export interface ApplicantUpsertWithWhereUniqueWithoutAppliedJobsInput {
-  where: ApplicantWhereUniqueInput;
-  update: ApplicantUpdateWithoutAppliedJobsDataInput;
-  create: ApplicantCreateWithoutAppliedJobsInput;
+export interface ApplicantCreateManyWithoutAppliedJobsInput {
+  create?: Maybe<
+    | ApplicantCreateWithoutAppliedJobsInput[]
+    | ApplicantCreateWithoutAppliedJobsInput
+  >;
+  connect?: Maybe<ApplicantWhereUniqueInput[] | ApplicantWhereUniqueInput>;
 }
 
-export interface ContactCreateInput {
-  id?: Maybe<ID_Input>;
-  email?: Maybe<String>;
-  website?: Maybe<String>;
-}
-
-export interface ResumeUpdateWithWhereUniqueNestedInput {
-  where: ResumeWhereUniqueInput;
-  data: ResumeUpdateDataInput;
-}
-
-export interface JobPostCreaterequirementsInput {
+export interface JobPostCreaterolesInput {
   set?: Maybe<String[] | String>;
 }
 
-export interface ResumeUpdateDataInput {
-  fullname?: Maybe<String>;
-  address?: Maybe<String>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  experience?: Maybe<ResumeUpdateexperienceInput>;
-  education?: Maybe<ResumeUpdateeducationInput>;
-  skills?: Maybe<ResumeUpdateskillsInput>;
+export interface AchievementsUpsertWithWhereUniqueNestedInput {
+  where: AchievementsWhereUniqueInput;
+  update: AchievementsUpdateDataInput;
+  create: AchievementsCreateInput;
 }
 
-export interface EmployerWhereInput {
+export interface UserSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserWhereInput>;
+  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+}
+
+export interface AchievementsScalarWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -1077,31 +1831,37 @@ export interface EmployerWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  jobpostings_every?: Maybe<JobPostWhereInput>;
-  jobpostings_some?: Maybe<JobPostWhereInput>;
-  jobpostings_none?: Maybe<JobPostWhereInput>;
-  linkedin?: Maybe<String>;
-  linkedin_not?: Maybe<String>;
-  linkedin_in?: Maybe<String[] | String>;
-  linkedin_not_in?: Maybe<String[] | String>;
-  linkedin_lt?: Maybe<String>;
-  linkedin_lte?: Maybe<String>;
-  linkedin_gt?: Maybe<String>;
-  linkedin_gte?: Maybe<String>;
-  linkedin_contains?: Maybe<String>;
-  linkedin_not_contains?: Maybe<String>;
-  linkedin_starts_with?: Maybe<String>;
-  linkedin_not_starts_with?: Maybe<String>;
-  linkedin_ends_with?: Maybe<String>;
-  linkedin_not_ends_with?: Maybe<String>;
-  contact?: Maybe<ContactWhereInput>;
-  AND?: Maybe<EmployerWhereInput[] | EmployerWhereInput>;
-  OR?: Maybe<EmployerWhereInput[] | EmployerWhereInput>;
-  NOT?: Maybe<EmployerWhereInput[] | EmployerWhereInput>;
-}
-
-export interface ResumeUpdateexperienceInput {
-  set?: Maybe<String[] | String>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  AND?: Maybe<AchievementsScalarWhereInput[] | AchievementsScalarWhereInput>;
+  OR?: Maybe<AchievementsScalarWhereInput[] | AchievementsScalarWhereInput>;
+  NOT?: Maybe<AchievementsScalarWhereInput[] | AchievementsScalarWhereInput>;
 }
 
 export interface EmployerSubscriptionWhereInput {
@@ -1119,27 +1879,56 @@ export interface EmployerSubscriptionWhereInput {
   >;
 }
 
-export interface ResumeUpdateeducationInput {
-  set?: Maybe<String[] | String>;
+export interface AchievementsUpdateManyWithWhereNestedInput {
+  where: AchievementsScalarWhereInput;
+  data: AchievementsUpdateManyDataInput;
+}
+
+export interface AchievementsSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<AchievementsWhereInput>;
+  AND?: Maybe<
+    AchievementsSubscriptionWhereInput[] | AchievementsSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    AchievementsSubscriptionWhereInput[] | AchievementsSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    AchievementsSubscriptionWhereInput[] | AchievementsSubscriptionWhereInput
+  >;
+}
+
+export interface AchievementsUpdateManyDataInput {
+  title?: Maybe<String>;
+  description?: Maybe<String>;
 }
 
 export type ContactWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface ResumeUpdateskillsInput {
-  set?: Maybe<String[] | String>;
-}
-
-export interface EmployerUpsertNestedInput {
-  update: EmployerUpdateDataInput;
-  create: EmployerCreateInput;
-}
-
-export interface ResumeUpsertWithWhereUniqueNestedInput {
-  where: ResumeWhereUniqueInput;
-  update: ResumeUpdateDataInput;
-  create: ResumeCreateInput;
+export interface ExperienceUpdateManyInput {
+  create?: Maybe<ExperienceCreateInput[] | ExperienceCreateInput>;
+  update?: Maybe<
+    | ExperienceUpdateWithWhereUniqueNestedInput[]
+    | ExperienceUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | ExperienceUpsertWithWhereUniqueNestedInput[]
+    | ExperienceUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<ExperienceWhereUniqueInput[] | ExperienceWhereUniqueInput>;
+  connect?: Maybe<ExperienceWhereUniqueInput[] | ExperienceWhereUniqueInput>;
+  set?: Maybe<ExperienceWhereUniqueInput[] | ExperienceWhereUniqueInput>;
+  disconnect?: Maybe<ExperienceWhereUniqueInput[] | ExperienceWhereUniqueInput>;
+  deleteMany?: Maybe<ExperienceScalarWhereInput[] | ExperienceScalarWhereInput>;
+  updateMany?: Maybe<
+    | ExperienceUpdateManyWithWhereNestedInput[]
+    | ExperienceUpdateManyWithWhereNestedInput
+  >;
 }
 
 export interface EmployerUpdateOneInput {
@@ -1151,7 +1940,54 @@ export interface EmployerUpdateOneInput {
   connect?: Maybe<EmployerWhereUniqueInput>;
 }
 
-export interface ResumeScalarWhereInput {
+export interface ExperienceUpdateWithWhereUniqueNestedInput {
+  where: ExperienceWhereUniqueInput;
+  data: ExperienceUpdateDataInput;
+}
+
+export interface EmployerCreateOneInput {
+  create?: Maybe<EmployerCreateInput>;
+  connect?: Maybe<EmployerWhereUniqueInput>;
+}
+
+export interface ExperienceUpdateDataInput {
+  jobTitle?: Maybe<String>;
+  startDate?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  location?: Maybe<String>;
+  employer?: Maybe<String>;
+  description?: Maybe<String>;
+}
+
+export interface ResumeUpdateManyMutationInput {
+  title?: Maybe<String>;
+  fullname?: Maybe<String>;
+  address?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  skills?: Maybe<ResumeUpdateskillsInput>;
+}
+
+export interface ExperienceUpsertWithWhereUniqueNestedInput {
+  where: ExperienceWhereUniqueInput;
+  update: ExperienceUpdateDataInput;
+  create: ExperienceCreateInput;
+}
+
+export interface JobPostUpdateInput {
+  rate?: Maybe<Int>;
+  industry?: Maybe<String>;
+  location?: Maybe<String>;
+  discipline?: Maybe<JobPostUpdatedisciplineInput>;
+  totalRoles?: Maybe<String>;
+  employer?: Maybe<EmployerUpdateOneRequiredWithoutJobpostingsInput>;
+  applicants?: Maybe<ApplicantUpdateManyWithoutAppliedJobsInput>;
+  description?: Maybe<String>;
+  roles?: Maybe<JobPostUpdaterolesInput>;
+  requirements?: Maybe<JobPostUpdaterequirementsInput>;
+}
+
+export interface ExperienceScalarWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -1166,95 +2002,111 @@ export interface ResumeScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  fullname?: Maybe<String>;
-  fullname_not?: Maybe<String>;
-  fullname_in?: Maybe<String[] | String>;
-  fullname_not_in?: Maybe<String[] | String>;
-  fullname_lt?: Maybe<String>;
-  fullname_lte?: Maybe<String>;
-  fullname_gt?: Maybe<String>;
-  fullname_gte?: Maybe<String>;
-  fullname_contains?: Maybe<String>;
-  fullname_not_contains?: Maybe<String>;
-  fullname_starts_with?: Maybe<String>;
-  fullname_not_starts_with?: Maybe<String>;
-  fullname_ends_with?: Maybe<String>;
-  fullname_not_ends_with?: Maybe<String>;
-  address?: Maybe<String>;
-  address_not?: Maybe<String>;
-  address_in?: Maybe<String[] | String>;
-  address_not_in?: Maybe<String[] | String>;
-  address_lt?: Maybe<String>;
-  address_lte?: Maybe<String>;
-  address_gt?: Maybe<String>;
-  address_gte?: Maybe<String>;
-  address_contains?: Maybe<String>;
-  address_not_contains?: Maybe<String>;
-  address_starts_with?: Maybe<String>;
-  address_not_starts_with?: Maybe<String>;
-  address_ends_with?: Maybe<String>;
-  address_not_ends_with?: Maybe<String>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  phone?: Maybe<String>;
-  phone_not?: Maybe<String>;
-  phone_in?: Maybe<String[] | String>;
-  phone_not_in?: Maybe<String[] | String>;
-  phone_lt?: Maybe<String>;
-  phone_lte?: Maybe<String>;
-  phone_gt?: Maybe<String>;
-  phone_gte?: Maybe<String>;
-  phone_contains?: Maybe<String>;
-  phone_not_contains?: Maybe<String>;
-  phone_starts_with?: Maybe<String>;
-  phone_not_starts_with?: Maybe<String>;
-  phone_ends_with?: Maybe<String>;
-  phone_not_ends_with?: Maybe<String>;
-  AND?: Maybe<ResumeScalarWhereInput[] | ResumeScalarWhereInput>;
-  OR?: Maybe<ResumeScalarWhereInput[] | ResumeScalarWhereInput>;
-  NOT?: Maybe<ResumeScalarWhereInput[] | ResumeScalarWhereInput>;
+  jobTitle?: Maybe<String>;
+  jobTitle_not?: Maybe<String>;
+  jobTitle_in?: Maybe<String[] | String>;
+  jobTitle_not_in?: Maybe<String[] | String>;
+  jobTitle_lt?: Maybe<String>;
+  jobTitle_lte?: Maybe<String>;
+  jobTitle_gt?: Maybe<String>;
+  jobTitle_gte?: Maybe<String>;
+  jobTitle_contains?: Maybe<String>;
+  jobTitle_not_contains?: Maybe<String>;
+  jobTitle_starts_with?: Maybe<String>;
+  jobTitle_not_starts_with?: Maybe<String>;
+  jobTitle_ends_with?: Maybe<String>;
+  jobTitle_not_ends_with?: Maybe<String>;
+  startDate?: Maybe<DateTimeInput>;
+  startDate_not?: Maybe<DateTimeInput>;
+  startDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_lt?: Maybe<DateTimeInput>;
+  startDate_lte?: Maybe<DateTimeInput>;
+  startDate_gt?: Maybe<DateTimeInput>;
+  startDate_gte?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  endDate_not?: Maybe<DateTimeInput>;
+  endDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  endDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  endDate_lt?: Maybe<DateTimeInput>;
+  endDate_lte?: Maybe<DateTimeInput>;
+  endDate_gt?: Maybe<DateTimeInput>;
+  endDate_gte?: Maybe<DateTimeInput>;
+  location?: Maybe<String>;
+  location_not?: Maybe<String>;
+  location_in?: Maybe<String[] | String>;
+  location_not_in?: Maybe<String[] | String>;
+  location_lt?: Maybe<String>;
+  location_lte?: Maybe<String>;
+  location_gt?: Maybe<String>;
+  location_gte?: Maybe<String>;
+  location_contains?: Maybe<String>;
+  location_not_contains?: Maybe<String>;
+  location_starts_with?: Maybe<String>;
+  location_not_starts_with?: Maybe<String>;
+  location_ends_with?: Maybe<String>;
+  location_not_ends_with?: Maybe<String>;
+  employer?: Maybe<String>;
+  employer_not?: Maybe<String>;
+  employer_in?: Maybe<String[] | String>;
+  employer_not_in?: Maybe<String[] | String>;
+  employer_lt?: Maybe<String>;
+  employer_lte?: Maybe<String>;
+  employer_gt?: Maybe<String>;
+  employer_gte?: Maybe<String>;
+  employer_contains?: Maybe<String>;
+  employer_not_contains?: Maybe<String>;
+  employer_starts_with?: Maybe<String>;
+  employer_not_starts_with?: Maybe<String>;
+  employer_ends_with?: Maybe<String>;
+  employer_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  AND?: Maybe<ExperienceScalarWhereInput[] | ExperienceScalarWhereInput>;
+  OR?: Maybe<ExperienceScalarWhereInput[] | ExperienceScalarWhereInput>;
+  NOT?: Maybe<ExperienceScalarWhereInput[] | ExperienceScalarWhereInput>;
 }
 
-export interface EmployerCreateOneInput {
-  create?: Maybe<EmployerCreateInput>;
-  connect?: Maybe<EmployerWhereUniqueInput>;
+export interface ExperienceUpdateInput {
+  jobTitle?: Maybe<String>;
+  startDate?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  location?: Maybe<String>;
+  employer?: Maybe<String>;
+  description?: Maybe<String>;
 }
 
-export interface ResumeUpdateManyWithWhereNestedInput {
-  where: ResumeScalarWhereInput;
-  data: ResumeUpdateManyDataInput;
+export interface ExperienceUpdateManyWithWhereNestedInput {
+  where: ExperienceScalarWhereInput;
+  data: ExperienceUpdateManyDataInput;
 }
 
-export interface ResumeUpdateInput {
-  fullname?: Maybe<String>;
-  address?: Maybe<String>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  experience?: Maybe<ResumeUpdateexperienceInput>;
-  education?: Maybe<ResumeUpdateeducationInput>;
-  skills?: Maybe<ResumeUpdateskillsInput>;
+export interface ApplicantUpdateManyDataInput {
+  jobTitle?: Maybe<String>;
+  description?: Maybe<String>;
+  linkedin?: Maybe<String>;
+  github?: Maybe<String>;
 }
 
-export interface ResumeUpdateManyDataInput {
-  fullname?: Maybe<String>;
-  address?: Maybe<String>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  experience?: Maybe<ResumeUpdateexperienceInput>;
-  education?: Maybe<ResumeUpdateeducationInput>;
-  skills?: Maybe<ResumeUpdateskillsInput>;
+export interface ExperienceUpdateManyDataInput {
+  jobTitle?: Maybe<String>;
+  startDate?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  location?: Maybe<String>;
+  employer?: Maybe<String>;
+  description?: Maybe<String>;
 }
 
 export interface UserWhereInput {
@@ -1335,85 +2187,262 @@ export interface UserWhereInput {
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
 }
 
-export interface ApplicantUpdateManyMutationInput {
-  linkedin?: Maybe<String>;
-  github?: Maybe<String>;
+export interface EducationUpdateManyInput {
+  create?: Maybe<EducationCreateInput[] | EducationCreateInput>;
+  update?: Maybe<
+    | EducationUpdateWithWhereUniqueNestedInput[]
+    | EducationUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | EducationUpsertWithWhereUniqueNestedInput[]
+    | EducationUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<EducationWhereUniqueInput[] | EducationWhereUniqueInput>;
+  connect?: Maybe<EducationWhereUniqueInput[] | EducationWhereUniqueInput>;
+  set?: Maybe<EducationWhereUniqueInput[] | EducationWhereUniqueInput>;
+  disconnect?: Maybe<EducationWhereUniqueInput[] | EducationWhereUniqueInput>;
+  deleteMany?: Maybe<EducationScalarWhereInput[] | EducationScalarWhereInput>;
+  updateMany?: Maybe<
+    | EducationUpdateManyWithWhereNestedInput[]
+    | EducationUpdateManyWithWhereNestedInput
+  >;
 }
 
-export interface ApplicantUpdateManyDataInput {
-  linkedin?: Maybe<String>;
-  github?: Maybe<String>;
+export interface ApplicantUpdateManyWithoutAppliedJobsInput {
+  create?: Maybe<
+    | ApplicantCreateWithoutAppliedJobsInput[]
+    | ApplicantCreateWithoutAppliedJobsInput
+  >;
+  delete?: Maybe<ApplicantWhereUniqueInput[] | ApplicantWhereUniqueInput>;
+  connect?: Maybe<ApplicantWhereUniqueInput[] | ApplicantWhereUniqueInput>;
+  set?: Maybe<ApplicantWhereUniqueInput[] | ApplicantWhereUniqueInput>;
+  disconnect?: Maybe<ApplicantWhereUniqueInput[] | ApplicantWhereUniqueInput>;
+  update?: Maybe<
+    | ApplicantUpdateWithWhereUniqueWithoutAppliedJobsInput[]
+    | ApplicantUpdateWithWhereUniqueWithoutAppliedJobsInput
+  >;
+  upsert?: Maybe<
+    | ApplicantUpsertWithWhereUniqueWithoutAppliedJobsInput[]
+    | ApplicantUpsertWithWhereUniqueWithoutAppliedJobsInput
+  >;
+  deleteMany?: Maybe<ApplicantScalarWhereInput[] | ApplicantScalarWhereInput>;
+  updateMany?: Maybe<
+    | ApplicantUpdateManyWithWhereNestedInput[]
+    | ApplicantUpdateManyWithWhereNestedInput
+  >;
 }
 
-export interface ApplicantUpdateWithoutAppliedJobsDataInput {
-  linkedin?: Maybe<String>;
-  github?: Maybe<String>;
-  resume?: Maybe<ResumeUpdateManyInput>;
+export interface EducationUpdateWithWhereUniqueNestedInput {
+  where: EducationWhereUniqueInput;
+  data: EducationUpdateDataInput;
 }
 
-export interface JobPostCreateWithoutViewedInput {
+export interface AchievementsUpdateManyMutationInput {
+  title?: Maybe<String>;
+  description?: Maybe<String>;
+}
+
+export interface EducationUpdateDataInput {
+  credential?: Maybe<String>;
+  startDate?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  location?: Maybe<String>;
+  school?: Maybe<String>;
+}
+
+export interface JobPostCreateManyWithoutApplicantsInput {
+  create?: Maybe<
+    JobPostCreateWithoutApplicantsInput[] | JobPostCreateWithoutApplicantsInput
+  >;
+  connect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
+}
+
+export interface EducationUpsertWithWhereUniqueNestedInput {
+  where: EducationWhereUniqueInput;
+  update: EducationUpdateDataInput;
+  create: EducationCreateInput;
+}
+
+export interface EmployerCreateWithoutJobpostingsInput {
   id?: Maybe<ID_Input>;
-  rate: Int;
-  industry: String;
-  location: String;
-  discipline?: Maybe<JobPostCreatedisciplineInput>;
-  totalRoles: String;
-  employer: EmployerCreateOneWithoutJobpostingsInput;
-  description: String;
-  roles?: Maybe<JobPostCreaterolesInput>;
-  requirements?: Maybe<JobPostCreaterequirementsInput>;
-}
-
-export interface ApplicantUpdateWithWhereUniqueWithoutAppliedJobsInput {
-  where: ApplicantWhereUniqueInput;
-  data: ApplicantUpdateWithoutAppliedJobsDataInput;
-}
-
-export interface ContactCreateOneInput {
-  create?: Maybe<ContactCreateInput>;
-  connect?: Maybe<ContactWhereUniqueInput>;
-}
-
-export interface ContactUpdateInput {
-  email?: Maybe<String>;
-  website?: Maybe<String>;
-}
-
-export interface ResumeCreateManyInput {
-  create?: Maybe<ResumeCreateInput[] | ResumeCreateInput>;
-  connect?: Maybe<ResumeWhereUniqueInput[] | ResumeWhereUniqueInput>;
-}
-
-export interface ContactUpdateManyMutationInput {
-  email?: Maybe<String>;
-  website?: Maybe<String>;
-}
-
-export interface ApplicantSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<ApplicantWhereInput>;
-  AND?: Maybe<
-    ApplicantSubscriptionWhereInput[] | ApplicantSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    ApplicantSubscriptionWhereInput[] | ApplicantSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    ApplicantSubscriptionWhereInput[] | ApplicantSubscriptionWhereInput
-  >;
-}
-
-export interface EmployerCreateInput {
-  id?: Maybe<ID_Input>;
-  jobpostings?: Maybe<JobPostCreateManyWithoutEmployerInput>;
   linkedin?: Maybe<String>;
   contact?: Maybe<ContactCreateOneInput>;
 }
 
-export interface JobPostWhereInput {
+export interface EducationScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  credential?: Maybe<String>;
+  credential_not?: Maybe<String>;
+  credential_in?: Maybe<String[] | String>;
+  credential_not_in?: Maybe<String[] | String>;
+  credential_lt?: Maybe<String>;
+  credential_lte?: Maybe<String>;
+  credential_gt?: Maybe<String>;
+  credential_gte?: Maybe<String>;
+  credential_contains?: Maybe<String>;
+  credential_not_contains?: Maybe<String>;
+  credential_starts_with?: Maybe<String>;
+  credential_not_starts_with?: Maybe<String>;
+  credential_ends_with?: Maybe<String>;
+  credential_not_ends_with?: Maybe<String>;
+  startDate?: Maybe<DateTimeInput>;
+  startDate_not?: Maybe<DateTimeInput>;
+  startDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_lt?: Maybe<DateTimeInput>;
+  startDate_lte?: Maybe<DateTimeInput>;
+  startDate_gt?: Maybe<DateTimeInput>;
+  startDate_gte?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  endDate_not?: Maybe<DateTimeInput>;
+  endDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  endDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  endDate_lt?: Maybe<DateTimeInput>;
+  endDate_lte?: Maybe<DateTimeInput>;
+  endDate_gt?: Maybe<DateTimeInput>;
+  endDate_gte?: Maybe<DateTimeInput>;
+  location?: Maybe<String>;
+  location_not?: Maybe<String>;
+  location_in?: Maybe<String[] | String>;
+  location_not_in?: Maybe<String[] | String>;
+  location_lt?: Maybe<String>;
+  location_lte?: Maybe<String>;
+  location_gt?: Maybe<String>;
+  location_gte?: Maybe<String>;
+  location_contains?: Maybe<String>;
+  location_not_contains?: Maybe<String>;
+  location_starts_with?: Maybe<String>;
+  location_not_starts_with?: Maybe<String>;
+  location_ends_with?: Maybe<String>;
+  location_not_ends_with?: Maybe<String>;
+  school?: Maybe<String>;
+  school_not?: Maybe<String>;
+  school_in?: Maybe<String[] | String>;
+  school_not_in?: Maybe<String[] | String>;
+  school_lt?: Maybe<String>;
+  school_lte?: Maybe<String>;
+  school_gt?: Maybe<String>;
+  school_gte?: Maybe<String>;
+  school_contains?: Maybe<String>;
+  school_not_contains?: Maybe<String>;
+  school_starts_with?: Maybe<String>;
+  school_not_starts_with?: Maybe<String>;
+  school_ends_with?: Maybe<String>;
+  school_not_ends_with?: Maybe<String>;
+  AND?: Maybe<EducationScalarWhereInput[] | EducationScalarWhereInput>;
+  OR?: Maybe<EducationScalarWhereInput[] | EducationScalarWhereInput>;
+  NOT?: Maybe<EducationScalarWhereInput[] | EducationScalarWhereInput>;
+}
+
+export interface JobPostCreaterequirementsInput {
+  set?: Maybe<String[] | String>;
+}
+
+export interface EducationUpdateManyWithWhereNestedInput {
+  where: EducationScalarWhereInput;
+  data: EducationUpdateManyDataInput;
+}
+
+export interface ContactSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<ContactWhereInput>;
+  AND?: Maybe<ContactSubscriptionWhereInput[] | ContactSubscriptionWhereInput>;
+  OR?: Maybe<ContactSubscriptionWhereInput[] | ContactSubscriptionWhereInput>;
+  NOT?: Maybe<ContactSubscriptionWhereInput[] | ContactSubscriptionWhereInput>;
+}
+
+export interface EducationUpdateManyDataInput {
+  credential?: Maybe<String>;
+  startDate?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  location?: Maybe<String>;
+  school?: Maybe<String>;
+}
+
+export interface EmployerUpsertNestedInput {
+  update: EmployerUpdateDataInput;
+  create: EmployerCreateInput;
+}
+
+export interface ResumeUpdateskillsInput {
+  set?: Maybe<String[] | String>;
+}
+
+export interface AchievementsWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  AND?: Maybe<AchievementsWhereInput[] | AchievementsWhereInput>;
+  OR?: Maybe<AchievementsWhereInput[] | AchievementsWhereInput>;
+  NOT?: Maybe<AchievementsWhereInput[] | AchievementsWhereInput>;
+}
+
+export interface ResumeUpsertWithWhereUniqueNestedInput {
+  where: ResumeWhereUniqueInput;
+  update: ResumeUpdateDataInput;
+  create: ResumeCreateInput;
+}
+
+export type JobPostWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface ResumeScalarWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -1436,78 +2465,150 @@ export interface JobPostWhereInput {
   createdAt_lte?: Maybe<DateTimeInput>;
   createdAt_gt?: Maybe<DateTimeInput>;
   createdAt_gte?: Maybe<DateTimeInput>;
-  rate?: Maybe<Int>;
-  rate_not?: Maybe<Int>;
-  rate_in?: Maybe<Int[] | Int>;
-  rate_not_in?: Maybe<Int[] | Int>;
-  rate_lt?: Maybe<Int>;
-  rate_lte?: Maybe<Int>;
-  rate_gt?: Maybe<Int>;
-  rate_gte?: Maybe<Int>;
-  industry?: Maybe<String>;
-  industry_not?: Maybe<String>;
-  industry_in?: Maybe<String[] | String>;
-  industry_not_in?: Maybe<String[] | String>;
-  industry_lt?: Maybe<String>;
-  industry_lte?: Maybe<String>;
-  industry_gt?: Maybe<String>;
-  industry_gte?: Maybe<String>;
-  industry_contains?: Maybe<String>;
-  industry_not_contains?: Maybe<String>;
-  industry_starts_with?: Maybe<String>;
-  industry_not_starts_with?: Maybe<String>;
-  industry_ends_with?: Maybe<String>;
-  industry_not_ends_with?: Maybe<String>;
-  location?: Maybe<String>;
-  location_not?: Maybe<String>;
-  location_in?: Maybe<String[] | String>;
-  location_not_in?: Maybe<String[] | String>;
-  location_lt?: Maybe<String>;
-  location_lte?: Maybe<String>;
-  location_gt?: Maybe<String>;
-  location_gte?: Maybe<String>;
-  location_contains?: Maybe<String>;
-  location_not_contains?: Maybe<String>;
-  location_starts_with?: Maybe<String>;
-  location_not_starts_with?: Maybe<String>;
-  location_ends_with?: Maybe<String>;
-  location_not_ends_with?: Maybe<String>;
-  totalRoles?: Maybe<String>;
-  totalRoles_not?: Maybe<String>;
-  totalRoles_in?: Maybe<String[] | String>;
-  totalRoles_not_in?: Maybe<String[] | String>;
-  totalRoles_lt?: Maybe<String>;
-  totalRoles_lte?: Maybe<String>;
-  totalRoles_gt?: Maybe<String>;
-  totalRoles_gte?: Maybe<String>;
-  totalRoles_contains?: Maybe<String>;
-  totalRoles_not_contains?: Maybe<String>;
-  totalRoles_starts_with?: Maybe<String>;
-  totalRoles_not_starts_with?: Maybe<String>;
-  totalRoles_ends_with?: Maybe<String>;
-  totalRoles_not_ends_with?: Maybe<String>;
-  employer?: Maybe<EmployerWhereInput>;
-  viewed_every?: Maybe<ApplicantWhereInput>;
-  viewed_some?: Maybe<ApplicantWhereInput>;
-  viewed_none?: Maybe<ApplicantWhereInput>;
-  description?: Maybe<String>;
-  description_not?: Maybe<String>;
-  description_in?: Maybe<String[] | String>;
-  description_not_in?: Maybe<String[] | String>;
-  description_lt?: Maybe<String>;
-  description_lte?: Maybe<String>;
-  description_gt?: Maybe<String>;
-  description_gte?: Maybe<String>;
-  description_contains?: Maybe<String>;
-  description_not_contains?: Maybe<String>;
-  description_starts_with?: Maybe<String>;
-  description_not_starts_with?: Maybe<String>;
-  description_ends_with?: Maybe<String>;
-  description_not_ends_with?: Maybe<String>;
-  AND?: Maybe<JobPostWhereInput[] | JobPostWhereInput>;
-  OR?: Maybe<JobPostWhereInput[] | JobPostWhereInput>;
-  NOT?: Maybe<JobPostWhereInput[] | JobPostWhereInput>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  fullname?: Maybe<String>;
+  fullname_not?: Maybe<String>;
+  fullname_in?: Maybe<String[] | String>;
+  fullname_not_in?: Maybe<String[] | String>;
+  fullname_lt?: Maybe<String>;
+  fullname_lte?: Maybe<String>;
+  fullname_gt?: Maybe<String>;
+  fullname_gte?: Maybe<String>;
+  fullname_contains?: Maybe<String>;
+  fullname_not_contains?: Maybe<String>;
+  fullname_starts_with?: Maybe<String>;
+  fullname_not_starts_with?: Maybe<String>;
+  fullname_ends_with?: Maybe<String>;
+  fullname_not_ends_with?: Maybe<String>;
+  address?: Maybe<String>;
+  address_not?: Maybe<String>;
+  address_in?: Maybe<String[] | String>;
+  address_not_in?: Maybe<String[] | String>;
+  address_lt?: Maybe<String>;
+  address_lte?: Maybe<String>;
+  address_gt?: Maybe<String>;
+  address_gte?: Maybe<String>;
+  address_contains?: Maybe<String>;
+  address_not_contains?: Maybe<String>;
+  address_starts_with?: Maybe<String>;
+  address_not_starts_with?: Maybe<String>;
+  address_ends_with?: Maybe<String>;
+  address_not_ends_with?: Maybe<String>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  phone?: Maybe<String>;
+  phone_not?: Maybe<String>;
+  phone_in?: Maybe<String[] | String>;
+  phone_not_in?: Maybe<String[] | String>;
+  phone_lt?: Maybe<String>;
+  phone_lte?: Maybe<String>;
+  phone_gt?: Maybe<String>;
+  phone_gte?: Maybe<String>;
+  phone_contains?: Maybe<String>;
+  phone_not_contains?: Maybe<String>;
+  phone_starts_with?: Maybe<String>;
+  phone_not_starts_with?: Maybe<String>;
+  phone_ends_with?: Maybe<String>;
+  phone_not_ends_with?: Maybe<String>;
+  AND?: Maybe<ResumeScalarWhereInput[] | ResumeScalarWhereInput>;
+  OR?: Maybe<ResumeScalarWhereInput[] | ResumeScalarWhereInput>;
+  NOT?: Maybe<ResumeScalarWhereInput[] | ResumeScalarWhereInput>;
 }
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  email?: Maybe<String>;
+}>;
+
+export interface ResumeUpdateManyWithWhereNestedInput {
+  where: ResumeScalarWhereInput;
+  data: ResumeUpdateManyDataInput;
+}
+
+export interface AchievementsCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
+  description?: Maybe<String>;
+}
+
+export interface ResumeUpdateManyDataInput {
+  title?: Maybe<String>;
+  fullname?: Maybe<String>;
+  address?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  skills?: Maybe<ResumeUpdateskillsInput>;
+}
+
+export interface JobPostCreatedisciplineInput {
+  set?: Maybe<String[] | String>;
+}
+
+export interface ApplicantUpdateManyMutationInput {
+  jobTitle?: Maybe<String>;
+  description?: Maybe<String>;
+  linkedin?: Maybe<String>;
+  github?: Maybe<String>;
+}
+
+export interface JobPostSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<JobPostWhereInput>;
+  AND?: Maybe<JobPostSubscriptionWhereInput[] | JobPostSubscriptionWhereInput>;
+  OR?: Maybe<JobPostSubscriptionWhereInput[] | JobPostSubscriptionWhereInput>;
+  NOT?: Maybe<JobPostSubscriptionWhereInput[] | JobPostSubscriptionWhereInput>;
+}
+
+export interface ContactUpdateInput {
+  email?: Maybe<String>;
+  website?: Maybe<String>;
+}
+
+export interface UserUpdateInput {
+  name?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  employerProfile?: Maybe<EmployerUpdateOneInput>;
+  applicantProfile?: Maybe<ApplicantUpdateOneInput>;
+  profileImage?: Maybe<String>;
+}
+
+export interface ContactUpdateManyMutationInput {
+  email?: Maybe<String>;
+  website?: Maybe<String>;
+}
+
+export type ResumeWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export interface JobPostCreateManyWithoutEmployerInput {
   create?: Maybe<
@@ -1516,131 +2617,56 @@ export interface JobPostCreateManyWithoutEmployerInput {
   connect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
 }
 
-export type ResumeWhereUniqueInput = AtLeastOne<{
+export interface EmployerCreateInput {
+  id?: Maybe<ID_Input>;
+  jobpostings?: Maybe<JobPostCreateManyWithoutEmployerInput>;
+  linkedin?: Maybe<String>;
+  contact?: Maybe<ContactCreateOneInput>;
+}
+
+export interface EducationUpdateManyMutationInput {
+  credential?: Maybe<String>;
+  startDate?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  location?: Maybe<String>;
+  school?: Maybe<String>;
+}
+
+export interface EducationUpdateInput {
+  credential?: Maybe<String>;
+  startDate?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  location?: Maybe<String>;
+  school?: Maybe<String>;
+}
+
+export interface ApplicantUpdateWithoutAppliedJobsDataInput {
+  jobTitle?: Maybe<String>;
+  description?: Maybe<String>;
+  linkedin?: Maybe<String>;
+  github?: Maybe<String>;
+  resume?: Maybe<ResumeUpdateManyInput>;
+}
+
+export type ExperienceWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface JobPostCreateWithoutEmployerInput {
+export interface ApplicantUpsertNestedInput {
+  update: ApplicantUpdateDataInput;
+  create: ApplicantCreateInput;
+}
+
+export interface ContactCreateInput {
   id?: Maybe<ID_Input>;
-  rate: Int;
-  industry: String;
-  location: String;
-  discipline?: Maybe<JobPostCreatedisciplineInput>;
-  totalRoles: String;
-  viewed?: Maybe<ApplicantCreateManyWithoutAppliedJobsInput>;
-  description: String;
-  roles?: Maybe<JobPostCreaterolesInput>;
-  requirements?: Maybe<JobPostCreaterequirementsInput>;
-}
-
-export interface EmployerUpdateManyMutationInput {
-  linkedin?: Maybe<String>;
-}
-
-export interface ApplicantCreateManyWithoutAppliedJobsInput {
-  create?: Maybe<
-    | ApplicantCreateWithoutAppliedJobsInput[]
-    | ApplicantCreateWithoutAppliedJobsInput
-  >;
-  connect?: Maybe<ApplicantWhereUniqueInput[] | ApplicantWhereUniqueInput>;
-}
-
-export interface EmployerCreateOneWithoutJobpostingsInput {
-  create?: Maybe<EmployerCreateWithoutJobpostingsInput>;
-  connect?: Maybe<EmployerWhereUniqueInput>;
-}
-
-export interface ApplicantCreateWithoutAppliedJobsInput {
-  id?: Maybe<ID_Input>;
-  linkedin: String;
-  github: String;
-  resume?: Maybe<ResumeCreateManyInput>;
-}
-
-export interface ResumeSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<ResumeWhereInput>;
-  AND?: Maybe<ResumeSubscriptionWhereInput[] | ResumeSubscriptionWhereInput>;
-  OR?: Maybe<ResumeSubscriptionWhereInput[] | ResumeSubscriptionWhereInput>;
-  NOT?: Maybe<ResumeSubscriptionWhereInput[] | ResumeSubscriptionWhereInput>;
-}
-
-export interface JobPostUpdateWithoutEmployerDataInput {
-  rate?: Maybe<Int>;
-  industry?: Maybe<String>;
-  location?: Maybe<String>;
-  discipline?: Maybe<JobPostUpdatedisciplineInput>;
-  totalRoles?: Maybe<String>;
-  viewed?: Maybe<ApplicantUpdateManyWithoutAppliedJobsInput>;
-  description?: Maybe<String>;
-  roles?: Maybe<JobPostUpdaterolesInput>;
-  requirements?: Maybe<JobPostUpdaterequirementsInput>;
+  email?: Maybe<String>;
+  website?: Maybe<String>;
 }
 
 export interface JobPostUpdateWithWhereUniqueWithoutEmployerInput {
   where: JobPostWhereUniqueInput;
   data: JobPostUpdateWithoutEmployerDataInput;
 }
-
-export interface JobPostUpdateManyWithoutEmployerInput {
-  create?: Maybe<
-    JobPostCreateWithoutEmployerInput[] | JobPostCreateWithoutEmployerInput
-  >;
-  delete?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
-  connect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
-  set?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
-  disconnect?: Maybe<JobPostWhereUniqueInput[] | JobPostWhereUniqueInput>;
-  update?: Maybe<
-    | JobPostUpdateWithWhereUniqueWithoutEmployerInput[]
-    | JobPostUpdateWithWhereUniqueWithoutEmployerInput
-  >;
-  upsert?: Maybe<
-    | JobPostUpsertWithWhereUniqueWithoutEmployerInput[]
-    | JobPostUpsertWithWhereUniqueWithoutEmployerInput
-  >;
-  deleteMany?: Maybe<JobPostScalarWhereInput[] | JobPostScalarWhereInput>;
-  updateMany?: Maybe<
-    | JobPostUpdateManyWithWhereNestedInput[]
-    | JobPostUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface EmployerUpdateInput {
-  jobpostings?: Maybe<JobPostUpdateManyWithoutEmployerInput>;
-  linkedin?: Maybe<String>;
-  contact?: Maybe<ContactUpdateOneInput>;
-}
-
-export interface ApplicantUpdateDataInput {
-  linkedin?: Maybe<String>;
-  github?: Maybe<String>;
-  appliedJobs?: Maybe<JobPostUpdateManyWithoutViewedInput>;
-  resume?: Maybe<ResumeUpdateManyInput>;
-}
-
-export interface JobPostCreaterolesInput {
-  set?: Maybe<String[] | String>;
-}
-
-export interface ApplicantCreateInput {
-  id?: Maybe<ID_Input>;
-  linkedin: String;
-  github: String;
-  appliedJobs?: Maybe<JobPostCreateManyWithoutViewedInput>;
-  resume?: Maybe<ResumeCreateManyInput>;
-}
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  email?: Maybe<String>;
-}>;
-
-export type JobPostWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
 
 export interface NodeNode {
   id: ID_Output;
@@ -1674,6 +2700,808 @@ export interface UserPreviousValuesSubscription
   profileImage: () => Promise<AsyncIterator<String>>;
 }
 
+export interface AggregateApplicant {
+  count: Int;
+}
+
+export interface AggregateApplicantPromise
+  extends Promise<AggregateApplicant>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateApplicantSubscription
+  extends Promise<AsyncIterator<AggregateApplicant>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface AggregateAchievements {
+  count: Int;
+}
+
+export interface AggregateAchievementsPromise
+  extends Promise<AggregateAchievements>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateAchievementsSubscription
+  extends Promise<AsyncIterator<AggregateAchievements>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ApplicantEdge {
+  node: Applicant;
+  cursor: String;
+}
+
+export interface ApplicantEdgePromise
+  extends Promise<ApplicantEdge>,
+    Fragmentable {
+  node: <T = ApplicantPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ApplicantEdgeSubscription
+  extends Promise<AsyncIterator<ApplicantEdge>>,
+    Fragmentable {
+  node: <T = ApplicantSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface JobPost {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  rate: Int;
+  industry: String;
+  location: String;
+  discipline: String[];
+  totalRoles: String;
+  description: String;
+  roles: String[];
+  requirements: String[];
+}
+
+export interface JobPostPromise extends Promise<JobPost>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  rate: () => Promise<Int>;
+  industry: () => Promise<String>;
+  location: () => Promise<String>;
+  discipline: () => Promise<String[]>;
+  totalRoles: () => Promise<String>;
+  employer: <T = EmployerPromise>() => T;
+  applicants: <T = FragmentableArray<Applicant>>(args?: {
+    where?: ApplicantWhereInput;
+    orderBy?: ApplicantOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  description: () => Promise<String>;
+  roles: () => Promise<String[]>;
+  requirements: () => Promise<String[]>;
+}
+
+export interface JobPostSubscription
+  extends Promise<AsyncIterator<JobPost>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  rate: () => Promise<AsyncIterator<Int>>;
+  industry: () => Promise<AsyncIterator<String>>;
+  location: () => Promise<AsyncIterator<String>>;
+  discipline: () => Promise<AsyncIterator<String[]>>;
+  totalRoles: () => Promise<AsyncIterator<String>>;
+  employer: <T = EmployerSubscription>() => T;
+  applicants: <T = Promise<AsyncIterator<ApplicantSubscription>>>(args?: {
+    where?: ApplicantWhereInput;
+    orderBy?: ApplicantOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  description: () => Promise<AsyncIterator<String>>;
+  roles: () => Promise<AsyncIterator<String[]>>;
+  requirements: () => Promise<AsyncIterator<String[]>>;
+}
+
+export interface JobPostNullablePromise
+  extends Promise<JobPost | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  rate: () => Promise<Int>;
+  industry: () => Promise<String>;
+  location: () => Promise<String>;
+  discipline: () => Promise<String[]>;
+  totalRoles: () => Promise<String>;
+  employer: <T = EmployerPromise>() => T;
+  applicants: <T = FragmentableArray<Applicant>>(args?: {
+    where?: ApplicantWhereInput;
+    orderBy?: ApplicantOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  description: () => Promise<String>;
+  roles: () => Promise<String[]>;
+  requirements: () => Promise<String[]>;
+}
+
+export interface ApplicantConnection {
+  pageInfo: PageInfo;
+  edges: ApplicantEdge[];
+}
+
+export interface ApplicantConnectionPromise
+  extends Promise<ApplicantConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ApplicantEdge>>() => T;
+  aggregate: <T = AggregateApplicantPromise>() => T;
+}
+
+export interface ApplicantConnectionSubscription
+  extends Promise<AsyncIterator<ApplicantConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ApplicantEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateApplicantSubscription>() => T;
+}
+
+export interface Applicant {
+  id: ID_Output;
+  jobTitle: String;
+  description: String;
+  linkedin: String;
+  github: String;
+}
+
+export interface ApplicantPromise extends Promise<Applicant>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  jobTitle: () => Promise<String>;
+  description: () => Promise<String>;
+  linkedin: () => Promise<String>;
+  github: () => Promise<String>;
+  appliedJobs: <T = FragmentableArray<JobPost>>(args?: {
+    where?: JobPostWhereInput;
+    orderBy?: JobPostOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  resume: <T = FragmentableArray<Resume>>(args?: {
+    where?: ResumeWhereInput;
+    orderBy?: ResumeOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface ApplicantSubscription
+  extends Promise<AsyncIterator<Applicant>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  jobTitle: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  linkedin: () => Promise<AsyncIterator<String>>;
+  github: () => Promise<AsyncIterator<String>>;
+  appliedJobs: <T = Promise<AsyncIterator<JobPostSubscription>>>(args?: {
+    where?: JobPostWhereInput;
+    orderBy?: JobPostOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  resume: <T = Promise<AsyncIterator<ResumeSubscription>>>(args?: {
+    where?: ResumeWhereInput;
+    orderBy?: ResumeOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface ApplicantNullablePromise
+  extends Promise<Applicant | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  jobTitle: () => Promise<String>;
+  description: () => Promise<String>;
+  linkedin: () => Promise<String>;
+  github: () => Promise<String>;
+  appliedJobs: <T = FragmentableArray<JobPost>>(args?: {
+    where?: JobPostWhereInput;
+    orderBy?: JobPostOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  resume: <T = FragmentableArray<Resume>>(args?: {
+    where?: ResumeWhereInput;
+    orderBy?: ResumeOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface Education {
+  id: ID_Output;
+  credential?: String;
+  startDate: DateTimeOutput;
+  endDate?: DateTimeOutput;
+  location: String;
+  school: String;
+}
+
+export interface EducationPromise extends Promise<Education>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  credential: () => Promise<String>;
+  startDate: () => Promise<DateTimeOutput>;
+  endDate: () => Promise<DateTimeOutput>;
+  location: () => Promise<String>;
+  school: () => Promise<String>;
+}
+
+export interface EducationSubscription
+  extends Promise<AsyncIterator<Education>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  credential: () => Promise<AsyncIterator<String>>;
+  startDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  endDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  location: () => Promise<AsyncIterator<String>>;
+  school: () => Promise<AsyncIterator<String>>;
+}
+
+export interface EducationNullablePromise
+  extends Promise<Education | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  credential: () => Promise<String>;
+  startDate: () => Promise<DateTimeOutput>;
+  endDate: () => Promise<DateTimeOutput>;
+  location: () => Promise<String>;
+  school: () => Promise<String>;
+}
+
+export interface AggregateUser {
+  count: Int;
+}
+
+export interface AggregateUserPromise
+  extends Promise<AggregateUser>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateUserSubscription
+  extends Promise<AsyncIterator<AggregateUser>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface Achievements {
+  id: ID_Output;
+  title: String;
+  description?: String;
+}
+
+export interface AchievementsPromise
+  extends Promise<Achievements>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  description: () => Promise<String>;
+}
+
+export interface AchievementsSubscription
+  extends Promise<AsyncIterator<Achievements>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AchievementsNullablePromise
+  extends Promise<Achievements | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  description: () => Promise<String>;
+}
+
+export interface UserConnection {
+  pageInfo: PageInfo;
+  edges: UserEdge[];
+}
+
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
+}
+
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
+}
+
+export interface AchievementsSubscriptionPayload {
+  mutation: MutationType;
+  node: Achievements;
+  updatedFields: String[];
+  previousValues: AchievementsPreviousValues;
+}
+
+export interface AchievementsSubscriptionPayloadPromise
+  extends Promise<AchievementsSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = AchievementsPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = AchievementsPreviousValuesPromise>() => T;
+}
+
+export interface AchievementsSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<AchievementsSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = AchievementsSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = AchievementsPreviousValuesSubscription>() => T;
+}
+
+export interface User {
+  id: ID_Output;
+  name: String;
+  email: String;
+  password: String;
+  profileImage?: String;
+}
+
+export interface UserPromise extends Promise<User>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  employerProfile: <T = EmployerPromise>() => T;
+  applicantProfile: <T = ApplicantPromise>() => T;
+  profileImage: () => Promise<String>;
+}
+
+export interface UserSubscription
+  extends Promise<AsyncIterator<User>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  employerProfile: <T = EmployerSubscription>() => T;
+  applicantProfile: <T = ApplicantSubscription>() => T;
+  profileImage: () => Promise<AsyncIterator<String>>;
+}
+
+export interface UserNullablePromise
+  extends Promise<User | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  employerProfile: <T = EmployerPromise>() => T;
+  applicantProfile: <T = ApplicantPromise>() => T;
+  profileImage: () => Promise<String>;
+}
+
+export interface AchievementsPreviousValues {
+  id: ID_Output;
+  title: String;
+  description?: String;
+}
+
+export interface AchievementsPreviousValuesPromise
+  extends Promise<AchievementsPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  description: () => Promise<String>;
+}
+
+export interface AchievementsPreviousValuesSubscription
+  extends Promise<AsyncIterator<AchievementsPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ResumeEdge {
+  node: Resume;
+  cursor: String;
+}
+
+export interface ResumeEdgePromise extends Promise<ResumeEdge>, Fragmentable {
+  node: <T = ResumePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ResumeEdgeSubscription
+  extends Promise<AsyncIterator<ResumeEdge>>,
+    Fragmentable {
+  node: <T = ResumeSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AchievementsConnection {
+  pageInfo: PageInfo;
+  edges: AchievementsEdge[];
+}
+
+export interface AchievementsConnectionPromise
+  extends Promise<AchievementsConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<AchievementsEdge>>() => T;
+  aggregate: <T = AggregateAchievementsPromise>() => T;
+}
+
+export interface AchievementsConnectionSubscription
+  extends Promise<AsyncIterator<AchievementsConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<AchievementsEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateAchievementsSubscription>() => T;
+}
+
+export interface AggregateJobPost {
+  count: Int;
+}
+
+export interface AggregateJobPostPromise
+  extends Promise<AggregateJobPost>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateJobPostSubscription
+  extends Promise<AsyncIterator<AggregateJobPost>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ApplicantSubscriptionPayload {
+  mutation: MutationType;
+  node: Applicant;
+  updatedFields: String[];
+  previousValues: ApplicantPreviousValues;
+}
+
+export interface ApplicantSubscriptionPayloadPromise
+  extends Promise<ApplicantSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ApplicantPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ApplicantPreviousValuesPromise>() => T;
+}
+
+export interface ApplicantSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ApplicantSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ApplicantSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ApplicantPreviousValuesSubscription>() => T;
+}
+
+export interface JobPostConnection {
+  pageInfo: PageInfo;
+  edges: JobPostEdge[];
+}
+
+export interface JobPostConnectionPromise
+  extends Promise<JobPostConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<JobPostEdge>>() => T;
+  aggregate: <T = AggregateJobPostPromise>() => T;
+}
+
+export interface JobPostConnectionSubscription
+  extends Promise<AsyncIterator<JobPostConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<JobPostEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateJobPostSubscription>() => T;
+}
+
+export interface ApplicantPreviousValues {
+  id: ID_Output;
+  jobTitle: String;
+  description: String;
+  linkedin: String;
+  github: String;
+}
+
+export interface ApplicantPreviousValuesPromise
+  extends Promise<ApplicantPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  jobTitle: () => Promise<String>;
+  description: () => Promise<String>;
+  linkedin: () => Promise<String>;
+  github: () => Promise<String>;
+}
+
+export interface ApplicantPreviousValuesSubscription
+  extends Promise<AsyncIterator<ApplicantPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  jobTitle: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  linkedin: () => Promise<AsyncIterator<String>>;
+  github: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ExperienceEdge {
+  node: Experience;
+  cursor: String;
+}
+
+export interface ExperienceEdgePromise
+  extends Promise<ExperienceEdge>,
+    Fragmentable {
+  node: <T = ExperiencePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ExperienceEdgeSubscription
+  extends Promise<AsyncIterator<ExperienceEdge>>,
+    Fragmentable {
+  node: <T = ExperienceSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Experience {
+  id: ID_Output;
+  jobTitle: String;
+  startDate: DateTimeOutput;
+  endDate?: DateTimeOutput;
+  location: String;
+  employer: String;
+  description: String;
+}
+
+export interface ExperiencePromise extends Promise<Experience>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  jobTitle: () => Promise<String>;
+  startDate: () => Promise<DateTimeOutput>;
+  endDate: () => Promise<DateTimeOutput>;
+  location: () => Promise<String>;
+  employer: () => Promise<String>;
+  description: () => Promise<String>;
+}
+
+export interface ExperienceSubscription
+  extends Promise<AsyncIterator<Experience>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  jobTitle: () => Promise<AsyncIterator<String>>;
+  startDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  endDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  location: () => Promise<AsyncIterator<String>>;
+  employer: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ExperienceNullablePromise
+  extends Promise<Experience | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  jobTitle: () => Promise<String>;
+  startDate: () => Promise<DateTimeOutput>;
+  endDate: () => Promise<DateTimeOutput>;
+  location: () => Promise<String>;
+  employer: () => Promise<String>;
+  description: () => Promise<String>;
+}
+
+export interface AggregateEmployer {
+  count: Int;
+}
+
+export interface AggregateEmployerPromise
+  extends Promise<AggregateEmployer>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateEmployerSubscription
+  extends Promise<AsyncIterator<AggregateEmployer>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ContactSubscriptionPayload {
+  mutation: MutationType;
+  node: Contact;
+  updatedFields: String[];
+  previousValues: ContactPreviousValues;
+}
+
+export interface ContactSubscriptionPayloadPromise
+  extends Promise<ContactSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ContactPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ContactPreviousValuesPromise>() => T;
+}
+
+export interface ContactSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ContactSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ContactSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ContactPreviousValuesSubscription>() => T;
+}
+
+export interface EmployerConnection {
+  pageInfo: PageInfo;
+  edges: EmployerEdge[];
+}
+
+export interface EmployerConnectionPromise
+  extends Promise<EmployerConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<EmployerEdge>>() => T;
+  aggregate: <T = AggregateEmployerPromise>() => T;
+}
+
+export interface EmployerConnectionSubscription
+  extends Promise<AsyncIterator<EmployerConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<EmployerEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateEmployerSubscription>() => T;
+}
+
+export interface ContactPreviousValues {
+  id: ID_Output;
+  email?: String;
+  website?: String;
+}
+
+export interface ContactPreviousValuesPromise
+  extends Promise<ContactPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  email: () => Promise<String>;
+  website: () => Promise<String>;
+}
+
+export interface ContactPreviousValuesSubscription
+  extends Promise<AsyncIterator<ContactPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  email: () => Promise<AsyncIterator<String>>;
+  website: () => Promise<AsyncIterator<String>>;
+}
+
+export interface EducationEdge {
+  node: Education;
+  cursor: String;
+}
+
+export interface EducationEdgePromise
+  extends Promise<EducationEdge>,
+    Fragmentable {
+  node: <T = EducationPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface EducationEdgeSubscription
+  extends Promise<AsyncIterator<EducationEdge>>,
+    Fragmentable {
+  node: <T = EducationSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateContact {
+  count: Int;
+}
+
+export interface AggregateContactPromise
+  extends Promise<AggregateContact>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateContactSubscription
+  extends Promise<AsyncIterator<AggregateContact>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface EducationSubscriptionPayload {
+  mutation: MutationType;
+  node: Education;
+  updatedFields: String[];
+  previousValues: EducationPreviousValues;
+}
+
+export interface EducationSubscriptionPayloadPromise
+  extends Promise<EducationSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = EducationPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = EducationPreviousValuesPromise>() => T;
+}
+
+export interface EducationSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<EducationSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = EducationSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = EducationPreviousValuesSubscription>() => T;
+}
+
 export interface ContactConnection {
   pageInfo: PageInfo;
   edges: ContactEdge[];
@@ -1693,6 +3521,51 @@ export interface ContactConnectionSubscription
   pageInfo: <T = PageInfoSubscription>() => T;
   edges: <T = Promise<AsyncIterator<ContactEdgeSubscription>>>() => T;
   aggregate: <T = AggregateContactSubscription>() => T;
+}
+
+export interface ContactEdge {
+  node: Contact;
+  cursor: String;
+}
+
+export interface ContactEdgePromise extends Promise<ContactEdge>, Fragmentable {
+  node: <T = ContactPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ContactEdgeSubscription
+  extends Promise<AsyncIterator<ContactEdge>>,
+    Fragmentable {
+  node: <T = ContactSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Contact {
+  id: ID_Output;
+  email?: String;
+  website?: String;
+}
+
+export interface ContactPromise extends Promise<Contact>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  email: () => Promise<String>;
+  website: () => Promise<String>;
+}
+
+export interface ContactSubscription
+  extends Promise<AsyncIterator<Contact>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  email: () => Promise<AsyncIterator<String>>;
+  website: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ContactNullablePromise
+  extends Promise<Contact | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  email: () => Promise<String>;
+  website: () => Promise<String>;
 }
 
 export interface Employer {
@@ -1749,603 +3622,72 @@ export interface EmployerNullablePromise
   contact: <T = ContactPromise>() => T;
 }
 
-export interface ContactEdge {
-  node: Contact;
-  cursor: String;
-}
-
-export interface ContactEdgePromise extends Promise<ContactEdge>, Fragmentable {
-  node: <T = ContactPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface ContactEdgeSubscription
-  extends Promise<AsyncIterator<ContactEdge>>,
-    Fragmentable {
-  node: <T = ContactSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface Resume {
+export interface EducationPreviousValues {
   id: ID_Output;
+  credential?: String;
+  startDate: DateTimeOutput;
+  endDate?: DateTimeOutput;
+  location: String;
+  school: String;
+}
+
+export interface EducationPreviousValuesPromise
+  extends Promise<EducationPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  credential: () => Promise<String>;
+  startDate: () => Promise<DateTimeOutput>;
+  endDate: () => Promise<DateTimeOutput>;
+  location: () => Promise<String>;
+  school: () => Promise<String>;
+}
+
+export interface EducationPreviousValuesSubscription
+  extends Promise<AsyncIterator<EducationPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  credential: () => Promise<AsyncIterator<String>>;
+  startDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  endDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  location: () => Promise<AsyncIterator<String>>;
+  school: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ResumePreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  title?: String;
   fullname: String;
   address: String;
   email: String;
   phone?: String;
-  experience: String[];
-  education: String[];
   skills: String[];
 }
 
-export interface ResumePromise extends Promise<Resume>, Fragmentable {
+export interface ResumePreviousValuesPromise
+  extends Promise<ResumePreviousValues>,
+    Fragmentable {
   id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  title: () => Promise<String>;
   fullname: () => Promise<String>;
   address: () => Promise<String>;
   email: () => Promise<String>;
   phone: () => Promise<String>;
-  experience: () => Promise<String[]>;
-  education: () => Promise<String[]>;
   skills: () => Promise<String[]>;
 }
 
-export interface ResumeSubscription
-  extends Promise<AsyncIterator<Resume>>,
+export interface ResumePreviousValuesSubscription
+  extends Promise<AsyncIterator<ResumePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  title: () => Promise<AsyncIterator<String>>;
   fullname: () => Promise<AsyncIterator<String>>;
   address: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
   phone: () => Promise<AsyncIterator<String>>;
-  experience: () => Promise<AsyncIterator<String[]>>;
-  education: () => Promise<AsyncIterator<String[]>>;
   skills: () => Promise<AsyncIterator<String[]>>;
-}
-
-export interface ResumeNullablePromise
-  extends Promise<Resume | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  fullname: () => Promise<String>;
-  address: () => Promise<String>;
-  email: () => Promise<String>;
-  phone: () => Promise<String>;
-  experience: () => Promise<String[]>;
-  education: () => Promise<String[]>;
-  skills: () => Promise<String[]>;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface Contact {
-  id: ID_Output;
-  email?: String;
-  website?: String;
-}
-
-export interface ContactPromise extends Promise<Contact>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
-  website: () => Promise<String>;
-}
-
-export interface ContactSubscription
-  extends Promise<AsyncIterator<Contact>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  email: () => Promise<AsyncIterator<String>>;
-  website: () => Promise<AsyncIterator<String>>;
-}
-
-export interface ContactNullablePromise
-  extends Promise<Contact | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
-  website: () => Promise<String>;
-}
-
-export interface JobPost {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  rate: Int;
-  industry: String;
-  location: String;
-  discipline: String[];
-  totalRoles: String;
-  description: String;
-  roles: String[];
-  requirements: String[];
-}
-
-export interface JobPostPromise extends Promise<JobPost>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  rate: () => Promise<Int>;
-  industry: () => Promise<String>;
-  location: () => Promise<String>;
-  discipline: () => Promise<String[]>;
-  totalRoles: () => Promise<String>;
-  employer: <T = EmployerPromise>() => T;
-  viewed: <T = FragmentableArray<Applicant>>(args?: {
-    where?: ApplicantWhereInput;
-    orderBy?: ApplicantOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  description: () => Promise<String>;
-  roles: () => Promise<String[]>;
-  requirements: () => Promise<String[]>;
-}
-
-export interface JobPostSubscription
-  extends Promise<AsyncIterator<JobPost>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  rate: () => Promise<AsyncIterator<Int>>;
-  industry: () => Promise<AsyncIterator<String>>;
-  location: () => Promise<AsyncIterator<String>>;
-  discipline: () => Promise<AsyncIterator<String[]>>;
-  totalRoles: () => Promise<AsyncIterator<String>>;
-  employer: <T = EmployerSubscription>() => T;
-  viewed: <T = Promise<AsyncIterator<ApplicantSubscription>>>(args?: {
-    where?: ApplicantWhereInput;
-    orderBy?: ApplicantOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  description: () => Promise<AsyncIterator<String>>;
-  roles: () => Promise<AsyncIterator<String[]>>;
-  requirements: () => Promise<AsyncIterator<String[]>>;
-}
-
-export interface JobPostNullablePromise
-  extends Promise<JobPost | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  rate: () => Promise<Int>;
-  industry: () => Promise<String>;
-  location: () => Promise<String>;
-  discipline: () => Promise<String[]>;
-  totalRoles: () => Promise<String>;
-  employer: <T = EmployerPromise>() => T;
-  viewed: <T = FragmentableArray<Applicant>>(args?: {
-    where?: ApplicantWhereInput;
-    orderBy?: ApplicantOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  description: () => Promise<String>;
-  roles: () => Promise<String[]>;
-  requirements: () => Promise<String[]>;
-}
-
-export interface AggregateUser {
-  count: Int;
-}
-
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AggregateApplicant {
-  count: Int;
-}
-
-export interface AggregateApplicantPromise
-  extends Promise<AggregateApplicant>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateApplicantSubscription
-  extends Promise<AsyncIterator<AggregateApplicant>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface UserConnection {
-  pageInfo: PageInfo;
-  edges: UserEdge[];
-}
-
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
-}
-
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
-}
-
-export interface ApplicantEdge {
-  node: Applicant;
-  cursor: String;
-}
-
-export interface ApplicantEdgePromise
-  extends Promise<ApplicantEdge>,
-    Fragmentable {
-  node: <T = ApplicantPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface ApplicantEdgeSubscription
-  extends Promise<AsyncIterator<ApplicantEdge>>,
-    Fragmentable {
-  node: <T = ApplicantSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface User {
-  id: ID_Output;
-  name: String;
-  email: String;
-  password: String;
-  profileImage?: String;
-}
-
-export interface UserPromise extends Promise<User>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  employerProfile: <T = EmployerPromise>() => T;
-  applicantProfile: <T = ApplicantPromise>() => T;
-  profileImage: () => Promise<String>;
-}
-
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
-  employerProfile: <T = EmployerSubscription>() => T;
-  applicantProfile: <T = ApplicantSubscription>() => T;
-  profileImage: () => Promise<AsyncIterator<String>>;
-}
-
-export interface UserNullablePromise
-  extends Promise<User | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  employerProfile: <T = EmployerPromise>() => T;
-  applicantProfile: <T = ApplicantPromise>() => T;
-  profileImage: () => Promise<String>;
-}
-
-export interface Applicant {
-  id: ID_Output;
-  linkedin: String;
-  github: String;
-}
-
-export interface ApplicantPromise extends Promise<Applicant>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  linkedin: () => Promise<String>;
-  github: () => Promise<String>;
-  appliedJobs: <T = FragmentableArray<JobPost>>(args?: {
-    where?: JobPostWhereInput;
-    orderBy?: JobPostOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  resume: <T = FragmentableArray<Resume>>(args?: {
-    where?: ResumeWhereInput;
-    orderBy?: ResumeOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface ApplicantSubscription
-  extends Promise<AsyncIterator<Applicant>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  linkedin: () => Promise<AsyncIterator<String>>;
-  github: () => Promise<AsyncIterator<String>>;
-  appliedJobs: <T = Promise<AsyncIterator<JobPostSubscription>>>(args?: {
-    where?: JobPostWhereInput;
-    orderBy?: JobPostOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  resume: <T = Promise<AsyncIterator<ResumeSubscription>>>(args?: {
-    where?: ResumeWhereInput;
-    orderBy?: ResumeOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface ApplicantNullablePromise
-  extends Promise<Applicant | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  linkedin: () => Promise<String>;
-  github: () => Promise<String>;
-  appliedJobs: <T = FragmentableArray<JobPost>>(args?: {
-    where?: JobPostWhereInput;
-    orderBy?: JobPostOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  resume: <T = FragmentableArray<Resume>>(args?: {
-    where?: ResumeWhereInput;
-    orderBy?: ResumeOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface ResumeEdge {
-  node: Resume;
-  cursor: String;
-}
-
-export interface ResumeEdgePromise extends Promise<ResumeEdge>, Fragmentable {
-  node: <T = ResumePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface ResumeEdgeSubscription
-  extends Promise<AsyncIterator<ResumeEdge>>,
-    Fragmentable {
-  node: <T = ResumeSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface ApplicantSubscriptionPayload {
-  mutation: MutationType;
-  node: Applicant;
-  updatedFields: String[];
-  previousValues: ApplicantPreviousValues;
-}
-
-export interface ApplicantSubscriptionPayloadPromise
-  extends Promise<ApplicantSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = ApplicantPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = ApplicantPreviousValuesPromise>() => T;
-}
-
-export interface ApplicantSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<ApplicantSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = ApplicantSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = ApplicantPreviousValuesSubscription>() => T;
-}
-
-export interface AggregateJobPost {
-  count: Int;
-}
-
-export interface AggregateJobPostPromise
-  extends Promise<AggregateJobPost>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateJobPostSubscription
-  extends Promise<AsyncIterator<AggregateJobPost>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface ApplicantPreviousValues {
-  id: ID_Output;
-  linkedin: String;
-  github: String;
-}
-
-export interface ApplicantPreviousValuesPromise
-  extends Promise<ApplicantPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  linkedin: () => Promise<String>;
-  github: () => Promise<String>;
-}
-
-export interface ApplicantPreviousValuesSubscription
-  extends Promise<AsyncIterator<ApplicantPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  linkedin: () => Promise<AsyncIterator<String>>;
-  github: () => Promise<AsyncIterator<String>>;
-}
-
-export interface JobPostConnection {
-  pageInfo: PageInfo;
-  edges: JobPostEdge[];
-}
-
-export interface JobPostConnectionPromise
-  extends Promise<JobPostConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<JobPostEdge>>() => T;
-  aggregate: <T = AggregateJobPostPromise>() => T;
-}
-
-export interface JobPostConnectionSubscription
-  extends Promise<AsyncIterator<JobPostConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<JobPostEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateJobPostSubscription>() => T;
-}
-
-export interface ResumeSubscriptionPayload {
-  mutation: MutationType;
-  node: Resume;
-  updatedFields: String[];
-  previousValues: ResumePreviousValues;
-}
-
-export interface ResumeSubscriptionPayloadPromise
-  extends Promise<ResumeSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = ResumePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = ResumePreviousValuesPromise>() => T;
-}
-
-export interface ResumeSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<ResumeSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = ResumeSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = ResumePreviousValuesSubscription>() => T;
-}
-
-export interface EmployerEdge {
-  node: Employer;
-  cursor: String;
-}
-
-export interface EmployerEdgePromise
-  extends Promise<EmployerEdge>,
-    Fragmentable {
-  node: <T = EmployerPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface EmployerEdgeSubscription
-  extends Promise<AsyncIterator<EmployerEdge>>,
-    Fragmentable {
-  node: <T = EmployerSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface ContactSubscriptionPayload {
-  mutation: MutationType;
-  node: Contact;
-  updatedFields: String[];
-  previousValues: ContactPreviousValues;
-}
-
-export interface ContactSubscriptionPayloadPromise
-  extends Promise<ContactSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = ContactPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = ContactPreviousValuesPromise>() => T;
-}
-
-export interface ContactSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<ContactSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = ContactSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = ContactPreviousValuesSubscription>() => T;
-}
-
-export interface AggregateContact {
-  count: Int;
-}
-
-export interface AggregateContactPromise
-  extends Promise<AggregateContact>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateContactSubscription
-  extends Promise<AsyncIterator<AggregateContact>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface ContactPreviousValues {
-  id: ID_Output;
-  email?: String;
-  website?: String;
-}
-
-export interface ContactPreviousValuesPromise
-  extends Promise<ContactPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
-  website: () => Promise<String>;
-}
-
-export interface ContactPreviousValuesSubscription
-  extends Promise<AsyncIterator<ContactPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  email: () => Promise<AsyncIterator<String>>;
-  website: () => Promise<AsyncIterator<String>>;
 }
 
 export interface UserEdge {
@@ -2365,27 +3707,133 @@ export interface UserEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
+export interface Resume {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  title?: String;
+  fullname: String;
+  address: String;
+  email: String;
+  phone?: String;
+  skills: String[];
 }
 
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
+export interface ResumePromise extends Promise<Resume>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  title: () => Promise<String>;
+  achievements: <T = FragmentableArray<Achievements>>(args?: {
+    where?: AchievementsWhereInput;
+    orderBy?: AchievementsOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  fullname: () => Promise<String>;
+  address: () => Promise<String>;
+  email: () => Promise<String>;
+  experience: <T = FragmentableArray<Experience>>(args?: {
+    where?: ExperienceWhereInput;
+    orderBy?: ExperienceOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  education: <T = FragmentableArray<Education>>(args?: {
+    where?: EducationWhereInput;
+    orderBy?: EducationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  phone: () => Promise<String>;
+  skills: () => Promise<String[]>;
 }
 
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
+export interface ResumeSubscription
+  extends Promise<AsyncIterator<Resume>>,
     Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  title: () => Promise<AsyncIterator<String>>;
+  achievements: <T = Promise<AsyncIterator<AchievementsSubscription>>>(args?: {
+    where?: AchievementsWhereInput;
+    orderBy?: AchievementsOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  fullname: () => Promise<AsyncIterator<String>>;
+  address: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
+  experience: <T = Promise<AsyncIterator<ExperienceSubscription>>>(args?: {
+    where?: ExperienceWhereInput;
+    orderBy?: ExperienceOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  education: <T = Promise<AsyncIterator<EducationSubscription>>>(args?: {
+    where?: EducationWhereInput;
+    orderBy?: EducationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  phone: () => Promise<AsyncIterator<String>>;
+  skills: () => Promise<AsyncIterator<String[]>>;
+}
+
+export interface ResumeNullablePromise
+  extends Promise<Resume | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  title: () => Promise<String>;
+  achievements: <T = FragmentableArray<Achievements>>(args?: {
+    where?: AchievementsWhereInput;
+    orderBy?: AchievementsOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  fullname: () => Promise<String>;
+  address: () => Promise<String>;
+  email: () => Promise<String>;
+  experience: <T = FragmentableArray<Experience>>(args?: {
+    where?: ExperienceWhereInput;
+    orderBy?: ExperienceOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  education: <T = FragmentableArray<Education>>(args?: {
+    where?: EducationWhereInput;
+    orderBy?: EducationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  phone: () => Promise<String>;
+  skills: () => Promise<String[]>;
 }
 
 export interface AggregateResume {
@@ -2446,25 +3894,147 @@ export interface JobPostEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface EmployerConnection {
-  pageInfo: PageInfo;
-  edges: EmployerEdge[];
+export interface EmployerPreviousValues {
+  id: ID_Output;
+  linkedin?: String;
 }
 
-export interface EmployerConnectionPromise
-  extends Promise<EmployerConnection>,
+export interface EmployerPreviousValuesPromise
+  extends Promise<EmployerPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  linkedin: () => Promise<String>;
+}
+
+export interface EmployerPreviousValuesSubscription
+  extends Promise<AsyncIterator<EmployerPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  linkedin: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ExperienceConnection {
+  pageInfo: PageInfo;
+  edges: ExperienceEdge[];
+}
+
+export interface ExperienceConnectionPromise
+  extends Promise<ExperienceConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<EmployerEdge>>() => T;
-  aggregate: <T = AggregateEmployerPromise>() => T;
+  edges: <T = FragmentableArray<ExperienceEdge>>() => T;
+  aggregate: <T = AggregateExperiencePromise>() => T;
 }
 
-export interface EmployerConnectionSubscription
-  extends Promise<AsyncIterator<EmployerConnection>>,
+export interface ExperienceConnectionSubscription
+  extends Promise<AsyncIterator<ExperienceConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<EmployerEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateEmployerSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ExperienceEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateExperienceSubscription>() => T;
+}
+
+export interface ResumeSubscriptionPayload {
+  mutation: MutationType;
+  node: Resume;
+  updatedFields: String[];
+  previousValues: ResumePreviousValues;
+}
+
+export interface ResumeSubscriptionPayloadPromise
+  extends Promise<ResumeSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ResumePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ResumePreviousValuesPromise>() => T;
+}
+
+export interface ResumeSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ResumeSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ResumeSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ResumePreviousValuesSubscription>() => T;
+}
+
+export interface AggregateEducation {
+  count: Int;
+}
+
+export interface AggregateEducationPromise
+  extends Promise<AggregateEducation>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateEducationSubscription
+  extends Promise<AsyncIterator<AggregateEducation>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ExperienceSubscriptionPayload {
+  mutation: MutationType;
+  node: Experience;
+  updatedFields: String[];
+  previousValues: ExperiencePreviousValues;
+}
+
+export interface ExperienceSubscriptionPayloadPromise
+  extends Promise<ExperienceSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ExperiencePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ExperiencePreviousValuesPromise>() => T;
+}
+
+export interface ExperienceSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ExperienceSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ExperienceSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ExperiencePreviousValuesSubscription>() => T;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface ResumeConnection {
+  pageInfo: PageInfo;
+  edges: ResumeEdge[];
+}
+
+export interface ResumeConnectionPromise
+  extends Promise<ResumeConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ResumeEdge>>() => T;
+  aggregate: <T = AggregateResumePromise>() => T;
+}
+
+export interface ResumeConnectionSubscription
+  extends Promise<AsyncIterator<ResumeConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ResumeEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateResumeSubscription>() => T;
 }
 
 export interface JobPostPreviousValues {
@@ -2535,44 +4105,73 @@ export interface JobPostSubscriptionPayloadSubscription
   previousValues: <T = JobPostPreviousValuesSubscription>() => T;
 }
 
-export interface ApplicantConnection {
-  pageInfo: PageInfo;
-  edges: ApplicantEdge[];
+export interface AchievementsEdge {
+  node: Achievements;
+  cursor: String;
 }
 
-export interface ApplicantConnectionPromise
-  extends Promise<ApplicantConnection>,
+export interface AchievementsEdgePromise
+  extends Promise<AchievementsEdge>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ApplicantEdge>>() => T;
-  aggregate: <T = AggregateApplicantPromise>() => T;
+  node: <T = AchievementsPromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface ApplicantConnectionSubscription
-  extends Promise<AsyncIterator<ApplicantConnection>>,
+export interface AchievementsEdgeSubscription
+  extends Promise<AsyncIterator<AchievementsEdge>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ApplicantEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateApplicantSubscription>() => T;
+  node: <T = AchievementsSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface EmployerPreviousValues {
+export interface ExperiencePreviousValues {
   id: ID_Output;
-  linkedin?: String;
+  jobTitle: String;
+  startDate: DateTimeOutput;
+  endDate?: DateTimeOutput;
+  location: String;
+  employer: String;
+  description: String;
 }
 
-export interface EmployerPreviousValuesPromise
-  extends Promise<EmployerPreviousValues>,
+export interface ExperiencePreviousValuesPromise
+  extends Promise<ExperiencePreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  linkedin: () => Promise<String>;
+  jobTitle: () => Promise<String>;
+  startDate: () => Promise<DateTimeOutput>;
+  endDate: () => Promise<DateTimeOutput>;
+  location: () => Promise<String>;
+  employer: () => Promise<String>;
+  description: () => Promise<String>;
 }
 
-export interface EmployerPreviousValuesSubscription
-  extends Promise<AsyncIterator<EmployerPreviousValues>>,
+export interface ExperiencePreviousValuesSubscription
+  extends Promise<AsyncIterator<ExperiencePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  linkedin: () => Promise<AsyncIterator<String>>;
+  jobTitle: () => Promise<AsyncIterator<String>>;
+  startDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  endDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  location: () => Promise<AsyncIterator<String>>;
+  employer: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateExperience {
+  count: Int;
+}
+
+export interface AggregateExperiencePromise
+  extends Promise<AggregateExperience>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateExperienceSubscription
+  extends Promise<AsyncIterator<AggregateExperience>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface UserSubscriptionPayload {
@@ -2600,79 +4199,47 @@ export interface UserSubscriptionPayloadSubscription
   previousValues: <T = UserPreviousValuesSubscription>() => T;
 }
 
-export interface AggregateEmployer {
-  count: Int;
-}
-
-export interface AggregateEmployerPromise
-  extends Promise<AggregateEmployer>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateEmployerSubscription
-  extends Promise<AsyncIterator<AggregateEmployer>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface ResumeConnection {
+export interface EducationConnection {
   pageInfo: PageInfo;
-  edges: ResumeEdge[];
+  edges: EducationEdge[];
 }
 
-export interface ResumeConnectionPromise
-  extends Promise<ResumeConnection>,
+export interface EducationConnectionPromise
+  extends Promise<EducationConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ResumeEdge>>() => T;
-  aggregate: <T = AggregateResumePromise>() => T;
+  edges: <T = FragmentableArray<EducationEdge>>() => T;
+  aggregate: <T = AggregateEducationPromise>() => T;
 }
 
-export interface ResumeConnectionSubscription
-  extends Promise<AsyncIterator<ResumeConnection>>,
+export interface EducationConnectionSubscription
+  extends Promise<AsyncIterator<EducationConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ResumeEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateResumeSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<EducationEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateEducationSubscription>() => T;
 }
 
-export interface ResumePreviousValues {
-  id: ID_Output;
-  fullname: String;
-  address: String;
-  email: String;
-  phone?: String;
-  experience: String[];
-  education: String[];
-  skills: String[];
+export interface EmployerEdge {
+  node: Employer;
+  cursor: String;
 }
 
-export interface ResumePreviousValuesPromise
-  extends Promise<ResumePreviousValues>,
+export interface EmployerEdgePromise
+  extends Promise<EmployerEdge>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  fullname: () => Promise<String>;
-  address: () => Promise<String>;
-  email: () => Promise<String>;
-  phone: () => Promise<String>;
-  experience: () => Promise<String[]>;
-  education: () => Promise<String[]>;
-  skills: () => Promise<String[]>;
+  node: <T = EmployerPromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface ResumePreviousValuesSubscription
-  extends Promise<AsyncIterator<ResumePreviousValues>>,
+export interface EmployerEdgeSubscription
+  extends Promise<AsyncIterator<EmployerEdge>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  fullname: () => Promise<AsyncIterator<String>>;
-  address: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-  phone: () => Promise<AsyncIterator<String>>;
-  experience: () => Promise<AsyncIterator<String[]>>;
-  education: () => Promise<AsyncIterator<String[]>>;
-  skills: () => Promise<AsyncIterator<String[]>>;
+  node: <T = EmployerSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
+
+export type Long = string;
 
 /*
 DateTime scalar input type, allowing Date
@@ -2684,13 +4251,10 @@ DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
 
-export type Long = string;
-
 /*
-The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
-export type ID_Input = string | number;
-export type ID_Output = string;
+export type String = string;
 
 /*
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
@@ -2698,9 +4262,10 @@ The `Int` scalar type represents non-fractional signed whole numeric values. Int
 export type Int = number;
 
 /*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
 */
-export type String = string;
+export type ID_Input = string | number;
+export type ID_Output = string;
 
 /*
 The `Boolean` scalar type represents `true` or `false`.
@@ -2734,6 +4299,18 @@ export const models: Model[] = [
   },
   {
     name: "Resume",
+    embedded: false
+  },
+  {
+    name: "Achievements",
+    embedded: false
+  },
+  {
+    name: "Experience",
+    embedded: false
+  },
+  {
+    name: "Education",
     embedded: false
   }
 ];
