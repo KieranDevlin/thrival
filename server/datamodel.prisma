@@ -34,6 +34,8 @@ type Contact {
 }
 type Applicant {
   id: ID! @id
+  jobTitle: String!
+  description: String!
   linkedin: String!
   github: String!
   appliedJobs: [JobPost] @relation(link: TABLE)
@@ -43,11 +45,35 @@ type Resume {
   id: ID! @id
   createdAt: DateTime! @createdAt
   title: String
+  achievements: [Achievements!] @relation(link: TABLE)
   fullname: String!
   address: String!
   email: String!
+  experience: [Experience!] @relation(link: TABLE)
+  education: [Education!] @relation(link: TABLE)
   phone: String
-  experience: [String!] @scalarList(strategy:RELATION)
-  education: [String!] @scalarList(strategy:RELATION)
   skills: [String!] @scalarList(strategy:RELATION)
 }
+type Achievements {
+  id: ID! @id
+  title: String!
+  description: String
+}
+type Experience {
+  id: ID! @id
+  jobTitle: String!
+  startDate: DateTime!
+  endDate: DateTime 
+  location: String!
+  employer: String!
+  description: String!
+}
+type Education {
+  id: ID! @id
+  credential: String
+  startDate: DateTime!
+  endDate: DateTime
+  location: String!
+  school: String!
+}
+
