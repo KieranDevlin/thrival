@@ -43,7 +43,7 @@ const AddJobPostContainer = () => {
       client={client}
       variables={{
         // This id will be changed to user id when getting user data is setup
-        EmployerWhereUniqueInput: {id: 'ck90hgwlu99jm0981fmuqx0af'},
+        EmployerWhereUniqueInput: {id: 'ck91wu035s5iz0934mb0wjp0a'},
         EmployerUpdateInput: {
           jobpostings: {
             create: {

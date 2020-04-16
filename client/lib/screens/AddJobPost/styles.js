@@ -35,10 +35,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#EEF2F7',
   },
   picker: {
-    margin: 5,
+    alignSelf: 'center',
     position: 'relative',
-    padding: 20,
     width: 200,
+  },
+  button: {
+    borderRadius: 5,
+    width: Dimensions.get('window').width - 40,
+    alignSelf: 'center',
+    margin: 50,
+    backgroundColor: '#11185B',
   },
 });
 
