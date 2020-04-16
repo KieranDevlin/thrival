@@ -16,7 +16,7 @@ type JobPost {
   discipline: [String!]! @scalarList(strategy:RELATION)
   totalRoles: String! 
   employer: Employer!
-  viewed: [Applicant] 
+  applicants: [Applicant] 
   description: String!
   roles: [String!]! @scalarList(strategy:RELATION)
   requirements: [String!]! @scalarList(strategy:RELATION)
@@ -41,6 +41,8 @@ type Applicant {
 }
 type Resume {
   id: ID! @id
+  createdAt: DateTime! @createdAt
+  title: String
   fullname: String!
   address: String!
   email: String!

@@ -45,7 +45,7 @@ input ApplicantCreateInput {
   id: ID
   linkedin: String!
   github: String!
-  appliedJobs: JobPostCreateManyWithoutViewedInput
+  appliedJobs: JobPostCreateManyWithoutApplicantsInput
   resume: ResumeCreateManyInput
 }
 
@@ -155,14 +155,14 @@ input ApplicantSubscriptionWhereInput {
 input ApplicantUpdateDataInput {
   linkedin: String
   github: String
-  appliedJobs: JobPostUpdateManyWithoutViewedInput
+  appliedJobs: JobPostUpdateManyWithoutApplicantsInput
   resume: ResumeUpdateManyInput
 }
 
 input ApplicantUpdateInput {
   linkedin: String
   github: String
-  appliedJobs: JobPostUpdateManyWithoutViewedInput
+  appliedJobs: JobPostUpdateManyWithoutApplicantsInput
   resume: ResumeUpdateManyInput
 }
 
@@ -599,7 +599,7 @@ type JobPost {
   discipline: [String!]!
   totalRoles: String!
   employer: Employer!
-  viewed(where: ApplicantWhereInput, orderBy: ApplicantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Applicant!]
+  applicants(where: ApplicantWhereInput, orderBy: ApplicantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Applicant!]
   description: String!
   roles: [String!]!
   requirements: [String!]!
@@ -623,19 +623,19 @@ input JobPostCreateInput {
   discipline: JobPostCreatedisciplineInput
   totalRoles: String!
   employer: EmployerCreateOneWithoutJobpostingsInput!
-  viewed: ApplicantCreateManyWithoutAppliedJobsInput
+  applicants: ApplicantCreateManyWithoutAppliedJobsInput
   description: String!
   roles: JobPostCreaterolesInput
   requirements: JobPostCreaterequirementsInput
 }
 
-input JobPostCreateManyWithoutEmployerInput {
-  create: [JobPostCreateWithoutEmployerInput!]
+input JobPostCreateManyWithoutApplicantsInput {
+  create: [JobPostCreateWithoutApplicantsInput!]
   connect: [JobPostWhereUniqueInput!]
 }
 
-input JobPostCreateManyWithoutViewedInput {
-  create: [JobPostCreateWithoutViewedInput!]
+input JobPostCreateManyWithoutEmployerInput {
+  create: [JobPostCreateWithoutEmployerInput!]
   connect: [JobPostWhereUniqueInput!]
 }
 
@@ -647,20 +647,7 @@ input JobPostCreaterolesInput {
   set: [String!]
 }
 
-input JobPostCreateWithoutEmployerInput {
-  id: ID
-  rate: Int!
-  industry: String!
-  location: String!
-  discipline: JobPostCreatedisciplineInput
-  totalRoles: String!
-  viewed: ApplicantCreateManyWithoutAppliedJobsInput
-  description: String!
-  roles: JobPostCreaterolesInput
-  requirements: JobPostCreaterequirementsInput
-}
-
-input JobPostCreateWithoutViewedInput {
+input JobPostCreateWithoutApplicantsInput {
   id: ID
   rate: Int!
   industry: String!
@@ -668,6 +655,19 @@ input JobPostCreateWithoutViewedInput {
   discipline: JobPostCreatedisciplineInput
   totalRoles: String!
   employer: EmployerCreateOneWithoutJobpostingsInput!
+  description: String!
+  roles: JobPostCreaterolesInput
+  requirements: JobPostCreaterequirementsInput
+}
+
+input JobPostCreateWithoutEmployerInput {
+  id: ID
+  rate: Int!
+  industry: String!
+  location: String!
+  discipline: JobPostCreatedisciplineInput
+  totalRoles: String!
+  applicants: ApplicantCreateManyWithoutAppliedJobsInput
   description: String!
   roles: JobPostCreaterolesInput
   requirements: JobPostCreaterequirementsInput
@@ -829,7 +829,7 @@ input JobPostUpdateInput {
   discipline: JobPostUpdatedisciplineInput
   totalRoles: String
   employer: EmployerUpdateOneRequiredWithoutJobpostingsInput
-  viewed: ApplicantUpdateManyWithoutAppliedJobsInput
+  applicants: ApplicantUpdateManyWithoutAppliedJobsInput
   description: String
   roles: JobPostUpdaterolesInput
   requirements: JobPostUpdaterequirementsInput
@@ -857,6 +857,18 @@ input JobPostUpdateManyMutationInput {
   requirements: JobPostUpdaterequirementsInput
 }
 
+input JobPostUpdateManyWithoutApplicantsInput {
+  create: [JobPostCreateWithoutApplicantsInput!]
+  delete: [JobPostWhereUniqueInput!]
+  connect: [JobPostWhereUniqueInput!]
+  set: [JobPostWhereUniqueInput!]
+  disconnect: [JobPostWhereUniqueInput!]
+  update: [JobPostUpdateWithWhereUniqueWithoutApplicantsInput!]
+  upsert: [JobPostUpsertWithWhereUniqueWithoutApplicantsInput!]
+  deleteMany: [JobPostScalarWhereInput!]
+  updateMany: [JobPostUpdateManyWithWhereNestedInput!]
+}
+
 input JobPostUpdateManyWithoutEmployerInput {
   create: [JobPostCreateWithoutEmployerInput!]
   delete: [JobPostWhereUniqueInput!]
@@ -865,18 +877,6 @@ input JobPostUpdateManyWithoutEmployerInput {
   disconnect: [JobPostWhereUniqueInput!]
   update: [JobPostUpdateWithWhereUniqueWithoutEmployerInput!]
   upsert: [JobPostUpsertWithWhereUniqueWithoutEmployerInput!]
-  deleteMany: [JobPostScalarWhereInput!]
-  updateMany: [JobPostUpdateManyWithWhereNestedInput!]
-}
-
-input JobPostUpdateManyWithoutViewedInput {
-  create: [JobPostCreateWithoutViewedInput!]
-  delete: [JobPostWhereUniqueInput!]
-  connect: [JobPostWhereUniqueInput!]
-  set: [JobPostWhereUniqueInput!]
-  disconnect: [JobPostWhereUniqueInput!]
-  update: [JobPostUpdateWithWhereUniqueWithoutViewedInput!]
-  upsert: [JobPostUpsertWithWhereUniqueWithoutViewedInput!]
   deleteMany: [JobPostScalarWhereInput!]
   updateMany: [JobPostUpdateManyWithWhereNestedInput!]
 }
@@ -894,19 +894,7 @@ input JobPostUpdaterolesInput {
   set: [String!]
 }
 
-input JobPostUpdateWithoutEmployerDataInput {
-  rate: Int
-  industry: String
-  location: String
-  discipline: JobPostUpdatedisciplineInput
-  totalRoles: String
-  viewed: ApplicantUpdateManyWithoutAppliedJobsInput
-  description: String
-  roles: JobPostUpdaterolesInput
-  requirements: JobPostUpdaterequirementsInput
-}
-
-input JobPostUpdateWithoutViewedDataInput {
+input JobPostUpdateWithoutApplicantsDataInput {
   rate: Int
   industry: String
   location: String
@@ -918,26 +906,38 @@ input JobPostUpdateWithoutViewedDataInput {
   requirements: JobPostUpdaterequirementsInput
 }
 
+input JobPostUpdateWithoutEmployerDataInput {
+  rate: Int
+  industry: String
+  location: String
+  discipline: JobPostUpdatedisciplineInput
+  totalRoles: String
+  applicants: ApplicantUpdateManyWithoutAppliedJobsInput
+  description: String
+  roles: JobPostUpdaterolesInput
+  requirements: JobPostUpdaterequirementsInput
+}
+
+input JobPostUpdateWithWhereUniqueWithoutApplicantsInput {
+  where: JobPostWhereUniqueInput!
+  data: JobPostUpdateWithoutApplicantsDataInput!
+}
+
 input JobPostUpdateWithWhereUniqueWithoutEmployerInput {
   where: JobPostWhereUniqueInput!
   data: JobPostUpdateWithoutEmployerDataInput!
 }
 
-input JobPostUpdateWithWhereUniqueWithoutViewedInput {
+input JobPostUpsertWithWhereUniqueWithoutApplicantsInput {
   where: JobPostWhereUniqueInput!
-  data: JobPostUpdateWithoutViewedDataInput!
+  update: JobPostUpdateWithoutApplicantsDataInput!
+  create: JobPostCreateWithoutApplicantsInput!
 }
 
 input JobPostUpsertWithWhereUniqueWithoutEmployerInput {
   where: JobPostWhereUniqueInput!
   update: JobPostUpdateWithoutEmployerDataInput!
   create: JobPostCreateWithoutEmployerInput!
-}
-
-input JobPostUpsertWithWhereUniqueWithoutViewedInput {
-  where: JobPostWhereUniqueInput!
-  update: JobPostUpdateWithoutViewedDataInput!
-  create: JobPostCreateWithoutViewedInput!
 }
 
 input JobPostWhereInput {
@@ -1014,9 +1014,9 @@ input JobPostWhereInput {
   totalRoles_ends_with: String
   totalRoles_not_ends_with: String
   employer: EmployerWhereInput
-  viewed_every: ApplicantWhereInput
-  viewed_some: ApplicantWhereInput
-  viewed_none: ApplicantWhereInput
+  applicants_every: ApplicantWhereInput
+  applicants_some: ApplicantWhereInput
+  applicants_none: ApplicantWhereInput
   description: String
   description_not: String
   description_in: [String!]
@@ -1122,6 +1122,8 @@ type Query {
 
 type Resume {
   id: ID!
+  createdAt: DateTime!
+  title: String
   fullname: String!
   address: String!
   email: String!
@@ -1147,6 +1149,7 @@ input ResumeCreateexperienceInput {
 
 input ResumeCreateInput {
   id: ID
+  title: String
   fullname: String!
   address: String!
   email: String!
@@ -1173,6 +1176,10 @@ type ResumeEdge {
 enum ResumeOrderByInput {
   id_ASC
   id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  title_ASC
+  title_DESC
   fullname_ASC
   fullname_DESC
   address_ASC
@@ -1185,6 +1192,8 @@ enum ResumeOrderByInput {
 
 type ResumePreviousValues {
   id: ID!
+  createdAt: DateTime!
+  title: String
   fullname: String!
   address: String!
   email: String!
@@ -1209,6 +1218,28 @@ input ResumeScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
   fullname: String
   fullname_not: String
   fullname_in: [String!]
@@ -1289,6 +1320,7 @@ input ResumeSubscriptionWhereInput {
 }
 
 input ResumeUpdateDataInput {
+  title: String
   fullname: String
   address: String
   email: String
@@ -1307,6 +1339,7 @@ input ResumeUpdateexperienceInput {
 }
 
 input ResumeUpdateInput {
+  title: String
   fullname: String
   address: String
   email: String
@@ -1317,6 +1350,7 @@ input ResumeUpdateInput {
 }
 
 input ResumeUpdateManyDataInput {
+  title: String
   fullname: String
   address: String
   email: String
@@ -1339,6 +1373,7 @@ input ResumeUpdateManyInput {
 }
 
 input ResumeUpdateManyMutationInput {
+  title: String
   fullname: String
   address: String
   email: String
@@ -1383,6 +1418,28 @@ input ResumeWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
   fullname: String
   fullname_not: String
   fullname_in: [String!]
