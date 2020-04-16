@@ -1,20 +1,21 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
-import styles from './styles';
 import PropTypes from 'prop-types';
-import Text from '../../components/CustomText/CustomText';
+import styles from './styles';
 import ApplicationList from '../../components/ApplicationList';
 
-const Application = ({application, route, navigation}) => {
+const Application = ({navigation, myApplications}) => {
   return (
     <ScrollView style={styles.main}>
-      <ApplicationList />
+      <ApplicationList
+        myApplications={myApplications}
+        navigation={navigation}
+      />
     </ScrollView>
   );
 };
 Application.propTypes = {
-  application: PropTypes.array,
-  route: PropTypes.object,
   navigation: PropTypes.object,
+  myApplications: PropTypes.array,
 };
 export default Application;

@@ -27,6 +27,18 @@ var models = [
   {
     name: "Resume",
     embedded: false
+  },
+  {
+    name: "Achievements",
+    embedded: false
+  },
+  {
+    name: "Experience",
+    embedded: false
+  },
+  {
+    name: "Education",
+    embedded: false
   }
 ];
 exports.Prisma = prisma_lib_1.makePrismaClientClass({

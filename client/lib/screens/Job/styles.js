@@ -1,6 +1,22 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
 const styles = StyleSheet.create({
+  addedToFaves: {
+    width: Dimensions.get('window').width,
+    backgroundColor: '#11185B',
+    height: 50,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    zIndex: 999,
+  },
+
+  addText: {
+    color: '#FBF7EF',
+    fontSize: 18,
+    marginHorizontal: 10,
+  },
   scroll: {
     width: Dimensions.get('window').width,
     alignItems: 'center',

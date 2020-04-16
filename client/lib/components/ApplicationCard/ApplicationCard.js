@@ -1,79 +1,50 @@
 import React from 'react';
+import {TouchableOpacity, View, Image} from 'react-native';
+import PropTypes from 'prop-types';
 import styles from './styles';
-import {TouchableOpacity, View, Image, StyleSheet} from 'react-native';
 import Text from '../../components/CustomText/CustomText';
 
-const ApplicationCard = () => {
+const ApplicationCard = ({application, navigation}) => {
+  const getDomain = (link) => {
+    if (link.indexOf('://') > -1) {
+      link.slice(link.indexOf('://') + 3, -1);
+    }
+    return link.slice(0, link.indexOf('/'));
+  };
   return (
-    <>
-      <TouchableOpacity>
-        <View style={styles.main}>
-          <View style={styles.employer}>
-            <View style={styles.imageContainer}>
-              <Image
-                style={styles.image}
-                source={require('../../assets/images/Spotify.png')}
-              />
-            </View>
-            <View style={styles.employerInfo}>
-              <Text style={styles.jobTitle}>Graphic Designer</Text>
-              <Text style={styles.company}>Spotify</Text>
-            </View>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('Opportunity', {job: application});
+      }}>
+      <View style={styles.main}>
+        <View style={styles.employer}>
+          <View style={styles.imageContainer}>
+            <Image
+              style={styles.image}
+              source={{
+                uri: `https://logo.clearbit.com/${getDomain(
+                  application.employer.contact.website,
+                )}`,
+              }}
+            />
           </View>
-          <View style={styles.statusContainer}>
-            <Text style={styles.location}>Vancouver, Canada</Text>
-            <View style={styles.borderRadius}>
-              <Text style={[styles.status, styles.applied]}>Applied</Text>
-            </View>
-          </View>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.shadow}>
-        <View style={styles.main}>
-          <View style={styles.employer}>
-            <View style={styles.imageContainer}>
-              <Image
-                style={styles.image}
-                source={require('../../assets/images/RBC.jpeg')}
-              />
-            </View>
-            <View style={styles.employerInfo}>
-              <Text style={styles.jobTitle}>Financial Advisor</Text>
-              <Text style={styles.company}>RBC Bank</Text>
-            </View>
-          </View>
-          <View style={styles.statusContainer}>
-            <Text style={styles.location}>Vancouver, Canada</Text>
-            <View style={styles.borderRadius}>
-              <Text style={[styles.status, styles.pending]}>Pending</Text>
-            </View>
+          <View style={styles.employerInfo}>
+            <Text style={styles.jobTitle}>JOB NAME HERE</Text>
+            <Text style={styles.company}>COMPANY NAME HERE</Text>
           </View>
         </View>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.shadow}>
-        <View style={styles.main}>
-          <View style={styles.employer}>
-            <View style={styles.imageContainer}>
-              <Image
-                style={styles.image}
-                source={require('../../assets/images/RBC.jpeg')}
-              />
-            </View>
-            <View style={styles.employerInfo}>
-              <Text style={styles.jobTitle}>Financial Advisor</Text>
-              <Text style={styles.company}>RBC Bank</Text>
-            </View>
-          </View>
-          <View style={styles.statusContainer}>
-            <Text style={styles.location}>Vancouver, Canada</Text>
-            <View style={styles.borderRadius}>
-              <Text style={[styles.status, styles.interview]}>Interview</Text>
-            </View>
+        <View style={styles.statusContainer}>
+          <Text style={styles.location}>{application.location}</Text>
+          <View style={styles.borderRadius}>
+            <Text style={[styles.status, styles.applied]}>Applied</Text>
           </View>
         </View>
-      </TouchableOpacity>
-    </>
+      </View>
+    </TouchableOpacity>
   );
 };
-
+ApplicationCard.propTypes = {
+  navigation: PropTypes.object,
+  applications: PropTypes.object,
+};
 export default ApplicationCard;

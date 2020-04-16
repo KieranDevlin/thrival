@@ -1,19 +1,10 @@
 import React from 'react';
 import Text from '../../components/CustomText/CustomText';
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Dimensions,
-  Image,
-  ScrollView,
-} from 'react-native';
+import {TouchableOpacity, View, Image} from 'react-native';
 import styles from './styles';
-import Button from '../../components/Button';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AuthContext} from '../../context/AuthProvider';
 import PropTypes from 'prop-types';
-import {UserContext} from '../../context/UserContext';
 
 const UserProfile = ({navigation, user}) => {
   const {
@@ -226,6 +217,7 @@ const UserProfile = ({navigation, user}) => {
 };
 UserProfile.propTypes = {
   navigation: PropTypes.objectOf(PropTypes.func),
+  user: PropTypes.object,
 };
 
 export default UserProfile;
