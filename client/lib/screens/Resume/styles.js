@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
   section: {
     borderBottomWidth: 1,
     borderColor: '#D2D9E5',
+    paddingBottom: 10,
   },
   borderTop: {
     borderTopWidth: 1,

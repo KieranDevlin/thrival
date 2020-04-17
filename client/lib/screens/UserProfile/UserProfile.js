@@ -6,16 +6,16 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AuthContext} from '../../context/AuthProvider';
 import PropTypes from 'prop-types';
 
-const UserProfile = ({navigation, user}) => {
+const UserProfile = ({navigation, currentUser}) => {
   const {
     authContext: {signOutContext},
   } = React.useContext(AuthContext);
 
-  const currentUser = user[0];
-  console.log(currentUser);
+  currentUser = currentUser[0];
   const name = currentUser.name;
   const firstname = name.substr(0, name.indexOf(' '));
   const lastname = name.substr(name.indexOf(' ') + 1);
+
   return (
     <>
       <View style={styles.main}>
@@ -33,7 +33,7 @@ const UserProfile = ({navigation, user}) => {
           </View>
         </View>
         <View style={styles.profileMenu}>
-          {currentUser.employerProfile ? null : (
+          {currentUser.applicantProfile === null ? null : (
             <>
               <TouchableOpacity
                 onPress={() => {
@@ -83,13 +83,13 @@ const UserProfile = ({navigation, user}) => {
               </TouchableOpacity>
             </>
           )}
-          {currentUser.applicantProfile ? null : (
+          {currentUser.employerProfile === null ? null : (
             <>
               <TouchableOpacity style={[styles.menuItem, styles.borderTop]}>
                 <View style={styles.menuName}>
                   <Icon
                     style={styles.icon}
-                    name={'account'}
+                    name={'file-document-box-multiple'}
                     size={20}
                     color={'#2B2D42'}
                   />
@@ -101,7 +101,7 @@ const UserProfile = ({navigation, user}) => {
                 <View style={styles.menuName}>
                   <Icon
                     style={styles.icon}
-                    name={'account'}
+                    name={'account-group'}
                     size={20}
                     color={'#2B2D42'}
                   />

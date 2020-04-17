@@ -137,7 +137,7 @@ const UserProfileStackScreens = () => {
         name="Resumes"
         component={MyResumesScreen}
         options={{
-          title: 'Resumes',
+          title: 'All My Resumes',
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
             fontFamily: 'Raleway-Regular',
@@ -150,7 +150,7 @@ const UserProfileStackScreens = () => {
         name="Resume"
         component={ResumeScreen}
         options={{
-          title: 'My Resume',
+          title: 'Resume',
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
             fontFamily: 'Raleway-Regular',

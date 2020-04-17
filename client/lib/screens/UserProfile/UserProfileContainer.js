@@ -14,6 +14,16 @@ const ALL_USERS = gql`
     users {
       id
       name
+      employerProfile {
+        id
+        jobpostings {
+          id
+        }
+        linkedin
+        contact {
+          id
+        }
+      }
       applicantProfile {
         id
         linkedin
@@ -72,10 +82,11 @@ export default class UserProfileContainer extends Component {
                 const currentUser = data.users.filter((user) =>
                   loggedInUserId.includes(user.id),
                 );
+                console.log(currentUser);
                 return (
                   <UserProfile
                     navigation={this.props.navigation}
-                    user={currentUser}
+                    currentUser={currentUser}
                     style={styles.container}
                   />
                 );
