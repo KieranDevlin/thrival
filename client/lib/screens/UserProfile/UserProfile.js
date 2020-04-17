@@ -89,7 +89,19 @@ const UserProfile = ({navigation, currentUser}) => {
                 <View style={styles.menuName}>
                   <Icon
                     style={styles.icon}
-                    name={'file-document-box-multiple'}
+                    name={'file-plus'}
+                    size={20}
+                    color={'#2B2D42'}
+                  />
+                  <Text style={styles.menuTitle}>Add Job Post</Text>
+                </View>
+                <Icon name={'plus'} size={25} color={'#2B2D42'} />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.menuItem}>
+                <View style={styles.menuName}>
+                  <Icon
+                    style={styles.icon}
+                    name={'file-multiple'}
                     size={20}
                     color={'#2B2D42'}
                   />
