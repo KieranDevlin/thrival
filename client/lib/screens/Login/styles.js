@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
   },
   header: {
-    marginBottom: 40,
+    marginBottom: 50,
     fontSize: 30,
     fontWeight: '900',
     color: '#11185B',
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width - 40,
     padding: 8,
     backgroundColor: '#EEF2F7',
+    opacity: 0.9,
   },
   button: {
     borderRadius: 5,
@@ -54,6 +55,12 @@ const styles = StyleSheet.create({
   signupTextBold: {
     fontWeight: '500',
     color: '#ED9421',
+  },
+  logo: {
+    position: 'absolute',
+    opacity: 0.5,
+    resizeMode: 'cover',
+    transform: [{translateX: 6}, {scale: 0.75}],
   },
 });
 

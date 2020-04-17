@@ -19,6 +19,7 @@ import ResumeScreen from '../screens/Resume';
 import SavedJobsScreen from '../screens/SavedJobs';
 import ManageAccountScreen from '../screens/ManageAccount';
 import {View} from 'react-native';
+import MyResumesScreen from '../screens/MyResumes';
 
 const JobboardStack = createStackNavigator();
 const JobboardStackScreens = () => {
@@ -133,9 +134,10 @@ const UserProfileStackScreens = () => {
         }}
       />
       <UserProfileStack.Screen
-        name="Opportunity"
-        component={JobScreen}
+        name="Resumes"
+        component={MyResumesScreen}
         options={{
+          title: 'All My Resumes',
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
             fontFamily: 'Raleway-Regular',
@@ -148,7 +150,7 @@ const UserProfileStackScreens = () => {
         name="Resume"
         component={ResumeScreen}
         options={{
-          title: 'My Resume',
+          title: 'Resume',
           headerTintColor: '#FFFFFF',
           headerTitleStyle: {
             fontFamily: 'Raleway-Regular',
@@ -344,9 +346,8 @@ export const BottomTabNavScreens = () => (
       name="Opportunities"
       component={JobboardStackScreens}
     />
-    <BottomTabNav.Screen name="Search" component={SearchStackScreens} />
-
     <BottomTabNav.Screen name="Calendar" component={CalendarStackScreens} />
+    <BottomTabNav.Screen name="Search" component={SearchStackScreens} />
     <BottomTabNav.Screen
       name="Notification"
       component={NotificationStackScreens}

@@ -28,13 +28,27 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 16,
     fontWeight: '500',
-    marginBottom: 15,
+    marginTop: 15,
   },
   content: {
-    marginBottom: 15,
+    marginBottom: 10,
+    fontWeight: '500',
+  },
+  description: {
+    fontSize: 12,
+    marginBottom: 10,
+  },
+  entry: {
+    marginTop: 10,
   },
   section: {
-    marginBottom: 15,
+    borderBottomWidth: 1,
+    borderColor: '#D2D9E5',
+    paddingBottom: 10,
+  },
+  borderTop: {
+    borderTopWidth: 1,
+    borderColor: '#D2D9E5',
   },
   imageContainer: {
     width: 100,

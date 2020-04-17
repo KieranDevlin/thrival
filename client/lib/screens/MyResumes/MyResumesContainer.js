@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Resume from './Resume';
+import MyResumes from './MyResumes';
 import {Query} from '@apollo/react-components';
 import {gql} from 'apollo-boost';
 import {Text} from 'react-native';
@@ -8,17 +8,24 @@ import Loader from '../../components/Loader';
 import {UserContext} from '../../context/UserContext';
 import PropTypes from 'prop-types';
 
-export default class ResumeContainer extends Component {
+const ALL_USERS = gql`
+  query Users {
+    id
+    name
+  }
+`;
+export default class MyResumesContainer extends Component {
   render() {
+    console.log(this.props);
     return (
-      <Resume
+      <MyResumes
+        currentUser={this.props.route.params.currentUser}
         navigation={this.props.navigation}
-        resume={this.props.route.params.resume}
         style={styles.container}
       />
     );
   }
 }
-ResumeContainer.propTypes = {
+MyResumesContainer.propTypes = {
   navigation: PropTypes.objectOf(PropTypes.func),
 };

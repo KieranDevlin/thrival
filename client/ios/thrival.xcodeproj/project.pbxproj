@@ -48,6 +48,7 @@
 		BE16B0032440F1F6000AE96F /* Raleway-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE16AFF12440F1F5000AE96F /* Raleway-LightItalic.ttf */; };
 		BE16B0042440F1F6000AE96F /* Raleway-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE16AFF22440F1F5000AE96F /* Raleway-BlackItalic.ttf */; };
 		BE16B0052440F1F6000AE96F /* Raleway-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE16AFF32440F1F6000AE96F /* Raleway-MediumItalic.ttf */; };
+		BE16B00724491578000AE96F /* logo-square.png in Resources */ = {isa = PBXBuildFile; fileRef = BE16B00624491577000AE96F /* logo-square.png */; };
 		BE355643243D0C0900A89E3C /* assets in Resources */ = {isa = PBXBuildFile; fileRef = BE355642243D0C0900A89E3C /* assets */; };
 		C1370C48657A4BEAA428DEC0 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E49A65F60F294ADDB8B56847 /* FontAwesome5_Solid.ttf */; };
 		D8A6AFCB6FD4413AA03DA9C9 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 539A92904FCB465DA335954B /* Ionicons.ttf */; };
@@ -127,6 +128,7 @@
 		BE16AFF12440F1F5000AE96F /* Raleway-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-LightItalic.ttf"; path = "../lib/assets/fonts/Raleway-LightItalic.ttf"; sourceTree = "<group>"; };
 		BE16AFF22440F1F5000AE96F /* Raleway-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-BlackItalic.ttf"; path = "../lib/assets/fonts/Raleway-BlackItalic.ttf"; sourceTree = "<group>"; };
 		BE16AFF32440F1F6000AE96F /* Raleway-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-MediumItalic.ttf"; path = "../lib/assets/fonts/Raleway-MediumItalic.ttf"; sourceTree = "<group>"; };
+		BE16B00624491577000AE96F /* logo-square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-square.png"; sourceTree = "<group>"; };
 		BE355642243D0C0900A89E3C /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../lib/assets; sourceTree = "<group>"; };
 		C0B9BF55DC6660326920B7A2 /* libPods-thrival-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-thrival-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7EF89043DFF4407838443DB /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				BE16AFE82440F1F5000AE96F /* Raleway-SemiBoldItalic.ttf */,
 				BE16AFE22440F1F5000AE96F /* Raleway-Thin.ttf */,
 				BE16AFED2440F1F5000AE96F /* Raleway-ThinItalic.ttf */,
+				BE16B00624491577000AE96F /* logo-square.png */,
 				BE355642243D0C0900A89E3C /* assets */,
 				13B07FAE1A68108700A75B9A /* thrival */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -453,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE16AFF42440F1F6000AE96F /* Raleway-Thin.ttf in Resources */,
+				BE16B00724491578000AE96F /* logo-square.png in Resources */,
 				BE16AFF52440F1F6000AE96F /* Raleway-Light.ttf in Resources */,
 				BE16AFF62440F1F6000AE96F /* Raleway-Regular.ttf in Resources */,
 				BE16AFF72440F1F6000AE96F /* Raleway-SemiBold.ttf in Resources */,

@@ -1,64 +1,70 @@
-import React, {Component} from 'react';
+import React, {Component, useContext} from 'react';
+import UserProfile from './UserProfile';
 import {Query} from '@apollo/react-components';
 import {gql} from 'apollo-boost';
 import {Text} from 'react-native';
-import PropTypes from 'prop-types';
-import UserProfile from './UserProfile';
 import styles from './styles';
 import Loader from '../../components/Loader';
 import {UserContext} from '../../context/UserContext';
+import PropTypes from 'prop-types';
+import {AuthContext} from '../../context/AuthProvider';
 
-const USER_WHERE_UNIQUE_ID = gql`
-  query user($where: UserWhereUniqueInput!) {
-    user(where: $where) {
+const ALL_USERS = gql`
+  {
+    users {
       id
       name
-      email
-      profileImage
+      employerProfile {
+        id
+        jobpostings {
+          id
+        }
+        linkedin
+        contact {
+          id
+        }
+      }
       applicantProfile {
         id
         linkedin
         github
         appliedJobs {
           id
-          createdAt
-          rate
-          industry
-          location
-          discipline
-          totalRoles
-          description
-          roles
-          requirements
-          employer {
-            id
-            linkedin
-            contact {
-              id
-              email
-              website
-            }
-          }
-          id
         }
         resume {
           id
+          createdAt
+          title
           fullname
+          achievements {
+            id
+            title
+            description
+          }
           address
           email
-          phone
           experience {
             id
             jobTitle
+            startDate
+            endDate
+            location
+            employer
+            description
           }
           education {
             id
             credential
+            startDate
+            endDate
+            location
             school
           }
+          phone
           skills
         }
       }
+      profileImage
     }
   }
 `;
@@ -67,17 +73,20 @@ export default class UserProfileContainer extends Component {
     return (
       <UserContext.Consumer>
         {({user}) => {
+          const loggedInUserId = user.id;
           return (
-            <Query
-              query={USER_WHERE_UNIQUE_ID}
-              variables={{where: {id: user.id}}}>
+            <Query query={ALL_USERS}>
               {({data, loading, error}) => {
                 if (loading) return <Loader />;
                 if (error) return <Text>Error :(</Text>;
+                const currentUser = data.users.filter((user) =>
+                  loggedInUserId.includes(user.id),
+                );
+                console.log(currentUser);
                 return (
                   <UserProfile
                     navigation={this.props.navigation}
-                    user={data.user}
+                    currentUser={currentUser}
                     style={styles.container}
                   />
                 );
