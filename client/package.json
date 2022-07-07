@@ -21,7 +21,7 @@
     "apollo-boost": "^0.4.7",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "16.11.0",
     "react-native": "0.62.1",
     "react-native-calendar-picker": "^6.0.6",
